@@ -33,12 +33,12 @@ export default function Home({products, searches}) {
   const handleChange = async (e) => {
     if (e.target.value != ''){
         setQuery(e.target.value);
-      setTimeout(async () => {
-        const res = await axios.get(`http://3.130.4.98/blackwidow/products/${e.target.value}`);
-        const sug = await res.data;
-        setSuggestions(sug)
-        return res.data.results;
-      }, 1000);
+      // setTimeout(async () => {
+      //   const res = await axios.get(`http://3.130.4.98/blackwidow/products/${e.target.value}`);
+      //   const sug = await res.data;
+      //   setSuggestions(sug)
+      //   return res.data.results;
+      // }, 1000);
     } else {
       setQuery('');
       console.log('nada')
