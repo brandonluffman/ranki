@@ -1,0 +1,39 @@
+.landing-cat{
+    display:flex;
+    margin-bottom:8rem;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.landing-categories {
+    margin-bottom:20rem;
+}
+
+.landing-container-query {
+    margin-bottom:2rem;
+    font-size: 2rem;
+    text-transform: capitalize;
+}
+
+.cat-btn {
+    background-color: transparent;
+    color:white;
+    float:right;
+    /* padding:0rem 1rem 0.2rem 1rem; */
+    display: flex;
+    align-items: center;
+    font-size: 3rem;
+    cursor: pointer;
+    text-align: center;
+    justify-content: center;
+    border:none;
+}
+.cat-btn-link {
+    cursor: pointer !important;
+}
+.landing-cat-header {
+    text-align:center;
+    font-size: 3rem;
+    margin-bottom: 4rem;
+}
+

@@ -1,0 +1,7 @@
+.hwc-container {
+    height:30vh;
+    display: grid;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}

@@ -1,0 +1,7 @@
+.productnf-container {
+    height:65vh;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+}

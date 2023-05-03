@@ -1,0 +1,145 @@
+.analytics-containers {
+  display: flex;
+  justify-content: space-around;
+  width:100%;
+}
+@property --rotate {
+    syntax: "<angle>";
+    initial-value: 132deg;
+    inherits: false;
+  }
+  
+  :root {
+    --card-height: 45vh;
+    --card-width: calc(var(--card-height) / 1);
+  }
+
+
+.analytics-container {
+    /* background-color: white;
+    color:black;
+    width:30%;
+    margin:0 auto;
+    border-radius: 40px;
+    text-transform: capitalize;
+    display: block;
+    justify-content: center;
+    padding:1rem;
+    text-align: center;
+    margin-bottom:4rem;
+    box-shadow: 1px 3px 8px rgba(0,0,0,1); */
+    background: #191c29;
+    width: var(--card-width);
+    /* height: var(--card-height); */
+    height:auto;
+    padding: 3px;
+    margin: 0 auto;
+    position: relative;
+    border-radius: 20px;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    display: block;
+    font-size: 1.5em;
+    color: rgb(255, 255, 255);
+    cursor: pointer;
+    font-family: cursive;
+    text-transform: capitalize;
+    padding:1rem;
+    transition: .2s all ease-in-out;
+}
+
+.analytics-container:hover {
+    color: rgb(255, 255, 255);
+    transition: color 1s;
+}
+
+.analytics-container:hover:before, .analytics-container:hover:after {
+    opacity: .3;
+    transition:.2s ease-in-out;
+  }
+
+  .analytics-container::before {
+    content: "";
+    width: 104%;
+    height: 104%;
+    border-radius: 20px;
+    background-image: linear-gradient(
+      var(--rotate)
+      , #ffd7d7, #fdd8d8 43%, rgb(252, 85, 255));
+      position: absolute;
+      z-index: -1;
+      top: -2%;
+      left: -2%;
+      animation: spin 2.5s linear infinite;
+  }
+
+  .analytics-flexer {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+  }
+
+  .analytics-rank {
+    font-size:1.5rem;
+    margin-right:1rem;
+  }
+  
+  /* .analytics-container::after {
+    position: absolute;
+    content: "";
+    top: calc(var(--card-height) / 20);
+    left: 0;
+    right: 0;
+    z-index: -1;
+    height: 100%;
+    width: 100%;
+    margin: 0 auto;
+    transform: scale(0.8);
+    filter: blur(calc(var(--card-height) / 6));
+    background-image: linear-gradient(
+      var(--rotate)
+      , #fdfdfd, #fb6b6b 43%, #c20000);
+      opacity: 1;
+    transition: opacity .2s;
+    animation: spin 1.5s linear infinite;
+  } */
+  
+  @keyframes spin {
+    0% {
+      --rotate: 0deg;
+    }
+    100% {
+      --rotate: 360deg;
+    }
+  }
+
+.analytics-header {
+    margin-bottom:4rem;
+    font-size:2rem;
+}
+.trending-icon {
+    color:rgb(255, 174, 188);
+    font-size: 4rem;
+    margin-bottom: -1rem;
+}
+.analytics-emoji {
+    font-size:3rem;
+}
+
+.analytics-caret {
+    font-size:1rem;
+    color:rgb(122, 215, 71);  
+}
+
+.analytics-text {
+  text-align: left;
+  /* margin-bottom:1.5rem; */
+  font-size: 1rem;
+}
+
+.testing2 {
+  margin-left:auto;
+  order: 3;
+
+}

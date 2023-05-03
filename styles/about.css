@@ -1,0 +1,336 @@
+.about-container {
+    display: flex;
+    height:80vh;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    background-color: rgb(8, 18, 27);
+}
+
+.about-header {
+    margin: 0rem;
+    text-transform: uppercase;
+    font-size:10rem;
+    margin-bottom: 1rem;
+    color:white;
+    margin-right:3rem;
+}
+.about-flexer {
+    display: flex;
+    align-items: center;
+}
+.about-flexer-img {
+    margin-right: -1.8rem;
+    width:170px;
+}
+.landing-subheader {
+    margin: 0rem;
+    text-transform: uppercase;
+    font-size:3rem;
+    font-weight: 300;
+    margin-bottom:5rem;
+    color:white;
+}
+.landing-deployment-div {
+    border:3px solid rgb(249, 47, 47);
+    color:rgb(249, 47, 47);
+    border-radius:20px;
+    padding:1rem;
+    box-shadow: 1px 6px 10px rgba(94, 94, 94, 0.5);
+    position: relative;
+    overflow: hidden;
+    background-color: white;
+}
+
+.header-color {
+    color:rgb(255, 148, 232);
+}
+
+.in-dev-dot {
+    font-size:3rem;
+    color:rgb(249, 47, 47);
+    margin:0;
+    padding: 0;
+    animation-name: blink;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+    margin-right:1rem;
+    position: absolute;
+    top:0;
+    right:-10px;
+}
+
+@keyframes blink {
+    0% {
+      opacity:1;
+    }
+    50% {
+        opacity:0;    
+    }
+    100% {
+        opacity:1;    
+    }
+  }
+
+.landing-in-dev {
+    text-transform: uppercase;
+    font-size: 2rem;
+    margin-bottom:2rem;
+    font-weight:600;
+}
+
+.landing-deployment-subheader {
+    color:rgb(50, 50, 50);
+    margin-bottom:0.5rem;
+    text-transform: uppercase;
+    font-weight:600;
+}
+.landing-deployment-date {
+    font-size:2.5rem;
+    font-weight: 700;
+}
+
+
+.home-about-container {
+    padding:1rem;
+    overflow: hidden;
+    scroll-behavior: smooth;
+
+}
+
+.home-about-header {
+    font-size: 4rem;
+    font-weight: 300;
+    margin-bottom:2rem;
+}
+
+.home-about-subheader {
+    font-size:3rem;
+    margin-bottom:2rem;
+}
+
+
+.home-about-content {
+    display: flex;
+    padding:1rem;
+    margin-bottom:4rem;
+}
+.home-about-content-img {
+    width:50%;
+    justify-content: center;
+    text-align: center;
+    display: flex;
+}
+.home-about-img {
+    width:50%;
+}
+.home-about-content-text {
+    width:50%;
+}
+.home-about-p {
+    font-size: 1.2rem;
+}
+
+.home-team-container {
+    text-align: center;
+    padding:0rem 1rem;
+}
+.home-team-header {
+    text-align: center;
+    font-size: 4rem;
+    margin-bottom:3rem;
+}
+
+.home-team-profiles {
+    display: flex;
+    justify-content: center;
+    margin-bottom:10rem;
+}
+
+.home-team-profile {
+    margin:0rem 1rem;
+    cursor:pointer;
+    width:250px;
+    height:250px;
+    transition:0.3s ease-in-out all !important;
+    overflow: hidden;
+    border:4px solid white;
+    border-radius: 20px;
+}
+
+
+.marcus-profile {
+    background:url('/marcus-profile.jpeg');
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    position: relative;
+    border:4px solid white;
+
+}
+
+.marcus-profile:hover {
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    opacity: 0.9;
+    transition:0.3s ease-in-out all !important;
+}
+
+.brandon-profile {
+    background:url('/brandon-profile.jpeg');
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    opacity: 1;
+    position: relative;
+
+}
+
+.brandon-profile:hover {
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    opacity: 0.9;
+    transition:0.2s ease-in-out all !important;
+}
+
+.overlay {
+    position: absolute;
+    background-color: rgb(126, 181, 240);
+    transition: all 0.7s ease;
+    transform: translateY(250px);
+    width:100%;
+    padding:0.7rem 0rem;
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
+    color:white;
+}
+
+
+
+.brandon-profile:hover .overlay, .marcus-profile:hover .overlay {
+    display: block;
+    transform: translateY(100px);
+}
+.profile-linkedin {
+    color:#0e76a8;
+    font-size:2rem;
+}
+
+.profile-name {
+    font-size: 1.5rem;
+    font-weight:700;
+}
+
+.profile-skills {
+    margin-bottom:1.5rem;
+}
+
+#about {
+    scroll-behavior: smooth;
+}
+
+.home-about-content:nth-of-type(2) {
+    display: flex;
+    flex-direction: inherit;
+}
+
+  @media (max-width: 1000px) {
+    .home-about-content-img {
+        width:100%;
+
+    }
+    .home-about-content-text {
+        width:100%;
+        margin-bottom:2rem;
+    }
+
+    .home-about-img {
+        width:30%;
+    }
+
+    .home-about-content {
+        display: block;
+    }
+
+    .home-about-content:nth-of-type(2) {
+        flex-direction: column-reverse;
+        display: flex;
+    }
+  }
+
+  @media (max-width: 600px) {
+
+   .landing-header {
+    margin-top:4rem;
+    font-size:3rem;
+   }
+   .landing-subheader {
+    font-size:1.5rem;
+    margin-bottom: 2rem;
+   }
+   .landing-in-dev {
+    font-size: 1.5rem;
+   }
+   .landing-deployment-subheader {
+    font-size:1rem;
+   }
+   .landing-deployment-date {
+    font-size:1.5rem;
+   }
+   .home-team-profile {
+    height:150px;
+    width:150px;
+    margin: 0rem 0.5rem;
+   }
+   .home-about-p {
+    font-size:0.9rem;
+   }
+
+   .home-about-img {
+    width:50%;
+   }
+   .home-about-content {
+    margin-bottom:1rem;
+   }
+   .home-team-header {
+    font-size: 3rem;
+    line-height: 8vh;
+   }
+  }
+
+  @media (max-width: 400px) {
+
+    .landing-deployment-div {
+        margin:0rem 1rem;
+    }
+    .in-dev-dot {
+        font-size:2rem;
+    }
+    .home-team-profile {
+     height:110px;
+     width:110px;
+    }
+
+    .overlay {
+        transform: translateY(120px);
+    }
+    .brandon-profile:hover .overlay, .marcus-profile:hover .overlay {
+        transform: translateY(0px);
+    }
+
+    .profile-name {
+        font-size:0.8rem;
+    }
+    .profile-title {
+        font-size:0.7rem;
+    }
+    .profile-skills {
+        font-size: 0.7rem;
+        margin-bottom:1rem;
+    }
+    .profile-linkedin {
+        font-size:1rem;
+    }
+   }
