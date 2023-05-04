@@ -126,26 +126,10 @@ export default function Home({products, searches}) {
   )
 }
 
-export async function getStaticProps() {
-    const res = await fetch('http://127.0.0.1:8000/blackwidow/trending/products/')
-    const products = await res.json()
-    const resp = await fetch('http://127.0.0.1:8000/blackwidow/trending/searches/')
-    const searches = await resp.json()
- 
-  return {
-    props: {
-      products,
-      searches,
-    },
-  }
-}
 // export async function getStaticProps() {
-//   // Call an external API endpoint to get posts.
-//   // You can use any data fetching library
-
-//     const res = await fetch('http://3.130.4.98/blackwidow/trending/products/')
+//     const res = await fetch('http://127.0.0.1:8000/blackwidow/trending/products/')
 //     const products = await res.json()
-//     const resp = await fetch('http://3.130.4.98/blackwidow/trending/searches/')
+//     const resp = await fetch('http://127.0.0.1:8000/blackwidow/trending/searches/')
 //     const searches = await resp.json()
  
 //   return {
@@ -155,3 +139,19 @@ export async function getStaticProps() {
 //     },
 //   }
 // }
+export async function getStaticProps() {
+  // Call an external API endpoint to get posts.
+  // You can use any data fetching library
+
+    const res = await fetch('http://3.130.4.98/blackwidow/trending/products/')
+    const products = await res.json()
+    const resp = await fetch('http://3.130.4.98/blackwidow/trending/searches/')
+    const searches = await resp.json()
+ 
+  return {
+    props: {
+      products,
+      searches,
+    },
+  }
+}

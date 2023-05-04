@@ -61,16 +61,7 @@ export async function getServerSideProps(context) {
 
 const query = context.query.q;
 try {
-  // const response = await fetch('http://3.130.4.98/blackwidow', {
-  //   method: 'POST',
-  //   headers: {
-  //     'Content-Type': 'application/json',
-  //   },
-  //   body: JSON.stringify({
-  //     "query": query
-  //   }),
-  // });
-  const response = await fetch('http://127.0.0.1:8000/blackwidow/', {
+  const response = await fetch('http://3.130.4.98/blackwidow', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -79,6 +70,15 @@ try {
       "query": query
     }),
   });
+  // const response = await fetch('http://127.0.0.1:8000/blackwidow/', {
+  //   method: 'POST',
+  //   headers: {
+  //     'Content-Type': 'application/json',
+  //   },
+  //   body: JSON.stringify({
+  //     "query": query
+  //   }),
+  // });
   const results = await response.json();
   return {
     props: {
