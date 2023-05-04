@@ -39,7 +39,7 @@ export default function App({ Component, pageProps, router }) {
         },
       }}
       transition={{
-        duration: 0.7,
+        duration: 0.3,
       }}
     >
     <Component {...pageProps} key={router.route} />

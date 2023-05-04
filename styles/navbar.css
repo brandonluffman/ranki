@@ -11,19 +11,17 @@
     border-bottom-left-radius: 20px;
     border-bottom-right-radius: 20px;
     z-index:999999;
-    padding:2rem 0rem;
-    transition: 0.3s ease all;
+    padding:1rem 0rem;
 }
 .scrolled {
-    background-color: pink;
-    padding:1rem 0rem;
+    background-color: rgb(253, 179, 223);
+    padding:0rem 0rem;
 }
 
 .nav-logo {
     width:15% !important;
     padding-left:2rem;
 }
-
 .nav-menu {
     padding-right:2rem;
 }
@@ -31,20 +29,20 @@
 .nav-link {
     text-decoration: none;
     margin:0rem 2rem;
-    font-size: 1rem;
+    font-size: 0.9rem;
 }
 
 .nav-form {
-    border:3px solid pink;
+    border:3px solid rgb(253, 179, 223);
     border-radius: 100px;
     background-color: white;
-    width:300px;
+    width:200px;
     text-align: left;
     padding:0.3rem 0rem 0.3rem 1.5rem;
     color:black;
     display: flex;
     align-items: center;
-    height:40px;
+    height:20px;
     position: relative;
     margin-right:8rem;
     box-shadow: 0 15px 25px rgba(0,0,0,.6);
@@ -53,16 +51,16 @@
 }
 
 .nav-form-expanded {
-    width:500px;
-    border:5px solid pink;
+    width:300px;
+    border:3px solid rgb(253, 179, 223);
     border-radius: 100px;
     background-color: white;
     text-align: left;
-    padding:0.3rem 0rem 0.3rem 1.5rem;
+    padding:0.3rem 0rem 0.3rem 0.5rem;
     color:black;
     display: flex;
     align-items: center;
-    height:40px;
+    height:30px;
     position: relative;
     margin-right:8rem;
     box-shadow: 0 15px 25px rgba(0,0,0,.6);
@@ -73,7 +71,7 @@
 .nav-landing-input {
     border:none;
     background-color: transparent;
-    font-size: 1.2rem;
+    font-size: 1rem;
     color:black;
     padding-left:0.5rem;
     width:100%;
@@ -98,13 +96,12 @@
     background-color: rgba(0, 0, 1, 1);
     border-radius: 50%;
     color:white;
-    padding:0.8rem 1rem 0.6rem 1rem;
-    font-size:1.5rem;
+    padding:0.7rem 0.8rem 0.5rem 0.8rem;
+    font-size:1rem;
     cursor:pointer;
     transition:0.2s ease all;
-    transform: translateX(250px);
+    transform: translateX(138px);
     opacity: 1;
-    left:851px;
 }
 
 .nav-toggle-button-clicked {
@@ -113,8 +110,8 @@
     background-color: rgba(8,18,27,1);
     border-radius: 50%;
     color:white;
-    padding:0.8rem 1rem 0.6rem 1rem;
-    font-size:1.5rem;
+    padding:0.7rem 0.8rem 0.5rem 0.8rem;
+    font-size:1rem;
     cursor:pointer;
     transition:0.2s ease all;
     opacity: 1;

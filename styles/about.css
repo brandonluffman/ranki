@@ -122,9 +122,11 @@
     justify-content: center;
     text-align: center;
     display: flex;
+    align-items: center;
 }
 .home-about-img {
-    width:50%;
+    width:200px;
+    height:200px;
 }
 .home-about-content-text {
     width:50%;
@@ -249,11 +251,6 @@
         width:100%;
         margin-bottom:2rem;
     }
-
-    .home-about-img {
-        width:30%;
-    }
-
     .home-about-content {
         display: block;
     }
@@ -292,9 +289,6 @@
     font-size:0.9rem;
    }
 
-   .home-about-img {
-    width:50%;
-   }
    .home-about-content {
     margin-bottom:1rem;
    }

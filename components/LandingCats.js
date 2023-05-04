@@ -38,7 +38,7 @@ const LandingCats = (searches) => {
                             </div>
                             ))
                         )}
-                                                <Link className='cat-btn-link' href={`/ranking?q=${s.query}`}><button className='cat-btn' type='button'><MdOutlineArrowRightAlt /></button></Link>
+                        <Link className='cat-btn-link' href={`/ranking?q=${s.query}`}><button className='cat-btn' type='button'><MdOutlineArrowRightAlt /></button></Link>
                         </div>
                     </div>
                 ))}

@@ -27,13 +27,19 @@
     text-align: center;
     justify-content: center;
     border:none;
+    transition: 0.2s ease-in-out all;
+
+}
+.cat-btn:hover {
+    transform: scale(1.1);
+    transform: translateX(5px);
 }
 .cat-btn-link {
     cursor: pointer !important;
 }
 .landing-cat-header {
     text-align:center;
-    font-size: 3rem;
+    font-size: 2.5rem;
     margin-bottom: 4rem;
 }
 

@@ -11,23 +11,12 @@
   
   :root {
     --card-height: 45vh;
-    --card-width: calc(var(--card-height) / 1);
+    /* --card-width: calc(var(--card-height) / 1); */
+    --card-width: 400px;
   }
 
 
 .analytics-container {
-    /* background-color: white;
-    color:black;
-    width:30%;
-    margin:0 auto;
-    border-radius: 40px;
-    text-transform: capitalize;
-    display: block;
-    justify-content: center;
-    padding:1rem;
-    text-align: center;
-    margin-bottom:4rem;
-    box-shadow: 1px 3px 8px rgba(0,0,0,1); */
     background: #191c29;
     width: var(--card-width);
     /* height: var(--card-height); */
@@ -140,8 +129,13 @@
   overflow: hidden;
   text-overflow: ellipsis;
   max-width: 250px; 
+  transition: 0.2s ease all;
 }
 
+.analytics-text:hover {
+  cursor: pointer;
+  transform: scale(1.02);
+}
 .testing2 {
   margin-left:auto;
   order: 3;
@@ -150,6 +144,16 @@
   padding:0rem 0.3rem;
   border-radius:5px;
   box-shadow:0 0 20px 1px rgb(190, 190, 190) inset;
+}
 
-
+@media (max-width: 800px) {
+  .analytics-container {
+    width: 80%;
+    margin-bottom:4rem;
+}
+.analytics-containers {
+  display: inline;
+  justify-content: space-around;
+  width:100%;
+}
 }

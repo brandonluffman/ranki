@@ -80,7 +80,7 @@ export default function Home({products, searches}) {
         <link rel="icon" href="/logos/2.png" />
       </Head>
       <NavbarNI /> 
-      <div className='landing-cont'>
+      <div className='landing-contain'>
        <div className='landing-container'>
          <div className='landing-div'>
           <div className='landing-flexer'>
@@ -94,7 +94,7 @@ export default function Home({products, searches}) {
               onChange={handleChange}
               // onClick={searchToggle}
               className='landing-input'
-              placeholder='Search for a product...'
+              placeholder='What&apos;re you looking for? ...'
             />
            <button className='landing-btn' type="submit"><BsSearch className='input-search-icon'/></button>
            
@@ -126,29 +126,10 @@ export default function Home({products, searches}) {
   )
 }
 
-// export async function getStaticProps() {
-//   // Call an external API endpoint to get posts.
-//   // You can use any data fetching library
-
-//     const res = await fetch('http://127.0.0.1:8000/blackwidow/trending/products/')
-//     const products = await res.json()
-//     const resp = await fetch('http://127.0.0.1:8000/blackwidow/trending/searches/')
-//     const searches = await resp.json()
- 
-//   return {
-//     props: {
-//       products,
-//       searches,
-//     },
-//   }
-// }
 export async function getStaticProps() {
-  // Call an external API endpoint to get posts.
-  // You can use any data fetching library
-
-    const res = await fetch('http://3.130.4.98/blackwidow/trending/products/')
+    const res = await fetch('http://127.0.0.1:8000/blackwidow/trending/products/')
     const products = await res.json()
-    const resp = await fetch('http://3.130.4.98/blackwidow/trending/searches/')
+    const resp = await fetch('http://127.0.0.1:8000/blackwidow/trending/searches/')
     const searches = await resp.json()
  
   return {
@@ -158,3 +139,19 @@ export async function getStaticProps() {
     },
   }
 }
+// export async function getStaticProps() {
+//   // Call an external API endpoint to get posts.
+//   // You can use any data fetching library
+
+//     const res = await fetch('http://3.130.4.98/blackwidow/trending/products/')
+//     const products = await res.json()
+//     const resp = await fetch('http://3.130.4.98/blackwidow/trending/searches/')
+//     const searches = await resp.json()
+ 
+//   return {
+//     props: {
+//       products,
+//       searches,
+//     },
+//   }
+// }

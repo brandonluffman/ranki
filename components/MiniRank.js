@@ -14,12 +14,12 @@ const MiniRank = ({products}) => {
     const img_bg = {
         backgroundImage: `url(${Background})`,
         backgroundPosition: 'center',
-        backgroundSize: '60%',
+        backgroundSize: '65%',
         backgroundRepeat: 'no-repeat'
     }
 
     const img_bg_2 = {
-        backgroundImage: `url(/ranki.png)`,
+        backgroundImage: `url(/logos/2.png)`,
         backgroundPosition: 'center',
         backgroundSize: 'contain',
         backgroundRepeat: 'no-repeat'
@@ -27,6 +27,7 @@ const MiniRank = ({products}) => {
 
   return (
     <div className='mini-rank-grid'>
+        <div className='mini-rank'>
         <div className='mini-flexer'>
             <p className='mini-circle-rank'>{products.rank}</p>
             {products.product_img == 'hello' ? (
@@ -74,6 +75,7 @@ const MiniRank = ({products}) => {
                 )
     }
     </div>      */}
+    </div>
 </div> 
   )
 }

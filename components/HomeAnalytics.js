@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import React from 'react'
 import {BiTrendingUp} from 'react-icons/bi'
 import {BsFillCaretUpFill} from 'react-icons/bs'
@@ -5,7 +6,7 @@ import {BsFillCaretUpFill} from 'react-icons/bs'
 const HomeAnalytics = (props) => {
   const prod = props.products
   const ser = props.searches
-  // console.log(props)
+  console.log(props)
   return (
     <div className='analytics-containers'>
     <div className='analytics-container'>
@@ -26,7 +27,9 @@ const HomeAnalytics = (props) => {
        {prod.slice(0,5).map((p, i) => (
         <div className='analytics-flexer' key={i}>
           <p className='analytics-rank'>{i+1}</p>
+          <Link href={`product/${p.id}`} key={p.id}>
           <p className='analytics-text'>{p.entity}</p>
+          </Link>
           <p className='testing2'><BsFillCaretUpFill className='analytics-caret' /> {p.request_count}</p>
         </div>
       ))}

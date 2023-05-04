@@ -5,6 +5,7 @@
 
 html, *, body {
     font-family: 'Mulish', sans-serif;
+    scroll-behavior: smooth;
 }
 body {
     margin:0;

@@ -15,9 +15,9 @@ const Mentions = (results) => {
                 <h2>Mentions</h2>
             </div>
             <div className='mentions-link-container'>     
-                {results.results.links.affiliate.map((l,i) => (
+                {results.results.links.affiliate.slice(0,10).map((l,i) => (
                     <div className='mentions-link-div' key={i}>
-                    <img src={l.favicon} width='30'></img><Link href={l.link} target='_blank' rel='no-referrer'><p className='mentions-links-link'>{l.title}</p></Link>
+                    <div className='favicon-bubble'><img src={l.favicon} width='25' className='mentions-link-img'></img></div><Link href={l.link} target='_blank' rel='no-referrer'><p className='mentions-links-link'>{l.title}</p></Link>
                     </div>
                 ))}
             </div>
@@ -32,7 +32,7 @@ const Mentions = (results) => {
             <div className='mentions-link-container'>     
                 {results.results.links.reddit.map((l,i) => (
                     <div className='mentions-link-div' key={i}>
-                    <img src='/reddit.png' width='30'></img><Link href={l.link} target='_blank' rel='no-referrer'><p className='mentions-links-link'>{l.title}</p></Link>
+                    <div className='favicon-bubble'><img src={l.favicon} width='25' className='mentions-link-img'></img></div><Link href={l.link} target='_blank' rel='no-referrer'><p className='mentions-links-link'>{l.title}</p></Link>
                     </div>
                 ))}
             </div>
@@ -47,7 +47,7 @@ const Mentions = (results) => {
             <div className='mentions-link-container'>     
                 {results.results.links.youtube.map((l,i) => (
                     <div className='mentions-link-div' key={i}>
-                    <img src='/tube.png' width='30' className='yt-img'></img><Link href={l.link} target='_blank' rel='no-referrer'><p className='mentions-links-link'>{l.title}</p></Link>
+                    <div className='favicon-bubble'><img src='/tube.png' width='30' className='yt-img'></img></div><Link href={l.link} target='_blank' rel='no-referrer'><p className='mentions-links-link'>{l.title}</p></Link>
                     </div>
                 ))}
             </div>

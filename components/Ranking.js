@@ -11,7 +11,7 @@ const Ranking = ({products}) => {
     const img_bg = {
         backgroundImage: `url(${Background})`,
         backgroundPosition: 'center',
-        backgroundSize: 'contain',
+        backgroundSize: '50%',
         backgroundRepeat: 'no-repeat'
     }
     if (products.product_rating) {

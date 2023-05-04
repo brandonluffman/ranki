@@ -28,8 +28,49 @@ export async function getServerSideProps(context) {
     }
   } else {
 
-  const query = context.query.q;
-  const response = await fetch('http://3.130.4.98/blackwidow', {
+//   const query = context.query.q;
+//   try {
+//     const response = await fetch('http://3.130.4.98/blackwidow', {
+//       method: 'POST',
+//       headers: {
+//         'Content-Type': 'application/json',
+//       },
+//       body: JSON.stringify({
+//         "query": query
+//       }),
+//     });
+//     const results = await response.json();
+//     return {
+//       props: {
+//         results,
+//         query,
+//       },
+//     };
+//   } catch(e){
+//     console.log(e)
+//     const results = ''
+//     return {
+//       props: {
+//         results,
+//         query,
+//       },
+//     };
+//   }
+// }
+// }
+
+const query = context.query.q;
+try {
+  // const response = await fetch('http://3.130.4.98/blackwidow', {
+  //   method: 'POST',
+  //   headers: {
+  //     'Content-Type': 'application/json',
+  //   },
+  //   body: JSON.stringify({
+  //     "query": query
+  //   }),
+  // });
+  const response = await fetch('http://127.0.0.1:8000/blackwidow/', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -39,15 +80,22 @@ export async function getServerSideProps(context) {
     }),
   });
   const results = await response.json();
-
-  console.log(results)
-
   return {
     props: {
       results,
       query,
     },
   };
+} catch(e){
+  console.log(e)
+  const results = ''
+  return {
+    props: {
+      results,
+      query,
+    },
+  };
+}
 }
 }
 
@@ -100,10 +148,7 @@ export default function Rank({ results, query }) {
         <link rel="icon" href="/logos/2.png" />
       </Head>
       <Navbar />
-      {isLoading? (
-        <Loading />
-      ): (
-        results ? (
+        {results ? (
         <div>
             <h2 className='ranking-subheader'>Showing Results For</h2>
             <h1 className='ranking-header'>{query}</h1>
@@ -125,9 +170,8 @@ export default function Rank({ results, query }) {
         </div>  
         ) : results == 'INVALID QUERY, PLEASE TRY SOMETHING ELSE' ? (
         <RankingsDefault />
-        ) : (
+        ) : results == 'INVALID QUERY' (
           <NoResults />
-        )
         )}
     <Footer />
     </div>
