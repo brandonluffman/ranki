@@ -20,6 +20,7 @@
     padding-left:0rem;
     overflow: hidden;
     margin-bottom:2rem;
+    padding:0rem 1rem;
 }
 .mention-rank-title {
     font-size: 0.9rem;
@@ -47,6 +48,15 @@
 .mentions-links-link {
     border-bottom:1px solid rgb(100, 100, 100);
     transition:all 0.2s ease-in-out;
+}
+.mentions-link-div {
+    display: flex;
+    align-items: center;
+    margin-bottom:1rem;
+}
+.mentions-link-div > img {
+    border-radius: 50%;
+    margin-right:1rem;
 }
 .mentions-links-link:hover {
     color:rgb(245, 245, 245);
@@ -99,6 +109,9 @@
 .youtube-favicon {
     border-radius: 0px;
     padding:0.2rem 0rem;
+}
+.yt-img {
+    border-radius: 0px !important;
 }
 
 .mentions-youtube-favicon {

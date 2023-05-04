@@ -1,5 +1,5 @@
-// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-// import {  faFacebookF, faInstagram, faLinkedinIn, faTwitter } from '@fortawesome/free-brands-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {  faFacebookF, faInstagram, faLinkedinIn, faTwitter } from '@fortawesome/free-brands-svg-icons';
 import Link from 'next/link';
 import {GoMail } from 'react-icons/go';
 import {IoIosPhonePortrait} from 'react-icons/io';
@@ -16,9 +16,9 @@ const Footer = () => {
               </div>
               
               <div className='social-icons'>
-                {/* <FontAwesomeIcon className="fa-brands fa-twitter social-icon" icon={faTwitter} alt='Social Icon' />
+                <FontAwesomeIcon className="fa-brands fa-twitter social-icon" icon={faTwitter} alt='Social Icon' />
                 <FontAwesomeIcon className="fa-brands fa-instagram social-icon" icon={faInstagram} alt='Social Icon' />
-                <FontAwesomeIcon className="fa-brands fa-linkedin social-icon" icon={faLinkedinIn} alt='Social Icon' /> */}
+                <FontAwesomeIcon className="fa-brands fa-linkedin social-icon" icon={faLinkedinIn} alt='Social Icon' />
               </div>
               </div>
               

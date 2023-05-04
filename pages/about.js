@@ -49,7 +49,8 @@ export default function About() {
         </div>
         <div className='home-about-content-text'>
         <h3 className='home-about-subheader'>How It <span className='header-color'>Works</span></h3>
-        <p className='home-about-p'>We&apos;ve built an AI application that uses natural language processing (NLP) and user metrics to rank products. The application is designed to be a simple, streamlined way for you to find the best products for any given situation. All you have to do is type in what you want, and we&apos;ll take care of the rest. Whether you&apos;re looking for a gift for a friend or trying to find the perfect outfit for your first date, we&apos;re here for you.</p>
+        <p className='home-about-p'>We&apos;ve built an AI application that uses natural language processing (NLP) and user metrics to rank products. The application is designed to be a simple, streamlined way for you to find the best products for any given situation. All you have to do is type in what you want, and we&apos;ll take care of the rest.</p>
+        <h6 className='home-about-suberheader'>Whether you&apos;re looking for a gift for a friend or trying to find the perfect outfit for your first date, we&apos;re here for you. 🤝</h6>
         </div>
         </div>
       </div>

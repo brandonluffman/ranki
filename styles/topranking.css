@@ -90,14 +90,19 @@
     position: absolute;
     top:10px;
     right:10px;
-    border:5px solid rgb(4, 238, 0);
-    background-color: white;
-    padding:0.3rem 0.9rem;
+    border:5px solid rgb(255, 255, 255);
+    background-color: rgb(251, 137, 247);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height:45px;
+    width:45px;
     border-radius:50%;
     font-weight: 700;
-    font-size: 1.5rem;
-    box-shadow:0 0 5px 1px rgb(179, 255, 172);
+    font-size: 2rem;
+    box-shadow:0 0 20px 1px rgb(231, 48, 255);
     font-family: 'Montserrat', sans-serif;
+    color:white;
 }
 
 .affiliate-link {
@@ -107,11 +112,12 @@
 
 .grid-product-title {
     font-size:1.5rem;
-    font-weight:500;
+    font-weight:700;
     letter-spacing: -.03vw;
     margin: 0;
     margin-bottom:0.5rem;
     text-transform: uppercase;
+    font-family: 'Montserrat', sans-serif !important;
 
 }
 .review-rate {

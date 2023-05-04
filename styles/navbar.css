@@ -104,6 +104,7 @@
     transition:0.2s ease all;
     transform: translateX(250px);
     opacity: 1;
+    left:851px;
 }
 
 .nav-toggle-button-clicked {

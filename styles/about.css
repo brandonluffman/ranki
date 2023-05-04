@@ -108,8 +108,10 @@
     font-size:3rem;
     margin-bottom:2rem;
 }
-
-
+.home-about-suberheader {
+    font-size: 2rem;
+    font-weight:300;
+}
 .home-about-content {
     display: flex;
     padding:1rem;
@@ -129,6 +131,8 @@
 }
 .home-about-p {
     font-size: 1.2rem;
+    margin-bottom:4rem;
+    line-height: 4vh;
 }
 
 .home-team-container {

@@ -13,8 +13,40 @@ import '../styles/rankingdf.css';
 import '../styles/productnf.css';
 import '../styles/hwc.css';
 import '../styles/minirank.css';
+import '../styles/loading.css';
+import '../styles/noresults.css';
 
+import { useRouter } from "next/router";
+import { AnimatePresence, motion } from "framer-motion";
 
-export default function App({ Component, pageProps }) {
-  return <Component {...pageProps} />
+export default function App({ Component, pageProps, router }) {
+  return (
+    <AnimatePresence>
+    <motion.div
+      key={router.route}
+      initial="pageInitial"
+      animate="pageAnimate"
+      exit="pageExit"
+      variants={{
+        pageInitial: {
+          opacity: 0,
+        },
+        pageAnimate: {
+          opacity: 1,
+        },
+        pageExit: {
+          opacity: 0,
+        },
+      }}
+      transition={{
+        duration: 0.7,
+      }}
+    >
+    <Component {...pageProps} key={router.route} />
+    </motion.div>
+
+    </ AnimatePresence>
+
+  )
+
 }

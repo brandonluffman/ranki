@@ -13,13 +13,33 @@ import { useRouter } from 'next/router';
 import axios from 'axios';
 const cors = require('cors');
 import ErrorPage from 'next/error';
-
-
+import Loading from '../components/Loading';
+import { motion, useAnimation } from "framer-motion";
 
 export default function Home({products, searches}) {
   const [query, setQuery] = useState('');
   const router = useRouter();
   const [suggestions, setSuggestions] = useState([])
+  const [isLoading, setIsLoading] = useState(true);
+  const controls = useAnimation();
+
+  useEffect(() => {
+    if (!isLoading) {
+      controls.start({
+        opacity: 1,
+        transition: { duration: 0.5 },
+      });
+    }
+  }, [isLoading, controls]);
+
+  useEffect(() => {
+    // Simulate loading data for 2 seconds
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 2000);
+
+    return () => clearTimeout(timer);
+  }, []);
 
   const handleSubmit = (event) => {
     event.preventDefault();

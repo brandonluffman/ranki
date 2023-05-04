@@ -1,0 +1,18 @@
+.loading-container {
+    background:white;
+    color:black;
+    height:100vh;
+    position:fixed;
+    width:100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    z-index:999999 !important;
+    transition:0.2s ease-in-out;
+}
+.loading-spinner {
+    height:200px;
+    width:200%;
+    background-color: pink;
+}

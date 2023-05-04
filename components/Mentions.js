@@ -16,8 +16,8 @@ const Mentions = (results) => {
             </div>
             <div className='mentions-link-container'>     
                 {results.results.links.affiliate.map((l,i) => (
-                    <div key={i}>
-                    <img src={l.favicon} width='30'></img><Link href={l.link} target='_blank' rel='no-referrer'>{l.title}</Link>
+                    <div className='mentions-link-div' key={i}>
+                    <img src={l.favicon} width='30'></img><Link href={l.link} target='_blank' rel='no-referrer'><p className='mentions-links-link'>{l.title}</p></Link>
                     </div>
                 ))}
             </div>
@@ -31,8 +31,8 @@ const Mentions = (results) => {
             </div>
             <div className='mentions-link-container'>     
                 {results.results.links.reddit.map((l,i) => (
-                    <div key={i}>
-                    <img src='/reddit.png' width='30'></img><Link href={l.link} target='_blank' rel='no-referrer'>{l.title}</Link>
+                    <div className='mentions-link-div' key={i}>
+                    <img src='/reddit.png' width='30'></img><Link href={l.link} target='_blank' rel='no-referrer'><p className='mentions-links-link'>{l.title}</p></Link>
                     </div>
                 ))}
             </div>
@@ -46,8 +46,8 @@ const Mentions = (results) => {
             </div>
             <div className='mentions-link-container'>     
                 {results.results.links.youtube.map((l,i) => (
-                    <div key={i}>
-                    <img src='/tube.png' width='30'></img><Link href={l.link} target='_blank' rel='no-referrer'>{l.title}</Link>
+                    <div className='mentions-link-div' key={i}>
+                    <img src='/tube.png' width='30' className='yt-img'></img><Link href={l.link} target='_blank' rel='no-referrer'><p className='mentions-links-link'>{l.title}</p></Link>
                     </div>
                 ))}
             </div>
