@@ -46,7 +46,7 @@ export async function getServerSideProps(context) {
 
   console.log("ID------>", id)
   // send a GET request with the id as a query parameter
-  const response = await fetch(`http://127.0.0.1:8000/blackwidow/products/product/${id}`);
+  const response = await fetch(`http://3.130.4.98/blackwidow/products/product/${id}`);
   const product = await response.json();
   console.log(product)
   return {
