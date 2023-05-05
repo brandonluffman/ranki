@@ -16,24 +16,25 @@ const Footer = () => {
               </div>
               
               <div className='social-icons'>
-                <FontAwesomeIcon className="fa-brands fa-twitter social-icon" icon={faTwitter} alt='Social Icon' />
-                <FontAwesomeIcon className="fa-brands fa-instagram social-icon" icon={faInstagram} alt='Social Icon' />
-                <FontAwesomeIcon className="fa-brands fa-linkedin social-icon" icon={faLinkedinIn} alt='Social Icon' />
+                <Link href='https://twitter.com/ranki_ai' target='_blank' rel='no-referrer' ><FontAwesomeIcon className="fa-brands fa-twitter social-icon" icon={faTwitter} alt='Social Icon' /></Link>
+                <Link href='https://instagram.com/ranki.ai' target='_blank' rel='no-referrer' ><FontAwesomeIcon className="fa-brands fa-instagram social-icon" icon={faInstagram} alt='Social Icon' /></Link>
+                <Link href='https://www.linkedin.com/company/rankiai/' target='_blank' rel='no-referrer' ><FontAwesomeIcon className="fa-brands fa-linkedin social-icon" icon={faLinkedinIn} alt='Social Icon' /></Link>
               </div>
               </div>
               
               <div className='footer-links-container'>
                           <div className='footer-links'>
-                            <div className='footer-links-header'><p className='footer-link-header'>RANKI</p></div>
+                            <div className='footer-links-header'><p className='footer-link-header'>RANKI AI</p></div>
                             <Link href='/'><div className='footer-link'>Home</div></Link>
-                            <Link href='/#about'><div className='footer-link'>About</div></Link>
-                            <Link href='/contact'><div className='footer-link'>Contact Us</div></Link>
+                            <Link href='/about'><div className='footer-link'>About</div></Link>
+                            <Link href='/ranking'><div className='footer-link'>Rankings</div></Link>
+                            {/* <Link href='/contact'><div className='footer-link'>Contact Us</div></Link> */}
                           </div>
                           <div className='footer-links'>
                             <div className='footer-links-header'><p className='footer-link-header'>Support</p></div>
                             <Link target='_blank' rel='noreferrer' href='https://www.privacypolicygenerator.info/live.php?token=X9rYsibwbs1UKYQ41C7KL0IBJSIEOkts'><div className='footer-link'>Privacy Policy</div></Link>
                             <Link target='_blank' rel='noreferrer' href="https://www.termsofusegenerator.net/live.php?token=WtIAwIaSx5ilU5RgC3s2N2AtWAptbnTh"><div className='footer-link'>Terms of Use</div></Link>
-                            <Link href='/'><div className='footer-link'>FAQs</div></Link>
+                            {/* <Link href='/'><div className='footer-link'>FAQs</div></Link> */}
                           </div>
                           <div className='footer-links contact-links'>
                             <p className='footer-links-header'>Contact</p>

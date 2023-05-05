@@ -2,12 +2,32 @@ import React from 'react';
 import Link from 'next/link';
 import { useEffect, useState } from "react";
 import { BsSearch } from 'react-icons/bs';
-
-
+import {RxHamburgerMenu} from 'react-icons/rx'
+import {BiHomeAlt2} from 'react-icons/bi'
+import {BsCode} from 'react-icons/bs'
+import {GrCircleInformation} from 'react-icons/gr'
 
 const NavbarNI = () => {
-
+  const [isActive, setActive] = useState(false);
   const [navbarClass, setNavbarClass] = useState('');
+  const [hamburgerClass, setHamburgerClass] = useState('');
+
+  const toggleShow = () => {
+    setActive(!isActive);
+    console.log('Changed')
+  };
+  
+  const handleShow = () => {
+    if (isActive) {
+      setHamburgerClass('nav-menu-toggled');
+    } else {
+      setHamburgerClass('');
+    }
+  };
+  
+  useEffect(() => {
+    handleShow();
+  }, [isActive]);
 
   useEffect(() => {
     window.addEventListener('scroll', handleScroll);
@@ -30,12 +50,20 @@ const NavbarNI = () => {
         <div>
         <img src='/ranki.png' alt='Brand Logo' className='nav-logo'></img>
         </div>
-        <div className='nav-menu'>
+        {/* <div className='nav-menu'>
             <Link className='nav-link' href='/'>Home</Link>
             <Link className='nav-link' href='/about'>About</Link>
             <Link className='nav-link' href='/ranking'>Rankings</Link>
-            {/* <Link className='nav-link' href='/about'>Contact</Link> */}
+        </div> */}
+         <div className={`nav-menu-toggle ${hamburgerClass}`}>
+          <div className='no-flexer'>
+            <h2 className='hamburger-header'>RANKI <span className='header-color'>AI</span></h2>
+            <Link className='nav-link' href='/'><BiHomeAlt2 className='nav-icon'/> Home</Link>
+            <Link className='nav-link' href='/about'><BsCode className='nav-icon'/> About</Link>
+            <Link className='nav-link' href='/ranking'><GrCircleInformation className='nav-icon'/> Rankings</Link>
+            </div>
         </div>
+        <button className='hamburger-menu' type='button' onClick={toggleShow}><RxHamburgerMenu /></button> 
     </nav>
   )
 }

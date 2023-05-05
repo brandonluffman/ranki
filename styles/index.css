@@ -43,7 +43,8 @@
     position: relative;
     width:700px;
     margin:auto;
-    text-align: left;
+    text-align: center;
+    justify-content: center;
     padding:0rem 0.2rem 0rem 1rem;
     color:black;
     display: flex;
@@ -64,7 +65,9 @@
     /* justify-content: center; */
     background-color: rgb(230, 230, 230);
     top:50px;
-    left:15px;
+    margin:0 auto;
+    left:0px;
+    right:0px;
     border-radius:20px;
     /* border-bottom-left-radius:20px;
     border-bottom-right-radius:20px; */
@@ -177,7 +180,7 @@
         position: relative;
         width:100%;
         margin:auto;
-        text-align: left;
+        text-align: center;
         padding:0;
         color:black;
         display: flex;

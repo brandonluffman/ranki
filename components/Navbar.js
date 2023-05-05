@@ -5,21 +5,42 @@ import { BsSearch, BsXLg } from 'react-icons/bs';
 import { useRouter } from 'next/router';
 import axios from 'axios';
 const cors = require('cors');
-
+import {RxHamburgerMenu} from 'react-icons/rx'
+import {BiHomeAlt2} from 'react-icons/bi'
+import {BsCode} from 'react-icons/bs'
+import {GrCircleInformation} from 'react-icons/gr'
 
 
 const Navbar = () => {
   const [query, setQuery] = useState('');
   const router = useRouter();
   const [isActive, setActive] = useState(false);
+  const [isActivate, setActivate] = useState(false);
   const [suggestions, setSuggestions] = useState([])
   const [timeoutId, setTimeoutId] = useState(null);
+  const [hamburgerClass, setHamburgerClass] = useState('');
+  const [navbarClass, setNavbarClass] = useState('');
+
+  const toggleShow = () => {
+    setActive(!isActive);
+    console.log('Changed')
+  };
+  
+  const handleShow = () => {
+    if (isActive) {
+      setHamburgerClass('nav-menu-toggled');
+    } else {
+      setHamburgerClass('');
+    }
+  };
+  
+  useEffect(() => {
+    handleShow();
+  }, [isActive]);
 
   const toggleClass = () => {
-    setActive(!isActive);
+    setActivate(!isActivate);
   };
-
-  const [navbarClass, setNavbarClass] = useState('');
 
   useEffect(() => {
     window.addEventListener('scroll', handleScroll);
@@ -72,13 +93,13 @@ const handleChange = async (e) => {
 
   return (
     <nav className={`navbar ${navbarClass}`}>
-        <div>
+        <div className='nav-logo-container'>
         <Link href='/'>
           <img src='/ranki.png' alt='Brand Logo' className='nav-logo'></img>
         </Link>
         </div>
         <div className='nav-form-flexer'>
-        <form className={isActive ? 'nav-form-expanded':'nav-form'} onSubmit={handleSubmit}>
+        <form className={isActivate ? 'nav-form-expanded':'nav-form'} onSubmit={handleSubmit}>
                 <input
                 type="text"
                 id="firstName"
@@ -103,19 +124,27 @@ const handleChange = async (e) => {
               )}
             </div> 
         </form>
-        {isActive ? (
+        {isActivate ? (
           <button className='nav-toggle-button' type='button' onClick={toggleClass}><BsXLg /></button>
         ):(
           <button className='nav-toggle-button-clicked' type='button' onClick={toggleClass}><BsSearch /></button>
         )
         }
         </div>
-        <div className='nav-menu'>
+        {/* <div className='nav-menu'>
             <Link className='nav-link' href='/'>Home</Link>
             <Link className='nav-link' href='/about'>About</Link>
             <Link className='nav-link' href='/ranking'>Rankings</Link>
-            {/* <Link className='nav-link' href='/about'>Contact</Link> */}
+        </div> */}
+        <div className={`nav-menu-toggle ${hamburgerClass}`}>
+          <div className='no-flexer'>
+            <h2 className='hamburger-header'>RANKI <span className='header-color'>AI</span></h2>
+            <Link className='nav-link' href='/'><BiHomeAlt2 className='nav-icon'/> Home</Link>
+            <Link className='nav-link' href='/about'><BsCode className='nav-icon'/> About</Link>
+            <Link className='nav-link' href='/ranking'><GrCircleInformation className='nav-icon'/> Rankings</Link>
+            </div>
         </div>
+        <button className='hamburger-menu' type='button' onClick={toggleShow}><RxHamburgerMenu /></button> 
     </nav>
   )
 }

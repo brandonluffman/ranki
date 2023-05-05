@@ -1,5 +1,6 @@
 import axios from 'axios'
 import Link from 'next/link'
+import { Router, useRouter } from 'next/router'
 import React, { useState } from 'react'
 import { BsSearch } from 'react-icons/bs'
 
@@ -7,6 +8,7 @@ const Form = () => {
     const [query, setQuery] = useState('');
     const [suggestions, setSuggestions] = useState([])
     const [timeoutId, setTimeoutId] = useState(null);
+    const router = useRouter();
 
     const handleSubmit = (event) => {
         event.preventDefault();
