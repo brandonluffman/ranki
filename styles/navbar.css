@@ -198,8 +198,31 @@
 .nav-logo-container {
     max-width:100px;
 }
+
+.nav-menu-toggled ~ .hamburger-menu {
+    color:black;
+}
+.nav-menu-toggle {
+    opacity: 0;
+    transform:translateX(0px);
+    width:30% !important;
+    padding-right:0rem;
+    display:grid;
+    background-color: white;
+    color:black;
+    position: absolute;
+    right:-300px;
+    top:0px;
+    height:100vh;
+    justify-content: center;
+    float:right !important;
+    text-align: center;
+    align-items: center;
+    transition: 0.2s ease-in-out all;
+}
+
 .nav-menu-toggled {
-    display: grid !important;
+    display:grid;
     background-color: white;
     color:black;
     justify-content: center;
@@ -209,27 +232,6 @@
     opacity: 1 !important;
     transition: 0.2s ease-in-out all;
 
-}
-.nav-menu-toggled ~ .hamburger-menu {
-    color:black;
-}
-.nav-menu-toggle {
-    opacity: 0;
-    transform:translateX(0px);
-    width:30% !important;
-    padding-right:0rem;
-    display: grid !important;
-    background-color: white;
-    color:black;
-    position: absolute;
-    right:0px;
-    top:0px;
-    height:100vh;
-    justify-content: center;
-    float:right !important;
-    text-align: center;
-    align-items: center;
-    transition: 0.2s ease-in-out all;
 }
 .hamburger-header {
     margin-bottom:0rem;
@@ -287,6 +289,12 @@
     }
     .hamburger-header {
         font-size:3rem;
+    }
+    .no-flexer {
+        display: grid;
+        margin-top:-12rem;
+        padding:0rem 1rem;
+    
     }
   
 }
