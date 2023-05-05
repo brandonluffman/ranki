@@ -158,6 +158,10 @@
     display: none;
 }
 
+.nav-menu {
+    text-align: right;
+    justify-content: right;
+}
 
 .navbar > div {
     width:100%;
