@@ -19,8 +19,7 @@
 }
 .rank-grid {
     display: grid;
-    /* grid-template-columns: repeat(3, 1fr); */
-    grid-template-columns: repeat(auto-fill, 400px);
+    grid-template-columns: repeat(3, 1fr);
     grid-template-rows: auto;
     gap: 50px;
     align-items: center;
@@ -28,6 +27,8 @@
     justify-content: center;
     margin-bottom:10rem;
     overflow: hidden;
+    padding:0rem 2rem;
+
 }
 
 .grid-item {
@@ -44,8 +45,6 @@
     box-shadow:0 0 20px 1px rgb(190, 190, 190) inset;
     height:100%;
     min-height: 100%;
-    max-width: 400px;
-    min-width: 400px;
     overflow: hidden;
     margin: 0rem auto;
     /* border: 2px solid rgb(0, 0, 0); */
@@ -310,14 +309,33 @@
     margin-top:0.6rem;
 }
 
-@media (max-width: 500px) {
+.rank-contain-full {
+    width:100%;
+    overflow: hidden;
+}
+
+
+@media (max-width: 800px) {
     .rank-grid {
         display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-        gap: 10px;
-        padding:0rem 0.5rem;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: auto;
+    gap: 50px;
+    padding:0rem 2rem;
+    }
+    
+  }
+
+  @media (max-width: 500px) {
+    .rank-grid {
+        display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    grid-template-rows: auto;
+    gap: 50px;
+    padding:0rem 4rem;
     }
     .grid-item {
-        padding:0.6rem;
+
     }
+    
   }

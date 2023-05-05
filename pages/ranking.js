@@ -149,7 +149,7 @@ export default function Rank({ results, query }) {
       </Head>
       <Navbar />
         {results ? (
-        <div>
+        <div className='rank-contain-full'>
             <h2 className='ranking-subheader'>Showing Results For</h2>
             <h1 className='ranking-header'>{query}</h1>
             <div className='rank-grid-container'>

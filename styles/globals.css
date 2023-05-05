@@ -20,3 +20,12 @@ a {
 h1, h2, h3, h4, h5, h6, p {
     margin:0;
 }
+
+@media (max-width: 500px) {
+    body {
+        margin:0;
+        background-color: #08121b;
+        color:white;
+        padding-top:120px;
+    }
+  }

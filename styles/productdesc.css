@@ -12,15 +12,15 @@
 }
 
 .product-desc-title {
-    font-size: 3rem;
+    font-size: 2.5rem;
     margin: 0;
     margin-bottom:0.5rem;
     text-transform: uppercase;
 }
 
 .product-desc-description {
-    font-weight: 400;
-    font-size:1.1rem;
+    font-weight: 200;
+    font-size:0.9rem;
     margin-bottom:3.5rem;
 }
 

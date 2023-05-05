@@ -23,6 +23,7 @@
     overflow:hidden;
     border:1px solid rgb(59, 59, 59);
     box-shadow:1px 2px 35px rgba(255, 255, 255, 0.1);
+    margin-bottom:1rem;
 }
 .mini-grid-product-title {
     font-size: 1.2rem;
