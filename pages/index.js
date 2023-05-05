@@ -15,12 +15,16 @@ const cors = require('cors');
 import ErrorPage from 'next/error';
 import Loading from '../components/Loading';
 import { motion, useAnimation } from "framer-motion";
+import Form from '../components/Form';
+
 
 export default function Home({products, searches}) {
   const [query, setQuery] = useState('');
   const router = useRouter();
   const [suggestions, setSuggestions] = useState([])
   const [isLoading, setIsLoading] = useState(true);
+  const [timeoutId, setTimeoutId] = useState(null);
+
   const controls = useAnimation();
 
   useEffect(() => {
@@ -53,14 +57,22 @@ export default function Home({products, searches}) {
   const handleChange = async (e) => {
     if (e.target.value != ''){
         setQuery(e.target.value);
-      // setTimeout(async () => {
-      //   const res = await axios.get(`http://3.130.4.98/blackwidow/products/${e.target.value}`);
-      //   const sug = await res.data;
-      //   setSuggestions(sug)
-      //   return res.data.results;
-      // }, 1000);
+        if (timeoutId) {
+          clearTimeout(timeoutId);
+        }
+    
+        // Set a new timeout to wait for 1 second before executing the event handler
+        const newTimeoutId = setTimeout(async () => {
+          const res = await axios.get(`http://3.130.4.98/blackwidow/products/${e.target.value}`);
+          const sug = await res.data;
+          setSuggestions(sug)
+        }, 1000);
+    
+        // Save the new timeout ID to the state for later use
+        setTimeoutId(newTimeoutId);
+   
     } else {
-      setQuery('');
+      setQuery('H');
       console.log('nada')
     }
   };
@@ -87,33 +99,7 @@ export default function Home({products, searches}) {
           <div className='landing-flexer'>
             <h1 className='landing-header'><span className='lighter'>RANKI</span> AI</h1>
             </div>
-           <form className='form' onSubmit={handleSubmit}>
-             <input
-              type="text"
-              id="query"
-              value={query}
-              onChange={handleChange}
-              // onClick={searchToggle}
-              className='landing-input'
-              placeholder='What&apos;re you looking for? ...'
-            />
-           <button className='landing-btn' type="submit"><BsSearch className='input-search-icon'/></button>
-           
-             <div className='input-suggestions'>
-              {Array.isArray(suggestions) && (
-                suggestions.slice(0,10).map((suggestion,i) => (
-                  <Link href={`product/${suggestion[0]}`} key={suggestion[0]} className='input-suggestion-div'>
-                    {suggestion[1] == 'hello' ? (
-                      <img src='/zon.png' width='50'></img>
-                    ):(
-                      <img src={suggestion[2]} width='50'></img>
-                    )}
-                    <p>{suggestion[1]}</p>
-                    </Link>
-                ))
-              )}
-            </div> 
-          </form>
+              <Form />
         </div>
       </div>
       <LandingCats searches={searches} />

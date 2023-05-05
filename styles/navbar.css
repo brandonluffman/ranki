@@ -12,6 +12,7 @@
     border-bottom-right-radius: 20px;
     z-index:999999;
     padding:1rem 0rem;
+    transition:0.2s ease all;
 }
 .scrolled {
     background-color: rgb(253, 179, 223);

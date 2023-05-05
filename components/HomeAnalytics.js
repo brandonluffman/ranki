@@ -6,7 +6,6 @@ import {BsFillCaretUpFill} from 'react-icons/bs'
 const HomeAnalytics = (props) => {
   const prod = props.products
   const ser = props.searches
-  console.log(props)
   return (
     <div className='analytics-containers'>
     <div className='analytics-container'>

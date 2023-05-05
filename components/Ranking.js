@@ -39,11 +39,13 @@ const Ranking = ({products}) => {
         <div className='reviews'>
             <div className='review-stars'>
                 <p className='review-rate'>{products.product_rating}/5</p>
+                <div className='review-stars-div'>
                 <AiFillStar className='review-star'/>
                 <AiFillStar className='review-star'/>
                 <AiFillStar className='review-star'/>
                 <AiFillStar className='review-star'/>
                 <AiOutlineStar className='review-star-outline'/>
+                </div>
             </div>
             <div className='review-count'>
                 <h3>{products.review_count} Reviews</h3>

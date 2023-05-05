@@ -143,3 +143,12 @@ Link {
         display: none;
     }
 }
+
+@media (max-width: 500px) {
+    .footer-brand-logo {
+        width:200px;
+        height:200px;
+        margin-bottom:0rem;
+    }
+  }
+

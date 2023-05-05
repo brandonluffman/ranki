@@ -43,15 +43,27 @@ const MiniRank = ({products}) => {
             </div>
             <div className='reviews'>
                 <div className='review-stars'>
+                {products.product_rating ? (
                 <p className='review-rate'>{products.product_rating.slice(0,3)}/5</p>
+                ): (
+                    <p className='review-rate'>0/5</p>
+  
+                )}
+                <div className='review-stars-div'>
                 <AiFillStar className='review-star'/>
                 <AiFillStar className='review-star'/>
                 <AiFillStar className='review-star'/>
                 <AiFillStar className='review-star'/>
                 <AiOutlineStar className='review-star-outline'/>
                 </div>
+                </div>
                 <div className='review-count'>
-                <h3>{products.review_count} Reviews</h3>
+                {products.review_count ? (
+                    <h3>({products.review_count})</h3>
+                ): (
+                    <h3>(0)</h3>
+  
+                )}
                 </div>
             </div>
         </div>

@@ -138,9 +138,13 @@
 
 .review-count > h3 {
     font-weight: 300;
-    font-size: 0.7rem;
-}
+    font-size: 0.8rem;
 
+}
+.review-count {
+    display: flex;
+    align-items: center;
+}
 .affiliate > img {
     margin:0rem 1rem;
 }
@@ -160,11 +164,20 @@
     transform: scale(1.1);
 }
 .reviews {
-    display: flex;
+    display:flex;
+    align-items: center;
     margin-bottom:1.5rem;
     align-items: center;
     text-align: center;
     justify-content: center;
+    
+}
+.review-stars-div {
+    justify-content: center;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    margin-right:0.5rem;
 }
 
 .review-star, .review-star-outline {
@@ -174,9 +187,8 @@
 .review-stars {
     display: flex;
     align-items: center;
-    justify-content: space-evenly;
     text-align: center;
-    margin-right:0.4rem;
+    justify-content: center;
 }
 
 .pricing {
@@ -332,10 +344,7 @@
     grid-template-columns: repeat(1, 1fr);
     grid-template-rows: auto;
     gap: 50px;
-    padding:0rem 4rem;
-    }
-    .grid-item {
-
+    padding:0rem 2rem;
     }
     
   }

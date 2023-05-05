@@ -24,6 +24,9 @@
     border:1px solid rgb(59, 59, 59);
     box-shadow:1px 2px 35px rgba(255, 255, 255, 0.1);
     margin-bottom:1rem;
+    border-bottom-left-radius: 40px;
+    border-bottom-right-radius: 40px;
+
 }
 .mini-grid-product-title {
     font-size: 1.2rem;
