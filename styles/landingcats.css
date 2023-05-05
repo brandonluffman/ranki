@@ -1,12 +1,12 @@
-.landing-cat{
+/* .landing-cat{
     display:flex;
-    margin-bottom:8rem;
+    margin-bottom:4rem;
     align-items: center;
     justify-content: space-around;
-}
+} */
 
 .landing-categories {
-    margin-bottom:20rem;
+    margin-bottom:15rem;
 }
 
 .landing-cont {

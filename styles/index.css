@@ -64,7 +64,7 @@
     /* justify-content: center; */
     background-color: rgb(230, 230, 230);
     top:50px;
-    left:20px;
+    left:15px;
     border-radius:20px;
     /* border-bottom-left-radius:20px;
     border-bottom-right-radius:20px; */
@@ -79,7 +79,7 @@
 }
 
 .landing-input:focus ~ .input-suggestions {
-    opacity:1;
+    opacity:0;
     padding-bottom:15rem;
     /* transform: translateY(10px); */
 
@@ -188,13 +188,13 @@
     }
 
 .landing-header {
-    font-size:5rem !important;
+    font-size:5.5rem !important;
 }
 .landing-contain {
     padding:0rem 1rem;
 }
 .landing-container {
-    height:80vh;
+    height:90vh;
     margin-bottom:8rem
 }
 }

@@ -104,7 +104,7 @@ const ProductReviews = ({prod}) => {
                         return (
                         value2 != searchText && (
                         <div key={index}>
-                            <p className='product-reviews-pro positive-sent'>{value} <span className='testing4'>({value3})</span></p>
+                            <p className='product-reviews-pro negative-sent'>{value} <span className='testing4'>({value3})</span></p>
                         </div>
                         )
                         );

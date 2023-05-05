@@ -14,7 +14,7 @@ const MiniRank = ({products}) => {
     const img_bg = {
         backgroundImage: `url(${Background})`,
         backgroundPosition: 'center',
-        backgroundSize: '65%',
+        backgroundSize: '55%',
         backgroundRepeat: 'no-repeat'
     }
 
