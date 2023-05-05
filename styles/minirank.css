@@ -1,8 +1,7 @@
 .mini-rank-grid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
     grid-template-rows: auto;
-    gap: 0px;
+    gap: 20px;
 }
 
 .mini-rank {
@@ -12,8 +11,11 @@
     padding:0rem 0rem 1.5rem 0rem;
     margin-bottom:0rem;
     transition:all 0.2s ease-in-out;
-    min-width:200px;
-    max-width: 200px;
+    width:300px;
+    overflow:hidden;
+    border:1px solid rgb(59, 59, 59);
+    box-shadow:1px 2px 35px rgba(255, 255, 255, 0.1);
+
 }
 .mini-grid-product-title {
     font-size: 1.2rem;
@@ -35,9 +37,7 @@
     min-height: 100px;
 }
 .mini-grid-img-div-2 {
-    height:fit-content;
     height:200px;
-    width:auto;
     align-items: center;
     display: flex;
     justify-content: center;

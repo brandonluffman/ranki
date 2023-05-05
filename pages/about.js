@@ -33,7 +33,7 @@ export default function About() {
         </div>
       </div>
       <div className='home-about-container'>
-        <h2 className='home-about-header' id='about'>RANKI AI</h2>
+        {/* <h2 className='home-about-header' id='about'>RANKI AI</h2> */}
         <div className='home-about-content'>
         <div className='home-about-content-text'>
         <h3 className='home-about-subheader'>Our <span className='header-color'>Mission</span></h3>
@@ -50,10 +50,10 @@ export default function About() {
         <div className='home-about-content-text'>
         <h3 className='home-about-subheader'>How It <span className='header-color'>Works</span></h3>
         <p className='home-about-p'>We&apos;ve built an AI application that uses natural language processing (NLP) and user metrics to rank products. The application is designed to be a simple, streamlined way for you to find the best products for any given situation. All you have to do is type in what you want, and we&apos;ll take care of the rest.</p>
-        <h6 className='home-about-suberheader'>Whether you&apos;re looking for a gift for a friend or trying to find the perfect outfit for your first date, we&apos;re here for you. 🤝</h6>
         </div>
         </div>
       </div>
+      <h6 className='home-about-suberheader'>Whether you&apos;re looking for a gift for a friend or trying to find the perfect outfit for your first date, we&apos;re here for you. 🤝</h6>
       <div className='home-team-container'>
           <h3 className='home-team-header'>Meet the Team</h3>
           <div className='home-team-profiles'>

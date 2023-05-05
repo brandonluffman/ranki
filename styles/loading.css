@@ -1,7 +1,8 @@
 .loading-container {
-    background:white;
-    color:black;
+    background:#08121b;
+    color:white;
     height:100vh;
+    margin-top:-140px;
     position:fixed;
     width:100%;
     display: flex;
@@ -11,8 +12,44 @@
     z-index:999999 !important;
     transition:0.2s ease-in-out;
 }
-.loading-spinner {
-    height:200px;
-    width:200%;
-    background-color: pink;
+
+.loading-hidden {
+    background-color: none;
+    height:100px;
+    width:75px;
+    overflow:hidden;
+    border:3px solid white;
+    border-radius:50%;
+    animation-name: spinner;
+    animation-duration: 2000ms;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear; 
+    justify-content: center;
+    text-align: center;
+    margin:auto;
+    margin-bottom:3rem;
+}
+
+.loading-text {
+    animation-name: fader;
+    animation-duration: 2000ms;
+    animation-iteration-count: infinite;
+    animation-timing-function: alternate; 
+    transition:0.2s ease-in-out;
+}
+@keyframes spinner {
+    from {
+        transform:rotate(0deg);
+    }
+    to {
+        transform:rotate(360deg);
+    }
+}
+@keyframes fader {
+    from {
+        opacity:0;
+    }
+    to {
+       opacity:1;
+    }
 }

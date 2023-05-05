@@ -170,7 +170,7 @@ export default function Rank({ results, query }) {
         </div>  
         ) : results == 'INVALID QUERY, PLEASE TRY SOMETHING ELSE' ? (
         <RankingsDefault />
-        ) : results == 'INVALID QUERY' (
+        ) : (
           <NoResults />
         )}
     <Footer />

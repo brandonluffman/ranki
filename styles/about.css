@@ -10,7 +10,7 @@
 .about-header {
     margin: 0rem;
     text-transform: uppercase;
-    font-size:10rem;
+    font-size:7rem;
     margin-bottom: 1rem;
     color:white;
     margin-right:3rem;
@@ -18,16 +18,17 @@
 .about-flexer {
     display: flex;
     align-items: center;
+    justify-content: center;
 }
 .about-flexer-img {
-    margin-right: -1.8rem;
-    width:170px;
+    margin-right: -1.2rem;
+    width:12%;
 }
 .landing-subheader {
     margin: 0rem;
     text-transform: uppercase;
-    font-size:3rem;
-    font-weight: 300;
+    font-size:2.5rem;
+    font-weight: 200;
     margin-bottom:5rem;
     color:white;
 }
@@ -99,7 +100,7 @@
 }
 
 .home-about-header {
-    font-size: 4rem;
+    font-size: 3rem;
     font-weight: 300;
     margin-bottom:2rem;
 }
@@ -111,6 +112,15 @@
 .home-about-suberheader {
     font-size: 2rem;
     font-weight:300;
+    text-align: center;
+    width:50%;
+    margin:0rem auto 6rem auto;
+    border-top-left-radius: 10px 40px;
+border-top-right-radius: 20px 30px;
+border-bottom-right-radius: 30px 20px;
+border-bottom-left-radius: 40px 10px;
+background-color: white;
+color:black;
 }
 .home-about-content {
     display: flex;
@@ -125,8 +135,8 @@
     align-items: center;
 }
 .home-about-img {
-    width:200px;
-    height:200px;
+    width:300px;
+    height:300px;
 }
 .home-about-content-text {
     width:50%;
@@ -263,9 +273,8 @@
 
   @media (max-width: 600px) {
 
-   .landing-header {
-    margin-top:4rem;
-    font-size:3rem;
+   .about-header {
+    font-size:5.5rem;
    }
    .landing-subheader {
     font-size:1.5rem;

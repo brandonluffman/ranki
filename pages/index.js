@@ -65,6 +65,7 @@ export default function Home({products, searches}) {
     }
   };
 
+
   const props = {
     'products':products,
     'searches':searches

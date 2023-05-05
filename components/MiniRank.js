@@ -19,10 +19,10 @@ const MiniRank = ({products}) => {
     }
 
     const img_bg_2 = {
-        backgroundImage: `url(/logos/2.png)`,
+        backgroundImage: `url(/logos/1.png)`,
         backgroundPosition: 'center',
-        backgroundSize: 'contain',
-        backgroundRepeat: 'no-repeat'
+        backgroundSize: '50%',
+        backgroundRepeat: 'no-repeat',
     }
 
   return (

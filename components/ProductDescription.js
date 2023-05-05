@@ -8,7 +8,7 @@ const ProductDescription = (product) => {
     const [isActive, setActive] = useState(false);
     const prod = product.product
     const buying_options = product.product.buying_options
-    const reviews = product.product.reviews
+    // const reviews = product.product.reviews
     const product_specs = prod.product_specs
 
     const toggleClass = () => {
@@ -62,7 +62,7 @@ const ProductDescription = (product) => {
                         ))} */}
                     </div>
                     </div>
-                      <div className='product-desc-specs'>
+                      {/* <div className='product-desc-specs'>
                         <h2 className='product-specs-header'>Product Specs</h2>
                         {product_specs.length != 0 && (
                             product_specs.map((obj) => {
@@ -71,7 +71,7 @@ const ProductDescription = (product) => {
                         });
                         }))}
                         
-                     </div>
+                     </div> */}
                      </div>
             </div>
         <div className='product-desc-content-container'>
