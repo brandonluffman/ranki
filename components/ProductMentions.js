@@ -9,20 +9,20 @@ const ProductMentions = ({mentions}) => {
 
                 {mentions.affiliate.map((mention, i) => (
                     <div className='product-mentions-grid-links' key={i}>
-                        <img src={mention.favicon}></img>
-                        <Link href={mention.link}>{mention.link}</Link>
+                        <img className='product-mentions-grid-links-img' src={mention.favicon}></img>
+                        <Link href={mention.link}>{mention.title}</Link>
                     </div>
                 ))}
                  {mentions.reddit.map((mention, i) => (
                     <div className='product-mentions-grid-links' key={i}>
-                        <img src='/reddit.png'></img>
-                        <Link href={mention.link}>{mention.link}</Link>
+                        <img className='product-mentions-grid-links-img' src='/reddit.png'></img>
+                        <Link href={mention.link}>{mention.title}</Link>
                     </div>
                 ))}
                  {mentions.youtube.map((mention, i) => (
                     <div className='product-mentions-grid-links' key={i}>
-                        <img src='/tube.png' width='20'></img>
-                        <Link href={mention.link}>{mention.link}</Link>
+                        <img className='product-mentions-grid-links-img-yt' src='/tube.png'></img>
+                        <Link href={mention.link}>{mention.title}</Link>
                     </div>
                 ))}
             </div>

@@ -26,6 +26,7 @@ const Form = () => {
         
             // Set a new timeout to wait for 1 second before executing the event handler
             const newTimeoutId = setTimeout(async () => {
+                // const res = await axios.get(`http://3.130.4.98/blackwidow/products/${e.target.value}`);
                 const res = await axios.get(`http://127.0.0.1:8000/blackwidow/products/${e.target.value}`);
                 const sug = await res.data;
                 setSuggestions(sug)
@@ -35,7 +36,7 @@ const Form = () => {
             setTimeoutId(newTimeoutId);
         
         } else {
-            setQuery('H');
+            setQuery('');
             console.log('nada')
         }
     };
@@ -56,7 +57,7 @@ const Form = () => {
            
              <div className='input-suggestions'>
               {Array.isArray(suggestions) && (
-                suggestions.slice(0,10).map((suggestion,i) => (
+                suggestions.slice(0,5).map((suggestion,i) => (
                   <Link href={`product/${suggestion[0]}`} key={suggestion[0]} className='input-suggestion-div'>
                     {suggestion[1] == 'hello' ? (
                       <img src='/zon.png' width='50'></img>

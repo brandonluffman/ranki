@@ -45,37 +45,6 @@ export default function Home({products, searches}) {
     return () => clearTimeout(timer);
   }, []);
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    if (query  == '') {
-      router.push(`/`);
-    } else {
-    router.push(`/ranking?q=${query}`);
-    }
-  };
-
-  const handleChange = async (e) => {
-    if (e.target.value != ''){
-        setQuery(e.target.value);
-        if (timeoutId) {
-          clearTimeout(timeoutId);
-        }
-    
-        // Set a new timeout to wait for 1 second before executing the event handler
-        const newTimeoutId = setTimeout(async () => {
-          const res = await axios.get(`http://3.130.4.98/blackwidow/products/${e.target.value}`);
-          const sug = await res.data;
-          setSuggestions(sug)
-        }, 1000);
-    
-        // Save the new timeout ID to the state for later use
-        setTimeoutId(newTimeoutId);
-   
-    } else {
-      setQuery('H');
-      console.log('nada')
-    }
-  };
 
 
   const props = {

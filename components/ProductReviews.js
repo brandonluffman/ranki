@@ -50,11 +50,14 @@ const ProductReviews = ({prod}) => {
                     {count.map((review, index) => {
                         const key = Object.keys(review)[0];
                         const value = Object.values(review)[0];
+                        const counte = prod.review_count
+                        const test = parseInt(counte.replace(',', ''))
+            
                         return (
                             <div className='product-star-bubble' key={key}>
                                <p className='star-bubble-num'>{key.slice(0,1)}</p>
                                <AiFillStar className='test-star'/>
-                               <div className='star-bubble'><div className='star-bubble-fill' style={{ width: 20+ (value/prod.review_count)*100 + 30, height: '20px' }}>{value}</div></div>
+                               <div className='star-bubble'><div className='star-bubble-fill' style={{ width: (value/test)*100 +40, height: '20px' }}><span className='star-bubble-text'>{value}</span></div></div>
                                <p className='hidden-val'>{value} of {prod.review_count}</p>
                            </div>
                         );
@@ -62,10 +65,9 @@ const ProductReviews = ({prod}) => {
                    </div>
                    </div>
                </div>
-       
+               <h2 className='product-reviews-pros-header'>What the reviews are saying</h2>
            <div className='product-reviews-pro-con'>
                <div className='product-review-pros'>
-               <h2 className='product-reviews-pros-header'>Top Pros</h2>
                <div className='pros-grid'>
                {/* {sentiment.map((sent, index) => (
                    sent.favor_rating.includes(searchText) && (
@@ -82,29 +84,15 @@ const ProductReviews = ({prod}) => {
                         const value3 = Object.values(review)[2];
                         console.log(value2)
                         return (
-                        value2 == searchText && (
-                        <div key={index}>
-                            <p className='product-reviews-pro positive-sent'>{value} <span className='testing4'>({value3})</span></p>
+                        value2 == searchText ? (
+                            <div className='sent-grider p-grider' key={index}>
+                            <p className='product-reviews-pro positive-sent'>{value}</p>
+                            <p className='testing4'>({value3})</p>
                         </div>
-                        )
-                        );
-                    })}
-               </div>
-               </div>
-               <div className='product-review-pros'>
-               <h2 className='product-reviews-pros-header'>Top Cons</h2>
-               <div className='pros-grid'>
-               {sentiment.map((review, index) => {
-                        
-                        const key = Object.keys(review)[0];
-                        const value = Object.values(review)[0];
-                        const value2 = Object.values(review)[1];
-                        const value3 = Object.values(review)[2];
-                        console.log(value2)
-                        return (
-                        value2 != searchText && (
-                        <div key={index}>
-                            <p className='product-reviews-pro negative-sent'>{value} <span className='testing4'>({value3})</span></p>
+                        ): (
+                            <div className='sent-grider n-grider' key={index}>
+                            <p className='product-reviews-pro negative-sent'>{value}</p>
+                            <p className='testing4'>({value3})</p>
                         </div>
                         )
                         );

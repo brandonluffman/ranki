@@ -13,6 +13,7 @@ const Navbar = () => {
   const router = useRouter();
   const [isActive, setActive] = useState(false);
   const [suggestions, setSuggestions] = useState([])
+  const [timeoutId, setTimeoutId] = useState(null);
 
   const toggleClass = () => {
     setActive(!isActive);
@@ -39,28 +40,35 @@ const Navbar = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
     if (query  == '') {
-      console.log('No Query')
+        router.push(`/`);
     } else {
     router.push(`/ranking?q=${query}`);
     }
-  };
+    };
 
- 
-  const handleChange = async (e) => {
+const handleChange = async (e) => {
     if (e.target.value != ''){
-      setQuery(e.target.value);
-      // console.log(e.target.value)
-      // const res = await axios.get(`http://3.130.4.98/blackwidow/products/${e.target.value}`);
-      // const sug = await res.data;
-      // // console.log(sug)
-      // setSuggestions(sug)
-      // // console.log(Array.isArray(sug))
-      // return res.data.results;
+        setQuery(e.target.value);
+        if (timeoutId) {
+            clearTimeout(timeoutId);
+        }
+    
+        // Set a new timeout to wait for 1 second before executing the event handler
+        const newTimeoutId = setTimeout(async () => {
+            const res = await axios.get(`http://3.130.4.98/blackwidow/products/${e.target.value}`);
+            // const res = await axios.get(`http://127.0.0.1:8000/blackwidow/products/${e.target.value}`);
+            const sug = await res.data;
+            setSuggestions(sug)
+        }, 1000);
+    
+        // Save the new timeout ID to the state for later use
+        setTimeoutId(newTimeoutId);
+    
     } else {
-      setQuery('');
-      console.log('nnada')
+        setQuery('');
+        console.log('nada')
     }
-  };
+};
 
   return (
     <nav className={`navbar ${navbarClass}`}>
@@ -69,6 +77,7 @@ const Navbar = () => {
           <img src='/ranki.png' alt='Brand Logo' className='nav-logo'></img>
         </Link>
         </div>
+        <div className='nav-form-flexer'>
         <form className={isActive ? 'nav-form-expanded':'nav-form'} onSubmit={handleSubmit}>
                 <input
                 type="text"
@@ -79,7 +88,7 @@ const Navbar = () => {
                 className="nav-landing-input"
                 placeholder='Search for a product...'
               />
-              <div className='input-suggestions'>
+              <div className='input-suggestions nav-input-suggestions'>
               {Array.isArray(suggestions) && (
                 suggestions.map((suggestion,i) => (
                   <Link href={`product/${suggestion[0]}`} key={suggestion[0]} className='input-suggestion-div'>
@@ -100,6 +109,7 @@ const Navbar = () => {
           <button className='nav-toggle-button-clicked' type='button' onClick={toggleClass}><BsSearch /></button>
         )
         }
+        </div>
         <div className='nav-menu'>
             <Link className='nav-link' href='/'>Home</Link>
             <Link className='nav-link' href='/about'>About</Link>

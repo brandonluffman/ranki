@@ -84,6 +84,10 @@
     padding:1rem 1rem;
 }
 
+.prod-desc-review-stars {
+    margin-right:1rem;
+}
+
 .circle-rank {
     position: absolute;
     top:10px;
@@ -181,7 +185,7 @@
 }
 
 .review-star, .review-star-outline {
-    color:rgb(232, 110, 226);
+    color:rgb(253, 179, 223);
 }
 
 .review-stars {

@@ -28,7 +28,7 @@ const ProductDescription = (product) => {
                         <div className='product-desc-top-left'>
                             <h2 className='product-desc-title'>{prod.entity}</h2>
                             <div className='product-desc-reviews'>
-                                <div className='review-stars'>
+                                <div className='review-stars prod-desc-review-stars'>
                                     <p className='review-rate'>{prod.product_rating} / 5</p>
                                     <AiFillStar className='review-star'/>
                                     <AiFillStar className='review-star'/>

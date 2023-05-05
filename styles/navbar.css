@@ -20,7 +20,7 @@
 }
 
 .nav-logo {
-    width:15% !important;
+    width:70px !important;
     padding-left:2rem;
 }
 .nav-menu {
@@ -36,8 +36,8 @@
 .nav-form {
     border:3px solid rgb(253, 179, 223);
     border-radius: 100px;
+    width:10%;
     background-color: white;
-    width:200px;
     text-align: left;
     padding:0.3rem 0rem 0.3rem 1.5rem;
     color:black;
@@ -45,14 +45,13 @@
     align-items: center;
     height:20px;
     position: relative;
-    margin-right:8rem;
     box-shadow: 0 15px 25px rgba(0,0,0,.6);
     transition: 0.2s ease all;
     opacity: 0;
 }
 
 .nav-form-expanded {
-    width:300px;
+    width:100%;
     border:3px solid rgb(253, 179, 223);
     border-radius: 100px;
     background-color: white;
@@ -61,9 +60,8 @@
     color:black;
     display: flex;
     align-items: center;
-    height:30px;
+    height:20px;
     position: relative;
-    margin-right:8rem;
     box-shadow: 0 15px 25px rgba(0,0,0,.6);
     transition: 0.2s ease all;
     opacity: 1;
@@ -92,7 +90,6 @@
 }
 
 .nav-toggle-button {
-    position:absolute;
     border:3px solid rgb(157, 210, 253);
     background-color: rgba(0, 0, 1, 1);
     border-radius: 50%;
@@ -101,12 +98,18 @@
     font-size:1rem;
     cursor:pointer;
     transition:0.2s ease all;
-    transform: translateX(138px);
     opacity: 1;
-}
+    z-index: 99999;
 
+}
+.nav-form-flexer {
+    width:100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
 .nav-toggle-button-clicked {
-    position:absolute;
     border:3px solid rgb(157, 210, 253);
     background-color: rgba(8,18,27,1);
     border-radius: 50%;
@@ -117,10 +120,16 @@
     transition:0.2s ease all;
     opacity: 1;
     animation:pulsate 1s alternate infinite;
+    margin-left:-1rem;
 }
 .nav-toggle-button:hover, .nav-toggle-button-clicked:hover {
     box-shadow:1px 1px 14px 1px rgba(157,210,253);
     animation:none;
+}
+
+.nav-input-suggestions {
+    top:35px;
+    left:0px;
 }
 
 
@@ -149,8 +158,31 @@
     display: none;
 }
 
+
+.navbar > div {
+    width:100%;
+}
 @media (max-width: 1000px) {
     .nav-menu {
         display: none;
     }
+    .nav-form-expanded {
+        width:100%;
+    }
   }
+
+  @media (max-width: 500px) {
+    .nav-logo {
+        width:70px !important;
+        padding-left: 1rem;
+    }
+    .navbar > div {
+        width:50%;
+    }
+    .nav-form-flexer {
+        width:100% !important;
+    }
+    .nav-form-expanded {
+        width:100%;
+    }
+}

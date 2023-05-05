@@ -26,8 +26,8 @@ export default function About() {
       <div className='about-container'>
         <div className='landing-div'>
             <div className='about-flexer'>
-            <img className='about-flexer-img' src='ranki.png'></img>
-          <h1 className='about-header'>ANKI AI</h1>
+            {/* <img className='about-flexer-img' src='ranki.png'></img> */}
+          <h1 className='about-header'>RANKI AI</h1>
           </div>
           <h2 className='landing-subheader'>Product Search <span className='header-color'>Made Simple</span></h2>
         </div>
@@ -53,7 +53,7 @@ export default function About() {
         </div>
         </div>
       </div>
-      <h6 className='home-about-suberheader'>Whether you&apos;re looking for a gift for a friend or trying to find the perfect outfit for your first date, we&apos;re here for you. 🤝</h6>
+      {/* <h6 className='home-about-suberheader'>Whether you&apos;re looking for a gift for a friend or trying to find the perfect outfit for your first date, we&apos;re here for you. 🤝</h6> */}
       <div className='home-team-container'>
           <h3 className='home-team-header'>Meet the Team</h3>
           <div className='home-team-profiles'>

@@ -13,7 +13,6 @@
     font-size:7rem;
     margin-bottom: 1rem;
     color:white;
-    margin-right:3rem;
 }
 .about-flexer {
     display: flex;
@@ -340,5 +339,12 @@ padding: 2rem 5rem 3rem 5rem;
     }
     .profile-linkedin {
         font-size:1rem;
+    }
+    .about-header {
+        line-height: 14vh;
+        font-size:4rem;
+    }
+    .about-container {
+        height:70vh;
     }
    }
