@@ -145,8 +145,7 @@ export default function Rank({ results, query }) {
         <title>RANKI</title>
         <meta name="description" content="RANKI AI" />
         <meta name="viewport" content="width=device-width, initial-scale=" />
-        <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests" />
-
+        {/* <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests" /> */}
         <link rel="icon" href="/logos/2.png" />
       </Head>
       <Navbar />
