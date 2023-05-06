@@ -76,7 +76,7 @@ const handleChange = async (e) => {
     
         // Set a new timeout to wait for 1 second before executing the event handler
         const newTimeoutId = setTimeout(async () => {
-            const res = await axios.get(`http://3.130.4.98/blackwidow/products/${e.target.value}/å`);
+            const res = await axios.get(`http://3.130.4.98/blackwidow/products/${e.target.value}/`);
             // const res = await axios.get(`http://127.0.0.1:8000/blackwidow/products/${e.target.value}`);
             const sug = await res.data;
             setSuggestions(sug)
