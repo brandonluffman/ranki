@@ -28,36 +28,7 @@ export async function getServerSideProps(context) {
     }
   } else {
 
-//   const query = context.query.q;
-//   try {
-//     const response = await fetch('http://3.130.4.98/blackwidow', {
-//       method: 'POST',
-//       headers: {
-//         'Content-Type': 'application/json',
-//       },
-//       body: JSON.stringify({
-//         "query": query
-//       }),
-//     });
-//     const results = await response.json();
-//     return {
-//       props: {
-//         results,
-//         query,
-//       },
-//     };
-//   } catch(e){
-//     console.log(e)
-//     const results = ''
-//     return {
-//       props: {
-//         results,
-//         query,
-//       },
-//     };
-//   }
-// }
-// }
+
 
 const query = context.query.q;
 try {
