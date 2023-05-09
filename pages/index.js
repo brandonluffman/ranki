@@ -113,5 +113,6 @@ export async function getStaticProps() {
       products,
       searches,
     },
+    revalidate: 10
   }
 }
