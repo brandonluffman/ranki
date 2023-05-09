@@ -80,7 +80,8 @@
     text-align: left;
     font-size:1.2rem;
     overflow-y: scroll;
-    height:300px;
+    height:auto;
+    max-height:300px;
 }
 
 .landing-input:focus ~ .input-suggestions {
