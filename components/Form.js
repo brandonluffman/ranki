@@ -32,7 +32,7 @@ const Form = () => {
                 // const res = await axios.get(`http://127.0.0.1:8000/blackwidow/products/${e.target.value}`);
                 const sug = await res.data;
                 setSuggestions(sug)
-            }, 1000);
+            }, 300);
         
             // Save the new timeout ID to the state for later use
             setTimeoutId(newTimeoutId);

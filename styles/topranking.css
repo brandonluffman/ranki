@@ -19,7 +19,7 @@
 }
 .rank-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(auto-fill, 450px);
     grid-template-rows: auto;
     gap: 50px;
     align-items: center;
@@ -28,7 +28,7 @@
     margin-bottom:10rem;
     overflow: hidden;
     padding:0rem 2rem;
-
+    transition: 0.2s ease-in-out all;
 }
 
 .grid-item {
@@ -64,7 +64,6 @@
 }
 
 .grid-img-div {
-    height:min-content;
     height:250px;
     width:250px;
     align-items: center;
@@ -93,7 +92,7 @@
     top:10px;
     right:10px;
     border:5px solid rgb(255, 255, 255);
-    background-color: rgb(251, 137, 247);
+    background-color: rgb(244, 207, 243);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -102,7 +101,7 @@
     border-radius:50%;
     font-weight: 700;
     font-size: 2rem;
-    box-shadow:0 0 20px 1px rgb(231, 48, 255);
+    box-shadow:0 0 20px 1px rgb(255, 132, 253);
     font-family: 'Montserrat', sans-serif;
     color:white;
 }
@@ -331,12 +330,13 @@
 }
 
 
-@media (max-width: 800px) {
+@media (max-width: 1200px) {
     .rank-grid {
         display: grid;
-    grid-template-columns: repeat(2, 1fr);
     grid-template-rows: auto;
-    gap: 50px;
+    grid-template-columns: repeat(auto-fill, 350px);
+
+    gap: 20px;
     padding:0rem 2rem;
     }
     
@@ -345,7 +345,6 @@
   @media (max-width: 500px) {
     .rank-grid {
         display: grid;
-    grid-template-columns: repeat(1, 1fr);
     grid-template-rows: auto;
     gap: 50px;
     padding:0rem 2rem;

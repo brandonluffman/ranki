@@ -9,7 +9,9 @@ const ProductMentions = ({mentions}) => {
 
                 {mentions.affiliate.map((mention, i) => (
                     <div className='product-mentions-grid-links' key={i}>
+                           <div className='product-menions-img-bubble'>
                         <img className='product-mentions-grid-links-img' src={mention.favicon}></img>
+                        </div>
                         <Link href={mention.link}>{mention.title}</Link>
                     </div>
                 ))}

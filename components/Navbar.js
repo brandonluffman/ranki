@@ -81,7 +81,7 @@ const handleChange = async (e) => {
             const sug = await res.data;
             setSuggestions(sug)
             console.log(sug)
-        }, 1000);
+        }, 300);
     
         // Save the new timeout ID to the state for later use
         setTimeoutId(newTimeoutId);
