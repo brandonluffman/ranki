@@ -63,7 +63,7 @@
     /* display: none; */
     width:90%;
     /* justify-content: center; */
-    background-color: rgb(230, 230, 230);
+    background-color: rgb(255, 255, 255);
     top:50px;
     margin:0 auto;
     left:0px;
@@ -76,9 +76,11 @@
     opacity: 0;
     display: grid;
     z-index:99999;
-    padding:1rem 1rem 1rem 1.5rem;
+    padding:1rem 1rem 1rem 1.5rem !important;
     text-align: left;
     font-size:1.2rem;
+    overflow-y: scroll;
+    height:300px;
 }
 
 .landing-input:focus ~ .input-suggestions {
@@ -158,9 +160,10 @@
     align-items: center;
     z-index: 999999999 !important;
     text-transform: capitalize;
-    border-bottom: 1px solid rgba(0,0,0,.2);
+    border-bottom: 1px solid rgba(134, 134, 134, 0.2);
     padding: 0.8rem 0.2rem;
     cursor: pointer;
+    font-size: 1rem;
 }
 
 .input-suggestion-div:hover {
@@ -170,6 +173,7 @@
 .input-suggestion-div > img {
     border-radius: 20px;
     margin-right: 1rem;
+    max-height: 50px;
 }
 
 @media (max-width: 800px) {

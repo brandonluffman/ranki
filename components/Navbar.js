@@ -80,6 +80,7 @@ const handleChange = async (e) => {
             // const res = await axios.get(`http://127.0.0.1:8000/blackwidow/products/${e.target.value}`);
             const sug = await res.data;
             setSuggestions(sug)
+            console.log(sug)
         }, 1000);
     
         // Save the new timeout ID to the state for later use
@@ -112,6 +113,7 @@ const handleChange = async (e) => {
               <div className='input-suggestions nav-input-suggestions'>
               {Array.isArray(suggestions) && (
                 suggestions.map((suggestion,i) => (
+                  suggestions.length > 1 ? (
                   <Link href={`product/${suggestion[0]}`} key={suggestion[0]} className='input-suggestion-div'>
                     {suggestion[1] == 'hello' ? (
                       <img src='/zon.png' width='50'></img>
@@ -120,6 +122,9 @@ const handleChange = async (e) => {
                     )}
                     <p>{suggestion[1]}</p>
                     </Link>
+                  ): (
+                    <div key={i}>{suggestion}</div>
+                  )
                 ))
               )}
             </div> 

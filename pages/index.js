@@ -25,6 +25,8 @@ export default function Home({products, searches}) {
   const [isLoading, setIsLoading] = useState(true);
   const [timeoutId, setTimeoutId] = useState(null);
 
+
+
   const controls = useAnimation();
 
   useEffect(() => {
@@ -52,6 +54,7 @@ export default function Home({products, searches}) {
     'searches':searches
     }
 
+
   return (
     products ? (
     <>
@@ -69,7 +72,7 @@ export default function Home({products, searches}) {
           <div className='landing-flexer'>
             <h1 className='landing-header'><span className='lighter'>RANKI</span> AI</h1>
             </div>
-              <Form />
+              <Form />  
         </div>
       </div>
       <LandingCats searches={searches} />

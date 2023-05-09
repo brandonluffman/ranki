@@ -43,9 +43,15 @@ const Form = () => {
         }
     };
 
+    {Array.isArray(suggestions) && (
+      suggestions.slice(0,10).map((suggestion,i) => (
+        console.log(suggestion.length)
+      ))
+    )}
+
   return (
     <div>
-        <form className='form' onSubmit={handleSubmit}>
+        <form className='form' onSubmit={handleSubmit} autoComplete='off'>
              <input
               type="text"
               id="query"
@@ -59,15 +65,21 @@ const Form = () => {
            
              <div className='input-suggestions'>
               {Array.isArray(suggestions) && (
-                suggestions.slice(0,5).map((suggestion,i) => (
-                  <Link href={`product/${suggestion[0]}`} key={suggestion[0]} className='input-suggestion-div'>
-                    {suggestion[1] == 'hello' ? (
-                      <img src='/zon.png' width='50'></img>
-                    ):(
-                      <img src={suggestion[2]} width='50'></img>
-                    )}
-                    <p>{suggestion[1]}</p>
-                    </Link>
+                suggestions.slice(0,10).map((suggestion,i) => (
+                  suggestion.length == 3 ? (
+                    <Link href={`product/${suggestion[0]}`} key={suggestion[0]} className='input-suggestion-div'>
+                      {suggestion[1] == 'hello' ? (
+                        <img src='/zon.png' width='50'></img>
+                      ):(
+                        <img src={suggestion[2]} width='50'></img>
+                      )}
+                      <p>{suggestion[1]}</p>
+                      </Link>
+                    ): (
+                      <Link href={`/ranking?q=${suggestion}`} key={suggestion} className='input-suggestion-div'>
+                      <p>{suggestion}</p>
+                      </Link>
+                    )
                 ))
               )}
             </div> 
