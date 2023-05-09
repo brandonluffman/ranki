@@ -103,7 +103,7 @@ const Navbar = () => {
         </Link>
         </div>
         <div className='nav-form-flexer'>
-        <form className={isActivate ? 'nav-form-expanded':'nav-form'} onSubmit={handleSubmit}>
+        <form className={isActivate ? 'nav-form-expanded':'nav-form'} onSubmit={handleSubmit} autoComplete='off'>
                 <input
                 type="text"
                 id="firstName"
@@ -116,7 +116,7 @@ const Navbar = () => {
               <div className='input-suggestions nav-input-suggestions'>
               {Array.isArray(suggestions) && (
                 suggestions.map((suggestion,i) => (
-                  suggestions.length > 1 ? (
+                  suggestion.length == 3 ? (
                   <Link href={`product/${suggestion[0]}`} key={suggestion[0]} className='input-suggestion-div'>
                     {suggestion[1] == 'hello' ? (
                       <img src='/zon.png' width='50'></img>

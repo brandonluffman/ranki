@@ -30,9 +30,7 @@ export async function getServerSideProps(context) {
       }
     }
   } else {
-
-
-        
+      
 if (!context.query.q.includes('best ')) {
   query = 'best ' + context.query.q;
 } else {
@@ -41,8 +39,6 @@ if (!context.query.q.includes('best ')) {
 
 const rep = await fetch(`https://grsvumxr5onti4rnxgin73azyq0fgqvy.lambda-url.us-east-2.on.aws/blackwidow/query?input=${query}`);
 const d = await rep.json();
-// console.log('D=', d)
-
 
 if (d == 'no query found') {
 console.log('None Found')
@@ -93,6 +89,10 @@ export default function Rank({ results, query }) {
 
   if (router.isFallback) {
     return <div>Loading...</div>;
+  }
+
+  if (results) {
+    console.log(results)
   }
   
   return ( 
