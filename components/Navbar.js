@@ -67,30 +67,33 @@ const Navbar = () => {
     }
     };
 
-const handleChange = async (e) => {
-    if (e.target.value != ''){
-        setQuery(e.target.value);
-        if (timeoutId) {
-            clearTimeout(timeoutId);
+    const handleChange = async (e) => {
+      const value = e.target.value;
+      setQuery(value);
+  
+      if (timeoutId) {
+        clearTimeout(timeoutId);
+      }
+  
+      if (!value) {
+        setSuggestions([]);
+        return;
+      }
+  
+      // Set a new timeout to wait for 300ms before executing the event handler
+      const newTimeoutId = setTimeout(async () => {
+        try {
+          const res = await axios.get(`https://grsvumxr5onti4rnxgin73azyq0fgqvy.lambda-url.us-east-2.on.aws/blackwidow/products/${value}/`);
+          const sug = await res.data;
+          setSuggestions(sug);
+        } catch (error) {
+          // Handle the error here (e.g. log it, display a message to the user)
         }
-    
-        // Set a new timeout to wait for 1 second before executing the event handler
-        const newTimeoutId = setTimeout(async () => {
-            const res = await axios.get(`https://grsvumxr5onti4rnxgin73azyq0fgqvy.lambda-url.us-east-2.on.aws/blackwidow/products/${e.target.value}/`);
-            // const res = await axios.get(`http://127.0.0.1:8000/blackwidow/products/${e.target.value}`);
-            const sug = await res.data;
-            setSuggestions(sug)
-            console.log(sug)
-        }, 300);
-    
-        // Save the new timeout ID to the state for later use
-        setTimeoutId(newTimeoutId);
-    
-    } else {
-        setQuery('');
-        console.log('nada')
-    }
-};
+      }, 300);
+  
+      // Save the new timeout ID to the state for later use
+      setTimeoutId(newTimeoutId);
+    };
 
   return (
     <nav className={`navbar ${navbarClass}`}>

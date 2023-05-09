@@ -14,7 +14,10 @@ import { useEffect } from "react";
 import Loading from '../components/Loading'
 import NoResults from '../components/NoResults'
 
+
+
 export async function getServerSideProps(context) {
+  let query;
   if (context.query.q == undefined | context.query.q == ''){
     context.query.q = null
     console.log(context.query.q, 'null')
@@ -29,79 +32,71 @@ export async function getServerSideProps(context) {
   } else {
 
 
+        
+if (!context.query.q.includes('best ')) {
+  query = 'best ' + context.query.q;
+} else {
+  query = context.query.q;
+}
 
-const query = context.query.q;
+const rep = await fetch(`https://grsvumxr5onti4rnxgin73azyq0fgqvy.lambda-url.us-east-2.on.aws/blackwidow/query?input=${query}`);
+const d = await rep.json();
+console.log('D=', d)
+
+
+if (d == 'no query found') {
+console.log('None Found')
 try {
-  const response = await fetch('https://grsvumxr5onti4rnxgin73azyq0fgqvy.lambda-url.us-east-2.on.aws/blackwidow', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify({
-      "query": query
-    }),
-  });
-  // const response = await fetch('http://127.0.0.1:8000/blackwidow/', {
-  //   method: 'POST',
-  //   headers: {
-  //     'Content-Type': 'application/json',
-  //   },
-  //   body: JSON.stringify({
-  //     "query": query
-  //   }),
-  // });
-  const results = await response.json();
-  return {
-    props: {
-      results,
-      query,
-    },
-  };
-} catch(e){
-  console.log(e)
-  const results = ''
-  return {
-    props: {
-      results,
-      query,
-    },
-  };
+    const response = await fetch('https://grsvumxr5onti4rnxgin73azyq0fgqvy.lambda-url.us-east-2.on.aws/blackwidow', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        "query": query
+      }),
+    });
+    const results = await response.json();
+    return {
+      props: {
+        results,
+        query,
+      },
+    };
+  } catch(e){
+    console.log(e)
+    const results = ''
+    return {
+      props: {
+        results,
+        query,
+        },
+      };
+    }
+
+  } else {
+    console.log('Found it')
+    const results = d;
+    return {
+      props: {
+        results,
+        query,
+      },
+  }
+  }
 }
 }
-}
+
 
 export default function Rank({ results, query }) {
-  const [isLoading, setIsLoading] = useState(true);
-  const controls = useAnimation();
-
-  useEffect(() => {
-    if (!isLoading) {
-      controls.start({
-        opacity: 1,
-        transition: { duration: 1 },
-      });
-    }
-  }, [isLoading, controls]);
-
-  useEffect(() => {
-    // Simulate loading data for 2 seconds
-    const timer = setTimeout(() => {
-      setIsLoading(false);
-    }, 2000);
-
-    return () => clearTimeout(timer);
-  }, []);
-  
   const router = useRouter();
 
   if (results) {
     const links = results.links
-    // const que = results.query.replaceAll('+', ' ')
-    console.log(results)
+    // console.log(results)
 
   } else {
     const links = null
-    const que = ''
   }
 
   if (router.isFallback) {
@@ -116,11 +111,13 @@ export default function Rank({ results, query }) {
         <title>RANKI</title>
         <meta name="description" content="RANKI AI" />
         <meta name="viewport" content="width=device-width, initial-scale=" />
-        {/* <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests" /> */}
         <link rel="icon" href="/logos/2.png" />
       </Head>
       <Navbar />
-        {results ? (
+        {results == 'INVALID QUERY, PLEASE TRY SOMETHING ELSE' ? (<RankingsDefault />)
+        : !results ? (
+          <NoResults />
+        ): (
         <div className='rank-contain-full'>
             <h2 className='ranking-subheader'>Showing Results For</h2>
             <h1 className='ranking-header'>{query}</h1>
@@ -140,10 +137,6 @@ export default function Rank({ results, query }) {
               <HWCBanner />
             </div>
         </div>  
-        ) : results == 'INVALID QUERY, PLEASE TRY SOMETHING ELSE' ? (
-        <RankingsDefault />
-        ) : (
-          <NoResults />
         )}
     <Footer />
     </div>

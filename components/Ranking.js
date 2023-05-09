@@ -14,6 +14,12 @@ const Ranking = ({products}) => {
         backgroundSize: 'contain',
         backgroundRepeat: 'no-repeat'
     }
+    const img_bg_2 = {
+        backgroundImage: `url(/logos/1.png)`,
+        backgroundPosition: 'center',
+        backgroundSize: 'contain',
+        backgroundRepeat: 'no-repeat'
+    }
     if (products.product_rating) {
     console.log((parseInt(products.product_rating)/5))
     } else {
@@ -25,7 +31,7 @@ const Ranking = ({products}) => {
         <div className='flexer'>
             <p className='circle-rank'>{products.rank}</p>
             {products.product_img == 'hello' ? (
-                <div className='grid-img-div' style={ img_bg }></div>
+                <div className='grid-img-div' style={ img_bg_2 }></div>
             ) : (
                 <div className='grid-img-div' style={ img_bg }></div>
             )   
