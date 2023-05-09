@@ -238,7 +238,7 @@
     align-items: center;
     transform:translateX(-300px);
     opacity: 1 !important;
-    width:20% !important;
+    width:40% !important;
 
     transition: 0.2s ease-in-out all;
 
