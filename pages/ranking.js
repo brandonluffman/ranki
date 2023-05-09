@@ -32,7 +32,7 @@ export async function getServerSideProps(context) {
 
 const query = context.query.q;
 try {
-  const response = await fetch('http://3.130.4.98/blackwidow', {
+  const response = await fetch('https://grsvumxr5onti4rnxgin73azyq0fgqvy.lambda-url.us-east-2.on.aws/blackwidow', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',

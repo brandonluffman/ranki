@@ -30,7 +30,7 @@ const LandingCats = (searches) => {
                         <h2 className='landing-container-query'>{s.query}</h2>
                         <div className='landing-cat'>
                         {s.cards.length > 2 && (
-                            s.cards.slice(0,4).map((c, i) => (
+                            s.cards.slice(0,10).map((c, i) => (
                             <div key={i}>
                                  <Link href={`product/${c.id}`} key={c.id} className='mini-rank-link-div'>
                                     <MiniRank products={c} productid={c.id} />

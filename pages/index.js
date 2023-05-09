@@ -45,7 +45,7 @@ export default function Home({products, searches}) {
     return () => clearTimeout(timer);
   }, []);
 
-  console.log(searches)
+  // console.log(searches)
 
   const props = {
     'products':products,
@@ -78,8 +78,8 @@ export default function Home({products, searches}) {
       </div>
       </div>
       <Footer />
-    </>):
-    (<ErrorPage />)
+    </> )
+     :(<ErrorPage />)
   )
 }
 
@@ -100,9 +100,9 @@ export async function getStaticProps() {
   // Call an external API endpoint to get posts.
   // You can use any data fetching library
 
-    const res = await fetch('http://3.130.4.98/blackwidow/trending/products/')
+    const res = await fetch('https://grsvumxr5onti4rnxgin73azyq0fgqvy.lambda-url.us-east-2.on.aws/blackwidow/trending/products/')
     const products = await res.json()
-    const resp = await fetch('http://3.130.4.98/blackwidow/trending/searches/')
+    const resp = await fetch('https://grsvumxr5onti4rnxgin73azyq0fgqvy.lambda-url.us-east-2.on.aws/blackwidow/trending/searches/')
     const searches = await resp.json()
  
   return {

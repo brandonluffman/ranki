@@ -4,8 +4,9 @@
 .landing-cat {
     display: grid;
     grid-template-rows: auto;
-    grid-template-columns: repeat(4, 300px);
+    grid-template-columns: repeat(10, 300px);
     gap: 20px;
+    overflow-x: scroll;
 }
 
 .landing-cont {
@@ -91,7 +92,7 @@
     .landing-cat {
         display: grid;
         grid-template-rows: auto;
-        grid-template-columns: repeat(4, 200px);
+        grid-template-columns: repeat(10, 200px);
         gap: 20px;
         overflow-x: scroll;
     }

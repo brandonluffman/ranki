@@ -40,7 +40,7 @@
     width:10%;
     background-color: white;
     text-align: left;
-    padding:0.3rem 0rem 0.3rem 1.5rem;
+    /* padding:0.3rem 0rem 0.3rem 1.5rem; */
     color:black;
     display: flex;
     align-items: center;
@@ -121,7 +121,8 @@
     transition:0.2s ease all;
     opacity: 1;
     animation:pulsate 1s alternate infinite;
-    margin-left:-1rem;
+    position:absolute;
+
 }
 .nav-toggle-button:hover, .nav-toggle-button-clicked:hover {
     box-shadow:1px 1px 14px 1px rgba(157,210,253);
