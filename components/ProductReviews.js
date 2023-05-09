@@ -6,11 +6,11 @@ const ProductReviews = ({prod}) => {
     const count = prod.ratings_count
     const sentiment = prod.sentiment
     const [isActive, setActive] = useState(false);
-    console.log(prod)
+    // console.log(prod)
     const toggleClass = () => {
         setActive(!isActive);
     };
-    console.log(count)
+    // console.log(count)
     const searchText = 'positive'
 
   return (
@@ -82,7 +82,8 @@ const ProductReviews = ({prod}) => {
                         const value = Object.values(review)[0];
                         const value2 = Object.values(review)[1];
                         const value3 = Object.values(review)[2];
-                        console.log(value2)
+                        console.log(index)
+                        // console.log(value2)
                         return (
                         value2 == searchText ? (
                             <div className='sent-grider p-grider' key={index}>

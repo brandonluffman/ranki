@@ -23,7 +23,7 @@ const Navbar = () => {
 
   const toggleShow = () => {
     setActive(!isActive);
-    console.log('Changed')
+    // console.log('Changed')
   };
   
   const handleShow = () => {

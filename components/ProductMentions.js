@@ -2,7 +2,7 @@ import Link from 'next/link'
 import React from 'react'
 
 const ProductMentions = ({mentions}) => {
-    console.log(mentions)
+    // console.log(mentions)
   return (
     <div className='product-mentions-grid-container'>
                 <h2 className='product-mentions-header'>Mentioned In</h2>

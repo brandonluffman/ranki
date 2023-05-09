@@ -41,7 +41,7 @@ if (!context.query.q.includes('best ')) {
 
 const rep = await fetch(`https://grsvumxr5onti4rnxgin73azyq0fgqvy.lambda-url.us-east-2.on.aws/blackwidow/query?input=${query}`);
 const d = await rep.json();
-console.log('D=', d)
+// console.log('D=', d)
 
 
 if (d == 'no query found') {
@@ -91,21 +91,11 @@ try {
 export default function Rank({ results, query }) {
   const router = useRouter();
 
-  if (results) {
-    const links = results.links
-    // console.log(results)
-
-  } else {
-    const links = null
-  }
-
   if (router.isFallback) {
     return <div>Loading...</div>;
   }
-
-
-  return (
-    
+  
+  return ( 
     <div className='ranking-container'>
          <Head>
         <title>RANKI</title>

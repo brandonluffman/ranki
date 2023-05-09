@@ -14,7 +14,9 @@ const HomeAnalytics = (props) => {
       {ser.slice(0,5).map((s, i) => (
         <div className='analytics-flexer' key={i}>
           <p className='analytics-rank'>{i+1}</p>
+          <Link href={`/ranking?q=${s.query}`} key={s.id}>
           <p className='analytics-text'>{s.query}</p>
+          </Link>
           <p className='testing2'><BsFillCaretUpFill className='analytics-caret' /> {s.request_count}</p>
         </div>
       ))}

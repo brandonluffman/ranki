@@ -8,9 +8,9 @@ import Head from 'next/head';
 
 function Product({ product, id }) {
     const router = useRouter();
-    console.log(product.product == undefined)
+    // console.log(product.product == undefined)
 
-    console.log(product)
+    // console.log(product)
 
    if (router.isFallback) {
     return <div>Loading...</div>

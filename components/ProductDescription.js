@@ -15,7 +15,7 @@ const ProductDescription = (product) => {
     setActive(!isActive);
     };
 
-    console.log(prod)
+    // console.log(prod)
 
     // console.log(product_specs.length != 0)
   return (

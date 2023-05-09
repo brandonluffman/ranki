@@ -21,9 +21,8 @@ const Ranking = ({products}) => {
         backgroundRepeat: 'no-repeat'
     }
     if (products.product_rating) {
-    console.log((parseInt(products.product_rating)/5))
+    // console.log((parseInt(products.product_rating)/5))
     } else {
-        console.log(0)
     }
 
   return (
