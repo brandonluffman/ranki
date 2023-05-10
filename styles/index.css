@@ -1,5 +1,5 @@
 .landing-container {
-    height:95vh;
+    height:105vh;
     align-items: center;
     text-align: center;
     justify-content: center;
@@ -11,7 +11,7 @@
 .landing-contain {
     padding:0rem 2rem;
     overflow-x: hidden;
-    margin-top:-117px;
+    margin-top:-200px;
 }
 
 .landing-div {
@@ -34,6 +34,9 @@
     font-weight: 600;
     font-size:7rem !important;
     color:rgb(253, 179, 223) !important;
+}
+.centered {
+    
 }
 
 .form {
@@ -76,7 +79,7 @@
     opacity: 0;
     display: grid;
     z-index:99999;
-    padding:1rem 1rem 1rem 1.5rem !important;
+    padding:0.3rem 1rem 0.3rem 1rem !important;
     text-align: left;
     font-size:1.2rem;
     overflow-y: scroll;
@@ -103,15 +106,18 @@
 
 .kind-color-product {
     font-size: 0.8rem;
-    color:red;
+    color:rgb(166, 183, 255);
     font-weight: 700;
-
+    display: flex;
+    align-items: center;
 }
 
 .kind-color-query {
     font-size: 0.8rem;
-    color:blue;
+    color:rgb(253, 179, 223);
     font-weight: 700;
+    display: flex;
+    align-items: center;
 }
 
 .landing-btn {
@@ -130,7 +136,7 @@
 }
 
 .landing-btn:hover {
-    background-color: rgb(162, 255, 247);
+    background-color: rgb(208, 136, 195);
     cursor:pointer !important;
 }
 
@@ -239,5 +245,11 @@
 
     .landing-container-query {
         font-size:1.5rem !important;
+    }
+    .landing-btn {
+        font-size: 1rem;
+        padding: 0.2rem 0.4rem;
+        margin-right:0.2rem;
+
     }
 }

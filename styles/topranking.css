@@ -19,7 +19,7 @@
 }
 .rank-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, 450px);
+    grid-template-columns: repeat(auto-fill, 350px);
     grid-template-rows: auto;
     gap: 50px;
     align-items: center;
@@ -334,7 +334,7 @@
     .rank-grid {
         display: grid;
     grid-template-rows: auto;
-    grid-template-columns: repeat(auto-fill, 350px);
+    grid-template-columns: repeat(auto-fill, 300px);
 
     gap: 20px;
     padding:0rem 2rem;

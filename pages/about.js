@@ -6,7 +6,7 @@ import Footer from '../components/Footer';
 import Script from 'next/script';
 import { GoPrimitiveDot } from 'react-icons/go';
 import {FaLinkedinIn} from 'react-icons/fa'
-
+import Image from 'next/image';
 
 
 export default function About() {
@@ -32,6 +32,10 @@ export default function About() {
           <h2 className='landing-subheader'>Product Search <span className='header-color'>Made Simple</span></h2>
         </div>
       </div>
+      {/* <div className='centered'>
+      <video src='/about.mp4' width="900" height="500" controls="none" autoplay="true" />
+      </div> */}
+
       <div className='home-about-container'>
         {/* <h2 className='home-about-header' id='about'>RANKI AI</h2> */}
         <div className='home-about-content'>

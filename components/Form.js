@@ -65,8 +65,8 @@ const Form = () => {
                 suggestions.slice(0,10).map((suggestion,i) => (
                   suggestion.length == 3 ? (
                     <Link href={`product/${suggestion[0]}`} key={suggestion[0]} className='input-suggestion-div'>
-                      {suggestion[1] == 'hello' ? (
-                        <img src='/zon.png' width='50'></img>
+                      {suggestion[2] == 'hello' ? (
+                        <img src='/logos/1.png' width='50'></img>
                       ):(
                         <img src={suggestion[2]} width='50'></img>
                       )}

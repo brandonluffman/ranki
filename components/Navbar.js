@@ -7,7 +7,7 @@ import axios from 'axios';
 const cors = require('cors');
 import {RxHamburgerMenu} from 'react-icons/rx'
 import {BiHomeAlt2} from 'react-icons/bi'
-import {BsCode} from 'react-icons/bs'
+import {BsCode,BsDot} from 'react-icons/bs'
 import {GrCircleInformation} from 'react-icons/gr'
 
 
@@ -123,11 +123,11 @@ const Navbar = () => {
                     ):(
                       <img src={suggestion[2]} width='50'></img>
                     )}
-                    <p>{suggestion[1]}</p>
+                    <p>{suggestion[1]}</p><p className='kind-color-product'><BsDot /> PRODUCT</p>
                     </Link>
                   ): (
                     <Link href={`/ranking?q=${suggestion}`} key={suggestion} className='input-suggestion-div'>
-                    <div>{suggestion}</div>
+                    <div>{suggestion}</div><p className='kind-color-query'><BsDot /> QUERY</p>
                     </Link>
                   )
                 ))
