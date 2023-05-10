@@ -71,10 +71,11 @@ const Form = () => {
                         <img src={suggestion[2]} width='50'></img>
                       )}
                       <p>{suggestion[1]}</p>
+                      <p>- PRODUCT</p>
                       </Link>
                     ): (
                       <Link href={`/ranking?q=${suggestion}`} key={suggestion} className='input-suggestion-div'>
-                      <p>{suggestion}</p>
+                      <p>{suggestion}</p><p>- QUERY</p>
                       </Link>
                     )
                 ))
