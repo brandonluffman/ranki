@@ -36,7 +36,7 @@
     color:rgb(253, 179, 223) !important;
 }
 .centered {
-    
+
 }
 
 .form {
@@ -222,9 +222,10 @@
     }
     .landing-contain {
         padding:0rem 1rem;
+        margin-top:-200px;
     }
     .landing-container {
-        height:90vh;
+        height:100vh;
         margin-bottom:8rem
     }
 }
