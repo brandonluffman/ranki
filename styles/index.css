@@ -82,6 +82,7 @@
     overflow-y: scroll;
     height:auto;
     max-height:300px;
+    align-items: center;
 }
 
 .landing-input:focus ~ .input-suggestions {
@@ -98,6 +99,19 @@
     padding-left:0.5rem;
     width:99%;
     z-index:99;
+}
+
+.kind-color-product {
+    font-size: 0.8rem;
+    color:red;
+    font-weight: 700;
+
+}
+
+.kind-color-query {
+    font-size: 0.8rem;
+    color:blue;
+    font-weight: 700;
 }
 
 .landing-btn {

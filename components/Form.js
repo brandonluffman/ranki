@@ -2,7 +2,7 @@ import axios from 'axios'
 import Link from 'next/link'
 import { Router, useRouter } from 'next/router'
 import React, { useState } from 'react'
-import { BsSearch } from 'react-icons/bs'
+import { BsDot, BsSearch } from 'react-icons/bs'
 
 const Form = () => {
     const [query, setQuery] = useState('');
@@ -71,11 +71,11 @@ const Form = () => {
                         <img src={suggestion[2]} width='50'></img>
                       )}
                       <p>{suggestion[1]}</p>
-                      <p>- PRODUCT</p>
+                      <p className='kind-color-product'><BsDot /> PRODUCT</p>
                       </Link>
                     ): (
                       <Link href={`/ranking?q=${suggestion}`} key={suggestion} className='input-suggestion-div'>
-                      <p>{suggestion}</p><p>- QUERY</p>
+                      <p>{suggestion}</p><p className='kind-color-query'><BsDot /> QUERY</p>
                       </Link>
                     )
                 ))

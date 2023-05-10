@@ -126,7 +126,9 @@ const Navbar = () => {
                     <p>{suggestion[1]}</p>
                     </Link>
                   ): (
-                    <div key={i}>{suggestion}</div>
+                    <Link href={`/ranking?q=${suggestion}`} key={suggestion} className='input-suggestion-div'>
+                    <div>{suggestion}</div>
+                    </Link>
                   )
                 ))
               )}
