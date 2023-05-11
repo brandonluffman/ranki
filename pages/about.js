@@ -29,7 +29,7 @@ export default function About() {
             {/* <img className='about-flexer-img' src='ranki.png'></img> */}
           <h1 className='about-header'>RANKI AI</h1>
           </div>
-          <h2 className='landing-subheader'>Product Search <span className='header-color'>Made Simple</span></h2>
+          <h2 className='landing-subheader'><span className='header-color'>Automated</span> Product Research</h2>
         </div>
       </div>
       {/* <div className='centered'>
