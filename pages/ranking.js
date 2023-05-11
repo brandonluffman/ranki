@@ -177,9 +177,13 @@ export default function Rank({ results, query }) {
   return ( 
     <div className='ranking-container'>
          <Head>
-        <title>RANKI</title>
+        <title>RANKI AI</title>
         <meta name="description" content="RANKI AI" />
-        <meta name="viewport" content="width=device-width, initial-scale=" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta charSet="utf-8" />
+        <meta name="robots" content="index, follow" />
+        <link rel="apple-touch-icon" href="/logos/2.png" /> 
+        <link rel="canonical" href="https://ranki.ai/"/>
         <link rel="icon" href="/logos/2.png" />
       </Head>
       <Navbar />

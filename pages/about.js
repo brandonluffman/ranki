@@ -14,7 +14,7 @@ export default function About() {
     <>
       <Head>
         <title>RANKI AI</title>
-        <meta name="description" content="RANKI is an AI Application that uses machine learning to assess product data and provide a user with the best products tailed to their needs." />
+        <meta name="description" content="RANKI AI is an AI Application that uses machine learning to assess product data and provide a user with the best products tailed to their needs." />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta charSet="utf-8" />
         <meta name="robots" content="index, follow" />
