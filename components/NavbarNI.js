@@ -48,13 +48,10 @@ const NavbarNI = () => {
   return (
     <nav className={`navbar ${navbarClass}`}>
         <div>
-        <img src='/ranki.png' alt='Brand Logo' className='nav-logo'></img>
+          {/* <Link className='nav-logo-link' href='/'> */}
+        <img src='/ranki-logoo.png' alt='Brand Logo' className='nav-logo'></img>
+        {/* </Link> */}
         </div>
-        {/* <div className='nav-menu'>
-            <Link className='nav-link' href='/'>Home</Link>
-            <Link className='nav-link' href='/about'>About</Link>
-            <Link className='nav-link' href='/ranking'>Rankings</Link>
-        </div> */}
          <div className={`nav-menu-toggle ${hamburgerClass}`}>
           <div className='no-flexer'>
             <h2 className='hamburger-header'>RANKI <span className='header-color'>AI</span></h2>

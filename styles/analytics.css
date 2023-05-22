@@ -50,16 +50,16 @@
 
   .analytics-container::before {
     content: "";
-    width: 104%;
-    height: 104%;
+    width: 102%;
+    height: 102%;
     border-radius: 20px;
     background-image: linear-gradient(
       var(--rotate)
       , #ffd7d7, #fdd8d8 43%, rgb(252, 85, 255));
       position: absolute;
       z-index: -1;
-      top: -2%;
-      left: -2%;
+      top: -1%;
+      left: -1%;
       animation: spin 2.5s linear infinite;
   }
 

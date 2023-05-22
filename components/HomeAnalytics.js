@@ -6,6 +6,8 @@ import {BsFillCaretUpFill} from 'react-icons/bs'
 const HomeAnalytics = (props) => {
   const prod = props.products
   const ser = props.searches
+  console.log(prod)
+  console.log(ser)
   return (
     <div className='analytics-containers'>
     <div className='analytics-container'>
@@ -14,7 +16,7 @@ const HomeAnalytics = (props) => {
       {ser.slice(0,5).map((s, i) => (
         <div className='analytics-flexer' key={i}>
           <p className='analytics-rank'>{i+1}</p>
-          <Link href={`/ranking?q=${s.query}`} key={s.id}>
+          <Link href={`/ranking?q=${s}`} key={s.id}>
           <p className='analytics-text'>{s.query}</p>
           </Link>
           <p className='testing2'><BsFillCaretUpFill className='analytics-caret' /> {s.request_count}</p>

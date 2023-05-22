@@ -37,7 +37,7 @@ const Mentions = (results) => {
                 ))}
             </div>
         </div>
-        <div className='mentions-container'>
+        {/* <div className='mentions-container'>
             <div className='mentions-top-div'>
                 <div className='mentions-favicon-bubble'>
                 <img src='/tube.png' className='mentions-img'></img>
@@ -51,7 +51,7 @@ const Mentions = (results) => {
                     </div>
                 ))}
             </div>
-        </div>
+        </div> */}
         </div>
 
         {/* <h2 className='mentions-ranks-header'>Rankings</h2>

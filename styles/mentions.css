@@ -152,7 +152,8 @@
         border-radius: 40px;
         border:2px solid white;
         padding-top:2rem;
-    
+        width:40%;
+
     }
   }
   @media (max-width: 900px) {

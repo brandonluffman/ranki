@@ -6,6 +6,7 @@ import MiniRank from './MiniRank'
 import {MdOutlineArrowRightAlt} from 'react-icons/md'
 
 const LandingCats = (searches) => {
+
     const se = searches
     const ser = se.searches
     const cards = se.searches.cards
@@ -25,7 +26,7 @@ const LandingCats = (searches) => {
   return (
     <div className='landing-categories'>
         <h2 className='landing-cat-header'>Trending Categories</h2>
-                {ser.slice(0,3).map((s, index) => (
+                {/* {ser.slice(0,3).map((s, index) => (
                     <div className='landing-cont' key={index}>
                         <h2 className='landing-container-query'>{s.query}</h2>
                         <div className='landing-cat'>
@@ -42,7 +43,7 @@ const LandingCats = (searches) => {
                         </div>
                         <Link className='cat-btn-link' href={`/ranking?q=${s.query}`}><button className='cat-btn' type='button'><MdOutlineArrowRightAlt /></button></Link>
                     </div>
-                ))}
+                ))} */}
     </div>
   )
 }

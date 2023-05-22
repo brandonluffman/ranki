@@ -79,7 +79,7 @@
     opacity: 0;
     display: grid;
     z-index:99999;
-    padding:0.3rem 1rem 0.3rem 1rem !important;
+    padding:0rem;
     text-align: left;
     font-size:1.2rem;
     overflow-y: scroll;
@@ -181,7 +181,7 @@
     z-index: 999999999 !important;
     text-transform: capitalize;
     border-bottom: 1px solid rgba(219, 219, 219, 0.2);
-    padding: 0.8rem 0.2rem;
+    padding: 0.8rem 1.2rem;
     cursor: pointer;
     font-size: 1rem;
 }
@@ -195,7 +195,19 @@
     margin-right: 1rem;
     max-height: 50px;
 }
-
+.query-suggestion {
+    padding-left: 5.35rem !important;
+}
+@media (max-width: 1500px) {
+    .landing-contain {
+        padding:0rem 1rem;
+        margin-top:-150px;
+    }
+    .landing-container {
+        height:100vh;
+        margin-bottom:8rem
+    }
+}
 @media (max-width: 800px) {
     .form {
         border:3px solid rgb(253, 179, 223);

@@ -36,11 +36,12 @@ const Form = () => {
           try {
             const res = await axios.get(`https://grsvumxr5onti4rnxgin73azyq0fgqvy.lambda-url.us-east-2.on.aws/blackwidow/products/${value}/`);
             const sug = await res.data;
+            console.log(sug)
             setSuggestions(sug);
           } catch (error) {
             // Handle the error here (e.g. log it, display a message to the user)
           }
-        }, 300);
+        }, 100);
     
         // Save the new timeout ID to the state for later use
         setTimeoutId(newTimeoutId);
@@ -63,7 +64,7 @@ const Form = () => {
              <div className='input-suggestions'>
               {Array.isArray(suggestions) && (
                 suggestions.slice(0,10).map((suggestion,i) => (
-                  suggestion.length == 3 ? (
+                  suggestion.length == 4 ? (
                     <Link href={`product/${suggestion[0]}`} key={suggestion[0]} className='input-suggestion-div'>
                       {suggestion[2] == 'hello' ? (
                         <img src='/logos/1.png' width='50'></img>

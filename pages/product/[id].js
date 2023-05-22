@@ -10,7 +10,7 @@ function Product({ product, id }) {
     const router = useRouter();
     // console.log(product.product == undefined)
 
-    // console.log(product)
+    console.log(product)
 
    if (router.isFallback) {
     return <div>Loading...</div>
@@ -52,7 +52,6 @@ export async function getServerSideProps(context) {
   // send a GET request with the id as a query parameter
   const response = await fetch(`https://grsvumxr5onti4rnxgin73azyq0fgqvy.lambda-url.us-east-2.on.aws/blackwidow/products/product/${id}`);
   const product = await response.json();
-  console.log(product)
   return {
     props: {
       product

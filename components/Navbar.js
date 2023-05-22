@@ -97,11 +97,9 @@ const Navbar = () => {
 
   return (
     <nav className={`navbar ${navbarClass}`}>
-        <div className='nav-logo-container'>
-        <Link href='/'>
-          <img src='/ranki.png' alt='Brand Logo' className='nav-logo'></img>
-        </Link>
-        </div>
+          <div className='nav-logo-container'>
+          <Link href='/' className='nav-logo-link'><img src='/ranki-logoo.png' alt='Brand Logo' className='nav-logo'></img></Link>
+          </div>
         <div className='nav-form-flexer'>
         <form className={isActivate ? 'nav-form-expanded':'nav-form'} onSubmit={handleSubmit} autoComplete='off'>
                 <input
@@ -115,8 +113,8 @@ const Navbar = () => {
               />
               <div className='input-suggestions nav-input-suggestions'>
               {Array.isArray(suggestions) && (
-                suggestions.map((suggestion,i) => (
-                  suggestion.length == 3 ? (
+                suggestions.slice(0,10).map((suggestion,i) => (
+                  suggestion.length == 4 ? (
                   <Link href={`product/${suggestion[0]}`} key={suggestion[0]} className='input-suggestion-div'>
                     {suggestion[1] == 'hello' ? (
                       <img src='/zon.png' width='50'></img>
@@ -126,8 +124,8 @@ const Navbar = () => {
                     <p>{suggestion[1]}</p><p className='kind-color-product'><BsDot /> PRODUCT</p>
                     </Link>
                   ): (
-                    <Link href={`/ranking?q=${suggestion}`} key={suggestion} className='input-suggestion-div'>
-                    <div>{suggestion}</div><p className='kind-color-query'><BsDot /> QUERY</p>
+                    <Link href={`/ranking?q=${suggestion}`} key={suggestion} className='input-suggestion-div query-suggestion'>
+                      <div>{suggestion}</div><p className='kind-color-query'><BsDot /> QUERY</p>
                     </Link>
                   )
                 ))
@@ -141,11 +139,6 @@ const Navbar = () => {
         )
         }
         </div>
-        {/* <div className='nav-menu'>
-            <Link className='nav-link' href='/'>Home</Link>
-            <Link className='nav-link' href='/about'>About</Link>
-            <Link className='nav-link' href='/ranking'>Rankings</Link>
-        </div> */}
         <div className={`nav-menu-toggle ${hamburgerClass}`}>
           <div className='no-flexer'>
             <h2 className='hamburger-header'>RANKI <span className='header-color'>AI</span></h2>
@@ -155,6 +148,9 @@ const Navbar = () => {
             </div>
         </div>
         <button className='hamburger-menu' type='button' onClick={toggleShow}><RxHamburgerMenu /></button> 
+        {/* <div className='extension-div'>
+          <button className='extension-btn'><img src='/chrome.png' width='20'></img>Download on Chrome</button>
+        </div> */}
     </nav>
   )
 }

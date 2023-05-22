@@ -1,0 +1,246 @@
+.home-landing {
+    height:100vh;
+    display: flex;
+    text-align: center;
+    align-items: center;
+    margin-top:-140px;
+    justify-content: left;
+    padding:0rem 0rem;
+    z-index:99;
+
+}
+.home-landing-gradient {
+    border-bottom-right-radius: 80% 80%;
+ 
+
+        background-color: #6b7d98;
+        width:100%;
+        height:60%;
+        position:absolute;
+        z-index:-1;
+        top:0;
+}
+.home-landing-extension-div {
+    display: flex;
+}
+.home-landing-header {
+    font-size:4.5rem;
+    text-align: capitalize;
+    width:1000px;
+    text-align: left;
+    z-index:9999;
+    padding-bottom:4rem;
+    padding-left:2rem;
+}
+.home-landing-image {
+    width:25%;
+    border-radius: 20px;
+    box-shadow:1px 4px 20px rgba(255, 255, 255, .2);
+}
+.home-analyze, .home-sources, .home-prices, .home-join {
+    height:80vh;
+}
+
+.home-sources {
+    padding:3rem 0rem;
+    height:auto;
+    color:white;
+    background-color: white;
+    text-align: center;
+    font-size:2.5rem;
+}
+.home-sources > h2 {
+    margin-bottom:2rem;
+}
+.home-sources-logos {
+    justify-content: space-around;
+    width:100% !important;
+    display: flex;
+    align-items: center;
+    margin: 4rem 0rem;
+}
+
+.gloss {
+    /* Frosted glass affect */
+    -webkit-backdrop-filter: blur(8px);  
+    backdrop-filter: blur(8px); 
+    /* Add box-shadow for more depth */
+    box-shadow: 0px 10px 15px 10px rgba(0 ,0 ,0 ,0.15);
+    background-color: rgba(255, 255, 255, 0.7);
+}
+
+.gloss {
+	position: relative;
+	z-index: 1;
+	background: inherit;
+	overflow: hidden;
+
+}
+
+.gloss:before {
+	content: "";
+	position: absolute;
+	background: inherit;
+	z-index: -1;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	box-shadow: inset 0 0 2000px rgba(255, 255, 255, .6);
+	filter: blur(10px);
+	margin: -100px;
+    background: url('/banner-bg.png');
+
+}
+
+.home-join {
+    text-align: center !important;
+    padding-top:4rem;
+    justify-content: center !important;
+    display: inline-block;
+    width:100%;
+    height:auto;
+    padding-bottom:4rem;
+}
+.home-join-p {
+    width:50%;
+    margin: 0rem auto 4rem auto;
+}
+.home-join-header {
+    font-size:2.5rem;
+    margin-bottom:1rem;
+}
+
+.home-join-extension-div {
+    display: flex;
+    align-self: center;
+    justify-content: center;
+    margin-bottom:1rem;
+}
+.home-join-extension-btn {
+    background-color: white;
+    border-radius: 20px;
+    padding:0.4rem 1.2rem;
+    display: flex;
+    align-items: center;
+    font-size:1.4rem;
+    font-weight:500;
+    border:none;
+    margin-left:1rem;
+
+} 
+.home-join-beta-div {
+    justify-content: center;
+    display: flex;
+}
+.home-join-extension-btn:hover {
+    cursor: pointer;
+}
+
+.home-join-extension-btn > img {
+    margin-right:0.5rem;
+}
+.home-join-btn {
+    background-color: transparent;
+    border-radius: 40px;
+    padding:0.4rem 1.2rem;
+    display: flex;
+    align-items: center;
+    font-size:1.5rem;
+    font-weight:500;
+    border:none;
+    border:1px solid white;
+    color:white;
+    margin-left:1rem;
+    transition: 0.2s ease all;
+    cursor: pointer;
+    box-shadow:1px 4px 20px rgba(255, 255, 255, .2);
+    margin-bottom:1rem;
+
+}
+.home-join-btn:hover {
+    background-color: rgb(48, 98, 115);
+    box-shadow:1px 4px 40px rgba(255, 255, 255, .2);
+
+}
+
+.home-analyze-image {
+    width:20%;
+    border-radius: 20px;
+    box-shadow:1px 4px 20px rgba(255, 255, 255, .2);
+}
+
+.home-analyze {
+    height:auto;
+    text-align: center;
+}
+.home-analyze-header {
+    font-size:2.5rem;
+    margin-bottom:4rem;
+}
+
+.home-analyze-images {
+    justify-content: space-around;
+    width:100%;
+    display: flex;
+    margin-bottom:4rem;
+}
+
+.home-analyze-single-img {
+    width:30%;
+    box-shadow: 2px 2px 12px rgb(73, 73, 73);
+}
+
+.home-analyze-single-img-div {
+    margin-bottom:4rem;
+}
+.verified-icon {
+    color:lightblue;
+    margin: 0 1rem;
+}
+.home-prices {
+    height:auto;
+    padding-bottom:4rem;
+}
+.home-prices-image {
+    width:30%;
+    border-radius: 20px;
+    box-shadow:1px 4px 20px rgba(255, 255, 255, .2);
+    margin:auto;
+}
+.home-prices-img-div {
+    display: inline-grid;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    gap:20px;
+    width:100%;
+}
+.home-prices-header {
+    margin-bottom:4rem;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+}
+.home-prices-bottom-container {
+    display: flex;
+}
+.home-prices-product-buying {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+}
+.flip-card {
+    cursor: pointer;
+    color:white !important;
+  
+}
+
+.flip-card-inner {
+    display: flex !important;
+    align-items: center !important;
+}
+.flip-card-back > p {
+    color:white;
+}

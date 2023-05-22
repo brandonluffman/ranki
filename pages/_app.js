@@ -15,6 +15,7 @@ import '../styles/hwc.css';
 import '../styles/minirank.css';
 import '../styles/loading.css';
 import '../styles/noresults.css';
+import '../styles/home.css';
 import NProgress from 'nprogress';
 import "nprogress/nprogress.css";
 import Router from 'next/router';

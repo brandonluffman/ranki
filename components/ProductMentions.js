@@ -13,6 +13,7 @@ const ProductMentions = ({mentions}) => {
                         <img className='product-mentions-grid-links-img' src={mention.favicon}></img>
                         </div>
                         <Link href={mention.link}>{mention.title}</Link>
+                        {/* <Link href={mention.link}>{mention.instances[0]}</Link> */}
                     </div>
                 ))}
                  {mentions.reddit.map((mention, i) => (
