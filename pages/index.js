@@ -6,10 +6,21 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {  faFacebookF, faInstagram, faLinkedinIn, faTwitter } from '@fortawesome/free-brands-svg-icons';
 import {GoVerified} from 'react-icons/go'
 import BuyingOption from '../components/BuyingOption'
+import Head from 'next/head'
 
 export default function Home(){
   return (
     <div>
+        <Head>
+        <title>RANKI AI</title>
+        <meta name="description" content="RANKI AI" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta charSet="utf-8" />
+        <meta name="robots" content="index, follow" />
+        <link rel="apple-touch-icon" href="/logos/2.png" /> 
+        <link rel="canonical" href="https://ranki.ai/"/>
+        <link rel="icon" href="/logos/2.png" />
+      </Head>
         <Navbar />
         <div className='home-landing'>
           <div className='home-landing-gradient'></div>

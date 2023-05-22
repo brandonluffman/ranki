@@ -68,7 +68,7 @@ export default function Home({products, searches}) {
         <meta charSet="utf-8" />
         <meta name="robots" content="index, follow" />
         <link rel="apple-touch-icon" href="/logos/2.png" /> 
-        <link rel="canonical" href="https://ranki.ai/"/>
+        <link rel="canonical" href="https://ranki.ai/home"/>
         <link rel="icon" href="/logos/2.png" />
       </Head>
       <NavbarNI /> 
