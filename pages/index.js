@@ -28,7 +28,7 @@ export default function Home(){
           <h1 className='home-landing-header'>Stop Spending Hours Comparing Products</h1>
             <p className='home-landing-p'>Automate your product research capabilities with our state of the art AI models that are trained to scour the internet and find the best products for your needs.</p>
 
-            <Link href='/'><button className='home-join-btn home-landing-beta-btn'><img src='/ranki.png' width='30'></img>Try the Beta</button></Link>
+            <Link href='/home'><button className='home-join-btn home-landing-beta-btn'><img src='/ranki.png' width='30'></img>Try the Beta</button></Link>
             <div className='home-landing-extension-div'>
             <Link href='https://chrome.google.com/webstore/detail/hunter-email-finder-exten/hgmhmanijnjhaffoampdlllchpolkdnj?hl=en'><button className='home-join-extension-btn'><img src='/chrome.png' width='25'></img>Download on Chrome</button></Link>
           </div>
@@ -63,7 +63,7 @@ export default function Home(){
             <button className='home-join-extension-btn'><img src='/chrome.png' width='25'></img>Download on Chrome</button>
           </div>
           <div className='home-join-beta-div'>
-          <button className='home-join-btn'><img src='/ranki.png' width='30'></img>Try the Beta</button>
+          <Link href='/home'><button className='home-join-btn'><img src='/ranki.png' width='30'></img>Try the Beta</button></Link>
           </div>
           </div>
           {/* <Link href='https://twitter.com/ranki_ai' target='_blank' rel='no-referrer' ><FontAwesomeIcon className="fa-brands fa-twitter social-icon" icon={faTwitter} alt='Social Icon' /></Link>
