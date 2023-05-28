@@ -9,10 +9,13 @@ const ProductMentions = ({mentions}) => {
 
                 {mentions.affiliate.map((mention, i) => (
                     <div className='product-mentions-grid-links' key={i}>
-                           <div className='product-menions-img-bubble'>
-                        <img className='product-mentions-grid-links-img' src={mention.favicon}></img>
+                        <div className='product-menions-img-bubble'>
+                            <img className='product-mentions-grid-links-img' src={mention.favicon}></img>
                         </div>
-                        <Link href={mention.link}>{mention.title}</Link>
+                        <div className='product-mentions-text-div'>
+                        <Link className='product-mentions-link' href={mention.link}>{mention.title}</Link>
+                        {mention.instances && <p className='product-mentions-instance'>&ldquo; {mention.instances[0]} &ldquo;</p>}
+                        </div>
                         {/* <Link href={mention.link}>{mention.instances[0]}</Link> */}
                     </div>
                 ))}
@@ -20,12 +23,14 @@ const ProductMentions = ({mentions}) => {
                     <div className='product-mentions-grid-links' key={i}>
                         <img className='product-mentions-grid-links-img' src='/reddit.png'></img>
                         <Link href={mention.link}>{mention.title}</Link>
+                        {mention.instances && <p className='product-mentions-instance'>&ldquo; {mention.instances[0]} &ldquo;</p>}
                     </div>
                 ))}
                  {mentions.youtube.map((mention, i) => (
                     <div className='product-mentions-grid-links' key={i}>
                         <img className='product-mentions-grid-links-img-yt' src='/tube.png'></img>
                         <Link href={mention.link}>{mention.title}</Link>
+                        {mention.instances && <p className='product-mentions-instance'>&ldquo; {mention.instances[0]} &ldquo;</p>}
                     </div>
                 ))}
             </div>

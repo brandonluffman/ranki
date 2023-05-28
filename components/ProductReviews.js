@@ -68,14 +68,6 @@ const ProductReviews = ({prod}) => {
                <h2 className='product-reviews-pros-header'>What the reviews are saying</h2>
            <div className='product-reviews-pro-con'>
                <div className='product-review-pros'>
-               <div className='pros-grid'>
-               {/* {sentiment.map((sent, index) => (
-                   sent.favor_rating.includes(searchText) && (
-                       <div key={index}>
-                       <p className='product-reviews-pro positive-sent'><span className='testing3'>{sent.desc}</span> <span className='testing4'>({sent.favor_vote_count})</span></p>
-                       </div>
-                   )
-               ))} */}
                     {sentiment.map((review, index) => {
                         
                         const key = Object.keys(review)[0];
@@ -85,20 +77,29 @@ const ProductReviews = ({prod}) => {
                         console.log(index)
                         // console.log(value2)
                         return (
-                        value2 == searchText ? (
+                        value2 == searchText && (
                             <div className='sent-grider p-grider' key={index}>
                             <p className='product-reviews-pro positive-sent'>{value}</p>
                             <p className='testing4'>({value3})</p>
                         </div>
-                        ): (
-                            <div className='sent-grider n-grider' key={index}>
+                        )
+                    )})}
+                     {sentiment.map((review, index) => {
+                        
+                        const key = Object.keys(review)[0];
+                        const value = Object.values(review)[0];
+                        const value2 = Object.values(review)[1];
+                        const value3 = Object.values(review)[2];
+                        console.log(index)
+                        // console.log(value2)
+                        return (
+                        value2 != searchText && (
+                            <div className='sent-grider p-grider' key={index}>
                             <p className='product-reviews-pro negative-sent'>{value}</p>
                             <p className='testing4'>({value3})</p>
                         </div>
-                        )
-                        );
-                    })}
-               </div>
+                        ))})}
+            
                </div>
            </div>
             {/* {reviews.map((review, i) => (

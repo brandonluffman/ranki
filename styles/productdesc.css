@@ -139,8 +139,14 @@
 .product-mentions-grid-item {
     margin-bottom:2rem;
 }
-
-    
+.product-mentions-instance {
+    font-weight: 300;
+    font-size:0.8rem;
+}
+.product-mentions-link {
+    font-weight: 700;
+    margin-bottom: 2rem;
+}
 .product-mentions-grid-links {
     /* justify-content: center; */
     text-align: left;

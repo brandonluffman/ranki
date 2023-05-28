@@ -13,7 +13,7 @@
     border-bottom-right-radius: 80% 80%;
  
 
-        background-color: #6b7d98;
+        background-color: #9ab2d7;
         width:100%;
         height:60%;
         position:absolute;
@@ -26,21 +26,36 @@
 .home-landing-header {
     font-size:4.5rem;
     text-align: capitalize;
-    width:1000px;
+    width:70%;
     text-align: left;
-    z-index:9999;
+    z-index:999999 !important;
     padding-bottom:4rem;
     padding-left:2rem;
+}
+.home-landing-p {
+    display: none;
 }
 .home-landing-image {
     width:25%;
     border-radius: 20px;
     box-shadow:1px 4px 20px rgba(255, 255, 255, .2);
+    z-index: -1;
+}
+.home-landing-img-div {
+    position:absolute;
+    text-align: center;
+    justify-content: center;
+    right:-400px;
+    z-index: -1;
+
 }
 .home-analyze, .home-sources, .home-prices, .home-join {
     height:80vh;
 }
-
+.home-join-btns {
+    display: flex;
+    justify-content: center;
+}
 .home-sources {
     padding:3rem 0rem;
     height:auto;
@@ -103,12 +118,12 @@
     padding-bottom:4rem;
 }
 .home-join-p {
-    width:50%;
-    margin: 0rem auto 4rem auto;
+    /* width:50%;
+    margin: 0rem auto 4rem auto; */
 }
 .home-join-header {
     font-size:2.5rem;
-    margin-bottom:1rem;
+    margin-bottom:3rem;
 }
 
 .home-join-extension-div {
@@ -243,4 +258,59 @@
 }
 .flip-card-back > p {
     color:white;
+}
+
+.home-source {
+    width:80px;
+}
+.source-cnn {
+    width:90px;
+}
+.source-pcmag{
+    width:120px;
+}
+@media (max-width: 600px) {
+    .home-landing-img-div {
+        display: none;
+    
+    }
+    .home-landing-header {
+        text-align: left;
+        width: 90%;
+        font-size:2.5rem;
+        margin:auto;
+        padding-bottom:0rem;
+    }
+    .home-source {
+        width:50px;
+    }
+    .source-cnn {
+        width:60px;
+    }
+    .source-pcmag{
+        width:90px;
+    }
+    .home-sources > h2 {
+        font-size: 2rem;
+        padding:0rem 2rem;
+    }
+    .home-sources {
+        padding-bottom: 1rem;
+    }
+    .home-join-btns {
+        display: inline-grid;
+    }
+
+    .home-join-header {
+        width:90%; 
+        margin:auto auto 2rem auto;
+    }
+    .home-landing-p {
+        display: flex;
+        margin:auto;
+        text-align: left;
+        width:90%;
+        margin-bottom:6rem;
+        padding-left:2rem;
+    }
 }
