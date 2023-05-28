@@ -321,7 +321,7 @@
 
   @media (max-width: 500px) {
     .nav-logo {
-        width:70px !important;
+        width:175px !important;
         padding-left: 1rem;
     }
     .navbar > div {

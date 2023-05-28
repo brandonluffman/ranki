@@ -20,8 +20,14 @@
         z-index:-1;
         top:0;
 }
+.home-landing-beta-btn {
+    margin-bottom:1rem;
+}
 .home-landing-extension-div {
     display: flex;
+}
+.home-landing-text-container {
+    padding-left:3rem;
 }
 .home-landing-header {
     font-size:4.5rem;
@@ -30,7 +36,6 @@
     text-align: left;
     z-index:999999 !important;
     padding-bottom:4rem;
-    padding-left:2rem;
 }
 .home-landing-p {
     display: none;
@@ -130,7 +135,7 @@
     display: flex;
     align-self: center;
     justify-content: center;
-    margin-bottom:1rem;
+    margin:0rem 1rem;
 }
 .home-join-extension-btn {
     background-color: white;
@@ -141,12 +146,14 @@
     font-size:1.4rem;
     font-weight:500;
     border:none;
-    margin-left:1rem;
+    /* margin-left:1rem; */
 
 } 
 .home-join-beta-div {
     justify-content: center;
     display: flex;
+    margin:0rem 1rem;
+
 }
 .home-join-extension-btn:hover {
     cursor: pointer;
@@ -166,11 +173,10 @@
     border:none;
     border:1px solid white;
     color:white;
-    margin-left:1rem;
+    /* margin-left:1rem; */
     transition: 0.2s ease all;
     cursor: pointer;
     box-shadow:1px 4px 20px rgba(255, 255, 255, .2);
-    margin-bottom:1rem;
 
 }
 .home-join-btn:hover {
@@ -267,7 +273,7 @@
     width:90px;
 }
 .source-pcmag{
-    width:120px;
+    width:90px;
 }
 @media (max-width: 600px) {
     .home-landing-img-div {
@@ -278,7 +284,8 @@
         text-align: left;
         width: 90%;
         font-size:2.5rem;
-        margin:auto;
+        /* margin:auto; */
+        margin-bottom: 1rem;
         padding-bottom:0rem;
     }
     .home-source {
@@ -288,7 +295,7 @@
         width:60px;
     }
     .source-pcmag{
-        width:90px;
+        width:60px;
     }
     .home-sources > h2 {
         font-size: 2rem;
@@ -307,10 +314,15 @@
     }
     .home-landing-p {
         display: flex;
-        margin:auto;
+
         text-align: left;
-        width:90%;
+        width:75%;
         margin-bottom:6rem;
-        padding-left:2rem;
+    }
+    .home-landing-text-container {
+        padding-left:1rem;
+    }
+    .home-join-extension-div {
+        margin-bottom:1rem;
     }
 }

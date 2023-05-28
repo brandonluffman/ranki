@@ -24,11 +24,11 @@ export default function Home(){
         <Navbar />
         <div className='home-landing'>
           <div className='home-landing-gradient'></div>
-          <div>
+          <div className='home-landing-text-container'>
           <h1 className='home-landing-header'>Stop Spending Hours Comparing Products</h1>
             <p className='home-landing-p'>Automate your product research capabilities with our state of the art AI models that are trained to scour the internet and find the best products for your needs.</p>
 
-            <Link href='/'><button className='home-join-btn'><img src='/ranki.png' width='30'></img>Try the Beta</button></Link>
+            <Link href='/'><button className='home-join-btn home-landing-beta-btn'><img src='/ranki.png' width='30'></img>Try the Beta</button></Link>
             <div className='home-landing-extension-div'>
             <Link href='https://chrome.google.com/webstore/detail/hunter-email-finder-exten/hgmhmanijnjhaffoampdlllchpolkdnj?hl=en'><button className='home-join-extension-btn'><img src='/chrome.png' width='25'></img>Download on Chrome</button></Link>
           </div>
@@ -47,11 +47,11 @@ export default function Home(){
         <div className='home-sources gloss'>
           <h2>From The Sources You Trust 🤝</h2>
           <div className='home-sources-logos'>
-          <img src='/cnet.png' width='80' className='home-source source-cnet'></img>
-          <img src='/cnnn.png' width='95' className='home-source source-cnn'></img>
-          <img src='/reddit.png' width='80' className='home-source source-reddit'></img>
-          <img src='/pcmag.png' width='120' className='home-source source-pcmag'></img>
-          <img src='/google.png' width='80' className='home-source source-google'></img>
+          <img src='/cnet.png' className='home-source source-cnet'></img>
+          <img src='/cnnn.png' className='home-source source-cnn'></img>
+          <img src='/reddit.png' className='home-source source-reddit'></img>
+          <img src='/bestbuy.png' className='home-source source-pcmag'></img>
+          <img src='/google.png' className='home-source source-google'></img>
 
           </div>
         </div>
