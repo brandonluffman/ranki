@@ -94,7 +94,7 @@ const ProductReviews = ({prod}) => {
                         // console.log(value2)
                         return (
                         value2 != searchText && (
-                            <div className='sent-grider p-grider' key={index}>
+                            <div className='sent-grider n-grider' key={index}>
                             <p className='product-reviews-pro negative-sent'>{value}</p>
                             <p className='testing4'>({value3})</p>
                         </div>
