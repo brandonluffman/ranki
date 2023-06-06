@@ -64,7 +64,7 @@
 .input-suggestions {
     position: absolute;
     /* display: none; */
-    width:90%;
+    width:95%;
     /* justify-content: center; */
     background-color: rgb(255, 255, 255);
     top:50px;
@@ -72,8 +72,8 @@
     left:0px;
     right:0px;
     border-radius:20px;
-    /* border-bottom-left-radius:20px;
-    border-bottom-right-radius:20px; */
+    border-top-left-radius:0px;
+    border-top-right-radius:0px;
     /* transform: translateY(0px); */
     transition:0.2s all ease-in-out;
     opacity: 0;
@@ -84,7 +84,7 @@
     font-size:1.2rem;
     overflow-y: scroll;
     height:auto;
-    max-height:300px;
+    max-height:400px;
     align-items: center;
 }
 

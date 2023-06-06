@@ -24,6 +24,7 @@
     border:1px solid white;
     padding-top:2rem;
     background-color: rgba(9, 22, 55, 0.3);
+    width:30%;
 }
 .mention-rank-title {
     font-size: 0.9rem;
@@ -55,7 +56,7 @@
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    max-width: 250px; 
+    max-width: 350px; 
 }
 .mentions-link-div {
     display: flex;
@@ -142,7 +143,8 @@
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
-        max-width: 150px; 
+        max-width: 300px; 
+
     }
     .mentions-container {
         padding-left:0rem;
@@ -181,7 +183,7 @@
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
-        max-width: 250px; 
+        max-width: 300px; 
     }
   }
 
@@ -191,8 +193,29 @@
         border-bottom:1px solid rgb(100, 100, 100);
         transition:all 0.2s ease-in-out;
         font-size:0.8rem;
-        max-width: 200px; 
+        max-width: 250px; 
     }
+    .ranking-header {
+        font-size:2rem;
+    }
+  }
+
+  @media (max-width: 400px) {
+
+    .mentions-links-link {
+        border-bottom:1px solid rgb(100, 100, 100);
+        transition:all 0.2s ease-in-out;
+        font-size:0.8rem;
+        max-width: 175px; 
+    }
+    .mentions-container {
+        padding:1rem 1rem 0rem 1rem;
+    
+    }
+    .mentions-link-container {
+        margin-bottom:2rem;
+    }
+    
   }
 
 /* .mentions-favicon-bubble {

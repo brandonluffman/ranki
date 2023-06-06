@@ -169,11 +169,14 @@ export default function Rank({ results, query }) {
   if (router.isFallback) {
     return <div>Loading...</div>;
   }
+  const sortedResults = results.cards.sort((a, b) => a.rank - b.rank);
 
   if (results) {
     console.log(results)
+    const sortedResults = results.cards.sort((a, b) => a.rank - b.rank);
+    console.log(sortedResults)
   }
-  
+ 
   return ( 
     <div className='ranking-container'>
          <Head>
@@ -198,7 +201,7 @@ export default function Rank({ results, query }) {
             <h1 className='ranking-header'>{query}</h1>
             <div className='rank-grid-container'>
                   <div className='rank-grid'>
-                    {results.cards.map((product, i) => (
+                    {sortedResults.map((product, i) => (
                       <Link href={`product/${product.id}`} key={product.id}>
                       <Ranking products={product} productid={product.id} />
                       </Link>

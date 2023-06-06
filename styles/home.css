@@ -115,12 +115,11 @@
 
 .home-join {
     text-align: center !important;
-    padding-top:4rem;
+    padding: 8rem 0rem;
     justify-content: center !important;
     display: inline-block;
     width:100%;
     height:auto;
-    padding-bottom:4rem;
 }
 .home-join-p {
     /* width:50%;

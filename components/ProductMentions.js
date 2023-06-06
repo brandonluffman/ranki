@@ -9,12 +9,12 @@ const ProductMentions = ({mentions}) => {
 
                 {mentions.affiliate.map((mention, i) => (
                     <div className='product-mentions-grid-links' key={i}>
-                        <div className='product-menions-img-bubble'>
+                        <div className='product-mentions-img-bubble'>
                             <img className='product-mentions-grid-links-img' src={mention.favicon}></img>
                         </div>
                         <div className='product-mentions-text-div'>
                         <Link className='product-mentions-link' href={mention.link}>{mention.title}</Link>
-                        {mention.instances && <p className='product-mentions-instance'>&ldquo; {mention.instances[0]} &ldquo;</p>}
+                        {mention.instances && <p className='product-mentions-instance'>&ldquo;{mention.instances[0]}&ldquo;</p>}
                         </div>
                         {/* <Link href={mention.link}>{mention.instances[0]}</Link> */}
                     </div>

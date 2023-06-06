@@ -65,7 +65,7 @@ const ProductReviews = ({prod}) => {
                    </div>
                    </div>
                </div>
-               <h2 className='product-reviews-pros-header'>What the reviews are saying</h2>
+               {/* <h2 className='product-reviews-pros-header'>What the reviews are saying</h2> */}
            <div className='product-reviews-pro-con'>
                <div className='product-review-pros'>
                     {sentiment.map((review, index) => {

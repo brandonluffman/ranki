@@ -28,7 +28,7 @@ const Ranking = ({products}) => {
   return (
     <div className='grid-item'>
         <div className='flexer'>
-            <p className='circle-rank'>{products.rank}</p>
+            {/* <p className='circle-rank'>{products.rank}</p> */}
             {products.product_img == 'hello' ? (
                 <div className='grid-img-div' style={ img_bg_2 }></div>
             ) : (

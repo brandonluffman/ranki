@@ -30,7 +30,7 @@ export default function Home(){
 
             <Link href='/home'><button className='home-join-btn home-landing-beta-btn'><img src='/ranki.png' width='30'></img>Try the Beta</button></Link>
             <div className='home-landing-extension-div'>
-            <Link href='https://chrome.google.com/webstore/detail/hunter-email-finder-exten/hgmhmanijnjhaffoampdlllchpolkdnj?hl=en'><button className='home-join-extension-btn'><img src='/chrome.png' width='25'></img>Download on Chrome</button></Link>
+            <Link href='/'><button className='home-join-extension-btn'><img src='/chrome.png' width='25'></img>Download on Chrome</button></Link>
           </div>
 
           </div>

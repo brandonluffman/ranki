@@ -11,7 +11,6 @@
 .ranking-subheader {
     font-weight: 200;
     text-align: center;
-    margin-top:2rem;
     font-size:1.1rem;
 }
 .rank-grid-container {
@@ -113,11 +112,9 @@
 
 .grid-product-title {
     font-size:1.5rem;
-    font-weight:700;
-    letter-spacing: -.03vw;
+    font-weight:600;
+    letter-spacing: -.1vw;
     margin: 0;
-    margin-bottom:0.5rem;
-    text-transform: uppercase;
     font-family: 'Montserrat', sans-serif !important;
     overflow: hidden;
     display: -webkit-box;
@@ -128,8 +125,9 @@
 }
 .review-rate {
     margin-right:0.5rem;
-    font-weight:600;
+    font-weight:400;
     font-size: 0.9rem;
+    
 }
 
 .affiliate {
@@ -347,7 +345,7 @@
         display: grid;
     grid-template-rows: auto;
     gap: 50px;
-    padding:0rem 2rem;
+    padding:0rem 0rem;
     }
     
   }
