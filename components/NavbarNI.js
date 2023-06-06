@@ -56,7 +56,7 @@ const NavbarNI = () => {
           <div className='no-flexer'>
             <h2 className='hamburger-header'>RANKI <span className='header-color'>AI</span></h2>
             <Link className='nav-link' href='/'><BiHomeAlt2 className='nav-icon'/> Home</Link>
-            <Link className='nav-link' href='/home'><BiHomeAlt2 className='nav-icon'/> Beta</Link>
+            <Link className='nav-link' href='/home'><img src='/logos/1.png' width='30'></img> Beta</Link>
             <Link className='nav-link' href='/about'><BsCode className='nav-icon'/> About</Link>
             <Link className='nav-link' href='/ranking'><GrCircleInformation className='nav-icon'/> Rankings</Link>
             </div>
