@@ -41,7 +41,7 @@ const Form = () => {
           } catch (error) {
             // Handle the error here (e.g. log it, display a message to the user)
           }
-        }, 100);
+        }, 50);
     
         // Save the new timeout ID to the state for later use
         setTimeoutId(newTimeoutId);
