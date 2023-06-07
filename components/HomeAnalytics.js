@@ -13,7 +13,7 @@ const HomeAnalytics = (props) => {
     <div className='analytics-container'>
       <BiTrendingUp className='trending-icon'/>
       <h2 className='analytics-header'>Trending Searches</h2>
-      {ser.slice(0,5).map((s, i) => (
+      {ser && ser.slice(0,5).map((s, i) => (
         <div className='analytics-flexer' key={i}>
           <p className='analytics-rank'>{i+1}</p>
           <Link href={`/ranking?q=${s}`} key={s.id}>
@@ -27,7 +27,7 @@ const HomeAnalytics = (props) => {
       <h2 className='analytics-emoji'>🔥</h2>
       {/* <BiTrendingUp className='trending-icon'/> */}
       <h2 className='analytics-header'>Trending Products</h2>
-       {prod.slice(0,5).map((p, i) => (
+       {prod && prod.slice(0,5).map((p, i) => (
         <div className='analytics-flexer' key={i}>
           <p className='analytics-rank'>{i+1}</p>
           <Link href={`product/${p.id}`} key={p.id}>

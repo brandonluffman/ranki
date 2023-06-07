@@ -49,7 +49,7 @@ const NavbarNI = () => {
     <nav className={`navbar ${navbarClass}`}>
         <div>
           {/* <Link className='nav-logo-link' href='/'> */}
-        <img src='/RankiAI.png' alt='Brand Logo' className='nav-logo'></img>
+        <img src='/R.png' alt='Brand Logo' className='nav-logo'></img>
         {/* </Link> */}
         </div>
          <div className={`nav-menu-toggle ${hamburgerClass}`}>

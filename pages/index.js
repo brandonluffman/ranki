@@ -56,7 +56,7 @@ export default function Home(){
           </div>
         </div>
         <div className='home-join'>
-          <h2 className='home-join-header'>Start Saving <i>Money</i> & <i>Time</i> with <span className='header-color'>RANKI</span> 💸</h2>
+          <h2 className='home-join-header'>Start Saving <i>Money</i> & <i>Time</i> with <span className='header-color'>RankiAI</span> 💸</h2>
           {/* <p className='home-join-p'>Automate your product research capabilities with our state of the art AI models that are trained to scour the internet and find the best products for your needs.</p> */}
           <div className='home-join-btns'>
           <div className='home-join-extension-div'>

@@ -316,15 +316,17 @@ padding: 2rem 5rem 3rem 5rem;
         font-size:2rem;
     }
     .home-team-profile {
-     height:110px;
-     width:110px;
+     height:130px;
+     width:130px;
     }
-
+    .about-logo {
+        width: 350px !important;
+    }
     .overlay {
-        transform: translateY(120px);
+        transform: translateY(130px);
     }
     .brandon-profile:hover .overlay, .marcus-profile:hover .overlay {
-        transform: translateY(0px);
+        transform: translateY(40px);
     }
 
     .profile-name {
@@ -345,6 +347,7 @@ padding: 2rem 5rem 3rem 5rem;
         font-size:4rem;
     }
     .about-container {
-        height:70vh;
+        height:60vh;
+        margin-bottom:6rem;
     }
    }

@@ -44,7 +44,7 @@ const Footer = () => {
                 </div>
               </div>   
               <div className='copyright-footer'>
-                  <p className='footer-copyright-content'>Copyright © {new Date().getFullYear()} RANKI - All Rights Reserved.</p>
+                  <p className='footer-copyright-content'>Copyright © {new Date().getFullYear()} RankiAI - All Rights Reserved.</p>
               </div>
       </div>
     </footer>

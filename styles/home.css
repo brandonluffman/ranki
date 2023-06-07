@@ -287,6 +287,7 @@
         /* margin:auto; */
         margin-bottom: 1rem;
         padding-bottom:0rem;
+        margin-top:0rem;
     }
     .home-source {
         width:50px;
@@ -323,5 +324,13 @@
     }
     .home-join-extension-div {
         margin-bottom:1rem;
+    }
+}
+
+@media (max-width: 400px) {
+
+    .home-landing-header {
+
+        margin-top:4rem;
     }
 }

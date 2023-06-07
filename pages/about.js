@@ -27,7 +27,8 @@ export default function About() {
         <div className='landing-div'>
             <div className='about-flexer'>
             {/* <img className='about-flexer-img' src='ranki.png'></img> */}
-          <h1 className='about-header'>RANKI AI</h1>
+          {/* <h1 className='about-header'>RANKI AI</h1> */}
+          <img src='/R.png' alt='Brand Logo' width='600' className='about-logo'></img>
           </div>
           <h2 className='landing-subheader'><span className='header-color'>Automated</span> Product Research</h2>
         </div>

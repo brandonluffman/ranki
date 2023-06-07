@@ -98,7 +98,7 @@ const Navbar = () => {
   return (
     <nav className={`navbar ${navbarClass}`}>
           <div className='nav-logo-container'>
-          <Link href='/' className='nav-logo-link'><img src='/RankiAI.png' alt='Brand Logo' className='nav-logo'></img></Link>
+          <Link href='/' className='nav-logo-link'><img src='/R.png' alt='Brand Logo' className='nav-logo'></img></Link>
           </div>
         <div className='nav-form-flexer'>
         <form className={isActivate ? 'nav-form-expanded':'nav-form'} onSubmit={handleSubmit} autoComplete='off'>
