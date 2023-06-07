@@ -86,7 +86,7 @@ const ProductReviews = ({prod}) => {
                     )})}
                     </div>
                     <div className='product-review-cons'>
-                     {sentiment.slice(0,5).map((review, index) => {
+                     {sentiment.map((review, index) => {
                         
                         const key = Object.keys(review)[0];
                         const value = Object.values(review)[0];
