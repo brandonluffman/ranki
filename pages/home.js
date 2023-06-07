@@ -1,5 +1,3 @@
-
-
 import React from 'react';
 import Head from 'next/head'
 import Image from 'next/image'
@@ -76,7 +74,7 @@ export default function Home({products, searches}) {
        <div className='landing-container'>
          <div className='landing-div'>
           <div className='landing-flexer'>
-            <img src='/RankiAI.png' width='600'></img>
+            <img src='/RankiAI.png' className='landing-logo'></img>
             {/* <h1 className='landing-header'><span className='lighter'>RANKI</span> AI</h1> */}
             </div>
               <Form />  
