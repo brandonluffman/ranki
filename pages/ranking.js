@@ -15,74 +15,6 @@ import Loading from '../components/Loading'
 import NoResults from '../components/NoResults'
 import Timeout from '../components/Timeout'
 
-
-
-// export async function getServerSideProps(context) {
-//   let query;
-//   if (context.query.q == undefined | context.query.q == ''){
-//     context.query.q = null
-//     console.log(context.query.q, 'null')
-//     const query = context.query.q
-//     const results = null
-//     return {
-//       props: {
-//         results,
-//         query
-//       }
-//     }
-//   } else {
-      
-// if (!context.query.q.includes('best ')) {
-//   query = 'best ' + context.query.q;
-// } else {
-//   query = context.query.q;
-// }
-
-// const rep = await fetch(`https://grsvumxr5onti4rnxgin73azyq0fgqvy.lambda-url.us-east-2.on.aws/blackwidow/query?input=${query}`);
-// const d = await rep.json();
-
-// if (d == 'no query found') {
-// console.log('None Found')
-// try {
-//     const response = await fetch('https://grsvumxr5onti4rnxgin73azyq0fgqvy.lambda-url.us-east-2.on.aws/blackwidow', {
-//       method: 'POST',
-//       headers: {
-//         'Content-Type': 'application/json',
-//       },
-//       body: JSON.stringify({
-//         "query": query
-//       }),
-//     });
-//     const results = await response.json();
-//     return {
-//       props: {
-//         results,
-//         query,
-//       },
-//     };
-//   } catch(e){
-//     console.log(e)
-//     const results = ''
-//     return {
-//       props: {
-//         results,
-//         query,
-//         },
-//       };
-//     }
-
-//   } else {
-//     console.log('Found it')
-//     const results = d;
-//     return {
-//       props: {
-//         results,
-//         query,
-//       },
-//   }
-//   }
-// }
-// }
 export async function getServerSideProps(context) {
   let query;
   if (context.query.q == undefined | context.query.q == ''){
@@ -165,17 +97,6 @@ export async function getServerSideProps(context) {
 
 export default function Rank({ results, query }) {
   const router = useRouter();
-
-  if (router.isFallback) {
-    return <div>Loading...</div>;
-  }
-  const sortedResults = results.cards.sort((a, b) => a.rank - b.rank);
-
-  if (results) {
-    console.log(results)
-    const sortedResults = results.cards.sort((a, b) => a.rank - b.rank);
-    console.log(sortedResults)
-  }
  
   return ( 
     <div className='ranking-container'>
@@ -201,7 +122,7 @@ export default function Rank({ results, query }) {
             <h1 className='ranking-header'>{query}</h1>
             <div className='rank-grid-container'>
                   <div className='rank-grid'>
-                    {sortedResults.map((product, i) => (
+                    {results.cards.sort((a, b) => a.rank - b.rank).map((product, i) => (
                       <Link href={`product/${product.id}`} key={product.id}>
                       <Ranking products={product} productid={product.id} />
                       </Link>
