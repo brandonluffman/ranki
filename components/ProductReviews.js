@@ -68,7 +68,7 @@ const ProductReviews = ({prod}) => {
                {/* <h2 className='product-reviews-pros-header'>What the reviews are saying</h2> */}
            <div className='product-reviews-pro-con'>
                <div className='product-review-pros'>
-                    {sentiment.map((review, index) => {
+                    {sentiment.slice(0,5).map((review, index) => {
                         
                         const key = Object.keys(review)[0];
                         const value = Object.values(review)[0];
@@ -84,7 +84,9 @@ const ProductReviews = ({prod}) => {
                         </div>
                         )
                     )})}
-                     {sentiment.map((review, index) => {
+                    </div>
+                    <div className='product-review-cons'>
+                     {sentiment.slice(0,5).map((review, index) => {
                         
                         const key = Object.keys(review)[0];
                         const value = Object.values(review)[0];

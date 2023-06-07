@@ -269,7 +269,7 @@
 
 .product-reviews-pro-con {
     display: flex;
-    justify-content: center;
+    justify-content: space-around;
     width:100%;
     text-align: center;
     margin-bottom:2rem;

@@ -76,7 +76,8 @@ export default function Home({products, searches}) {
        <div className='landing-container'>
          <div className='landing-div'>
           <div className='landing-flexer'>
-            <h1 className='landing-header'><span className='lighter'>RANKI</span> AI</h1>
+            <img src='/RankiAI.png' width='600'></img>
+            {/* <h1 className='landing-header'><span className='lighter'>RANKI</span> AI</h1> */}
             </div>
               <Form />  
         </div>
