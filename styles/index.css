@@ -193,13 +193,14 @@
     background-color: rgba(0,0,0,.05);
 }
 
-.input-suggestion-div > img {
+.product-suggestion-img {
+    max-width:30px;
+    max-height:30px;
     border-radius: 20px;
     margin-right: 1rem;
-    max-height: 50px;
 }
 .query-suggestion {
-    padding-left: 5.35rem !important;
+    padding-left: 4.1rem !important;
 }
 @media (max-width: 1500px) {
     .landing-contain {

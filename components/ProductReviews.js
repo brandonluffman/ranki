@@ -74,7 +74,7 @@ const ProductReviews = ({prod}) => {
                         const value = Object.values(review)[0];
                         const value2 = Object.values(review)[1];
                         const value3 = Object.values(review)[2];
-                        console.log(index)
+                        
                         // console.log(value2)
                         return (
                         value2 == searchText && (
@@ -92,7 +92,7 @@ const ProductReviews = ({prod}) => {
                         const value = Object.values(review)[0];
                         const value2 = Object.values(review)[1];
                         const value3 = Object.values(review)[2];
-                        console.log(index)
+                   
                         // console.log(value2)
                         return (
                         value2 != searchText && (

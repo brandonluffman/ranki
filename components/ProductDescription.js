@@ -5,19 +5,23 @@ import ProductReviews from './ProductReviews'
 import ProductMentions from './ProductMentions'
 
 const ProductDescription = (product) => {
-    const [isActive, setActive] = useState(false);
+    const [maxHeight, setMaxHeight] = useState('5.3rem');
+    const [active, setActive] = useState(false);
+
+    const handleClick = () => {
+      if (maxHeight === '5.3rem') {
+        setMaxHeight('100%');
+        setActive(true)
+      } else {
+        setMaxHeight('5.3rem');
+        setActive(false)
+      }
+    };
     const prod = product.product
     const buying_options = product.product.buying_options
-    // const reviews = product.product.reviews
+    const reviews = product.product.reviews
     const product_specs = prod.product_specs
 
-    const toggleClass = () => {
-    setActive(!isActive);
-    };
-
-    // console.log(prod)
-
-    // console.log(product_specs.length != 0)
   return (
     <div className='product-desc-container'>
          <div className='product-desc-top-container'>
@@ -52,14 +56,15 @@ const ProductDescription = (product) => {
                             </div> 
                          </div> */}
                     </div>
-                    <h3 className='product-desc-description'>{prod.product_description}</h3>
+                    <h3 className='product-desc-description' style={{ maxHeight: maxHeight }}>{prod.product_description}</h3>
+                    {active? (<button onClick={handleClick} className='more-desc-btn' type='button'>Less</button>):(<button onClick={handleClick} className='more-desc-btn' type='button'>More</button>)}
                     <div className='product-desc-pricing'>
-                        {/* {buying_options.map((buying_option, i) => (
+                    {buying_options && buying_options.map((buying_option, i) => (
                             <Link className='product-desc-price' href={buying_option} target='_blank' rel='noreferrer' key={i}>
                             <img src='/zon.png' width='30'></img>
                             <p>$150</p>
                             </Link>
-                        ))} */}
+                        ))}
                     </div>
                     </div>
                       {/* <div className='product-desc-specs'>

@@ -31,10 +31,12 @@
 
 .nav-link {
     text-decoration: none;
-    font-size: 1.2rem;
+    font-size: 1.5rem;
     text-align: left;
     display: flex;
     align-items: center;
+    transition: 0.2 ease-in-out all !important;
+
 }
 .nav-logo-link {
     width:fit-content;
@@ -210,7 +212,7 @@
 }
 .no-flexer {
     display: grid;
-    margin-top:-16rem;
+    margin-top:-12rem;
     padding:0rem 1rem;
 
 }
@@ -270,9 +272,14 @@
     color: #ffffff !important;
     fill: white !important;
     margin-right:1rem;
+    transition: 0.2 ease-in-out all;
 }
 .nav-icon-img {
-    margin-right:0.65rem;
+    margin-right:1rem;
+}
+
+.nav-link:hover {
+    transform: translateY(-5px);
 }
 
 .extension-div {

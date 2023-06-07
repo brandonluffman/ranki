@@ -23,6 +23,20 @@
 .product-desc-description {
     font-weight: 400;
     font-size:0.9rem;
+    text-overflow: ellipsis; /* Add ellipsis to indicate hidden content */
+    overflow: hidden;
+    transition: 0.3s ease all;
+}
+
+.more-desc-btn {
+    background-color: transparent;
+    color:lightblue;
+    outline: none;
+    border: none;
+    font-size: 1.1rem;
+    cursor: pointer;
+    margin-top:0.5rem;
+    margin-left:-0.3rem;
 }
 
 .product-desc-top-cont {

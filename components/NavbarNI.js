@@ -54,9 +54,7 @@ const NavbarNI = () => {
         </div>
          <div className={`nav-menu-toggle ${hamburgerClass}`}>
           <div className='no-flexer'>
-            <h2 className='hamburger-header'><img src='/RankiAI.png' width='200'></img></h2>
-
-              {/* RANKI <span className='ham-color'>AI</span></h2> */}
+            <h2 className='hamburger-header'><img src='/RankiAI.png' width='300'></img></h2>
             <Link className='nav-link' href='/'><BiHomeAlt2 className='nav-icon'/> Home</Link>
             <Link className='nav-link' href='/home'><img src='/ranki.png' width='25' className='nav-icon nav-icon-img'></img> Beta</Link>
             <Link className='nav-link' href='/about'><BsCode className='nav-icon'/> About</Link>

@@ -21,9 +21,9 @@
     margin-bottom:2rem;
     padding:0rem 2rem;
     border-radius: 40px;
-    border:1px solid white;
+    border:1px solid rgb(150, 150, 150);
     padding-top:2rem;
-    background-color: rgba(9, 22, 55, 0.3);
+    background-color: #191c29;
     width:30%;
 }
 .mention-rank-title {

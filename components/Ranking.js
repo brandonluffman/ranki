@@ -58,7 +58,7 @@ const Ranking = ({products}) => {
         </div>
     </div>
     <div className='pricing'>
-    {/* {products.buying_options.slice(0,3).map((buying_option, key) => (
+    {buying_options && (buying_options.slice(0,3).map((buying_option, key) => (
         <div className='flip-card' key={key}>
             <div className='flip-card-inner'>
                 <div className='flip-card-front'>
@@ -69,12 +69,12 @@ const Ranking = ({products}) => {
              </div>
              </div>
         </div>   
-    ))}
+    )))}
     {buying_options.length > 3 ? (
         <div className='buying_options_more_link'>{(buying_options.length)-3}+</div>):(
             <div></div>
         )
-    } */}
+    }
     </div>     
 </div> 
   )

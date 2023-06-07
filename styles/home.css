@@ -36,12 +36,13 @@
     text-align: left;
     z-index:999999 !important;
     padding-bottom:4rem;
+    letter-spacing: -.2vw;
 }
 .home-landing-p {
     display: none;
 }
 .home-landing-image {
-    width:25%;
+    width:30%;
     border-radius: 20px;
     box-shadow:1px 4px 20px rgba(255, 255, 255, .2);
     z-index: -1;
@@ -50,7 +51,7 @@
     position:absolute;
     text-align: center;
     justify-content: center;
-    right:-400px;
+    right:-300px;
     z-index: -1;
 
 }
