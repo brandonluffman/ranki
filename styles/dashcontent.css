@@ -1,0 +1,48 @@
+.dashboard-content-container {
+    position: relative;
+}
+.dash-content-grid-item {
+    /* border:1px solid white; */
+    padding:1rem;
+    text-align: left;
+    box-shadow: 1px 1px 8px rgba(255,255,255,0.2);
+    border-radius:10px;
+    margin:1rem 0rem;
+    transition: 0.2s ease all;
+}
+
+.dash-content-grid-item:hover {
+    transform: scale(1.01);
+    cursor: pointer;
+}
+.dash-content-header {
+    margin-bottom: 2rem;
+}
+.dash-content-grid {
+   
+}
+.content-item-header {
+    width: 1;
+}
+
+.add-content-container {
+    position: absolute;
+    top:0;
+    right:50px;
+    background-color: transparent;
+    border:none;
+    color: white;
+    font-size: 2rem;
+    border-radius: 10px;
+    box-shadow: 1px 1px 8px rgba(255,255,255,0.2);
+    padding:0.6rem 0.75rem 0.2rem 0.75rem;
+    margin:0;
+    cursor: pointer;
+    transition: 0.2s ease all;
+
+}
+.add-content-container:hover {
+    transform: scale(1.01);
+    box-shadow: 1px 1px 14px rgba(255,255,255,0.2);
+
+}

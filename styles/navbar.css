@@ -1,0 +1,162 @@
+.navbar {
+    display: flex;
+    /* justify-content: space-around; */
+    /* box-shadow:1px 5px 12px rgba(200,200,200,0.3); */
+    width: 100%;
+    align-items: center;
+    position: fixed;
+    text-transform: uppercase;
+    top: 0;
+    color:white;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    z-index:999999;
+    padding:1rem 1rem;
+    transition:0.2s ease-in-out all;
+}
+.scrolled {
+    background-color: #08121b;
+    padding:0.5rem 0rem;
+    box-shadow:1px 5px 12px rgba(200,200,200,0.3);
+}
+
+
+.nav-logo {
+    width:150px;
+}
+
+.nav-logo-link {
+    display: flex;
+    align-items: center;
+    justify-content: left !important;
+}
+
+.chatbot-logo {
+    width:8%;
+    margin-right:-1rem;
+}
+
+
+.hamburger-menu {
+    background-color: transparent;
+    outline: none;
+    border:none;
+    margin-right:2rem;
+    color:white;
+    font-size: 2rem;
+    cursor:pointer;
+    z-index:999999 !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right:2rem;
+    margin-left:2rem;
+}
+
+.nav-menu-toggle {
+    transform: translateX(400px);
+    position: absolute;
+    right:0;
+    top:0;
+    height:50vh;
+    width:25vw;
+    transition:0.2s ease-in-out all;
+    padding:0rem 1rem;
+
+    padding-top:100px;
+    background-color: #08121b;
+
+}
+
+.nav-menu-toggled {
+    transform: translateX(0px);
+    height:100vh;
+    width:50vw;
+    position: absolute;
+    right:0;
+    top:0;
+    padding:0rem 1rem;
+
+    padding-top:100px;
+    background-color: #08121b;
+    display: flex;
+
+}
+.mobile-nav-link-container {
+    display:block;
+}
+
+.hamburger-header {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 2rem;
+}
+
+.no-flexer {
+    width: 100%;
+}
+.nav-link {
+    display: flex;
+    /* margin:1rem 0rem; */
+    align-items: center;
+    justify-content: left;
+    text-align: left;
+    font-size: 1.5rem;
+    transition: 0.2s ease all;
+    margin: 1rem 0rem;
+}
+
+.nav-link:hover {
+    color:rgba(225, 225, 225, 0.3);
+}
+
+.nav-icon {
+    width:70px;
+    font-size: 1.5rem;
+}
+
+.nav-img {
+    width:45%;
+}
+
+.nav-link > svg > path {
+    stroke:white;
+}
+.nav-icon {
+    color: white;
+}
+
+
+.nav-link-btn {
+    min-width: 150px;
+    margin: 0rem 1rem;
+}
+
+.desktop-nav-link {
+    margin:0;
+}
+
+.profile-circle {
+    /* border:2px solid black; */
+    background-color: rgb(36, 107, 238);
+    box-shadow: 1px 3px 8px rgba(0, 0, 0, 0.2);
+    padding:0.5rem 0.9rem;
+    border-radius: 50%;
+    /* width:1rem;
+    margin:0 auto; */
+    /* margin-bottom: 0.5rem; */
+    /* margin-right:0.5rem; */
+    position: relative;
+    display: flex;
+    align-items: center;
+    text-align: center;
+}
+
+.profile-circle-letter {
+    font-weight: 700;
+    text-transform: capitalize;
+    margin:0;
+    padding:0;
+    color:white;
+    font-size: 1.5rem;
+}

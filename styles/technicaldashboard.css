@@ -1,0 +1,57 @@
+.technical-dashboard-container {
+    padding:0rem 1rem;
+
+    padding-top:100px;
+    text-align: center;
+}
+
+.tech-dash-img {
+    width: 10%;
+}
+
+.tech-dash-grid {
+    display: grid;
+    grid-template-columns: repeat(2,3fr);
+    margin:4rem 0rem;
+}
+
+.tech-grid-item {
+    position: relative;
+    text-align: center;
+    padding:2rem 1rem;
+    border:1px solid rgba(255, 255, 255, 0.186);
+}
+
+.tech-grid-header {
+    font-size: 1rem;
+}
+
+.tech-grid-number {
+    font-size: 1rem;
+}
+
+
+.tech-dash-header {
+    font-weight: 500;
+}
+
+.sub-dash-back {
+    position: relative;
+    text-align: left;
+    display: flex;
+}
+
+.tech-dash-back {
+    display: flex;
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+.tech-dash-arrow {
+    margin-right: 1rem;
+}
+
+
+.tech-dash-btn {
+    margin: 2rem 0rem;
+}
+
