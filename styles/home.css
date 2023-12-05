@@ -1,4 +1,5 @@
 .home-landing {
+<<<<<<< HEAD
     height:700px;
     display: flex;
     text-align: center;
@@ -20,20 +21,40 @@
 .home-landing-gradient {
     border-bottom-right-radius: 150% 150%;
     border-top-right-radius:0%;
+=======
+    height:100vh;
+    display: flex;
+    text-align: center;
+    align-items: center;
+    margin-top:-140px;
+    justify-content: left;
+    padding:0rem 0rem;
+    z-index:99;
+
+}
+.home-landing-gradient {
+    border-bottom-right-radius: 80% 80%;
+ 
+
+>>>>>>> origin/main
         background-color: #9ab2d7;
         width:100%;
         height:60%;
         position:absolute;
         z-index:-1;
         top:0;
+<<<<<<< HEAD
         animation: breathingEffect 3s ease-in-out infinite;
 
+=======
+>>>>>>> origin/main
 }
 .home-landing-beta-btn {
     margin-bottom:1rem;
 }
 .home-landing-extension-div {
     display: flex;
+<<<<<<< HEAD
     width: 100%;
     justify-content: center;
 }
@@ -73,10 +94,35 @@
     right:400px;
     z-index:-1;
 }
+=======
+}
+.home-landing-text-container {
+    padding-left:3rem;
+}
+.home-landing-header {
+    font-size:4.5rem;
+    text-align: capitalize;
+    width:70%;
+    text-align: left;
+    z-index:999999 !important;
+    padding-bottom:4rem;
+    letter-spacing: -.2vw;
+}
+.home-landing-p {
+    display: none;
+}
+.home-landing-image {
+    width:30%;
+    border-radius: 20px;
+    box-shadow:1px 4px 20px rgba(255, 255, 255, .2);
+    z-index: -1;
+}
+>>>>>>> origin/main
 .home-landing-img-div {
     position:absolute;
     text-align: center;
     justify-content: center;
+<<<<<<< HEAD
     right:100px;
     z-index: 99;
 
@@ -93,6 +139,14 @@
 
 .home-analyze, .home-sources, .home-prices, .home-join {
     height:700px;
+=======
+    right:-300px;
+    z-index: -1;
+
+}
+.home-analyze, .home-sources, .home-prices, .home-join {
+    height:80vh;
+>>>>>>> origin/main
 }
 .home-join-btns {
     display: flex;
@@ -163,7 +217,11 @@
     margin: 0rem auto 4rem auto; */
 }
 .home-join-header {
+<<<<<<< HEAD
     font-size:3.5rem;
+=======
+    font-size:2.5rem;
+>>>>>>> origin/main
     margin-bottom:3rem;
 }
 
@@ -176,13 +234,18 @@
 .home-join-extension-btn {
     background-color: white;
     border-radius: 20px;
+<<<<<<< HEAD
     padding:0.8rem 1.5rem;
+=======
+    padding:0.4rem 1.2rem;
+>>>>>>> origin/main
     display: flex;
     align-items: center;
     font-size:1.4rem;
     font-weight:500;
     border:none;
     /* margin-left:1rem; */
+<<<<<<< HEAD
     transition:0.2s ease all;
 
 } 
@@ -190,6 +253,10 @@
 .home-btn {
     margin:0rem 1rem;
 }
+=======
+
+} 
+>>>>>>> origin/main
 .home-join-beta-div {
     justify-content: center;
     display: flex;
@@ -198,8 +265,11 @@
 }
 .home-join-extension-btn:hover {
     cursor: pointer;
+<<<<<<< HEAD
     background-color: black;
     color:white;
+=======
+>>>>>>> origin/main
 }
 
 .home-join-extension-btn > img {
@@ -208,7 +278,11 @@
 .home-join-btn {
     background-color: transparent;
     border-radius: 40px;
+<<<<<<< HEAD
     padding:0.8rem 1.5rem;
+=======
+    padding:0.4rem 1.2rem;
+>>>>>>> origin/main
     display: flex;
     align-items: center;
     font-size:1.5rem;
@@ -318,6 +392,7 @@
 .source-pcmag{
     width:90px;
 }
+<<<<<<< HEAD
 
 
 
@@ -466,6 +541,8 @@
 }
 
 
+=======
+>>>>>>> origin/main
 @media (max-width: 600px) {
     .home-landing-img-div {
         display: none;

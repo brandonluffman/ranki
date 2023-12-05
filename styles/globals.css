@@ -14,8 +14,12 @@ body {
     margin:0;
     background-color: #08121b;
     color:white;
+<<<<<<< HEAD
     /* padding-top:140px; */
     letter-spacing: -0.05vw;
+=======
+    padding-top:140px;
+>>>>>>> origin/main
 }
 a {
     color:inherit;
@@ -24,6 +28,7 @@ a {
 h1, h2, h3, h4, h5, h6, p {
     margin:0;
 }
+<<<<<<< HEAD
 h1 {
     font-size: 4rem;
 }
@@ -138,6 +143,8 @@ p {
     border:4px solid rgb(0, 0, 0);
     color:rgb(255, 255, 255);
 }
+=======
+>>>>>>> origin/main
 
 @media (max-width: 500px) {
     body {
