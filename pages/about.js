@@ -30,7 +30,6 @@ export default function About() {
           {/* <h1 className='about-header'>RANKI AI</h1> */}
           <img src='/R.png' alt='Brand Logo' width='600' className='about-logo'></img>
           </div>
-<<<<<<< HEAD
           <h2 className='landing-subheader'><span className='header-color'>All-In-One</span> Website Tool</h2>
         </div>
       </div>
@@ -49,24 +48,6 @@ export default function About() {
         </div>
         <div className='home-about-content-img'>
         <img src='/dashboard.png' className='home-about-img' alt='Product Search'></img>
-=======
-          <h2 className='landing-subheader'><span className='header-color'>Automated</span> Product Research</h2>
-        </div>
-      </div>
-      {/* <div className='centered'>
-      <video src='/about.mp4' width="900" height="500" controls="none" autoplay="true" />
-      </div> */}
-
-      <div className='home-about-container'>
-        {/* <h2 className='home-about-header' id='about'>RANKI AI</h2> */}
-        <div className='home-about-content'>
-        <div className='home-about-content-text'>
-        <h3 className='home-about-subheader'>Our <span className='header-color'>Mission</span></h3>
-        <p className='home-about-p'>In recent years, we have noticed frustration from customers who are looking for the best products but frequently find themselves lost due to companies such as Google and Amazon prioritizing their profits over the needs of their users and pushing inadequate products. When you&apos;re shopping online, you want to be able to find the right product, easily and efficiently. But with so many options and so little time, it&apos;s hard to know what you&apos;re getting. That&apos;s why we created RANKI, a tool that lets you search for products based on your personal preferences and needs—and then tells you what other people like you have liked or disliked about those products. RANKI will help you find products that fit your unique tastes and desires, so that every time you shop online, it&apos;s an experience that feels tailored just for you.</p>
-        </div>
-        <div className='home-about-content-img'>
-        <img src='/prod_search.webp' className='home-about-img' alt='Product Search'></img>
->>>>>>> origin/main
         </div>
         </div>
         <div className='home-about-content content-flip'>
@@ -79,12 +60,7 @@ export default function About() {
         </div>
         </div>
       </div>
-<<<<<<< HEAD
       {/* <div className='home-team-container'>
-=======
-      {/* <h6 className='home-about-suberheader'>Whether you&apos;re looking for a gift for a friend or trying to find the perfect outfit for your first date, we&apos;re here for you. 🤝</h6> */}
-      <div className='home-team-container'>
->>>>>>> origin/main
           <h3 className='home-team-header'>Meet the Team</h3>
           <div className='home-team-profiles'>
           <div className='home-team-profile brandon-profile'>
@@ -104,11 +80,7 @@ export default function About() {
               </div>
             </div>
           </div>
-<<<<<<< HEAD
       </div> */}
-=======
-      </div>
->>>>>>> origin/main
       <Footer />
     </>
   )

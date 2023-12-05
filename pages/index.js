@@ -5,13 +5,8 @@ import Link from 'next/link'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {  faFacebookF, faInstagram, faLinkedinIn, faTwitter } from '@fortawesome/free-brands-svg-icons';
 import {GoVerified} from 'react-icons/go'
-<<<<<<< HEAD
 import Head from 'next/head'
 import { FaEquals } from "react-icons/fa";
-=======
-import BuyingOption from '../components/BuyingOption'
-import Head from 'next/head'
->>>>>>> origin/main
 
 export default function Home(){
   return (
@@ -30,7 +25,6 @@ export default function Home(){
         <div className='home-landing'>
           <div className='home-landing-gradient'></div>
           <div className='home-landing-text-container'>
-<<<<<<< HEAD
             {/* <img className='home-landing-img' src='/rocket.png'></img> */}
           <h1 className='home-landing-header'>Outrank Your Competition</h1>
             <p className='home-landing-p'>Elevate your website & skyrocket your SEO with our all-in-one Web Tool</p>
@@ -103,28 +97,6 @@ export default function Home(){
     </div>
      
         {/* <div className='home-sources gloss'>
-=======
-          <h1 className='home-landing-header'>Stop Spending Hours Comparing Products</h1>
-            <p className='home-landing-p'>Automate your product research capabilities with our state of the art AI models that are trained to scour the internet and find the best products for your needs.</p>
-
-            <Link href='/home'><button className='home-join-btn home-landing-beta-btn'><img src='/ranki.png' width='30'></img>Try the Beta</button></Link>
-            <div className='home-landing-extension-div'>
-            <Link href='/'><button className='home-join-extension-btn'><img src='/chrome.png' width='25'></img>Download on Chrome</button></Link>
-          </div>
-
-          </div>
-          <div className='home-landing-img-div'>
-            <img src='/ranks.png' className='home-landing-image'></img>
-            </div>
-        </div>
-        {/* <div className='home-analyze'>
-          <h2 className='home-analyze-header'>Analyze All Customer Opinions in Seconds</h2>
-          <div className='home-prices'>
-          <h2 className='home-prices-header'>Compare All Product Prices From Verified Sellers <GoVerified className='verified-icon' /> Updated Hourly</h2>
-          </div>
-        </div> */}
-        <div className='home-sources gloss'>
->>>>>>> origin/main
           <h2>From The Sources You Trust 🤝</h2>
           <div className='home-sources-logos'>
           <img src='/cnet.png' className='home-source source-cnet'></img>
@@ -137,10 +109,6 @@ export default function Home(){
         </div>
         <div className='home-join'>
           <h2 className='home-join-header'>Start Saving <i>Money</i> & <i>Time</i> with <span className='header-color'>RankiAI</span> 💸</h2>
-<<<<<<< HEAD
-=======
-          {/* <p className='home-join-p'>Automate your product research capabilities with our state of the art AI models that are trained to scour the internet and find the best products for your needs.</p> */}
->>>>>>> origin/main
           <div className='home-join-btns'>
           <div className='home-join-extension-div'>
             <button className='home-join-extension-btn'><img src='/chrome.png' width='25'></img>Download on Chrome</button>
@@ -149,14 +117,7 @@ export default function Home(){
           <Link href='/home'><button className='home-join-btn'><img src='/ranki.png' width='30'></img>Try the Beta</button></Link>
           </div>
           </div>
-<<<<<<< HEAD
         </div> */}
-=======
-          {/* <Link href='https://twitter.com/ranki_ai' target='_blank' rel='no-referrer' ><FontAwesomeIcon className="fa-brands fa-twitter social-icon" icon={faTwitter} alt='Social Icon' /></Link>
-                <Link href='https://instagram.com/ranki.ai' target='_blank' rel='no-referrer' ><FontAwesomeIcon className="fa-brands fa-instagram social-icon" icon={faInstagram} alt='Social Icon' /></Link>
-                <Link href='https://www.linkedin.com/company/rankiai/' target='_blank' rel='no-referrer' ><FontAwesomeIcon className="fa-brands fa-linkedin social-icon" icon={faLinkedinIn} alt='Social Icon' /></Link> */}
-        </div>
->>>>>>> origin/main
         <Footer />
     </div>
   )
