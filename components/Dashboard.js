@@ -16,7 +16,8 @@ import AppDashAnalytics from './AppDashAnalytics';
 import GMBDash from './GMBDash';
 import Breadcrumbs from './Breadcrumbs';
 import { UserContext } from '../context/UserContext';
-
+import appOptions from '../data/appOptions'
+import IntegrateDropdown from './IntegrateDropdown'
 
 
 const Dashboard = ({slugId}) => {
@@ -25,12 +26,8 @@ const Dashboard = ({slugId}) => {
     const [app, setApp] = useState(null);
     const [selectedValue, setSelectedValue] = useState('');
     const [selectedDomain, setSelectedDomain] = useState('');
-    const [integratedApps, setIntegratedApps] = useState([
-      // Initialize with any existing apps
-      // { url: '...', imgSrc: '...' },
-    ]);
+    const [integratedApps, setIntegratedApps] = useState([]);
     const [appName, setAppName] = useState('');
-
     const [seo, setSEO] = useState(null);
     const [score, setScore] = useState(null); // Example score
     const [score2, setScore2] = useState(null); // Example score
@@ -39,47 +36,14 @@ const Dashboard = ({slugId}) => {
     const [appIntegrate, setAppIntegrate] = useState(false);
     const { user, login, logout } = useContext(UserContext);
     const formRef = useRef(null);
-    const appOptions = [
-      {
-        name: "Vercel",
-        imgSrc: "/vercel.png" // Replace with the actual path to your image
-      },
-      {
-        name: "Proton",
-        imgSrc: "/proton.png" // Replace with the actual path to your image
-      },
-      {
-        name: "Google",
-        imgSrc: "/google.png" // Replace with the actual path to your image
-      },
-      {
-        name: "Namecheap",
-        imgSrc: "/namecheap.png" // Replace with the actual path to your image
-      },
-      {
-        name: "Supabase",
-        imgSrc: "/supabase.png" // Replace with the actual path to your image
-      },
-      {
-        name: "Stripe",
-        imgSrc: "/stripe.png" // Replace with the actual path to your image
-      },
-      {
-        name: "Github",
-        imgSrc: "/github.png" // Replace with the actual path to your image
-      },
-      {
-        name: "Google Analytics",
-        imgSrc: "/google-analytics.png" // Replace with the actual path to your image
-      },
-      {
-        name: "Heroku",
-        imgSrc: "/heroku.png" // Replace with the actual path to your image
-      },
-    ];
+    const domain = app ? 'https://' + app.domain: null;
 
 
-     const domain = app ? 'https://' + app.domain: null;
+
+
+
+
+
 
     const toggleSide = () => {
       setEditingApp(prevState => !prevState);
@@ -98,92 +62,117 @@ const Dashboard = ({slugId}) => {
 
     const toggleAppIntegrate = () => {
       setAppIntegrate(prevState => !prevState);
-
     }
- 
-    const handleSubmit = async (event) => {
-      const actualSlug = slug ? slug : null;
 
-      event.preventDefault();
-      const appName = selectedValue; // The name of the selected app
-      const appUrl = formRef.current.url.value; // The URL entered by the user
-      
-      // Find the selected app in appOptions to get its imgSrc
-      const selectedApp = appOptions.find(app => app.name === appName);
-      const imgSrc = selectedApp ? selectedApp.imgSrc : '/path-to-default-image.png';
-    
-      // Construct the new app object
-      const newApp = {
-        name: appName,
-        url: appUrl,
-        imgSrc: imgSrc // Use the imgSrc from the selected app
-      };
-    
-      // Add the new app to the integratedApps state
-      setIntegratedApps(currentApps => [...currentApps, newApp]);
-      
-      // Update the apps table in Supabase
-      const { data, error } = await supabase
-        .from('apps')
-        .update({ integrated_apps: [...integratedApps, newApp] }) // Assuming 'integrated_apps' is your new column
-        .eq('id', actualSlug); // Use the appropriate identifier for the app
-      
-      localStorage.setItem('integratedApps', JSON.stringify([...integratedApps, newApp]));
-
-      if (error) {
-        console.error('Error updating app:', error);
-      }
-    };
-    
-    
     const handleUpdate = (event) => {
       setSelectedValue(event.target.value);
     }; 
+ 
+
+
+    
+   
+
+
+
+
+
 
     useEffect(() => {
-      const actualSlug = slug ? slug : null;
-      const savedApps = localStorage.getItem('integratedApps');
-      if (savedApps) {
-          setIntegratedApps(JSON.parse(savedApps));
-      }
+      const actualSlug = slug || slugId;
       if (actualSlug) {
-          supabase
-              .from('apps') // Replace 'apps' with your table name
-              .select('*') // Select the columns you need
-              .eq('id', actualSlug) // Replace 'slug' with the column you are matching against
-              .single() // Assuming each slug uniquely identifies an app
-              .then(({ data, error }) => {
-                  if (error) {
-                      console.error('Error fetching app:', error);
-                  } else {
-                      setApp(data);
-                  }
-              });
-      }
-      const fetchAppName = async () => {
-        const actualSlug = slug ? slug : null;
+          // Fetch the specific app details
+          fetchAppName(actualSlug);
 
+          // Fetch integrated apps for this specific app
+          fetchIntegratedApps(actualSlug);
+      }
+  }, [slug, slugId]);
+
+  const fetchAppName = async (appSlug) => {
+    const cachedApp = localStorage.getItem(`appDetails_${appSlug}`);
+    if (cachedApp) {
+      console.log('Found the cached app')
+        setApp(JSON.parse(cachedApp));
+    } else {
         try {
-            let { data, error, status } = await supabase
-                .from('apps') // Replace with your table name
-                .select('name') // Replace 'name' with the field that contains the app name
-                .eq('id', actualSlug) // Replace 'id' with the field that contains the slug or ID
+            const { data, error } = await supabase
+                .from('apps')
+                .select('*')
+                .eq('id', appSlug)
                 .single();
 
-            if (error && status !== 406) {
-                throw error;
-            }
-
-            if (data) {
-                setAppName(data.name); // Replace 'name' with the key that contains the app name
-            }
+            if (error) throw error;
+            setApp(data);
+            localStorage.setItem(`appDetails_${appSlug}`, JSON.stringify(data));
         } catch (error) {
-            console.error('Error fetching app name:', error);
+            console.error('Error fetching app details:', error);
         }
-    };
+    }
+};
 
-    fetchAppName();
-  }, [slug]);
+const fetchIntegratedApps = async (appSlug) => {
+  const cachedApps = localStorage.getItem(`integratedApps_${appSlug}`);
+  console.log(cachedApps)
+  if (cachedApps) {
+      setIntegratedApps(JSON.parse(cachedApps));
+  } else {
+      try {
+          const { data, error } = await supabase
+              .from('apps')
+              .select('integrated_apps')
+              .eq('id', appSlug);
+          if (error) throw error;
+          setIntegratedApps(data[0].integrated_apps);
+          localStorage.setItem(`integratedApps_${appSlug}`, JSON.stringify(data[0].integrated_apps));
+      } catch (error) {
+          console.error('Error fetching integrated apps:', error);
+      }
+  }
+};
+
+
+
+  const handleSubmit = async (event) => {
+
+    event.preventDefault();
+    const actualSlug = slug || slugId;
+
+    const appName = selectedValue; // The name of the selected app
+    const appUrl = formRef.current.url.value; // The URL entered by the user
+    
+    // Find the selected app in appOptions to get its imgSrc
+    const selectedApp = appOptions.find(app => app.name === appName);
+    const imgSrc = selectedApp ? selectedApp.imgSrc : '/path-to-default-image.png';
+  
+    // Construct the new app object
+    const newApp = {
+      name: appName,
+      url: appUrl,
+      imgSrc: imgSrc // Use the imgSrc from the selected app
+    };
+  
+    // Add the new app to the integratedApps state
+    setIntegratedApps(currentApps => [...currentApps, newApp]);
+    
+    // Update the apps table in Supabase
+    const { data, error } = await supabase
+      .from('apps')
+      .update({ integrated_apps: [...integratedApps, newApp] }) // Assuming 'integrated_apps' is your new column
+      .eq('id', actualSlug); // Use the appropriate identifier for the app
+    
+    localStorage.setItem('integratedApps', JSON.stringify([...integratedApps, newApp]));
+
+    if (error) {
+      console.error('Error updating app:', error);
+    }
+  };
+  
+
+
+
+
+
 
   const deleteApp = async (indexToDelete) => {
     const actualSlug = slug ? slug : null;
@@ -202,9 +191,15 @@ const Dashboard = ({slugId}) => {
 
     if (error) {
         console.error('Error updating app:', error);
-        // Optionally revert the state change or notify the user
     }
 };
+
+
+
+
+
+{app && console.log(app)}
+
 
 
   return (
@@ -244,19 +239,20 @@ const Dashboard = ({slugId}) => {
 
         <div className='appdash-health-tab fancy health-tab-add' onClick={toggleAppIntegrate}><IoMdAdd /></div>
         {appIntegrate && (
-      <div className='app-integrate-container appdash-add-show'>
+      <div className='app-integrate-container'>
                 <button onClick={toggleAppIntegrate} className='side-close'><IoMdClose /></button>
 
         <h3 className='app-integrate-header'>Integrate Your App</h3>
         <form className='app-integrate-form' ref={formRef} onSubmit={handleSubmit}>
-          <div className='login-email-div'>
+          {/* <div className='login-email-div'>
             <select className='integrate-select' value={selectedValue} onChange={handleUpdate}>
               <option value="">Select A Page</option>
               {appOptions.map((page, index) => (
-                <option key={index} value={page.name}><img src={page.imgSrc}></img>{page.name}</option>
+                <option key={index} value={page.name} className='integrate-option'><img src={page.imgSrc}></img>{page.name}</option>
               ))}
             </select>
-          </div>       
+          </div>        */}
+          <IntegrateDropdown options={appOptions} />
           <div className='login-email-div'>
             <input type="text" name="url" placeholder="URL" className='login-input' />
           </div>
@@ -266,7 +262,7 @@ const Dashboard = ({slugId}) => {
     )}
       </div>
 
-      <AppDashAnalytics />
+      {/* <AppDashAnalytics /> */}
  
         {seo ? (
                <div className='dashboard-grid seo-dash-grid'>
@@ -304,8 +300,8 @@ const Dashboard = ({slugId}) => {
           </div>
               <div className='analytics-integrate-fixed'>
             <div className='anti-flexer'>
-          <h2 className='seo-integrate-header'>SEO has not been configured for your site, get started by testing your site.</h2>
-          <button type='button' className='integrate-btn btn btn-primary'>Test SEO</button>
+          <h2 className='seo-integrate-header'>SEO has not been configured for your site, get started with a test.</h2>
+          {app && <Link href={`/dashboard/seo/${app.id}`}><button type='button' className='integrate-btn btn btn-primary'>Test SEO</button></Link>}
           </div>
           </div>
           {/* <Link href={`/dashboard/technical/${app.id}`}> */}

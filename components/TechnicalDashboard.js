@@ -8,74 +8,122 @@ import { supabase } from '../utils/supabaseClient';
 import { BsArrowLeft } from 'react-icons/bs';
 import Breadcrumbs from './Breadcrumbs';
 
-const TechnicalDashboard = ({ idslug }) => {
+const TechnicalDashboard = ({ slug }) => {
     const [app, setApp] = useState(null);
     const router = useRouter();
-    const { slug } = router.query;
     const score = 100;
 
     const [analysisResult, setAnalysisResult] = useState(null);
     const [isLoading, setIsLoading] = useState(false);
 
-    useEffect(() => {
-        const actualSlug = slug || null;
-        if (actualSlug) {
-            supabase
-                .from('apps')
-                .select('*')
-                .eq('id', actualSlug)
-                .single()
-                .then(({ data, error }) => {
-                    if (error) {
-                        console.error('Error fetching app:', error);
-                    } else {
-                        setApp(data);
-                    }
-                });
-        }
-    }, [slug]);
+    // useEffect(() => {
+    //     const fetchApp = async () => {
+    //         setIsLoading(true);
+    //         try {
+    //             const { data, error } = await supabase
+    //                 .from('apps')
+    //                 .select('*')
+    //                 .eq('id', slug)
+    //                 .single();
 
-    const fetchData = async () => {
-        if (app && app.domain) {
-            const url = app.domain;
+    //             if (error) throw error;
+    //             setApp(data);
+    //         } catch (error) {
+    //             console.error('Error fetching app:', error);
+    //         } finally {
+    //             setIsLoading(false);
+    //         }
+    //     };
+
+    //     if (slug) {
+    //         fetchApp();
+    //     }
+    // }, [slug]);
+    useEffect(() => {
+        const fetchApp = async () => {
             setIsLoading(true);
             try {
-                const response = await axios.get(`http://127.0.0.1:8000/technicalseo/${encodeURIComponent(url)}`);
-                setAnalysisResult(response.data);
+                const { data, error } = await supabase
+                    .from('apps')
+                    .select('*')
+                    .eq('id', slug)
+                    .single();
+    
+                if (error) throw error;
+                setApp(data);
+                if (data && data.technical_analysis) {
+                    setAnalysisResult(data.technical_analysis);
+                }
             } catch (error) {
-                console.error('Error fetching data: ', error);
-                setAnalysisResult(null);
+                console.error('Error fetching app:', error);
+            } finally {
+                setIsLoading(false);
             }
-            setIsLoading(false);
+        };
+    
+        if (slug) {
+            fetchApp();
         }
-    };
+    }, [slug]);
+    
+
+    const saveAnalysisToDB = async (result) => {
+        if (!app || !app.id) return;
+      
+        try {
+          const { error } = await supabase
+            .from('apps') // Assuming 'apps' is the table name
+            .update({
+              // Add or update a column, e.g., 'seo_analysis', with the result
+              technical_analysis: result, 
+              technical_last_tested: new Date().toISOString() // Update last tested date
+            })
+            .match({ id: slug }); // Match the app by its ID
+      
+          if (error) throw error;
+        } catch (error) {
+          console.error('Error saving analysis result to DB:', error);
+        }
+      };
+      
+
+      const fetchData = async () => {
+        if (!app || !app.domain) return;
+        const domain = app.domain; // Example domain
+        const apiUrl = `http://127.0.0.1:8000/technicalseo?url=${encodeURIComponent(domain)}`;
+        const cachedResult = localStorage.getItem(`analysisResult_${app.id}`);
+        if (cachedResult) {
+          setAnalysisResult(JSON.parse(cachedResult));
+        } else {
+          setIsLoading(true);
+          console.log(app.domain)
+          try {
+            const response = await axios.get(apiUrl);
+            setAnalysisResult(response.data);
+            localStorage.setItem(`analysisResult_${app.id}`, JSON.stringify(response.data)); // Save to local storage
+            saveAnalysisToDB(response.data); // Save to database
+          } catch (error) {
+            console.error('Error fetching data:', error);
+            setAnalysisResult(null);
+          } finally {
+            setIsLoading(false);
+          }
+        }
+      };
 
     return (
         <div className='technical-dashboard-container'>
-            {/* {app && <Link href={`/dashboard/${app.id}`} className='tech-dash-back'><BsArrowLeft className='tech-dash-arrow'/> Back to the {app.name} Dashboard</Link>} */}
-            <Breadcrumbs />
-
-            {app && (
-                <div>
-                    <h1 className='tech-dash-header'>Technical SEO for <b>{app.name}</b></h1>
-                    <GaugeChartComponent id="gauge-chart1" percent={score} width="300px" />
-                    <button type='button' className='btn btn-primary tech-dash-btn' onClick={fetchData}>Test Now</button>
-                    <p className='tech-dash-last-p'><b>Last Tested:</b> Aug 4th, 2023</p>
-                    {analysisResult && <ControlBoard analysisResult={analysisResult} />} {/* Corrected the prop name */}
-                    <div>
-                        {isLoading ? (
-                            <p>Loading...</p>
-                        ) : (
-                            analysisResult && (
-                                <div>
-                                    {/* Your results rendering */}
-                                </div>
-                            )
-                        )}
-                    </div>
-                </div>
-            )}
+        <div>
+            {/* <h1 className='tech-dash-header'>Technical SEO</h1> */}
+            <GaugeChartComponent id="gauge-chart1" percent={score} width="300px" />
+            <button type='button' className='btn btn-primary tech-dash-btn' onClick={fetchData}>Test Now</button>
+            {app && <p className='tech-dash-last-p'><b>Last Tested:</b> {app.technical_last_tested}</p>}
+            {app && <ControlBoard analysisResult={analysisResult} />}
+            <div>
+                {isLoading ? <p>Loading...</p> : null}
+            </div>
         </div>
+    </div>
     )
 }
 

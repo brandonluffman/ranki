@@ -25,22 +25,33 @@ const AppDash = ({ onRefresh }) => {
       setIsLoading(false);
       return;
     }
-
+  
     setIsLoading(true);
-    try {
-      const { data: apps, error } = await supabase
-        .from('apps')
-        .select('*')
-        .eq('user_id', user.id);
-
-      if (error) throw error;
-      setApps(apps);
-    } catch (error) {
-      console.error("Error fetching apps:", error);
-    } finally {
+    const cachedApps = localStorage.getItem(`userApps_${user.id}`);
+    
+    if (cachedApps) {
+      // If there is cached data, use it
+      setApps(JSON.parse(cachedApps));
       setIsLoading(false);
+    } else {
+      // If there is no cached data, fetch from the API
+      try {
+        const { data: apps, error } = await supabase
+          .from('apps')
+          .select('*')
+          .eq('user_id', user.id);
+  
+        if (error) throw error;
+        setApps(apps);
+        localStorage.setItem(`userApps_${user.id}`, JSON.stringify(apps)); // Cache the fetched data
+      } catch (error) {
+        console.error("Error fetching apps:", error);
+      } finally {
+        setIsLoading(false);
+      }
     }
   };
+  
 
   useEffect(() => {
 
@@ -53,28 +64,6 @@ const AppDash = ({ onRefresh }) => {
     setAddingApp(!addingApp);
   };
 
-// const addApp = async (name, description, domain) => {
-//   if (!user) {
-//     console.error("User not authenticated");
-//     return null;
-//   }
-
-//   try {
-//     const { data, error } = await supabase
-//       .from('apps')
-//       .insert([{ user_id: user.id, name, description, domain }])
-//       .single();
-
-//     if (error) throw error;
-//     console.log(data)
-//     console.log('Made it through add app')
-//     return data;
-//   } catch (error) {
-//     console.log('Caught an error')
-//     console.error("Error adding app:", error);
-//     return null;
-//   }
-// };
 
 const addApp = async (name, description, domain) => {
   if (!user) {
@@ -200,11 +189,11 @@ const deleteApp = async (appId) => {
                     <button type="submit" className='btn btn-primary'>Add App</button>
                 </form>
                 {showAlert && <div className="success-alert">App created successfully!</div>}
-
-                </div>
-              <button onClick={toggleAddForm} className='delete-button close-add-form-button'>
+                <button onClick={toggleAddForm} className='delete-button close-add-form-button'>
                         <IoMdClose />
                       </button>
+                </div>
+           
               </div>
               <h1 className='dashboard-header'>SaaS Dashboard</h1>
 

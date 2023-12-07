@@ -112,6 +112,7 @@
 .dashboard-grid-header {
     font-size: 1.5rem;
     margin-bottom: 0rem;
+    padding-bottom: 2rem;
     font-weight: 800;
     letter-spacing: -0.1vw;
     flex-wrap: wrap;
@@ -445,25 +446,108 @@
 
 
 .app-integrate-container {
-    position: absolute;
+    position: absolute !important;
     background-color: var(--light-blue);
     padding:2rem;
     width: 50%;
     margin:0 auto;
-
+    z-index:999999999 !important;
+    border-radius: 20px;
+    top:30% !important; 
+    left: 50%;
+    transform: translate(-50%, -50%); 
+ 
 }
-
+.appdash-add-show {
+}
 .app-integrate-header {
     margin-bottom: 2rem;
 }
 
-.integrate-select {
+/* .dropdown-container {
     position: relative;
+    background-color:var(--dark-blue);
+    border:none;
+    height:3rem;
+    width:70%;
+    font-size: 1.25rem;
+    margin:0 auto;
+    outline:none;
 }
+.dropdown-list {
+    z-index:9999999999 !important;
 
+}
+.dropdown-list div {
+    background-color: white;
+    color:black;
+   padding:1rem 0rem;
+   z-index:9999999999 !important;
+}
+.dropdown-list div:hover {
+    background-color: rgb(240,240,240);
+    cursor:pointer;
+} */
 .integrated-div:hover  .delete-integrated-btn {
     color:pink;
     display: block;
+}
+
+.dropdown-container {
+    position: relative;
+    width: 75%;
+    margin:0 auto;
+    margin-bottom: 4rem;
+
+}
+
+.dropdown-header {
+    border: 1px solid #ccc;
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+/* .dropdown-list .dropdown-header {
+    border-bottom-left-radius:0px;
+    border-bottom-right-radius: 0px;
+} */
+
+.dropdown-list {
+
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    border: 1px solid #ccc;
+    background: white;
+    color:black;
+    z-index: 10;
+    overflow-y:scroll;
+    max-height:300px;
+    border-radius: 20px;
+}
+
+.dropdown-item {
+    padding: 10px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    font-size: 1.25rem;
+    font-weight: 700;
+    padding:1rem;
+}
+.dropdown-item img {
+    width:40px;
+    margin: 0rem 2rem 0rem 1rem
+}
+
+.dropdown-item:hover {
+    background-color: #f0f0f0;
 }
 
 .delete-integrated-btn {
@@ -490,4 +574,41 @@
 .integrated-div {
     position: relative;
     width: max-content;
+}
+
+
+.dashboard-selector {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 75%;
+    margin: 0 auto;
+    margin-top: 2rem;
+}
+
+.dashboard-selector > button {
+    background-color: transparent;
+    border: none;
+    color:white;
+    /* border-bottom: 1px solid white; */
+    padding:1rem 2rem;
+    transition: 0.1s ease all;
+    font-size: 1.5rem;
+    border-bottom: 1px solid transparent;
+
+}
+
+.dashboard-selector > button:hover {
+    background-color: rgb(40,40,40);
+    cursor: pointer;
+}
+
+
+.seo-dash-header {
+    font-weight: 500;
+}
+
+.border-dash {
+        border-bottom: 1px solid white !important;
+
 }
