@@ -16,7 +16,7 @@ import AppDashAnalytics from './AppDashAnalytics';
 import GMBDash from './GMBDash';
 import Breadcrumbs from './Breadcrumbs';
 import { UserContext } from '../context/UserContext';
-import appOptions from '../data/appOptions'
+import appOptions from '../public/appOptions'
 import IntegrateDropdown from './IntegrateDropdown'
 
 
