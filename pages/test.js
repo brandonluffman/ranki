@@ -1,8 +1,8 @@
 import React, {useState, useEffect} from 'react'
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
-import {supabase} from '../utils/supabaseClient'
-import Test from '../components/Test';
+// import {supabase} from '../utils/supabaseClient'
+// import Test from '../components/Test';
 import GoogleAnalytics from '../components/GoogleAnalytics';
 
 const test = () => {
@@ -13,7 +13,7 @@ const test = () => {
     <>
     <Navbar />
         {/* <Test /> */}
-        <GoogleAnalytics />
+        {/* <GoogleAnalytics /> */}
     <Footer />
 </>
   )
