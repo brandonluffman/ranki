@@ -216,7 +216,7 @@ const deleteApp = async (appId) => {
                 </div>
            
               </div>
-              <h1 className='dashboard-header'>SaaS Dashboard</h1>
+              <h1 className='dashboard-header'>Web Dashboard</h1>
 
               <div className='dashboard-grid appdash-grid'>
               {apps.map((app, index) => ( // index is used only as a fallback
