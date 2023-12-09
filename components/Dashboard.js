@@ -150,11 +150,13 @@ const handleSubmit = async (event) => {
   // Find the selected app in appOptions to get its imgSrc
   const selectedApp = appOptions.find(app => app.name === appName);
   const imgSrc = selectedApp ? selectedApp.imgSrc : '/path-to-default-image.png';
+  const formattedUrl = appUrl.slice(0, 4) !== 'http' ? 'https://' + appUrl : appUrl;
+
 
   // Construct the new app object
   const newApp = {
     name: appName,
-    url: appUrl,
+    url: formattedUrl,
     imgSrc: imgSrc // Use the imgSrc from the selected app
   };
 
