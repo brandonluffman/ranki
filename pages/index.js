@@ -30,7 +30,7 @@ export default function Home(){
             <p className='home-landing-p'>Elevate your website & skyrocket your SEO with our all-in-one Web Tool</p>
             <div className='home-landing-extension-div'>
 
-              <Link href='/appdash'><button className='home-join-btn home-btn'><img src='/chatbot.png' width='30'></img>Try AppDash</button></Link>
+              <Link href='/dashboard'><button className='home-join-btn home-btn'><img src='/chatbot.png' width='30'></img>Try AppDash</button></Link>
               <Link href='/'><button className='home-join-extension-btn home-btn'><img src='/chrome.png' width='25'></img>Download on Chrome</button></Link>
             </div>
 
@@ -72,8 +72,8 @@ export default function Home(){
               <div className='landing-step-line-up'></div>
       <div className='landing-step-number'>2</div>
       <div className='landing-step-line'></div>
-      <h3>Our AI gets to work</h3>
-      <p>We build a custom AI model with your digital likeness.</p>
+      <h3>Integrate your accounts</h3>
+      <p>Customize your dashboard to your liking.</p>
       <img src='/bot.png' className='landing-step-img'></img>
       </div>
       <div className='landing-step step-3'>
@@ -82,7 +82,7 @@ export default function Home(){
       <div className='landing-step-number'>3</div>
       <div className='landing-step-line'></div>
             <h3>Make Adjustments</h3>
-      <p>After analysis, you may notice some fixes our software detects in your website.</p>
+      <p>After our AI model does analysis, you may notice some fixes our software detects in your website.</p>
       <img src='/seo-analytics.webp' className='landing-step-img'></img>
       </div>
       <div className='landing-step step-4'>
