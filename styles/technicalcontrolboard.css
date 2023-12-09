@@ -1,12 +1,16 @@
 .tech-grid-header {
-    margin-bottom: 2rem;
-    font-size: 2rem;
+    margin-bottom: 1rem;
+    font-size: 1.25rem;
+    padding-bottom: 0.5rem;
+    /* border-bottom: 2px solid rgb(53, 53, 53); */
 }
 .tech-grid-content {
-    font-size: 1rem;
+    font-size: 1.5rem;
     font-weight: 400;
     display: flex;
 }
+
+
 
 .green-active {
     position: absolute;
@@ -26,3 +30,11 @@
     top:20px;
 }
 
+
+.selected-page-header {
+    margin-bottom: 2rem;
+    margin-top: 2rem;
+}
+.gauge-component {
+    margin-bottom: 2rem !important;
+}

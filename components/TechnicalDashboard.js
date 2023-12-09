@@ -8,7 +8,7 @@ import { supabase } from '../utils/supabaseClient';
 import { BsArrowLeft } from 'react-icons/bs';
 import Breadcrumbs from './Breadcrumbs';
 
-const TechnicalDashboard = ({ slug }) => {
+const TechnicalDashboard = ({ slug, domain }) => {
     const [app, setApp] = useState(null);
     const router = useRouter();
     const score = 100;
@@ -16,49 +16,32 @@ const TechnicalDashboard = ({ slug }) => {
     const [analysisResult, setAnalysisResult] = useState(null);
     const [isLoading, setIsLoading] = useState(false);
 
-    // useEffect(() => {
-    //     const fetchApp = async () => {
-    //         setIsLoading(true);
-    //         try {
-    //             const { data, error } = await supabase
-    //                 .from('apps')
-    //                 .select('*')
-    //                 .eq('id', slug)
-    //                 .single();
 
-    //             if (error) throw error;
-    //             setApp(data);
-    //         } catch (error) {
-    //             console.error('Error fetching app:', error);
-    //         } finally {
-    //             setIsLoading(false);
-    //         }
-    //     };
-
-    //     if (slug) {
-    //         fetchApp();
-    //     }
-    // }, [slug]);
     useEffect(() => {
         const fetchApp = async () => {
             setIsLoading(true);
-            try {
-                const { data, error } = await supabase
-                    .from('apps')
-                    .select('*')
-                    .eq('id', slug)
-                    .single();
-    
-                if (error) throw error;
-                setApp(data);
-                if (data && data.technical_analysis) {
-                    setAnalysisResult(data.technical_analysis);
+            if (app && localStorage.getItem(`analysisResult_${app.id}`)) {
+              setAnalysisResult(JSON.parse(localStorage.getItem(`analysisResult_${app.id}`)));
+
+            } else {
+                try {
+                    const { data, error } = await supabase
+                        .from('apps')
+                        .select('*')
+                        .eq('id', slug)
+                        .single();
+        
+                    if (error) throw error;
+                    setApp(data);
+                    if (data && data.technical_analysis) {
+                        setAnalysisResult(data.technical_analysis);
+                    }
+                } catch (error) {
+                    console.error('Error fetching app:', error);
+                } finally {
+                    setIsLoading(false);
                 }
-            } catch (error) {
-                console.error('Error fetching app:', error);
-            } finally {
-                setIsLoading(false);
-            }
+              }
         };
     
         if (slug) {
@@ -88,15 +71,16 @@ const TechnicalDashboard = ({ slug }) => {
       
 
       const fetchData = async () => {
-        if (!app || !app.domain) return;
-        const domain = app.domain; // Example domain
-        const apiUrl = `http://127.0.0.1:8000/technicalseo?url=${encodeURIComponent(domain)}`;
-        const cachedResult = localStorage.getItem(`analysisResult_${app.id}`);
-        if (cachedResult) {
-          setAnalysisResult(JSON.parse(cachedResult));
-        } else {
+        if (!app || !domain) return 'Not Happenin';
+        // console.log(app.domain)
+        // const domain = app.domain; // Example domain
+        console.log(domain)
+        const apiUrl = `http://127.0.0.1:8000/technicalseo?url=${domain}`;
+
+        // if (cachedResult) {
+        //   setAnalysisResult(JSON.parse(cachedResult));
+        // } else {
           setIsLoading(true);
-          console.log(app.domain)
           try {
             const response = await axios.get(apiUrl);
             setAnalysisResult(response.data);
@@ -108,8 +92,22 @@ const TechnicalDashboard = ({ slug }) => {
           } finally {
             setIsLoading(false);
           }
-        }
+        
       };
+
+      // {app && console.log(app.technical_last_tested)}
+
+      const formatDate = (isoString) => {
+        const date = new Date(isoString);
+        return date.toLocaleDateString("en-US", {
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric',
+            hour: '2-digit',
+            minute: '2-digit',
+            second: '2-digit'
+        });
+    };
 
     return (
         <div className='technical-dashboard-container'>
@@ -117,7 +115,7 @@ const TechnicalDashboard = ({ slug }) => {
             {/* <h1 className='tech-dash-header'>Technical SEO</h1> */}
             <GaugeChartComponent id="gauge-chart1" percent={score} width="300px" />
             <button type='button' className='btn btn-primary tech-dash-btn' onClick={fetchData}>Test Now</button>
-            {app && <p className='tech-dash-last-p'><b>Last Tested:</b> {app.technical_last_tested}</p>}
+            {app && <p className='tech-dash-last-p'><b>Last Tested:</b> {formatDate(app.technical_last_tested)}</p>}
             {app && <ControlBoard analysisResult={analysisResult} />}
             <div>
                 {isLoading ? <p>Loading...</p> : null}

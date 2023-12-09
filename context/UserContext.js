@@ -11,7 +11,7 @@ export const UserProvider = ({ children }) => {
     console.log("Checking stored user in localStorage");
     const storedUser = localStorage.getItem('user');
     if (storedUser && storedUser !== "undefined") {
-        console.log("Stored User found", storedUser);
+        // console.log("Stored User found", storedUser);
         try {
           setUser(JSON.parse(storedUser));
         } catch (error) {
@@ -56,7 +56,7 @@ export const UserProvider = ({ children }) => {
         setUser(user); // Set user in state
         localStorage.setItem('user', JSON.stringify(user)); // Set user in local storage
         alert('Login successful!');
-        window.location.href = '/';
+        window.location.href = '/dashboard';
       }
     } catch (error) {
       console.error('Error signing in:', error.message);

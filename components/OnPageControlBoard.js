@@ -18,7 +18,9 @@ const ControlBoard = ({ analysisResult }) => {
         <div className='tech-grid-item'>
         {headers != false ? (<div className='green-active'></div>):(<div className='red-active'></div>)}
           <h2 className='tech-grid-header'>Headers</h2>
-          {headers && <h3 className='tech-grid-content'>{headers}</h3>}
+          {headers && headers.map((header, index) => {
+        return <h3 key={index} className='tech-grid-content'>{header[0]}: {header[1]}</h3>;
+    })}
         </div>
         <div className='tech-grid-item'>
         {internalLinks != false ? (<div className='green-active'></div>):(<div className='red-active'></div>)}
@@ -27,8 +29,11 @@ const ControlBoard = ({ analysisResult }) => {
         </div>
         <div className='tech-grid-item'>
           {externalLinks != false ? (<div className='green-active'></div>):(<div className='red-active'></div>)}
-            <h2 className='tech-grid-header'>Keywords</h2>
-            {externalLinks && <h3 className='tech-grid-content'>{externalLinks}</h3>}
+            <h2 className='tech-grid-header'>External Links</h2>
+            {/* {externalLinks && <h3 className='tech-grid-content'>{externalLinks}</h3>} */}
+            {externalLinks && externalLinks.map((link, index) => {
+        return <h3 key={index} className='tech-grid-content'>{link}</h3>;
+    })}
           </div>
     </div>
   )

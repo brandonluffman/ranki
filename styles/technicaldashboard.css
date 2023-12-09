@@ -1,27 +1,62 @@
 .technical-dashboard-container {
     padding:0rem 1rem;
 
-    padding-top:100px;
+    /* padding-top:100px; */
+    padding-bottom: 100px;
     text-align: center;
 }
 
+
+.seo-dashboard-container {
+    padding:0rem 1rem;
+    padding-top:100px;
+    text-align: center;
+}
 .tech-dash-img {
     width: 10%;
 }
 
 .tech-dash-grid {
     display: grid;
-    grid-template-columns: repeat(2,3fr);
+    grid-template-columns: repeat(1,1fr);
     margin:4rem 0rem;
 }
 
-.tech-grid-item {
-    position: relative;
-    text-align: center;
-    padding:2rem 1rem;
-    border:1px solid rgba(255, 255, 255, 0.186);
+.tech-dash-grid-small {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); /* Creates columns with a minimum width of 200px and a maximum width of 1fr */
+    margin:4rem 0rem;
 }
 
+.tech-dash-grid-small .tech-grid-content {
+    font-size: 1rem;
+    display: none;
+}
+.tech-dash-grid-small .tech-grid-item {
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding:2rem;
+}
+.tech-dash-grid-small .tech-grid-header {
+    margin: 0;
+}
+.tech-grid-item {
+    position: relative;
+    text-align: left;
+    padding:1rem 2rem;
+    border:1px solid rgba(255, 255, 255, 0.186);
+    overflow: hidden;
+
+}
+
+.green-grid {
+    background-color: rgba(102, 255, 115, 0.571);
+}
+.red-grid {
+    background-color: rgba(255, 116, 116, 0.571);
+}
 .tech-grid-header {
     font-size: 1rem;
 }
@@ -55,3 +90,12 @@
     margin: 2rem 0rem;
 }
 
+
+.tech-dash-last-p {
+    margin-bottom: 2rem;
+}
+
+
+.offpage-control-board {
+    margin-top:2rem;
+}

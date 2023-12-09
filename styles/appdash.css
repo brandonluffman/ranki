@@ -38,6 +38,11 @@
 
 }
 
+
+/* .domain-input::after {
+    content:'after';
+    color:black;
+} */
 .header-link {
    position: absolute;
    top:0px;

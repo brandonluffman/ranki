@@ -64,36 +64,57 @@ const AppDash = ({ onRefresh }) => {
     setAddingApp(!addingApp);
   };
 
+  const toggleEditForm = (app) => {
+    if (editingApp && editingApp.id === app.id) {
+      setEditingApp(null); // Close the form if it's the same app
+    } else {
+      setEditingApp(app); // Set the new app to edit
+    }
+  };
+  
 
-const addApp = async (name, description, domain) => {
-  if (!user) {
-    console.error("User not authenticated");
-    return null;
-  }
 
-  try {
-    const insertResponse = await supabase
-      .from('apps')
-      .insert([{ user_id: user.id, name, description, domain }])
-      .single();
-
-    if (insertResponse.error) throw insertResponse.error;
-
-    // Assuming you have a timestamp or unique identifier to sort by
-    const { data, error } = await supabase
-      .from('apps')
-      .select('*')
-      .eq('user_id', user.id)
-      .order('id', { ascending: false })
+  const addApp = async (name, description, domain) => {
+    if (!user) {
+      console.error("User not authenticated");
+      return null;
+    }
+  
+    try {
+      // Call the API route to check the domain status
+      const checkDomainResponse = await fetch(`/api/checkDomain?domain=${encodeURIComponent(domain)}`);
+      const checkDomainResult = await checkDomainResponse.json();
+  
+      if (!checkDomainResponse.ok) {
+        alert(checkDomainResult.error || 'Error checking domain status');
+        return null;
+      }
+  
+      // Insert a new app into the database
+      const insertResponse = await supabase
+        .from('apps')
+        .insert([{ user_id: user.id, name, description, domain }])
+        .single();
+  
+      if (insertResponse.error) throw insertResponse.error;
+  
+      // Fetch the most recently added app
+      const { data, error } = await supabase
+        .from('apps')
+        .select('*')
+        .eq('user_id', user.id)
+        .order('id', { ascending: false })
         .limit(1);
-
-    if (error) throw error;
-    return data[0]; // Get the most recently added app
-  } catch (error) {
-    console.error("Error in addApp:", error);
-    return null;
-  }
-};
+  
+      if (error) throw error;
+      return data[0]; // Get the most recently added app
+    } catch (error) {
+      alert('Your Domain wasn\'t received by our servers, please try another domain or check yours to make sure it is up.');
+      console.error("Error in addApp:", error);
+      return null;
+    }
+  };
+  
   const handleSubmit = async (event) => {
     event.preventDefault();
     const name = event.target.name.value;
@@ -184,7 +205,7 @@ const deleteApp = async (appId) => {
                     </div>        
                     <div className='login-email-div'>
 
-                    <input type="text" name="domain" placeholder="Domain" className='login-input' />
+                    <input type="text" name="domain" placeholder="Domain" className='login-input domain-input' />
                     </div>
                     <button type="submit" className='btn btn-primary'>Add App</button>
                 </form>
@@ -217,13 +238,13 @@ const deleteApp = async (appId) => {
                     <BiMessageEdit />
                   </button>
                   {editingApp && editingApp.id === app.id && (
-                    <div className='edit-form'>
-                      <EditForm appData={editingApp} onSubmit={editApp} />
-                      <button onClick={closeEditForm} className='delete-button close-form-button'>
-                        Close
-                      </button>
-                    </div>
-                  )}
+              <div className='edit-form'>
+                <EditForm appData={editingApp} onSubmit={editApp} />
+                <button onClick={() => setEditingApp(null)} className='delete-button close-form-button'>
+                  Close
+                </button>
+              </div>
+            )}
 
               </li>
               ))}

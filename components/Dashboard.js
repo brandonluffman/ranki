@@ -37,13 +37,18 @@ const Dashboard = ({slugId}) => {
     const { user, login, logout } = useContext(UserContext);
     const formRef = useRef(null);
     const domain = app ? 'https://' + app.domain: null;
+    const [siteUrls, setSiteUrls] = useState([]);
 
 
 
 
 
 
-
+    const handleAppSelection = (selectedApp) => {
+      // Update the state or perform any action required when an app is selected
+      setSelectedValue(selectedApp.name);
+      // ... other actions based on selected app ...
+  };
 
     const toggleSide = () => {
       setEditingApp(prevState => !prevState);
@@ -112,11 +117,13 @@ const Dashboard = ({slugId}) => {
 };
 
 const fetchIntegratedApps = async (appSlug) => {
-  const cachedApps = localStorage.getItem(`integratedApps_${appSlug}`);
-  console.log(cachedApps)
-  if (cachedApps) {
-      setIntegratedApps(JSON.parse(cachedApps));
-  } else {
+  // const cachedApps = localStorage.getItem(`integratedApps_${appSlug}`);
+  // console.log(cachedApps)
+  // if (cachedApps !== null && cachedApps !== 'null') {
+  //     setIntegratedApps(JSON.parse(cachedApps));
+  //     console.log('Found cached apps')
+  //     console.log(cachedApps)
+  // } else {
       try {
           const { data, error } = await supabase
               .from('apps')
@@ -125,51 +132,79 @@ const fetchIntegratedApps = async (appSlug) => {
           if (error) throw error;
           setIntegratedApps(data[0].integrated_apps);
           localStorage.setItem(`integratedApps_${appSlug}`, JSON.stringify(data[0].integrated_apps));
+          console.log('Fetched integrated?')
       } catch (error) {
           console.error('Error fetching integrated apps:', error);
       }
+  // }
+};
+
+
+const handleSubmit = async (event) => {
+  event.preventDefault();
+  const actualSlug = slug || slugId;
+
+  const appName = selectedValue; // The name of the selected app
+  const appUrl = formRef.current.url.value; // The URL entered by the user
+
+  // Find the selected app in appOptions to get its imgSrc
+  const selectedApp = appOptions.find(app => app.name === appName);
+  const imgSrc = selectedApp ? selectedApp.imgSrc : '/path-to-default-image.png';
+
+  // Construct the new app object
+  const newApp = {
+    name: appName,
+    url: appUrl,
+    imgSrc: imgSrc // Use the imgSrc from the selected app
+  };
+
+  // Make sure integratedApps is an array
+  const currentApps = Array.isArray(integratedApps) ? integratedApps : [];
+
+  // Update the integratedApps state
+  const updatedApps = [...currentApps, newApp];
+  setIntegratedApps(updatedApps);
+
+  // Update the apps table in Supabase
+  try {
+    const { error } = await supabase
+      .from('apps')
+      .update({ integrated_apps: updatedApps }) // Use the updatedApps array
+      .eq('id', actualSlug);
+
+    if (error) {
+      console.error('Error updating app:', error);
+    } else {
+      localStorage.setItem('integratedApps', JSON.stringify(updatedApps));
+    }
+  } catch (error) {
+    console.error('Error updating app:', error);
   }
 };
 
 
 
-  const handleSubmit = async (event) => {
-
-    event.preventDefault();
-    const actualSlug = slug || slugId;
-
-    const appName = selectedValue; // The name of the selected app
-    const appUrl = formRef.current.url.value; // The URL entered by the user
-    
-    // Find the selected app in appOptions to get its imgSrc
-    const selectedApp = appOptions.find(app => app.name === appName);
-    const imgSrc = selectedApp ? selectedApp.imgSrc : '/path-to-default-image.png';
   
-    // Construct the new app object
-    const newApp = {
-      name: appName,
-      url: appUrl,
-      imgSrc: imgSrc // Use the imgSrc from the selected app
+
+
+  useEffect(() => {
+    const fetchSiteUrls = async () => {
+        try {
+            const response = await supabase
+                .from('site_urls')
+                .select('*')
+                .eq('app_id', slug);
+
+            if (response.data) {
+                setSiteUrls(response.data);
+            }
+        } catch (error) {
+            console.error('Error fetching site URLs:', error);
+        }
     };
-  
-    // Add the new app to the integratedApps state
-    setIntegratedApps(currentApps => [...currentApps, newApp]);
-    
-    // Update the apps table in Supabase
-    const { data, error } = await supabase
-      .from('apps')
-      .update({ integrated_apps: [...integratedApps, newApp] }) // Assuming 'integrated_apps' is your new column
-      .eq('id', actualSlug); // Use the appropriate identifier for the app
-    
-    localStorage.setItem('integratedApps', JSON.stringify([...integratedApps, newApp]));
 
-    if (error) {
-      console.error('Error updating app:', error);
-    }
-  };
-  
-
-
+    fetchSiteUrls();
+}, [slug]);
 
 
 
@@ -195,13 +230,6 @@ const fetchIntegratedApps = async (appSlug) => {
 };
 
 
-
-
-
-{app && console.log(app)}
-
-
-
   return (
     <>
     {user ? (
@@ -215,11 +243,11 @@ const fetchIntegratedApps = async (appSlug) => {
           <div className='side-grid-item'><img src='' className='side-img'></img></div>
         </div>
       </div>
-      {app && <Link href={app.domain} rel='noreferrer' target='_blank' className='appdash-external-btn'><BiLinkExternal /></Link>}
+      {/* {app && <Link href={app.domain} rel='noreferrer' target='_blank' className='appdash-external-btn'><BiLinkExternal /></Link>} */}
       <div className='anti-flexer dash-flexer'>
       {/* {app && <img src={appLogo} className='aprotonppdash-grid-img dashboard-grid-img' alt={`${app.name} logo`} />} */}
       {app && <h2 className='dashboard-header appdash-header'>{app.name}</h2>}
-      {app && <Link href={domain} rel='noreferrer' target="_blank" className='link header-link'><h6 className='appdash-header-domain'>{app.domain}</h6></Link>}
+      {/* {app && <Link href={domain} rel='noreferrer' target="_blank" className='link header-link'><h6 className='appdash-header-domain'>{app.domain}</h6></Link>} */}
 
       </div>
 
@@ -252,7 +280,7 @@ const fetchIntegratedApps = async (appSlug) => {
               ))}
             </select>
           </div>        */}
-          <IntegrateDropdown options={appOptions} />
+          <IntegrateDropdown options={appOptions} onOptionSelected={handleAppSelection} />
           <div className='login-email-div'>
             <input type="text" name="url" placeholder="URL" className='login-input' />
           </div>
@@ -264,27 +292,27 @@ const fetchIntegratedApps = async (appSlug) => {
 
       {/* <AppDashAnalytics /> */}
  
-        {seo ? (
+        {siteUrls ? (
                <div className='dashboard-grid seo-dash-grid'>
                <div className='seo-dash-item'>
                <h2>SEO</h2>
                <GaugeChartComponent id="gauge-chart3" percent={score3} width="300px" className='seo-dash-chart'/>
                </div>
-        <Link href={`/dashboard/technical/${app.id}`}>
+        <Link href={`/dashboard/seo/${slug}`}>
         <div className='dashboard-grid-item'>
             <h2 className='dashboard-grid-header'>Technical SEO</h2>
             <GaugeChartComponent id="gauge-chart1" percent={score} width="250px" />
         </div>
         </Link>
    
-            <Link href={`/dashboard/onpage/${app.id}`}>
+            <Link href={`/dashboard/seo/${slug}`}>
             <div className='dashboard-grid-item'>
             <h2 className='dashboard-grid-header'>On-Page SEO</h2>
             <GaugeChartComponent id="gauge-chart2" percent={score2} width="250px"/>
             </div>
             </Link>
      
-              <Link href={`/dashboard/offpage/${app.id}`}>
+              <Link href={`/dashboard/seo/${slug}`}>
             <div className='dashboard-grid-item'>
             <h2 className='dashboard-grid-header'>Off-Page SEO</h2>
             <GaugeChartComponent id="gauge-chart3" percent={score3} width="250px"/>
@@ -301,7 +329,7 @@ const fetchIntegratedApps = async (appSlug) => {
               <div className='analytics-integrate-fixed'>
             <div className='anti-flexer'>
           <h2 className='seo-integrate-header'>SEO has not been configured for your site, get started with a test.</h2>
-          {app && <Link href={`/dashboard/seo/${app.id}`}><button type='button' className='integrate-btn btn btn-primary'>Test SEO</button></Link>}
+          {app ? <Link href={`/dashboard/seo/${app.id}`}><button type='button' className='integrate-btn btn btn-primary'>Test SEO</button></Link>:(<button type='button' className='integrate-btn btn btn-primary'>Test SEO</button>)}
           </div>
           </div>
           {/* <Link href={`/dashboard/technical/${app.id}`}> */}

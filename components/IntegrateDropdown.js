@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import Image from 'next/image';
 
-const IntegrateDropdown = ({ options }) => {
+const IntegrateDropdown = ({ options, onOptionSelected }) => {
     const [isOpen, setIsOpen] = useState(false);
     const [selectedOption, setSelectedOption] = useState(options[0]);
 
@@ -10,7 +10,11 @@ const IntegrateDropdown = ({ options }) => {
     const handleOptionClick = (option) => {
         setSelectedOption(option);
         setIsOpen(false);
+        if (onOptionSelected) {
+            onOptionSelected(option); // Call the callback function
+        }
     };
+
 
     return (
         <div className="dropdown-container">

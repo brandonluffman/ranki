@@ -1,4 +1,8 @@
 const appOptions = [
+  {
+    name: "Your Website",
+    imgSrc: "/website-icon.png" // Replace with the actual path to your image
+  },
     {
       name: "Vercel",
       imgSrc: "/vercel.png" // Replace with the actual path to your image

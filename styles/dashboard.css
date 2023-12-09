@@ -9,7 +9,7 @@
 }
 
 .dashboard-web-select {
-    width:300px;
+    width:50%;
     height: 65px;
     background-color: var(--dark-blue);
     box-shadow: 1px 1px 8px rgba(255,255,255,0.2);
@@ -19,9 +19,9 @@
     outline: none;
     padding:1rem;
     color:white;
-    top:150px;
+    /* top:150px;
     left:15px;
-    position: absolute;
+    position: absolute; */
     border-radius:10px;
     cursor: pointer;
 }
@@ -49,6 +49,7 @@
     margin:0rem 2rem;
     padding:1rem;
     position: relative;
+    margin-bottom: 2rem;
 
 }
 .seo-dash-item {
@@ -78,6 +79,10 @@
 .gauge-chart {
     margin: 0 auto !important;
     /* height: 150px; */
+}
+
+.arrow {
+    margin-right: 1rem;
 }
 
 .dashboard-grid-item {
@@ -311,12 +316,12 @@
     position: absolute;
     z-index:99999;
     color:white;
-      background: rgba(255, 255, 255, 0.11); /* White color with 10% opacity */
-  border-radius: 10px; /* Rounded corners */
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
-  backdrop-filter: blur(5px); /* Blurs the background */
-  -webkit-backdrop-filter: blur(5px); /* For Safari compatibility */
-  border: 1px solid rgba(255, 255, 255, 0.3); /* Thin white border */
+      background: rgba(255, 255, 255, 0.11); 
+  border-radius: 10px; 
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
+  backdrop-filter: blur(5px); 
+  -webkit-backdrop-filter: blur(5px); 
+  border: 1px solid rgba(255, 255, 255, 0.3); 
   margin:0;
   width: 100%;
   padding: 0;
@@ -412,6 +417,37 @@
     margin:0rem 1rem;
     transition: 0.2s ease all;
     text-transform: uppercase;
+}
+
+.apps-list {
+    display: grid;
+    grid-template-columns: repeat(3,3fr);
+    margin-top: 4rem;
+}
+
+.app {
+    text-align: center;
+    border:1px solid white;
+    padding:2rem 1rem;
+}
+
+.success-alert {
+    padding: 10px;
+    background-color: green;
+    color: white;
+    text-align: center;
+    position: absolute;
+    bottom: -20px;
+        left: 50%;
+    transform: translateX(-50%);
+    z-index: 1000; /* Ensure it's above other elements */
+    animation: fadeOut 3s ease-in-out;
+}
+
+@keyframes fadeOut {
+    0% { opacity: 1; }
+    80% { opacity: 1; }
+    100% { opacity: 0; }
 }
 
 .appdash-alert-container:hover {
