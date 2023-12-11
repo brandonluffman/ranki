@@ -12,7 +12,7 @@ import GMBDash from './GMBDash';
 const OffPageDashboard = ({ slug }) => {
     const [app, setApp] = useState(null);
 
-      const score = 60;
+      const score = 0;
 
   return (
       <div className='technical-dashboard-container'>        

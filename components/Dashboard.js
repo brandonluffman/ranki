@@ -18,6 +18,7 @@ import Breadcrumbs from './Breadcrumbs';
 import { UserContext } from '../context/UserContext';
 import appOptions from '../public/appOptions'
 import IntegrateDropdown from './IntegrateDropdown'
+import BlogDash from './BlogDash';
 
 
 const Dashboard = ({slugId}) => {
@@ -292,14 +293,18 @@ const handleSubmit = async (event) => {
     )}
       </div>
 
-      {/* <AppDashAnalytics /> */}
+      <AppDashAnalytics />
  
         {siteUrls ? (
                <div className='dashboard-grid seo-dash-grid'>
+                <Link  className='seo-dash-item' href={`/dashboard/seo/${slug}`}>
+
                <div className='seo-dash-item'>
                <h2>SEO</h2>
                <GaugeChartComponent id="gauge-chart3" percent={score3} width="300px" className='seo-dash-chart'/>
                </div>
+               </Link>
+
         <Link href={`/dashboard/seo/${slug}`}>
         <div className='dashboard-grid-item'>
             <h2 className='dashboard-grid-header'>Technical SEO</h2>
@@ -359,7 +364,10 @@ const handleSubmit = async (event) => {
         )}
       
     
-     {/* <DashContent /> */}
+     {app && <Link href={`/blogdashboard/${app.id}`}><DashContent slug={slug} /></Link>}
+     {/* {app && <Link href={`/blogdashboard/${app.id}`}><BlogDash /></Link>} */}
+ 
+
      {/* <GMBDash /> */}
   </div>
     ):(

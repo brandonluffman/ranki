@@ -27,7 +27,7 @@ const Footer = () => {
                             <div className='footer-links-header'><p className='footer-link-header'>RANKI AI</p></div>
                             <Link href='/'><div className='footer-link'>Home</div></Link>
                             <Link href='/about'><div className='footer-link'>About</div></Link>
-                            <Link href='/appdash'><div className='footer-link'>App Dashboard</div></Link>
+                            <Link href='/dashboard'><div className='footer-link'>App Dashboard</div></Link>
                             {/* <Link href='/contact'><div className='footer-link'>Contact Us</div></Link> */}
                           </div>
                           <div className='footer-links'>

@@ -2,17 +2,16 @@ import React, {useState} from 'react'
 import { FaCaretUp } from 'react-icons/fa'
 
 const AppDashAnalytics = () => {
-  const [googleAnalytic, setGoogleAnalytic] = useState(false);
+  const [googleAnalytic, setGoogleAnalytic] = useState(true);
 
 
   return (
-    <div className='appdash-analytics-tabs'>
-      <div className='appdash-analytics-tab appdash-analytic-tab-img flexer'>
-        <img src='/google-analytics-long.png' width='50' className='appdash-analytics-img'/>
-        {/* <img src='/search-console.png' width='50' className='appdash-analytics-img' /> */}
-      </div>
+<div>
       {googleAnalytic ? (
-        <div>
+            <div className='appdash-analytics-tabs'>
+            {/* <div className='appdash-analytics-tab appdash-analytic-tab-img flexer'>
+              <img src='/google-analytics-long.png' width='50' className='appdash-analytics-img'/>
+            </div> */}
     <div className='appdash-analytics-tab'>
     <h6>Users</h6>
     <h6>605</h6>
@@ -45,6 +44,8 @@ const AppDashAnalytics = () => {
   </div>
   </div>
       ): (
+        <div className='appdash-analytics-tabs'>
+
         <div className='full-row-item'>
           <div className='analytics-integrate-fixed'>
             <div className='anti-flexer'>
@@ -83,6 +84,7 @@ const AppDashAnalytics = () => {
     <h6>0</h6>
     <div className='flexer analytics-flexer'><FaCaretUp className='caret-icon'/><p>0</p></div>
   </div>
+          </div>
           </div>
           </div>
       )}

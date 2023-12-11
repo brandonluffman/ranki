@@ -17,6 +17,8 @@ import '../styles/test.css';
 import '../styles/technicalcontrolboard.css';
 import '../styles/gmbdash.css';
 import '../styles/breadcrumbs.css';
+import '../styles/blog.css';
+import '../styles/messages.css';
 
 import NProgress from 'nprogress';
 import "nprogress/nprogress.css";

@@ -31,7 +31,7 @@ export default function Home(){
             <div className='home-landing-extension-div'>
 
               <Link href='/dashboard'><button className='home-join-btn home-btn'><img src='/chatbot.png' width='30'></img>Try AppDash</button></Link>
-              <Link href='/'><button className='home-join-extension-btn home-btn'><img src='/chrome.png' width='25'></img>Download on Chrome</button></Link>
+              <Link href='/'><button className='home-join-extension-btn home-btn'><img src='/chrome.png' width='25'></img>Learn More</button></Link>
             </div>
 
           </div>

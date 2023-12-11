@@ -221,10 +221,10 @@ const deleteApp = async (appId) => {
               <div className='dashboard-grid appdash-grid'>
               {apps.map((app, index) => ( // index is used only as a fallback
               <li key={app.id || index} className='appdash-item'> {/* Prefer app.id */}
-                  <div className='appdash-img-container'>
-                {/* {app.logo && <img src={app.logo} className='appdash-grid-img' alt={`${app.name} logo`} />} */}
-                </div>
-                  <h2 className='dashboard-grid-header'>{app.name}</h2>
+                  {/* <div className='appdash-img-container'>
+                {app.logo && <img src={app.logo} className='appdash-grid-img' alt={`${app.name} logo`} />}
+                </div> */}
+                  <h2 className='dashboard-grid-header appdash-appname'>{app.name}</h2>
                   {/* <h6 className='dashboard-grid-subheader'>{app.domain}</h6> */}
                   {/* <img src='/chatbot.png' className='appdash-grid-img' alt={app.name} /> */}
                   {/* <p>{app.domain}</p> */}
@@ -241,7 +241,7 @@ const deleteApp = async (appId) => {
               <div className='edit-form'>
                 <EditForm appData={editingApp} onSubmit={editApp} />
                 <button onClick={() => setEditingApp(null)} className='delete-button close-form-button'>
-                  Close
+                  <IoMdClose />
                 </button>
               </div>
             )}

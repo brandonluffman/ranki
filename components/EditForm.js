@@ -20,7 +20,7 @@ const EditForm = ({ appData, onSubmit, id }) => {
     };
 
     return (
-      <form onSubmit={handleSubmit} className='appdash-form'>
+      <form onSubmit={handleSubmit} className='appdash-form appdash-edit-form'>
         <h2 className='appdash-form-header'>Edit an App</h2>
         <input
           type="text"
@@ -29,7 +29,7 @@ const EditForm = ({ appData, onSubmit, id }) => {
           onChange={handleChange}
           placeholder="App Name"
           required
-          className='appdash-input'
+          className='appdash-input appdash-edit-input'
         />
         <input
           type="text"
@@ -38,7 +38,7 @@ const EditForm = ({ appData, onSubmit, id }) => {
           onChange={handleChange}
           placeholder="App Domain"
           required
-          className='appdash-input'
+          className='appdash-input appdash-edit-input'
         />
         <textarea
           name="description"
@@ -46,7 +46,7 @@ const EditForm = ({ appData, onSubmit, id }) => {
           onChange={handleChange}
           placeholder="App Description"
           required
-          className='appdash-input appdash-description'
+          className='appdash-input appdash-description appdash-edit-input'
 
         />
         <br></br>

@@ -34,7 +34,7 @@ const ControlBoard = ({ analysisResult }) => {
 
   return (
     <>
-    <button className='tech-dash-toggle' onClick={toggleSEOGrid}>Toggle Grid</button>
+    <button className='tech-dash-toggle btn btn-tertiary' onClick={toggleSEOGrid}>Toggle Grid</button>
     <div className={isToggled ? 'tech-dash-grid' : 'tech-dash-grid-small'}>
     <div className={metaTitle != false ? 'tech-grid-item green-grid':'tech-grid-item red-grid'}>
       {/* {metaTitle != false ? (<div className='green-active'></div>):(<div className='red-active'></div>)} */}
@@ -105,7 +105,7 @@ const ControlBoard = ({ analysisResult }) => {
     <div className={loadTime < 0.3 ? 'tech-grid-item green-grid':'tech-grid-item red-grid'}>
     {/* {loadTime < 0.3 ? (<div className='green-active'></div>):(<div className='red-active'></div>)} */}
       <h2 className='tech-grid-header'>Load Time</h2>
-      {loadTime < 0.3 ? ( <h3 className='tech-grid-content'>{loadTime.toFixed(2)} seconds -- NICE !</h3>):( <h3 className='tech-grid-content'>{loadTime.toFixed(2)} seconds -- Not so great , took a bit too long to load the page !</h3>)}
+      {loadTime && loadTime < 0.3 ? ( <h3 className='tech-grid-content'>{loadTime.toFixed(2)} seconds -- NICE !</h3>):( <h3 className='tech-grid-content'>{loadTime.toFixed(2)} seconds -- Not so great , took a bit too long to load the page !</h3>)}
     </div>
     <div className={googleAnalytics == true ? 'tech-grid-item green-grid':'tech-grid-item red-grid'}>
     {/* {googleAnalytics == true ? (<div className='green-active'></div>):(<div className='red-active'></div>)} */}

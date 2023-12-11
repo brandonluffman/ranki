@@ -25,7 +25,9 @@ const ControlBoard = ({ analysisResult }) => {
         <div className='tech-grid-item'>
         {internalLinks != false ? (<div className='green-active'></div>):(<div className='red-active'></div>)}
           <h2 className='tech-grid-header'>Internal Links</h2>
-          {internalLinks && <h3 className='tech-grid-content'>{internalLinks}</h3>}
+          {internalLinks && internalLinks.map((link, index) => {
+        return <h3 key={index} className='tech-grid-content'>{link}</h3>;
+    })}
         </div>
         <div className='tech-grid-item'>
           {externalLinks != false ? (<div className='green-active'></div>):(<div className='red-active'></div>)}

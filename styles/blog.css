@@ -1,0 +1,57 @@
+.blog-dashboard-container {
+    padding-top:150px;
+    text-align: center;
+    padding-bottom: 200px;
+}
+.blog-dashcontent-container {
+    text-align: center;
+}
+.blog-dashboard-addform-container-noshow {
+    display: none;
+}
+
+.blog-add-form {
+    background-color: white;
+    color:var(--dark-blue);
+    border-radius: 20px;
+    width: 50%;
+    margin:0 auto;
+    overflow: hidden;
+    padding:2rem;
+    position: absolute;
+    z-index: 9999 !important;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.dashboard-addform-input {
+    width: 100%;
+    border: none;
+    outline: none;
+    font-size: 1.2rem;
+    border-bottom: 1px solid rgba(0,0,0,0.2);
+    margin-bottom: 1rem;
+}
+
+.dash-content-grid-item {
+    position: relative;
+}
+
+.blog-delete-btn {
+    top:10px;
+    position: absolute;
+    right:10px;
+}
+
+.sub-dash-back {
+    margin-left:1rem;
+}
+
+.no-blogs {
+    font-size: 2rem;
+    margin:2rem 0rem;
+}
+
+.blog-dashcontent-header {
+    letter-spacing: -0.2vw;
+}

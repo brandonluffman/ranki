@@ -15,6 +15,7 @@ const OnPageSEODashboard = ({ slug, domain }) => {
     const [pageOptions, setPageOptions] = useState([]);
     const [domainId, setDomainId] = useState(null);
     const [lastTested, setLastTested] = useState(null);
+    const [errorMessage, setErrorMessage] = useState(null);
 
 
 
@@ -23,6 +24,7 @@ const OnPageSEODashboard = ({ slug, domain }) => {
         setSelectedPageURL(selectedURL);
         setSelectedPageDomain(new URL(selectedURL).hostname);
         setAnalysisResult(null); // Clear the current result
+        setErrorMessage(null);
     };
 
 
@@ -49,7 +51,7 @@ const OnPageSEODashboard = ({ slug, domain }) => {
                         if (error) throw error;
         
                         if (data?.test_results) {
-                            console.log('Fetched data:', data.test_results);
+                            console.log('Fetched data in the UseEffect :', data.test_results);
                             setAnalysisResult(data.test_results);
                         }
                     } catch (error) {
@@ -120,7 +122,10 @@ const OnPageSEODashboard = ({ slug, domain }) => {
 
 
     const fetchPages = async () => {
-        const apiUrl = `http://127.0.0.1:8000/get-unique-pages/?domain=${domain}`;
+        // const apiUrl = `http://127.0.0.1:8000/get-unique-pages/?domain=${domain}`;
+        const apiUrl = `https://rankiai-fe08b8a427f4.herokuapp.com/get-unique-pages/?domain=${domain}`;
+
+        
         console.log('Fetching pages from:', apiUrl);
         setIsLoading(true);
     
@@ -220,15 +225,25 @@ s
     };
 
     
-    
     const triggerAnalysis = async () => {
         if (!selectedPageURL) return;
     
-        setIsLoading(true);    
+        setIsLoading(true);
+        setErrorMessage(null); // Reset the error message at the start
+    
         try {
-            const response = await axios.get(`http://127.0.0.1:8000/onpageseo`, {
+            // Check if the webpage provides a 200 status code
+            const statusCheckResponse = await axios.get(selectedPageURL);
+            if (statusCheckResponse.status !== 200) {
+                setErrorMessage('Webpage does not provide a 200 status code');
+                return; // Exit the function if status is not 200
+            }
+    
+            // Proceed with the analysis if status is 200
+            const response = await axios.get(`https://rankiai-fe08b8a427f4.herokuapp.com/onpageseo`, {
                 params: { url: selectedPageURL }
             });
+    
             localStorage.setItem(`analysisResult_${selectedPageURL}`, JSON.stringify(response.data));
             setAnalysisResult(response.data);
             
@@ -239,10 +254,13 @@ s
            
         } catch (error) {
             console.error('Error fetching data:', error);
+            setErrorMessage('Error occurred while fetching data, please make sure the page you have selected is active.');
         } finally {
             setIsLoading(false);
         }
     };
+    
+
     const formatDate = (isoString) => {
         const date = new Date(isoString);
         return date.toLocaleDateString("en-US", {
@@ -262,7 +280,7 @@ s
                <>
                     {/* <Link href={`/dashboard/${app.id}`} className='sub-dash-back'>Back to the {app.name} Dashboard</Link> */}
                     {/* <h3>On-Page SEO</h3> */}
-                    <GaugeChartComponent id="gauge-chart1" percent={30} width="300px" className='gauge-component' />
+                    <GaugeChartComponent id="gauge-chart1" percent={0} width="300px" className='gauge-component' />
                     <h6 className='selected-page-header'> Page: {selectedPageURL}</h6>
 
                     {lastTested && <p className='tech-dash-last-p'><b>Last Tested:</b> {formatDate(lastTested)}</p>}
@@ -281,7 +299,9 @@ s
                     <div className='seo-dash-test-btn-container'>
                                         {pageOptions.length > 0 ? (<button type='button' className='btn btn-primary tech-dash-btn' onClick={triggerAnalysis}>Test Now</button>):(<div>No Page Found</div>)}
                                         </div>
-                    {analysisResult && <OnPageControlBoard analysisResult={analysisResult} />}
+                                        {errorMessage && <div className="error-message">{errorMessage}</div>}
+
+                    {analysisResult && !errorMessage && <OnPageControlBoard analysisResult={analysisResult} />}
                 </>
             {/* {app ? (
              

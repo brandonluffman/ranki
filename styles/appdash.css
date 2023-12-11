@@ -58,6 +58,8 @@
     box-shadow: 1px 1px 8px rgba(255,255,255,0.2);
     padding:1rem;
     border-radius: 10px;
+    position: relative;
+    padding-top:3rem;
 
 }
 .appdash-grid-img {
@@ -149,7 +151,14 @@
     width: 100vw;
 }
 
+.appdash-appname {
+    font-size: 2.25rem;
+}
 /* AppDash Form */
+
+.appdash-edit-form {
+  margin-top:0px !important;
+}
 
 .no-edit {
     display: none;
@@ -157,6 +166,16 @@
 
 .edit-form {
     display: block;
+    position: absolute;
+    top:0;
+    left:0;
+    background-color: rgb(240,240,240);
+    color:var(--dark-blue);
+    border-radius: 20px;
+    width: 100%;
+    /* height:100%; */
+    z-index:9999999 !important;
+    padding:2rem 1rem;
 
 }
 
@@ -169,3 +188,24 @@
     padding:0.5rem 1rem;
 }
 
+.appdash-edit-input {
+    font-size: 1rem !important;
+    border:none;
+
+}
+
+.appdash-form-header {
+    margin:0;
+    padding: 0;
+}
+
+.close-form-button {
+    position: absolute;
+    top:0;
+    right:0;
+    color:var(--dark-blue) !important;
+    transition:0.1s ease all;
+}
+.close-form-button:hover {
+    color:red !important;
+}
