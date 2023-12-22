@@ -7,7 +7,7 @@
 
 html, *, body {
     font-family: 'Urbanist', sans-serif;
-    scroll-behavior: smooth;
+    scroll-behavior: smooth !important;
     /* overflow-x:hidden; */
 }
 body {
@@ -21,14 +21,22 @@ a {
     color:inherit;
     text-decoration: none;
 }
+b {
+    font-weight: 800;
+}
 h1, h2, h3, h4, h5, h6, p {
     margin:0;
 }
 h1 {
     font-size: 4rem;
+    line-height: 5vh;
+    font-weight: 800;
 }
 h2 {
     font-size: 3rem;
+    line-height: 7vh;
+    font-weight: 800;
+
 }
 h3 {
     font-size: 3rem;
@@ -44,10 +52,11 @@ p {
     letter-spacing: normal;
 }
 :root {
-    --light-blue: #9ab2d7; /* Example light blue color */
-    --dark-blue: #08121b;
+    --primary: #8843fe; /* Example light blue color */
+    --secondary: #8feaff;
     --light-grey: rgb(211, 211, 211);
     --grey:rgb(150,150,150);
+    --dark-blue: #08121b;
   }
 
   .link {
@@ -60,22 +69,60 @@ p {
     color:rgb(80, 85, 215);
   }
 
+  .primary {
+    color:var(--primary);
+  }
+
+  .header-grey {
+    font-weight: 400;
+    color:rgb(175, 175, 175);
+    font-size: 2rem;
+    margin-left:3rem;
+    margin-bottom: 2rem;
+  }
+  .light {
+    color: rgb(242, 255, 166);
+  }
+
+  .next-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin:0 auto;
+    background-color: black;
+    color:white ;
+    border: none;
+    padding:1rem 2rem;
+    border-radius: 20px;
+    cursor: pointer;
+    font-weight: 700;
+  }
+
 .btn {
     border:none;
     padding:1rem 2rem;
     border-radius: 20px;
-    /* font-size:1.5rem; */
     font-weight:700;  
     text-transform: uppercase;
     letter-spacing: -0.0vw;
     cursor:pointer;
-    transition:0.3s ease all;
+    transition:0.2s ease all;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-size: 1rem;
+    position: relative;
 }
 .flexer {
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
+}
+
+.antiflexer {
+    display: block;
 }
 .italic {
     font-style: italic;
@@ -84,34 +131,45 @@ p {
 
 }
 .btn-primary {
-    background-color: var(--light-blue);
-    border:4px solid var(--light-blue);
+    background-color: var(--primary);
+    border:4px solid white;
     color:white;
 }
 .btn-primary:hover {
     background-color: white;
-    border:4px solid var(--light-blue);
-    color:var(--light-blue);
+    border:4px solid var(--primary);
+    color:var(--primary);
+}
+.btn-translucent {
+    background-color: transparent;
+    border:4px solid transparent;
+    color:inherit;
+}
+
+.btn-translucent:hover {
+    background-color: transparent;
+    border:4px solid transparent;
+    color:var(--secondary);
 }
 .btn-secondary {
-    background-color:  var(--light-blue);
-    border:4px solid var(--light-blue);
+    background-color:  var(--primary);
+    border:4px solid var(--primary);
     color:white;
 }
 .btn-secondary:hover {
     background-color: white;
-    border:4px solid var(--light-blue);
-    color:var(--light-blue);
+    border:4px solid white;
+    color:var(--primary);
 }
 .btn-tertiary {
-    background-color: var(--light-blue);
-    border:4px solid rgb(255, 255, 255);
-    color:rgb(255, 255, 255);
+    background-color: white;
+    border:4px solid var(--primary);
+    color:var(--primary);
 }
 .btn-tertiary:hover {
-    background-color: rgb(255, 255, 255);
-    border:4px solid var(--light-blue);
-    color:var(--light-blue);
+    background-color: var(--primary);
+    border:4px solid white;
+    color:white;
 }
 .blue-color-change {
     color: rgb(36, 107, 238);

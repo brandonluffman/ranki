@@ -1,11 +1,14 @@
 import Link from 'next/link';
 import React, { useState } from 'react'
+import GaugeChartComponent from './GaugeChartComponent';
+import { BsGrid3X3GapFill } from 'react-icons/bs';
+import { IoMdMenu } from 'react-icons/io';
 
 const ControlBoard = ({ analysisResult }) => {
   const [isToggled, setIsToggled] = useState(false);
 
   const report = analysisResult;
-  // console.log(analysisResult)
+  console.log(analysisResult)
   const {
     'Meta Title': metaTitle,
     'Meta Description': metaDescription,
@@ -22,7 +25,8 @@ const ControlBoard = ({ analysisResult }) => {
     'Schema Markup': schemaMarkup,
     'Load Time': loadTime,
     'Google Analytics': googleAnalytics,
-    'Broken Links': brokenLinks
+    'Broken Links': brokenLinks,
+    'Truthy Values Count': score
   } = analysisResult || {};
   // console.log(isHttps)
   // console.log(metaTitle)
@@ -34,7 +38,9 @@ const ControlBoard = ({ analysisResult }) => {
 
   return (
     <>
-    <button className='tech-dash-toggle btn btn-tertiary' onClick={toggleSEOGrid}>Toggle Grid</button>
+    <button className='tech-dash-toggle toggle-grid' onClick={toggleSEOGrid}>{isToggled? <BsGrid3X3GapFill />:<IoMdMenu />}</button>
+    {score &&  <GaugeChartComponent id="gauge-chart1" percent={(score/16)*100} width="300px" />}
+
     <div className={isToggled ? 'tech-dash-grid' : 'tech-dash-grid-small'}>
     <div className={metaTitle != false ? 'tech-grid-item green-grid':'tech-grid-item red-grid'}>
       {/* {metaTitle != false ? (<div className='green-active'></div>):(<div className='red-active'></div>)} */}

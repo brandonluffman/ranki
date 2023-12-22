@@ -97,10 +97,10 @@ const Dashboard = ({slugId}) => {
 
   const fetchAppName = async (appSlug) => {
     const cachedApp = localStorage.getItem(`appDetails_${appSlug}`);
-    if (cachedApp) {
-      console.log('Found the cached app')
-        setApp(JSON.parse(cachedApp));
-    } else {
+    // if (cachedApp) {
+    //   console.log('Found the cached app')
+    //     setApp(JSON.parse(cachedApp));
+    // } else {
         try {
             const { data, error } = await supabase
                 .from('apps')
@@ -114,7 +114,7 @@ const Dashboard = ({slugId}) => {
         } catch (error) {
             console.error('Error fetching app details:', error);
         }
-    }
+    
 };
 
 const fetchIntegratedApps = async (appSlug) => {
@@ -232,6 +232,7 @@ const handleSubmit = async (event) => {
     }
 };
 
+{app && console.log(app)}
 
   return (
     <>
@@ -293,7 +294,7 @@ const handleSubmit = async (event) => {
     )}
       </div>
 
-      <AppDashAnalytics />
+      {/* <AppDashAnalytics /> */}
  
         {siteUrls ? (
                <div className='dashboard-grid seo-dash-grid'>
@@ -301,11 +302,11 @@ const handleSubmit = async (event) => {
 
                <div className='seo-dash-item'>
                <h2>SEO</h2>
-               <GaugeChartComponent id="gauge-chart3" percent={score3} width="300px" className='seo-dash-chart'/>
+               {app?.seo_score ? (<GaugeChartComponent id="gauge-chart3" percent={app.seo_score} width="300px" className='seo-dash-chart'/>):(<GaugeChartComponent id="gauge-chart3" percent={score3} width="300px" className='seo-dash-chart'/>)}
                </div>
                </Link>
 
-        <Link href={`/dashboard/seo/${slug}`}>
+        {/* <Link href={`/dashboard/seo/${slug}`}>
         <div className='dashboard-grid-item'>
             <h2 className='dashboard-grid-header'>Technical SEO</h2>
             <GaugeChartComponent id="gauge-chart1" percent={score} width="250px" />
@@ -324,7 +325,7 @@ const handleSubmit = async (event) => {
             <h2 className='dashboard-grid-header'>Off-Page SEO</h2>
             <GaugeChartComponent id="gauge-chart3" percent={score3} width="250px"/>
             </div>
-            </Link>
+            </Link> */}
             </div>
    
         ):(
@@ -373,7 +374,7 @@ const handleSubmit = async (event) => {
     ):(
       <div className='no-user-container'>
       <div className='anti-flexer'>
-      <h3>No User Found, Log in to view dashboard</h3>
+      <h3 className='no-user-header'>Project Dashboard</h3>
       <Link href='/login'><button type='button' className='login-btn btn btn-primary'>Login</button></Link>
       </div>
       </div>

@@ -9,9 +9,10 @@ import {RxHamburgerMenu} from 'react-icons/rx'
 import {BiHomeAlt2} from 'react-icons/bi'
 import {BsCode,BsDot} from 'react-icons/bs'
 import {GrCircleInformation} from 'react-icons/gr'
-import { IoMdClose } from 'react-icons/io';
+import { IoMdClose, IoMdPricetags } from 'react-icons/io';
 import { supabase } from '../utils/supabaseClient';
 import { UserContext } from '../context/UserContext';
+import { IoNewspaper } from "react-icons/io5";
 
 const Navbar = () => {
   const [isActive, setActive] = useState(false);
@@ -62,6 +63,7 @@ const Navbar = () => {
     const handleClickOutside = (event) => {
       if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
         setHamburgerClass('');
+        setActive(false)
       }
     };
   
@@ -85,7 +87,10 @@ const Navbar = () => {
             <h2 className='hamburger-header'><img src='/RankiAI.png' className='nav-img'></img></h2>
             <div className='mobile-nav-link-container'>
             <Link className='nav-link' href='/'><BiHomeAlt2 className='nav-icon'/> Home</Link>
-            <Link className='nav-link' href='/dashboard'><BsCode className='nav-icon'/> Dashboard</Link>
+            <Link className='nav-link' href='/dashboard'><BsCode className='nav-icon'/> Projects</Link>
+            <Link className='nav-link' href='/pricing'><IoMdPricetags className='nav-icon'/> Pricing</Link>
+            <Link className='nav-link' href='/blog'><IoNewspaper className='nav-icon'/> Blog</Link>
+
             <Link className='nav-link' href='/about'><GrCircleInformation className='nav-icon'/> About</Link>
             {/* <Link className='nav-link' href='/ranking'><GrCircleInformation className='nav-icon'/> Rankings</Link> */}
             </div>
@@ -101,7 +106,7 @@ const Navbar = () => {
                 
                 {/* <p className='profile-circle-email'>Hello {user?.user.email}</p> */}
    
-                <button className='logout-nav-btn logout-logged-in btn nav-btn btn-tertiary' onClick={logout}>
+                <button className='logout-nav-btn logout-logged-in btn nav-btn btn-secondary' onClick={logout}>
                   Logout
                 </button>
                 </div>
@@ -116,14 +121,14 @@ const Navbar = () => {
                     {/* <button type='button' className={navbar ? 'nav-link-btn nav-login-btn btn btn-primary':'nav-link-btn nav-login-btn-scrolled btn btn-primary'}>
                       Log In
                     </button> */}
-                    <button type='button' className='nav-link-btn nav-login-btn-scrolled btn btn-white'>
+                    <button type='button' className='nav-link-btn nav-login-btn-scrolled btn btn-primary'>
                       Login
                     </button>
                   </Link>
                 </li>
                 <li className='nav-link nav-link-btn-li'>
                   <Link href='/register'>
-                    <button type='button' className='nav-link-btn nav-signup-btn btn btn-white'>
+                    <button type='button' className='nav-link-btn nav-signup-btn btn btn-tertiary'>
                       Sign Up
                     </button>
                   </Link>

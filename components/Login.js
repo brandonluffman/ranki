@@ -23,7 +23,6 @@ export default function LoginComponent() {
   };
   return (
     <>
-    <Navbar />
     <div className='login-container'>
     <div className='login-box'>
         <div className='login-avatar-div'>
@@ -46,7 +45,6 @@ export default function LoginComponent() {
         </form>
     </div>
     </div>
-    <Footer />
     </>
   );
 }

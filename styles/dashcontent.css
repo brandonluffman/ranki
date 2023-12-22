@@ -26,13 +26,32 @@
     cursor: pointer;
 }
 .dash-content-header {
-    margin-bottom: 2rem;
+    margin-bottom: 6rem;
+    letter-spacing: -0.3vw;
 }
 .dash-content-grid {
    
 }
+
+.dash-content-grid-small {
+    display: grid;
+    grid-template-columns: repeat(3,3fr);
+}
 .content-item-header {
     width: 1;
+    font-size: 1.5rem;
+    line-height: 5vh;
+    text-align: left;
+    margin-bottom: 0.5rem;
+}
+
+.blog-grid-item-header {
+    min-height: 75px;
+}
+
+.blog-grid-text > p {
+    font-size: 1rem;
+    text-align: left;
 }
 
 .add-content-container {

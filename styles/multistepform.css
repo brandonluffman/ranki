@@ -1,0 +1,99 @@
+.step-container h2 {
+    letter-spacing: -0.1vw;
+    margin-bottom: 4rem;
+}
+
+
+.keywords-input {
+    margin: 4rem 0rem;
+    outline: none;
+    border: none;
+    border-bottom: 1px solid black;
+    width: 50%;
+
+}
+
+.blog-metrics-header {
+    margin-bottom: 0rem !important;
+}
+
+.step-flexer {
+    margin-top:4rem;
+}
+
+.gauge-chart-sm div svg g .value-text > text {
+    fill: black !important;
+    font-weight: 600;
+    fill: black !important;
+    font-family: sans-serif;
+    text-shadow: none !important;
+}
+
+.step-toggle {
+    cursor: pointer;
+    border-radius: 40px;
+    width: 50%;
+    font-size: 1.15rem;
+}
+.nonactive {
+    background-color: transparent;
+    border: none;
+    padding: 1rem 2rem;
+}
+.step-toggle-container {
+    background-color: rgb(230, 230, 230);
+    width: 50%;
+    margin:0 auto;
+    border-radius: 40px;
+    overflow: hidden;
+    margin-bottom: 4rem;
+    padding: 0;
+
+}
+
+.active {
+    background-image: linear-gradient(to bottom, var(--primary),var(--dark-blue));
+    color:white;
+    border: none;
+    padding: 1rem 2rem;
+    font-weight: 800;
+
+}
+
+.keyword-render-container {
+    margin-bottom: 4rem;
+}
+
+.keyword-input-container {
+    margin:0rem 0rem;
+}
+
+.step-indicator-container {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 20px;
+}
+
+.step-indicator {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: #f0f0f0; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 1px 1px 8px rgba(0,0,0,0.2);
+
+}
+
+.step-indicator.completed {
+   color: white; 
+    background-color: rgb(34, 234, 34);
+    font-size: 1.75rem;
+
+}
+
+.step-indicator.current {
+    background-color: var(--primary);
+    color: white;
+}

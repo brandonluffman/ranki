@@ -19,6 +19,7 @@ const AppDash = ({ onRefresh }) => {
   const { user, login, logout } = useContext(UserContext);
 
 
+
   const fetchUserApps = async () => {
     if (!user) {
       console.error("User not authenticated");
@@ -56,6 +57,7 @@ const AppDash = ({ onRefresh }) => {
   useEffect(() => {
 
     fetchUserApps();
+
   }, [user, onRefresh]);
 
 
@@ -175,6 +177,8 @@ const deleteApp = async (appId) => {
     }
 };
 
+  apps && console.log(apps)
+
 
   return (
     <>
@@ -207,7 +211,7 @@ const deleteApp = async (appId) => {
 
                     <input type="text" name="domain" placeholder="Domain" className='login-input domain-input' />
                     </div>
-                    <button type="submit" className='btn btn-primary'>Add App</button>
+                    <button type="submit" className='login-button'>Add App</button>
                 </form>
                 {showAlert && <div className="success-alert">App created successfully!</div>}
                 <button onClick={toggleAddForm} className='delete-button close-add-form-button'>
@@ -216,10 +220,11 @@ const deleteApp = async (appId) => {
                 </div>
            
               </div>
-              <h1 className='dashboard-header'>Web Dashboard</h1>
+              <h1 className='dashboard-header'>Projects</h1>
 
               <div className='dashboard-grid appdash-grid'>
               {apps.map((app, index) => ( // index is used only as a fallback
+
               <li key={app.id || index} className='appdash-item'> {/* Prefer app.id */}
                   {/* <div className='appdash-img-container'>
                 {app.logo && <img src={app.logo} className='appdash-grid-img' alt={`${app.name} logo`} />}
@@ -231,6 +236,7 @@ const deleteApp = async (appId) => {
                   <Link href={`/dashboard/${app.id}`}><button type='button' className='dash-button dashboard-button'>Dashboard</button></Link>
 
                 <br></br>
+          
                 <button onClick={() => deleteApp(app.id)} className='dash-button delete-button'>
                   <IoMdTrash />
                   </button>
@@ -238,13 +244,14 @@ const deleteApp = async (appId) => {
                     <BiMessageEdit />
                   </button>
                   {editingApp && editingApp.id === app.id && (
-              <div className='edit-form'>
-                <EditForm appData={editingApp} onSubmit={editApp} />
-                <button onClick={() => setEditingApp(null)} className='delete-button close-form-button'>
-                  <IoMdClose />
-                </button>
-              </div>
-            )}
+                    <div className='edit-form'>
+                      <EditForm appData={editingApp} onSubmit={editApp} />
+                      <button onClick={() => setEditingApp(null)} className='delete-button close-form-button'>
+                        <IoMdClose />
+                      </button>
+                    </div>
+                  )}
+              
 
               </li>
               ))}
@@ -252,8 +259,8 @@ const deleteApp = async (appId) => {
               </div>
       ):(
         <div className='dashboard-container appdash-container no-user-container'>
-          <div className='anti-flexer'>
-          <h3>No User Found, Log in to view dashboard</h3>
+          <div className='anti-flexer nouserflexer'>
+          <h3 className='no-user-header'>Project Dashboard</h3>
           <Link href='/login'><button type='button' className='login-btn btn btn-primary'>Login</button></Link>
           </div>
           </div>

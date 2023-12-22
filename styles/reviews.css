@@ -1,0 +1,149 @@
+.reviews-container {
+    padding:0rem 2rem;
+    /* padding-top:100px; */
+    /* height:700px; */
+    position: relative;
+}
+
+.reviews-stars {
+    display: flex;
+    justify-content: center;
+    padding-top:3rem;
+    margin-bottom:2rem;
+}
+.reviews-header {
+    font-size: 1.5rem;
+    width:60%;
+    margin:0 auto;
+    margin-bottom: 4rem;
+    text-align: center;
+}
+
+.reviews-profile-img {
+    width:10%;
+    border-radius: 50%;
+    height:75px;
+    width: 75px;
+    margin-right: 1rem;
+}
+.index-star {
+    color:#fec84b;
+    font-size:2rem;
+}
+
+.reviews-profile {
+    border-right: 1px solid rgb(220, 220, 220);
+}
+
+.reviews-profile-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50%;
+    margin: 0 auto;
+    margin-bottom:10rem;
+}
+
+.reviews-profile {
+    padding:0.5rem;
+    display: flex;
+    width:50%;
+    /* border:1px solid black; */
+    height:100px;
+    align-items: center;
+}
+
+.reviews-logo {
+    width: 50%;
+    padding:0.5rem;
+    padding-left:2rem;
+    /* border:1px solid black; */
+    height:100px;
+    display: flex;
+    align-items: center;
+    margin:0 auto;
+    justify-content: center;
+}
+
+.reviews-profile-text {
+    font-size: 1.2rem;
+}
+
+.reviews-name {
+    font-weight: 600;
+    margin:0;
+    font-size: 1.2rem;
+    margin-bottom:0.2rem;
+}
+
+.reviews-status {
+    color:rgb(150, 150, 150);
+    margin:0;
+    font-size: 1.1rem;
+}
+
+.reviews-logo-img {
+    width:30%;
+}
+
+.reviews-grid-header {
+    text-align: center;
+    margin:0rem;
+    margin-bottom: 1rem;
+    font-size: 2rem;
+
+}
+.reviews-grid-subheader {
+    text-align: center;
+    margin:0rem;
+    font-size: 1.5rem;
+    color:rgb(136, 136, 136);
+    margin-bottom:3rem;
+}
+
+.reviews-review-grid {
+    display: grid;
+    grid-template-columns: repeat(3,3fr);
+    margin-bottom:6rem;
+    gap:50px
+}
+
+.review-grid-item {
+    /* border:1px solid black; */
+    padding:1rem;
+    box-shadow: 1px 1px 8px rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    background-color: var(--primary);
+}
+
+.review-grid-name {
+    font-weight: 700;
+}
+
+.review-grid-content {
+    margin-bottom:4rem;
+    letter-spacing: 0vw;
+
+}
+
+.reviews-supercharge {
+    text-align: center;
+    margin-bottom:1.5rem;
+    /* font-size:3.5rem; */
+}
+
+.reviews-supercharge-subheader {
+    text-align: center;
+    margin-top:2rem;
+    /* font-size: 1.5rem; */
+    width:75%;
+    margin: 0 auto;
+    margin-bottom:6rem;
+}
+
+.reviews-supercharge-btn {
+    justify-content: center;
+    display: flex;
+    margin: 0 auto;
+    margin-bottom: 6rem;
+}

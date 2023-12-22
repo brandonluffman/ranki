@@ -24,10 +24,13 @@ const Footer = () => {
               
               <div className='footer-links-container'>
                           <div className='footer-links'>
-                            <div className='footer-links-header'><p className='footer-link-header'>RANKI AI</p></div>
+                            <div className='footer-links-header'><p className='footer-link-header'>General</p></div>
                             <Link href='/'><div className='footer-link'>Home</div></Link>
                             <Link href='/about'><div className='footer-link'>About</div></Link>
-                            <Link href='/dashboard'><div className='footer-link'>App Dashboard</div></Link>
+                            <Link href='/dashboard'><div className='footer-link'>Projects</div></Link>
+                            <Link href='/pricing'><div className='footer-link'>Pricing</div></Link>
+                            <Link href='/blog'><div className='footer-link'>Blog</div></Link>
+
                             {/* <Link href='/contact'><div className='footer-link'>Contact Us</div></Link> */}
                           </div>
                           <div className='footer-links'>

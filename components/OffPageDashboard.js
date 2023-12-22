@@ -16,7 +16,7 @@ const OffPageDashboard = ({ slug }) => {
 
   return (
       <div className='technical-dashboard-container'>        
-      {app ? (
+      {/* {app ? (
           <div>
             <GaugeChartComponent id="gauge-chart1" percent={score} width="300px" />
           </div>
@@ -24,7 +24,7 @@ const OffPageDashboard = ({ slug }) => {
         <div>
             <GaugeChartComponent id="gauge-chart1" percent={score} width="300px" />
         </div>
-      )}
+      )} */}
       <OffPageControlBoard />
   </div>
   )

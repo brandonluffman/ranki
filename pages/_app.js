@@ -19,6 +19,13 @@ import '../styles/gmbdash.css';
 import '../styles/breadcrumbs.css';
 import '../styles/blog.css';
 import '../styles/messages.css';
+import '../styles/pricing.css';
+import '../styles/reviews.css';
+import '../styles/chatbot.css';
+import '../styles/blogedit.css';
+import '../styles/logoslider.css';
+import '../styles/blogpage.css';
+import '../styles/multistepform.css';
 
 import NProgress from 'nprogress';
 import "nprogress/nprogress.css";

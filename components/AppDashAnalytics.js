@@ -2,7 +2,7 @@ import React, {useState} from 'react'
 import { FaCaretUp } from 'react-icons/fa'
 
 const AppDashAnalytics = () => {
-  const [googleAnalytic, setGoogleAnalytic] = useState(true);
+  const [googleAnalytic, setGoogleAnalytic] = useState(false);
 
 
   return (

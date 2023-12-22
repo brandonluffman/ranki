@@ -1,28 +1,61 @@
-import axios from 'axios';
+import React, {useState, useEffect} from 'react'
+import { supabase } from '../utils/supabaseClient';
+import Link from 'next/link';
 
-export async function getServerSideProps() {
-    // Replace this URL with your API endpoint
-    const res = await axios.get('https://your-api-endpoint.com/blogs');
-    const blogs = res.data;
-
-    // Pass the blogs data to the page via props
-    return { props: { blogs } };
+const Blog = () => {
+    const [blogs, setBlogs] = useState([]);
+    const slug = 37;
+  
+    const fetchBlogs = async (slug) => {
+      const { data, error } = await supabase
+          .from('blog')
+          .select('*')
+          .eq('app_id', slug);
+  
+      if (error) {
+          console.error('Error fetching blogs:', error);
+          return [];
+      }
+  
+      return data;
+  };
+  
+  useEffect(() => {
+    // if (!user) {
+    //     console.error("User not authenticated");
+    //     setIsLoading(false);
+    //     return;
+    //   }
+    const loadData = async () => {
+        const fetchedBlogs = await fetchBlogs(slug);
+        setBlogs(fetchedBlogs);
+    };
+  
+  
+    if (slug) {
+        loadData();
+    } else {
+        return 'No Slug Identified'
+    }
+  }, [slug]);
+  return (
+    <div className='blog-container'>
+    {/* <h1 className='blog-header'>Blogs</h1> */}
+    <div className='blog-grid-container'>
+    {blogs && blogs.map(blog => (
+        <Link href={`/blog/${blog.id}`} key={blog.id}>
+          <div className='blog-grid-item'>
+            <img className='blog-grid-img' src='/shop.webp' />
+            <div className='blog-grid-text'>
+              <h2 className='content-item-header blog-grid-item-header'>{blog.title}</h2>
+              <p>{blog.content}</p>
+              </div>
+          </div>
+          </Link>
+      ))}
+      </div>
+</div>
+  )
 }
 
-export default function Blog({ blogs }) {
-    return (
-        <div>
-            <h1>Blog Posts</h1>
-            {/* Render your blogs here */}
-            <ul>
-                {blogs.map(blog => (
-                    <li key={blog.id}>
-                        <h2>{blog.title}</h2>
-                        <p>{blog.content}</p>
-                        {/* Render other blog details */}
-                    </li>
-                ))}
-            </ul>
-        </div>
-    );
-}
+export default Blog

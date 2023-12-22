@@ -654,3 +654,9 @@
         border-bottom: 1px solid white !important;
 
 }
+
+.blog-dashcontent-header {
+    margin-bottom: 2rem;
+    font-size: 3rem;
+}
+

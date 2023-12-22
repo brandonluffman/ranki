@@ -128,7 +128,7 @@ padding: 2rem 5rem 3rem 5rem;
     margin-bottom:4rem;
 }
 .home-about-content-img {
-    width:50%;
+    /* width:50%; */
     justify-content: center;
     text-align: center;
     display: flex;
@@ -139,12 +139,13 @@ padding: 2rem 5rem 3rem 5rem;
     /* height:300px; */
 }
 .home-about-content-text {
-    width:50%;
+    width:100%;
 }
 .home-about-p {
     font-size: 1.5rem;
     margin-bottom:4rem;
     line-height: 5vh;
+    letter-spacing: normal;
 }
 .home-about-p ol {
     margin:5rem 0rem;

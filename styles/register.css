@@ -69,6 +69,11 @@
     /* border:5px solid rgb(36, 107, 238); */
   }
 
+  .login-box h1 {
+    margin:2rem 0rem;
+    font-size: 2rem;
+  }
+
 .login-input {
     background-color: rgb(245, 245, 245);
     /* display: flex;
@@ -143,7 +148,7 @@
 }
 .login-button {
     padding: 0.7rem 2rem;
-    background-color: var(--light-blue);
+    background-color: var(--primary);
     color:white;
     border-radius:40px;
     border:none;

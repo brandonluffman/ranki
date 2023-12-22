@@ -4,6 +4,7 @@ import Footer from '../components/Footer';
 // import {supabase} from '../utils/supabaseClient'
 // import Test from '../components/Test';
 import GoogleAnalytics from '../components/GoogleAnalytics';
+import TextEditor from '../components/TextEditor';
 
 const test = () => {
 
@@ -12,8 +13,11 @@ const test = () => {
   return (
     <>
     <Navbar />
+    <div className='test-container'>
         {/* <Test /> */}
         {/* <GoogleAnalytics /> */}
+        <TextEditor />
+        </div>
     <Footer />
 </>
   )

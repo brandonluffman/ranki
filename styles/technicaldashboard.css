@@ -51,6 +51,11 @@
 
 }
 
+.tech-dash-toggle {
+    margin-left: auto;
+    color: white !important;
+}
+
 .green-grid {
     background-color: rgba(102, 255, 115, 0.571);
 }
@@ -88,6 +93,7 @@
 
 .tech-dash-btn {
     margin: 2rem 0rem;
+    margin:2rem auto;
 }
 
 

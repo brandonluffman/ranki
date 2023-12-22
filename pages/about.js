@@ -30,28 +30,28 @@ export default function About() {
           {/* <h1 className='about-header'>RANKI AI</h1> */}
           <img src='/R.png' alt='Brand Logo' width='600' className='about-logo'></img>
           </div>
-          <h2 className='landing-subheader'><span className='header-color'>Ultimate</span> Web Command Center</h2>
+          <h2 className='landing-subheader'><span className='primary'>Automated</span> AI Content Generation</h2>
         </div>
       </div>
 
       <div className='home-about-container'>
         <div className='home-about-content'>
         <div className='home-about-content-text'>
-        <h3 className='home-about-subheader'>Our <span className='header-color'>Mission</span></h3>
+        <h3 className='home-about-subheader'>Our <span className='primary'>Mission</span></h3>
         <p className='home-about-p'>
         Our Mission
 
-At the heart of our endeavor lies a simple yet profound understanding: navigating the intricacies of website ranking can be overwhelmingly complex. This is especially true if you find yourself in any of these scenarios:
-<ol>
-<li>Struggling with the nuances of SEO and digital marketing.</li>
-<li>Lacking the desire or time to delve into the complexities of online optimization.</li>
-<li>Wishing to concentrate solely on nurturing and expanding your business.</li>
-</ol>
-Recognizing these challenges, we were inspired to create a singular, all-encompassing solution designed to foster the growth of your website. Our application is more than just a tool; itapos;s a comprehensive ecosystem tailored to simplify your digital journey. Whether you&apos;re a newcomer to the digital realm or a seasoned entrepreneur with little interest in the technicalities of web optimization, our platform is engineered to cater to your needs.
+            At the heart of our endeavor lies a simple yet profound understanding: navigating the intricacies of website ranking can be overwhelmingly complex. This is especially true if you find yourself in any of these scenarios:
+            <ol>
+            <li>Struggling with the nuances of SEO and digital marketing.</li>
+            <li>Lacking the desire or time to delve into the complexities of online optimization.</li>
+            <li>Wishing to concentrate solely on nurturing and expanding your business.</li>
+            </ol>
+            Recognizing these challenges, we were inspired to create a singular, all-encompassing solution designed to foster the growth of your website. Our application is more than just a tool; itapos;s a comprehensive ecosystem tailored to simplify your digital journey. Whether you&apos;re a newcomer to the digital realm or a seasoned entrepreneur with little interest in the technicalities of web optimization, our platform is engineered to cater to your needs.
 
-We present to you a platform that streamlines the process of enhancing your website&apos;s visibility and performance. Through our intuitive and user-friendly interface, you&apos;ll have access to all the essential tools and insights needed to elevate your site&apos;s ranking, without the hassle of juggling multiple applications or mastering the intricacies of SEO.
+            We present to you a platform that streamlines the process of enhancing your website&apos;s visibility and performance. Through our intuitive and user-friendly interface, you&apos;ll have access to all the essential tools and insights needed to elevate your site&apos;s ranking, without the hassle of juggling multiple applications or mastering the intricacies of SEO.
 
-Join us in embracing a smarter, more efficient way to grow your online presence. Let our application be the catalyst that propels your website to new heights, allowing you to focus on what you do best: running your business.
+            Join us in embracing a smarter, more efficient way to grow your online presence. Let our application be the catalyst that propels your website to new heights, allowing you to focus on what you do best: running your business.
          </p>
         </div>
         {/* <div className='home-about-content-img'>
@@ -63,49 +63,18 @@ Join us in embracing a smarter, more efficient way to grow your online presence.
         <img src='/shop.webp' className='home-about-img' alt='Shopping Cart'></img>
         </div> */}
         <div className='home-about-content-text'>
-        <h3 className='home-about-subheader'>How It <span className='header-color'>Works</span></h3>
-        <p className='home-about-p'>Introducing our revolutionary application, meticulously designed to be the ultimate command center for all your website management needs. Imagine a world where you can effortlessly ensure your website&apos;s aesthetic brilliance while simultaneously optimizing it for top search engine rankings. Our application is a comprehensive solution that seamlessly integrates various aspects of website management into one intuitive dashboard.
+        <h3 className='home-about-subheader'>How It <span className='primary'>Works</span></h3>
+                    <p className='home-about-p'>Introducing our revolutionary application, meticulously designed to be the ultimate command center for all your website management needs. Imagine a world where you can effortlessly ensure your website&apos;s aesthetic brilliance while simultaneously optimizing it for top search engine rankings. Our application is a comprehensive solution that seamlessly integrates various aspects of website management into one intuitive dashboard.
 
-Experience the convenience of having a personalized control panel for each of your websites. This innovative feature allows you to monitor critical metrics from Google Analytics and Search Console, track SEO performance, and keep a close eye on your keyword rankings. Gone are the days of juggling multiple tabs and tools; our application streamlines your workflow by providing all the essential resources and links in one consolidated location.
+            Experience the convenience of having a personalized control panel for each of your websites. This innovative feature allows you to monitor critical metrics from Google Analytics and Search Console, track SEO performance, and keep a close eye on your keyword rankings. Gone are the days of juggling multiple tabs and tools; our application streamlines your workflow by providing all the essential resources and links in one consolidated location.
 
-Our platform is not just a tool; it&apos;s a strategic partner that empowers you to elevate your online presence. By integrating advanced analytics and SEO insights, it helps you make data-driven decisions to enhance your site&apos;s performance and visibility. Whether you&apos;re a small business owner, a digital marketing professional, or a webmaster, our application is tailored to meet your unique needs and help you achieve your digital goals with ease and efficiency.
+            Our platform is not just a tool; it&apos;s a strategic partner that empowers you to elevate your online presence. By integrating advanced analytics and SEO insights, it helps you make data-driven decisions to enhance your site&apos;s performance and visibility. Whether you&apos;re a small business owner, a digital marketing professional, or a webmaster, our application is tailored to meet your unique needs and help you achieve your digital goals with ease and efficiency.
 
-Embrace the future of website management with our cutting-edge application, where sophistication meets simplicity, and excellence is just a click away.</p>
+            Embrace the future of website management with our cutting-edge application, where sophistication meets simplicity, and excellence is just a click away.</p>
         </div>
         </div>
       </div>
-      {/* <div className='home-team-container'>
-          <h3 className='home-team-header'>Meet the Team</h3>
-          <div className='home-team-profiles'>
-          <div className='home-team-profile brandon-profile'>
-            <div className='overlay'>
-              <p className='profile-name'>Brandon Luffman</p>
-              <p className='profile-title'>Co Founder, <b>CEO</b></p>
-              <p className='profile-skills'>AI/Full Stack Developer</p>
-              <Link href='https://www.linkedin.com/in/brandon-luffman10/' aria-label='Linkedin Profile' target='_blank' rel='noreferrer'><FaLinkedinIn className="profile-linkedin" alt='Social Icon' /></Link>
-              </div>
-          </div>
-          <div className='home-team-profile marcus-profile'>
-            <div className='overlay'>
-              <p className='profile-name'>Marcus Oshodi</p>
-              <p className='profile-title'>Co Founder, <b>COO</b></p>
-              <p className='profile-skills'>AI/Big Data Developer</p>
-              <Link href='https://www.linkedin.com/in/marcus-oshodi-579358199/' aria-label='Linkedin Profile' target='_blank' rel='noreferrer'><FaLinkedinIn className="profile-linkedin" alt='Social Icon' /></Link>
-              </div>
-            </div>
-          </div>
-      </div> */}
       <Footer />
     </>
   )
 }
-
-
-
-// We get it, getting your website ranked can be... <b>alot</b>.<br></br> Especially if you: 
-// <ol>
-//     <li>Have no idea what you&apos;re doing</li>
-//     <li>Have no interest in learning</li>
-//     <li>Just want to focus on your business</li>
-//   </ol> 
-//    So, we deicded to build a one stop shop for growing your website.
