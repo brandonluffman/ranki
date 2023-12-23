@@ -111,8 +111,14 @@ const ControlBoard = ({ analysisResult }) => {
     <div className={loadTime < 0.3 ? 'tech-grid-item green-grid':'tech-grid-item red-grid'}>
     {/* {loadTime < 0.3 ? (<div className='green-active'></div>):(<div className='red-active'></div>)} */}
       <h2 className='tech-grid-header'>Load Time</h2>
-      {loadTime && loadTime < 0.3 ? ( <h3 className='tech-grid-content'>{loadTime.toFixed(2)} seconds -- NICE !</h3>):( <h3 className='tech-grid-content'>{loadTime.toFixed(2)} seconds -- Not so great , took a bit too long to load the page !</h3>)}
-    </div>
+      {
+  loadTime ?
+    (loadTime < 0.3 ? 
+      <h3 className='tech-grid-content'>{loadTime.toFixed(2)} seconds -- NICE!</h3> :
+      <h3 className='tech-grid-content'>{loadTime.toFixed(2)} seconds -- Not so great, took a bit too long to load the page!</h3>
+    ) :
+    <div>No Time Found</div>
+}    </div>
     <div className={googleAnalytics == true ? 'tech-grid-item green-grid':'tech-grid-item red-grid'}>
     {/* {googleAnalytics == true ? (<div className='green-active'></div>):(<div className='red-active'></div>)} */}
       <h2 className='tech-grid-header'>Google Analytics</h2>

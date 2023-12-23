@@ -52,7 +52,7 @@ const Navbar = () => {
   }, []);
 
   const handleScroll = () => {
-    if (window.scrollY > 0) {
+    if (window.scrollY > 10) {
       setNavbarClass('scrolled');
     } else {
       setNavbarClass('');

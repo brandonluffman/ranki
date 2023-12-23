@@ -52,7 +52,7 @@ const [isAuthor, setIsAuthor] = useState(false)
   return ( 
     <>
            <Head>  
-<title>Phantom | AI Driven Applications</title>
+<title>RankiAI Blog | {blog && blog.title}</title>
          <script
            type="application/ld+json"
            dangerouslySetInnerHTML={{ __html: JSON.stringify({

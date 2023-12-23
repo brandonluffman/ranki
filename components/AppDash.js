@@ -30,11 +30,11 @@ const AppDash = ({ onRefresh }) => {
     setIsLoading(true);
     const cachedApps = localStorage.getItem(`userApps_${user.id}`);
     
-    if (cachedApps) {
-      // If there is cached data, use it
-      setApps(JSON.parse(cachedApps));
-      setIsLoading(false);
-    } else {
+    // if (cachedApps) {
+    //   // If there is cached data, use it
+    //   setApps(JSON.parse(cachedApps));
+    //   setIsLoading(false);
+    // } else {
       // If there is no cached data, fetch from the API
       try {
         const { data: apps, error } = await supabase
@@ -50,13 +50,14 @@ const AppDash = ({ onRefresh }) => {
       } finally {
         setIsLoading(false);
       }
-    }
+    // }
   };
   
 
   useEffect(() => {
 
     fetchUserApps();
+
 
   }, [user, onRefresh]);
 
@@ -139,19 +140,36 @@ const AppDash = ({ onRefresh }) => {
     }
   };
 
-const deleteApp = async (appId) => {
-  const { error } = await supabase
-      .from('apps')
-      .delete()
-      .match({ id: appId });
-
-  if (error) {
-      console.error("Error deleting app:", error);
-      return;
-  }
-
-  setApps(currentApps => currentApps.filter(app => app.id !== appId));
-};
+  const deleteApp = async (appId) => {
+    try {
+      // Handle dependent records in the 'site_urls' table
+      // This deletes all records in 'site_urls' that reference the app
+      const { error: deleteSiteUrlsError } = await supabase
+          .from('site_urls')
+          .delete()
+          .match({ app_id: appId });
+  
+      if (deleteSiteUrlsError) {
+          throw deleteSiteUrlsError;
+      }
+  
+      // Delete the app from the 'apps' table
+      const { error: deleteAppError } = await supabase
+          .from('apps')
+          .delete()
+          .match({ id: appId });
+  
+      if (deleteAppError) {
+          throw deleteAppError;
+      }
+  
+      // Update local state to reflect the deletion
+      setApps(currentApps => currentApps.filter(app => app.id !== appId));
+    } catch (error) {
+      console.error("Error in deleting app:", error);
+    }
+  };
+  
 
   const editApp = async (updatedApp) => {
     console.log('updating');
