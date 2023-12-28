@@ -50,7 +50,7 @@ const SEODashboard = () => {
 
     const handleDashboardChange = (dashboardName) => {
         setSelectedDashboard(dashboardName);
-    };
+    }; 
 
 
 
@@ -61,7 +61,7 @@ const SEODashboard = () => {
                     <>
                     <Breadcrumbs />
 
-            <Link href={`/dashboard/${app.id}`} className='sub-dash-back'><BsArrowLeft className='arrow' />Back to the {app.name} Dashboard</Link>
+            <Link href={`/dashboard/${app.id}`} className='sub-dash-back'><BsArrowLeft className='arrow' /></Link>
             <h3 className='seo-dash-header'>SEO Dashboard | <b>{app.name}</b></h3>
             {/* UI for selecting dashboards */}
             <div className='dashboard-selector'>

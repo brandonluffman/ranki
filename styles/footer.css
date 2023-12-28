@@ -144,9 +144,9 @@ Link {
 
     }
     .footer-brand-logo {
-        width:100px;
+        /* width:100px;
         height:100px;
-        margin-bottom:0rem;
+        margin-bottom:0rem; */
     }
    
     .footer-container {
@@ -160,9 +160,16 @@ Link {
 
 @media (max-width: 500px) {
     .footer-brand-logo {
-        width:100px;
+        /* width:100px;
         height:100px;
-        margin-bottom:0rem;
+        margin-bottom:0rem; */
+        width: 40%;
     }
+
+
+    .footer-copyright-content {
+        font-size: 1rem;
+    }
+
   }
 

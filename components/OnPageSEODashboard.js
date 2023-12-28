@@ -76,11 +76,11 @@ const OnPageSEODashboard = ({ slug, domain }) => {
     useEffect(() => {
     
         // Retrieve page options from local storage
-        const savedPageOptions = localStorage.getItem(`pageOptions_${domain}`);
-        if (savedPageOptions) {
-            console.log('Found Page Options');
-            setPageOptions(JSON.parse(savedPageOptions));
-        } else {
+        // const savedPageOptions = localStorage.getItem(`pageOptions_${domain}`);
+        // if (savedPageOptions) {
+        //     console.log('Found Page Options');
+        //     setPageOptions(JSON.parse(savedPageOptions));
+        // } else {
             // Check if domains are already associated with the app_id
             const checkDomains = async () => {
                 try {
@@ -105,7 +105,7 @@ const OnPageSEODashboard = ({ slug, domain }) => {
             };
     
             checkDomains();
-        }
+        // }
 
         if (selectedPageURL) {
             fetchLastTested(selectedPageURL);
@@ -225,23 +225,65 @@ s
     };
 
     
+    // const triggerAnalysis = async () => {
+    //     if (!selectedPageURL) return;
+    
+    //     setIsLoading(true);
+    //     setErrorMessage(null); // Reset the error message at the start
+    
+    //     try {
+    //         // Check if the webpage provides a 200 status code
+    //         const statusCheckResponse = await axios.get(selectedPageURL);
+    //         if (statusCheckResponse.status !== 200) {
+    //             setErrorMessage('Webpage does not provide a 200 status code');
+    //             return; // Exit the function if status is not 200
+    //         }
+    
+    //         // Proceed with the analysis if status is 200
+    //         const response = await axios.get(`https://rankiai-fe08b8a427f4.herokuapp.com/onpageseo`, {
+    //             params: { url: selectedPageURL }
+    //         });
+    
+    //         localStorage.setItem(`analysisResult_${selectedPageURL}`, JSON.stringify(response.data));
+    //         setAnalysisResult(response.data);
+            
+    //         saveAnalysisToDB(response.data); // Save to database
+    
+    //         // Fetch the last tested date after saving
+    //         fetchLastTested(selectedPageURL);
+           
+    //     } catch (error) {
+    //         console.error('Error fetching data:', error);
+    //         setErrorMessage('Error occurred while fetching data, please make sure the page you have selected is active.');
+    //     } finally {
+    //         setIsLoading(false);
+    //     }
+    // };
+
     const triggerAnalysis = async () => {
         if (!selectedPageURL) return;
     
         setIsLoading(true);
         setErrorMessage(null); // Reset the error message at the start
     
+        // Define the headers
+        const headers = {
+            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.3',
+
+        };
+    
         try {
-            // Check if the webpage provides a 200 status code
-            const statusCheckResponse = await axios.get(selectedPageURL);
-            if (statusCheckResponse.status !== 200) {
-                setErrorMessage('Webpage does not provide a 200 status code');
-                return; // Exit the function if status is not 200
-            }
+            // // Check if the webpage provides a 200 status code
+            // const statusCheckResponse = await axios.get(selectedPageURL, { headers });
+            // if (statusCheckResponse.status !== 200) {
+            //     setErrorMessage('Webpage does not provide a 200 status code');
+            //     return; // Exit the function if status is not 200
+            // }
     
             // Proceed with the analysis if status is 200
             const response = await axios.get(`https://rankiai-fe08b8a427f4.herokuapp.com/onpageseo`, {
-                params: { url: selectedPageURL }
+                params: { url: selectedPageURL },
+                headers // Include headers in this request as well
             });
     
             localStorage.setItem(`analysisResult_${selectedPageURL}`, JSON.stringify(response.data));
@@ -269,7 +311,7 @@ s
             day: 'numeric',
             hour: '2-digit',
             minute: '2-digit',
-            second: '2-digit'
+            // second: '2-digit'
         });
     };
 

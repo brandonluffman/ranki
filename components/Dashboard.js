@@ -302,7 +302,9 @@ const handleSubmit = async (event) => {
 
                <div className='seo-dash-item'>
                <h2>SEO</h2>
-               {app?.seo_score ? (<GaugeChartComponent id="gauge-chart3" percent={app.seo_score} width="300px" className='seo-dash-chart'/>):(<GaugeChartComponent id="gauge-chart3" percent={score3} width="300px" className='seo-dash-chart'/>)}
+               {app?.technical_analysis ? (<GaugeChartComponent id="gauge-chart3" percent={((app.technical_analysis['Truthy Values Count'])/16)*100} width="300px" className='seo-dash-chart'/>):(<GaugeChartComponent id="gauge-chart3" percent={score3} width="300px" className='seo-dash-chart'/>)}
+
+               {/* {app?.seo_score ? (<GaugeChartComponent id="gauge-chart3" percent={app.technical_analysis['Truthy Values Count']} width="300px" className='seo-dash-chart'/>):(<GaugeChartComponent id="gauge-chart3" percent={score3} width="300px" className='seo-dash-chart'/>)} */}
                </div>
                </Link>
 

@@ -106,7 +106,7 @@ const Navbar = () => {
                 
                 {/* <p className='profile-circle-email'>Hello {user?.user.email}</p> */}
    
-                <button className='logout-nav-btn logout-logged-in btn nav-btn btn-secondary' onClick={logout}>
+                <button className='logout-nav-btn logout-logged-in btn nav-btn btn-secondary nav-log-btn' onClick={logout}>
                   Logout
                 </button>
                 </div>
@@ -121,14 +121,14 @@ const Navbar = () => {
                     {/* <button type='button' className={navbar ? 'nav-link-btn nav-login-btn btn btn-primary':'nav-link-btn nav-login-btn-scrolled btn btn-primary'}>
                       Log In
                     </button> */}
-                    <button type='button' className='nav-link-btn nav-login-btn-scrolled btn btn-primary'>
+                    <button type='button' className='nav-link-btn nav-login-btn-scrolled btn btn-primary nav-log-btn'>
                       Login
                     </button>
                   </Link>
                 </li>
                 <li className='nav-link nav-link-btn-li'>
                   <Link href='/register'>
-                    <button type='button' className='nav-link-btn nav-signup-btn btn btn-tertiary'>
+                    <button type='button' className='nav-link-btn nav-signup-btn btn btn-tertiary nav-log-btn'>
                       Sign Up
                     </button>
                   </Link>

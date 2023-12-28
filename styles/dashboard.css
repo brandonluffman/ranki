@@ -373,12 +373,17 @@
     right: 20px; */
     font-size: 1.15rem;
     background-color: var(--dark-blue);
+    margin: 0 auto;
 }
 .full-row-item h2 {
     margin-bottom: 4rem !important;
     font-size: 2rem;
     width: 70%;
     margin:0 auto;
+    color: white;
+    background-image: linear-gradient(to bottom, var(--primary), var(--dark-blue));
+    padding: 2rem;
+    border-radius:20px;
 }
 
 .appdash-analytics-img {

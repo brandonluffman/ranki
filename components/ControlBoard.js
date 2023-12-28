@@ -4,7 +4,7 @@ import GaugeChartComponent from './GaugeChartComponent';
 import { BsGrid3X3GapFill } from 'react-icons/bs';
 import { IoMdMenu } from 'react-icons/io';
 
-const ControlBoard = ({ analysisResult }) => {
+const ControlBoard = ({ analysisResult, lastTested, fetchData, isLoading }) => {
   const [isToggled, setIsToggled] = useState(false);
 
   const report = analysisResult;
@@ -29,7 +29,7 @@ const ControlBoard = ({ analysisResult }) => {
     'Truthy Values Count': score
   } = analysisResult || {};
   // console.log(isHttps)
-  // console.log(metaTitle)
+  console.log(googleAnalytics)
 
   const toggleSEOGrid = () => {
     setIsToggled(!isToggled);
@@ -38,10 +38,16 @@ const ControlBoard = ({ analysisResult }) => {
 
   return (
     <>
-    <button className='tech-dash-toggle toggle-grid' onClick={toggleSEOGrid}>{isToggled? <BsGrid3X3GapFill />:<IoMdMenu />}</button>
     {score &&  <GaugeChartComponent id="gauge-chart1" percent={(score/16)*100} width="300px" />}
+    {fetchData && <button type='button' className='btn btn-primary tech-dash-btn' onClick={fetchData}>Test Now</button>}
+      {lastTested && <p className='tech-dash-last-p'><b>Last Tested:</b> {lastTested} </p>}
+      <div>
+                {isLoading ? <p>Loading...</p> : null}
+            </div>
+            <button className='tech-dash-toggle toggle-grid' onClick={toggleSEOGrid}>{isToggled? <BsGrid3X3GapFill />:<IoMdMenu />}</button>
 
     <div className={isToggled ? 'tech-dash-grid' : 'tech-dash-grid-small'}>
+  
     <div className={metaTitle != false ? 'tech-grid-item green-grid':'tech-grid-item red-grid'}>
       {/* {metaTitle != false ? (<div className='green-active'></div>):(<div className='red-active'></div>)} */}
       <h2 className='tech-grid-header'>Meta Title</h2>

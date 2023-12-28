@@ -147,3 +147,39 @@
     margin: 0 auto;
     margin-bottom: 6rem;
 }
+
+@media (max-width: 500px) {
+    .reviews-header {
+        font-size: 1.25rem;
+        width: 100%;
+        margin: 0 auto;
+        margin-bottom: 4rem;
+        text-align: center;
+        line-height: 4vh;
+    }
+
+    .reviews-container {
+        padding: 0rem 0rem;
+    }
+
+    .reviews-profile-container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        margin: 0 auto;
+        margin-bottom: 4rem;
+    }
+
+    .reviews-profile {
+        display: block;
+    }
+
+    .reviews-logo-img {
+        width: 50%;
+    }
+
+    .reviews-profile-img {
+        margin-bottom: 1rem;
+    }
+}

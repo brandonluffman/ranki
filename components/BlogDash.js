@@ -215,7 +215,7 @@ const BlogDash = () => {
 )
 :(
     <div className='blog-dashboard-container'>
-                  {app &&   <Link href={`/dashboard/${app.id}`} className='sub-dash-back'><BsArrowLeft className='arrow' />Back to the {app.name} Dashboard</Link>}
+                  {app &&   <Link href={`/dashboard/${app.id}`} className='sub-dash-back'><BsArrowLeft className='arrow' /></Link>}
 
         {isToggled && <AddBlog submitForm={handleSubmit} toggle={toggleAddForm} />}
         {toggled && <BlogEditForm blog={blogs.find(blog => blog.id === editBlogId)} toggle={toggleEditForm} submitForm={handleEdit} />}

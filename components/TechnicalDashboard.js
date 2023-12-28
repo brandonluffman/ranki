@@ -114,14 +114,7 @@ const TechnicalDashboard = ({ slug, domain }) => {
     return (
         <div className='technical-dashboard-container'>
         <div>
-            {/* <h1 className='tech-dash-header'>Technical SEO</h1> */}
-            {/* <GaugeChartComponent id="gauge-chart1" percent={score} width="300px" /> */}
-            <button type='button' className='btn btn-primary tech-dash-btn' onClick={fetchData}>Test Now</button>
-            {app && <p className='tech-dash-last-p'><b>Last Tested:</b> {formatDate(app.technical_last_tested)}</p>}
-            {app && <ControlBoard analysisResult={analysisResult} />}
-            <div>
-                {isLoading ? <p>Loading...</p> : null}
-            </div>
+            {app && <ControlBoard analysisResult={analysisResult} lastTested={formatDate(app.technical_last_tested)} fetchData={fetchData} isLoading={isLoading} />}
         </div>
     </div>
     )

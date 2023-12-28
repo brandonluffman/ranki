@@ -198,3 +198,35 @@
     color:white;
     font-size: 1.5rem;
 }
+
+@media (max-width: 500px) {
+
+    .chatbot-logo {
+        display:none;
+    }
+
+    .navbar {
+        padding: 0.75rem 0rem;
+        justify-content: space-between;
+    }
+
+    .nav-log-btn {
+        display: none;
+    }
+
+    .hamburger-menu {
+        margin-right: 1rem;
+    }
+
+    .nav-menu-toggled {
+        width: 80vw;
+    }
+
+    .nav-img {
+        width: 60%;
+    }
+
+    .hamburger-header {
+        margin-bottom: 4rem;
+    }
+}
