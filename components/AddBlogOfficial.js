@@ -23,16 +23,6 @@ import DOMPurify from 'isomorphic-dompurify';
     const MAX_VALUE = 100; // Set your max value here
 
 
-    useEffect(() => {
-      if (user) {
-        getUserCredits(user.id).then(credits => {
-          setUserCredits(credits);
-        });
-      } else {
-        console.log('Couldnt find user or user id', user)
-        
-      }
-    }, [user]);
     const prompt = `Generate an SEO optimized article about ${bio} in HTML Code Format with a max of ${wordCount} words. The tone of the article will be ${vibe}`;
   
     const handleValueChange = (event) => {
@@ -42,8 +32,14 @@ import DOMPurify from 'isomorphic-dompurify';
       }
   };
 
-
+  // getUserCredits(user.id).then(credits => {
+  //   setUserCredits(credits);
+  // });
   
+  const handleFetchCredits = async () => {
+    const credits = await getUserCredits(user.id);
+    setUserCredits(credits);
+  };
     const generateBio = async (e) => {
       e.preventDefault();
       setGeneratedBios("");
@@ -161,8 +157,9 @@ import DOMPurify from 'isomorphic-dompurify';
         {/* <p className="gpt-subheader">{globalArticleCount.toLocaleString()} articles generated so far.</p> */}
         {/* <p className="gpt-subheader">You have <span className='primary'>{userCredits}</span> credits available.</p> */}
         {/* <Link href='/pricing'><button className='btn btn-tertiary gpt-button'>Get More Credits</button></Link> */}
-
-        <div className="">
+        <button className="btn btn-primary btn-margin" onClick={handleFetchCredits}>Check Credits</button>
+            {userCredits && <p>You have {userCredits} credits</p>}
+        <div className="gpt-form">
     
           <textarea
             value={bio}
@@ -189,6 +186,7 @@ import DOMPurify from 'isomorphic-dompurify';
           )}
         </div>
 
+      
         <hr className="" />
         <h2 className='gpt-header'>Generated Article:</h2>
         {sanitizedContent && <div dangerouslySetInnerHTML={{ __html: sanitizedContent }}></div>}
