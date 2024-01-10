@@ -8,8 +8,8 @@ import Link from 'next/link';
 import DOMPurify from 'isomorphic-dompurify';
 
 // const AddBlogOfficial = ({ submitForm, toggle }) => {
-  const AddBlogOfficial = () => {
-    const { user } = useContext(UserContext);
+  const AddBlogOfficial = ({ user }) => {
+    // const { user } = useContext(UserContext);
   
     const [loading, setLoading] = useState(false);
     const [bio, setBio] = useState("");
@@ -162,7 +162,7 @@ import DOMPurify from 'isomorphic-dompurify';
         {/* <p className="gpt-subheader">You have <span className='primary'>{userCredits}</span> credits available.</p> */}
         {/* <Link href='/pricing'><button className='btn btn-tertiary gpt-button'>Get More Credits</button></Link> */}
 
-        {/* <div className="">
+        <div className="">
     
           <textarea
             value={bio}
@@ -187,7 +187,7 @@ import DOMPurify from 'isomorphic-dompurify';
           {loading && (
             <button className="btn btn-primary" disabled><Loading /></button>
           )}
-        </div> */}
+        </div>
 
         <hr className="" />
         <h2 className='gpt-header'>Generated Article:</h2>
