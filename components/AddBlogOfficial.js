@@ -5,7 +5,7 @@ import Loading from './Loading';
 import { UserContext } from '../context/UserContext';
 import { supabase } from '../utils/supabaseClient'; // Import your initialized Supabase client
 import Link from 'next/link';
-import DOMPurify from 'isomorphic-dompurify';
+// import DOMPurify from 'isomorphic-dompurify';
 
 // const AddBlogOfficial = ({ submitForm, toggle }) => {
   const AddBlogOfficial = () => {
@@ -31,10 +31,6 @@ import DOMPurify from 'isomorphic-dompurify';
           setWordCount(newValue);
       }
   };
-
-  // getUserCredits(user.id).then(credits => {
-  //   setUserCredits(credits);
-  // });
   
   const handleFetchCredits = async () => {
     const credits = await getUserCredits(user.id);
@@ -154,14 +150,14 @@ import DOMPurify from 'isomorphic-dompurify';
       
         return true;
       };
-      const sanitizedContent = DOMPurify.sanitize(generatedBios);
+      // const sanitizedContent = DOMPurify.sanitize(generatedBios);
       
   return (
             <div className="gpt-container">
                   <h1 className="gpt-header">Generate your SEO-Optimized Article</h1>
-        <button className="btn btn-primary btn-margin" onClick={handleFetchCredits}>Check Credits</button>
-            {userCredits && <p>You have {userCredits} credits</p>}
-        <div className="gpt-form">
+        {/* <button className="btn btn-primary btn-margin" onClick={handleFetchCredits}>Check Credits</button>
+            {userCredits && <p>You have {userCredits} credits</p>} */}
+        {/* <div className="gpt-form">
     
           <textarea
             value={bio}
@@ -186,12 +182,12 @@ import DOMPurify from 'isomorphic-dompurify';
           {loading && (
             <button className="btn btn-primary" disabled><Loading /></button>
           )}
-        </div>
+        </div> */}
 
       
         <hr className="" />
         <h2 className='gpt-header'>Generated Article:</h2>
-        {sanitizedContent && <div dangerouslySetInnerHTML={{ __html: sanitizedContent }}></div>}
+        {/* {sanitizedContent && <div dangerouslySetInnerHTML={{ __html: sanitizedContent }}></div>} */}
         </div>
   )
 }
