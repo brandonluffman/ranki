@@ -133,9 +133,9 @@ p {
 .italic {
     font-style: italic;
 }
-.btn:hover {
+/* .btn:hover {
 
-}
+} */
 .btn-primary {
     background-color: var(--primary);
     border:4px solid white;

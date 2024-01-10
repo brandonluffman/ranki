@@ -153,8 +153,8 @@ import React, {useContext, useState, useEffect} from 'react'
       // const sanitizedContent = DOMPurify.sanitize(generatedBios);
       
   return (
-            <div className="gpt-container">
-                  <h1 className="gpt-header">Generate your SEO-Optimized Article</h1>
+            <div className="generate-container">
+                  <h1 className="generate-header">Generate your SEO-Optimized Article</h1>
         {/* <button className="btn btn-primary btn-margin" onClick={handleFetchCredits}>Check Credits</button>
             {userCredits && <p>You have {userCredits} credits</p>} */}
         {/* <div className="gpt-form">
@@ -186,7 +186,7 @@ import React, {useContext, useState, useEffect} from 'react'
 
       
         <hr className="" />
-        <h2 className='gpt-header'>Generated Article:</h2>
+        <h2 className='generate-header'>Generated Article:</h2>
         {/* {sanitizedContent && <div dangerouslySetInnerHTML={{ __html: sanitizedContent }}></div>} */}
         </div>
   )
