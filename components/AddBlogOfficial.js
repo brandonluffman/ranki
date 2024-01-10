@@ -155,7 +155,6 @@ import DOMPurify from 'isomorphic-dompurify';
 
       
   return (
-    <div className='generate-blog-container'>
             <div className="gpt-container">
                   <h1 className="gpt-header">Generate your SEO-Optimized Article</h1>
         {/* <p className="gpt-subheader">{globalArticleCount.toLocaleString()} articles generated so far.</p> */}
@@ -193,7 +192,6 @@ import DOMPurify from 'isomorphic-dompurify';
         <h2 className='gpt-header'>Generated Article:</h2>
         {sanitizedContent && <div dangerouslySetInnerHTML={{ __html: sanitizedContent }}></div>}
         </div>
-      </div>
   )
 }
 

@@ -1,6 +1,8 @@
 .gpt-container {
     text-align: center;
     padding-top: 2rem;
+    min-height: 700px;
+    color:white;
 }
 .gpt-header {
     margin-bottom: 2rem;
