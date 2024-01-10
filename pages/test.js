@@ -9,6 +9,7 @@ import GPTForm from '../components/GPTForm';
 import { UserContext } from '../context/UserContext';
 import PricingOfficial from '../components/PricingOfficial';
 import AddBlogOfficial from '../components/AddBlogOfficial';
+import Generate from '../components/Generate';
 
 const test = () => {
 
@@ -16,13 +17,8 @@ const test = () => {
     <>
     <Navbar />
     <div className='test-container'>
-        {/* <Test /> */}
-        {/* <GoogleAnalytics /> */}
-        {/* <TextEditor /> */}
-        {/* <GPTForm /> */}
-        {/* <PricingOfficial /> */}
-        <AddBlogOfficial />
-        </div>
+      <Generate />
+    </div>
     <Footer />
 </>
   )
