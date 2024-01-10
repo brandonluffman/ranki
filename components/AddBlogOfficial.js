@@ -9,8 +9,6 @@ import DOMPurify from 'isomorphic-dompurify';
 
 // const AddBlogOfficial = ({ submitForm, toggle }) => {
   const AddBlogOfficial = () => {
-
-    const MAX_VALUE = 100; // Set your max value here
     const { user } = useContext(UserContext);
   
     const [loading, setLoading] = useState(false);
@@ -22,6 +20,7 @@ import DOMPurify from 'isomorphic-dompurify';
     const [articleKeywords, setArticleKeywords] = useState([]);
     const [globalArticleCount, setGlobalArticleCount] = useState(256475);
     const [userCredits, setUserCredits] = useState(0);
+    const MAX_VALUE = 100; // Set your max value here
 
 
 
@@ -160,8 +159,8 @@ import DOMPurify from 'isomorphic-dompurify';
             <div className="gpt-container">
                   <h1 className="gpt-header">Generate your SEO-Optimized Article</h1>
         {/* <p className="gpt-subheader">{globalArticleCount.toLocaleString()} articles generated so far.</p> */}
-        <p className="gpt-subheader">You have <span className='primary'>{userCredits}</span> credits available.</p>
-        <Link href='/pricing'><button className='btn btn-tertiary gpt-button'>Get More Credits</button></Link>
+        {/* <p className="gpt-subheader">You have <span className='primary'>{userCredits}</span> credits available.</p> */}
+        {/* <Link href='/pricing'><button className='btn btn-tertiary gpt-button'>Get More Credits</button></Link> */}
 
         <div className="">
     
@@ -192,7 +191,7 @@ import DOMPurify from 'isomorphic-dompurify';
 
         <hr className="" />
         <h2 className='gpt-header'>Generated Article:</h2>
-        <div dangerouslySetInnerHTML={{ __html: sanitizedContent }}></div>
+        {sanitizedContent && <div dangerouslySetInnerHTML={{ __html: sanitizedContent }}></div>}
         </div>
       </div>
   )
