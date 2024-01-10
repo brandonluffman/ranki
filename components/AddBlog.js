@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { IoMdAdd, IoMdClose } from 'react-icons/io';
 import GaugeChartComponent from './GaugeChartComponent';
 import MultiStepForm from './MultiStepForm';
@@ -7,6 +7,8 @@ import SmallGaugeChart from './SmallGaugeChart';
 import { MdCheckCircleOutline, MdRadioButtonUnchecked } from 'react-icons/md';
 import TextEditor from '../components/TextEditor';
 import DOMPurify from 'dompurify';
+import Loading from './Loading';
+import { UserContext } from '../context/UserContext';
 
 
 const StepIndicator = ({ currentStep, totalSteps }) => {
@@ -24,7 +26,70 @@ const StepIndicator = ({ currentStep, totalSteps }) => {
 
 const StepOne = ({ nextStep, choice, setChoice, currentInput, handleInputChange, handleKeyPress, savedInputs, toggle }) => {
     const isAI = choice === 'AI Generated';
+    const MAX_VALUE = 100; // Set your max value here
+    const { user } = useContext(UserContext);
+  
+    const [loading, setLoading] = useState(false);
+    const [bio, setBio] = useState("");
+    const [vibe, setVibe] = useState("Professional");
+    const [generatedBios, setGeneratedBios] = useState("");
+    const [tone, setTone] = useState('Professional');
+    const [wordCount, setWordCount] = useState(0);
+    const [articleKeywords, setArticleKeywords] = useState([]);
+    const [globalArticleCount, setGlobalArticleCount] = useState(256475);
 
+    const prompt = `Generate an SEO optimized article with ${articleKeywords} as the keywords and a max of ${wordCount} words. The tone of the article will be ${vibe}`;
+    const handleValueChange = (event) => {
+        const newValue = parseInt(event.target.value, 10);
+    
+        // Check if the new value is not NaN and less than or equal to MAX_VALUE
+        if (!isNaN(newValue) && newValue <= MAX_VALUE) {
+            setWordCount(newValue);
+        }
+    };
+
+    const generateBio = async (e) => {
+        e.preventDefault();
+        setGeneratedBios("");
+        setLoading(true);
+        try {
+
+        const response = await fetch("/api/gpt", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            prompt,
+          }),
+        });
+    
+        if (!response.ok) {
+          throw new Error(response.statusText);
+        }
+    
+        let answer = await response.json();
+        setGeneratedBios(answer.choices[0].text);
+        // console.log("Generated Bios Updated:", answer.choices[0].text);
+    } catch(error) {
+        console.error('Api call failed', error)
+        alert('Failed to generate content. Please try again.')
+    } finally {
+        setLoading(false);
+    }
+      };
+
+
+    const handleNextStep = async () => {
+        if (isAI && savedInputs.length > 0) {
+            const content = await generateBlogContent(savedInputs);
+            setFormData({ title: '', content }); // Update form data with generated content
+            nextStep();
+        } else {
+            nextStep(); // Proceed without generating content
+        }
+    };
+    
     return (
         <div className='step-container'>
             {/* <button onClick={toggle} className="close-btn"><IoMdClose /></button> */}
@@ -50,7 +115,43 @@ const StepOne = ({ nextStep, choice, setChoice, currentInput, handleInputChange,
             {isAI ? (
                 <div>
                 <div className='keyword-input-container'>
-                    {savedInputs.length < 4 && (
+
+                <textarea
+                            value={bio}
+                            onChange={(e) => setBio(e.target.value)}
+                            rows={4}
+                            className="gpt-textarea"
+                            placeholder={
+                            "What would you like the article to be about?"
+                            }
+                    />
+
+                    <input type='number'
+                            onChange={handleValueChange}
+                            placeholder="Article Word Count" 
+                            className="gpt-wordcount"
+
+                    />
+
+                            {!loading && (
+                        <button className="btn btn-primary gpt-button" onClick={(e) => generateBio(e)} >Generate for 1 Credit &rarr;</button>
+                    )}
+                    {loading && (
+                        <button className="btn btn-primary" disabled><Loading /></button>
+                    )}
+                    {generatedBios && (
+                                <div
+                                    className=""
+                                    onClick={() => {
+                                        navigator.clipboard.writeText(generatedBios);
+                                        toast("Bio copied to clipboard", { icon: "✂️" });
+                                    }}
+                                >
+                                    <p>{generatedBios}</p>
+                                </div>
+                            )}
+
+                    {/* {savedInputs.length < 4 && (
                         <input
                             type="text"
                             value={currentInput}
@@ -60,17 +161,21 @@ const StepOne = ({ nextStep, choice, setChoice, currentInput, handleInputChange,
                             className='keywords-input'
                         />
                     )}
+
+      
                     <div className='keyword-render-container'>
                         {savedInputs.map((input, index) => (
                             <div key={index} style={{ color: 'grey' }} className='keyword-render-div'>
                                 {input}
                             </div>
                         ))}
-                    </div>
+                    </div> */}
                 </div>
                  <div>
-                 <button className='next-btn' type="button" onClick={nextStep}>Create for 1 Credit <BsArrowRight className='arrow-right'/></button>
-             </div>
+                 <button className='next-btn' type="button" onClick={handleNextStep}>
+               Preview <BsArrowRight className='arrow-right'/>
+            </button>
+                         </div>
              </div>
             ): (
                 <div>
@@ -83,16 +188,18 @@ const StepOne = ({ nextStep, choice, setChoice, currentInput, handleInputChange,
         </div>
     );
 };
-const StepTwo = ({ nextStep, prevStep, toggle, handleFormDataChange }) => {
+const StepTwo = ({ nextStep, prevStep, toggle, handleFormDataChange, generatedBios }) => {
     const [title, setTitle] = useState('');
-    const [content, setContent] = useState('');
-    
+    const [content, setContent] = useState("");
+    // generatedBios && console.log(generatedBios)
+    useEffect(() => {
+        setContent(generatedBios || "");
+    }, [generatedBios]);
     const handleNext = () => {
-        if (!title || !content) {
-            alert('Need To Add Content!');
+        if (!title.trim() || !content.trim()) {
+            alert('Title and content are required.');
             return;
         }
-
         handleFormDataChange({ title, content });
         nextStep();
     };
@@ -114,7 +221,8 @@ const StepTwo = ({ nextStep, prevStep, toggle, handleFormDataChange }) => {
     }, [content]);
 
     const getCharacterCount = (html) => {
-        const text = html.replace(/<[^>]*>/g, ''); // Remove HTML tags
+        if (!html) return 0;
+        const text = html.replace(/<[^>]*>/g, '');
         return text.length;
     };
     
@@ -217,6 +325,7 @@ const AddBlog = ({ submitForm, toggle }) => {
     const [savedInputs, setSavedInputs] = useState([]);
     const [isAI, setIsAI] = useState(false); // Default to 'Write Yourself'
     const [formData, setFormData] = useState({ title: '', content: '' });
+    const [generatedBios, setGeneratedBios] = useState("");
 
 
 
@@ -273,6 +382,8 @@ let renderStep;
                     prevStep={prevStep}
                     toggle={toggle}
                     handleFormDataChange={handleFormDataChange}
+                    generatedBios={generatedBios}
+
                 />
             );
             break;

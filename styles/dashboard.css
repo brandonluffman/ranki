@@ -6,6 +6,7 @@
     overflow-x:hidden;
     padding-bottom: 8rem;
     padding-top:100px;
+    min-height: 700px;
 }
 
 .dashboard-web-select {
@@ -153,14 +154,19 @@
 }
 
 .side-close {
-    top:0;
-    right:0px;
+    top:25px;
+    right:25px;
     position: absolute;
     background-color: transparent;
     border: none;
     font-size: 2rem;
     color:white;
     cursor: pointer;
+    transition: 0.2s ease all;
+}
+
+.side-close:hover {
+    color:red;
 }
 .toggle-side-ns {
     display: block;
@@ -374,6 +380,7 @@
     font-size: 1.15rem;
     background-color: var(--dark-blue);
     margin: 0 auto;
+
 }
 .full-row-item h2 {
     margin-bottom: 4rem !important;
@@ -494,7 +501,7 @@
 
 .app-integrate-container {
     position: absolute !important;
-    background-color: var(--light-blue);
+    background-color: var(--dark-blue);
     padding:2rem;
     width: 50%;
     margin:0 auto;
@@ -503,6 +510,8 @@
     top:30% !important; 
     left: 50%;
     transform: translate(-50%, -50%); 
+    text-align: center;
+    border:2px solid var(--primary);
  
 }
 .appdash-add-show {

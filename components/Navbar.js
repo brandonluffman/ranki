@@ -13,6 +13,7 @@ import { IoMdClose, IoMdPricetags } from 'react-icons/io';
 import { supabase } from '../utils/supabaseClient';
 import { UserContext } from '../context/UserContext';
 import { IoNewspaper } from "react-icons/io5";
+import { CgProfile } from "react-icons/cg";
 
 const Navbar = () => {
   const [isActive, setActive] = useState(false);
@@ -90,6 +91,7 @@ const Navbar = () => {
             <Link className='nav-link' href='/dashboard'><BsCode className='nav-icon'/> Projects</Link>
             <Link className='nav-link' href='/pricing'><IoMdPricetags className='nav-icon'/> Pricing</Link>
             <Link className='nav-link' href='/blog'><IoNewspaper className='nav-icon'/> Blog</Link>
+            <Link className='nav-link' href='/account'><CgProfile className='nav-icon'/> Account</Link>
 
             <Link className='nav-link' href='/about'><GrCircleInformation className='nav-icon'/> About</Link>
             {/* <Link className='nav-link' href='/ranking'><GrCircleInformation className='nav-icon'/> Rankings</Link> */}
@@ -99,20 +101,9 @@ const Navbar = () => {
         <div className='login-menu'>
         {user ? (
               <div className='login-nav-link'>
-                {/* <div className='profile-circle'>
-                  <div className='profile-circle-letter'>B</div>
-                  </div> */}
-                <div className='profile-nav'>     
-                
-                {/* <p className='profile-circle-email'>Hello {user?.user.email}</p> */}
-   
                 <button className='logout-nav-btn logout-logged-in btn nav-btn btn-secondary nav-log-btn' onClick={logout}>
                   Logout
                 </button>
-                </div>
-      
-                {/* <h1>Welcome, Brandon</h1> */}
-        
               </div>
             ) : (
               <div className='nav-link desktop-nav-link'>

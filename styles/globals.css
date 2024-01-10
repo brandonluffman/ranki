@@ -121,6 +121,10 @@ p {
     text-align: center;
 }
 
+.btn-margin {
+    margin:0 auto;
+}
+
 .antiflexer {
     display: block;
 }

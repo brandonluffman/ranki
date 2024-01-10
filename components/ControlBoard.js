@@ -8,7 +8,7 @@ const ControlBoard = ({ analysisResult, lastTested, fetchData, isLoading }) => {
   const [isToggled, setIsToggled] = useState(false);
 
   const report = analysisResult;
-  console.log(analysisResult)
+  // console.log(analysisResult)
   const {
     'Meta Title': metaTitle,
     'Meta Description': metaDescription,
@@ -29,7 +29,7 @@ const ControlBoard = ({ analysisResult, lastTested, fetchData, isLoading }) => {
     'Truthy Values Count': score
   } = analysisResult || {};
   // console.log(isHttps)
-  console.log(googleAnalytics)
+  // console.log(googleAnalytics)
 
   const toggleSEOGrid = () => {
     setIsToggled(!isToggled);

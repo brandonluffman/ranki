@@ -6,11 +6,13 @@ import {CiMail} from 'react-icons/ci'
 import {IoIosUnlock} from 'react-icons/io'
 import {AiFillEye, AiFillEyeInvisible} from 'react-icons/ai'
 import Link from 'next/link'
+import { useRouter } from 'next/router';
 
 export default function RegisterComponent() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [visible, setVisible] = useState(false);
+  const Router = useRouter(); // Get the router object
 
   const handleRegister = async (e) => {
     e.preventDefault();
@@ -22,8 +24,10 @@ export default function RegisterComponent() {
 
       if (error) {
         alert('Registration failed. Please try again.');
+        // console.log(error)
       } else {
-        alert('Registration successful! Please check your email for verification.');
+        alert('Registration successful!');
+        Router.push('/dashboard')
         // Redirect or navigate to the login page
       }
     } catch (error) {

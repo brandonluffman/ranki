@@ -8,6 +8,7 @@ import { BiMessageEdit, BiMessageSquareEdit } from 'react-icons/bi';
 import { supabase } from '../utils/supabaseClient';
 import Loading from './Loading';
 import { UserContext } from '../context/UserContext';
+import { useRouter } from 'next/router';
 
 const AppDash = ({ onRefresh }) => {
   const [apps, setApps] = useState([]);
@@ -16,52 +17,52 @@ const AppDash = ({ onRefresh }) => {
   const [showAlert, setShowAlert] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const formRef = useRef(null);
-  const { user, login, logout } = useContext(UserContext);
+  const { user } = useContext(UserContext);
+  const router = useRouter(); // Get the router object
 
 
+  useEffect(() => {
+    if (!user) {
+      // Redirect to login if there's no user
+      // router.push('/login');
+      return
+    } else {
+      fetchUserApps();
+    }
+  }, [user, router, onRefresh]);
 
   const fetchUserApps = async () => {
     if (!user) {
       console.error("User not authenticated");
-      setIsLoading(false);
       return;
     }
   
     setIsLoading(true);
-    const cachedApps = localStorage.getItem(`userApps_${user.id}`);
-    
-    // if (cachedApps) {
-    //   // If there is cached data, use it
-    //   setApps(JSON.parse(cachedApps));
-    //   setIsLoading(false);
-    // } else {
-      // If there is no cached data, fetch from the API
-      try {
-        const { data: apps, error } = await supabase
-          .from('apps')
-          .select('*')
-          .eq('user_id', user.id);
-  
-        if (error) throw error;
-        setApps(apps);
-        localStorage.setItem(`userApps_${user.id}`, JSON.stringify(apps)); // Cache the fetched data
-      } catch (error) {
-        console.error("Error fetching apps:", error);
-      } finally {
-        setIsLoading(false);
+    try {
+      // console.log('Made it v1')
+
+      const { data: appsData, error } = await supabase
+        .from('apps')
+        .select('*')
+        .eq('user_id', user.id);
+
+      if (error) {
+        throw error;
       }
-    // }
+      // console.log('Made it')
+  
+      setApps(appsData);
+    } catch (error) {
+      console.error("Error fetching apps:", error);
+    } finally {
+      setIsLoading(false);
+    }
   };
   
-
-  useEffect(() => {
-
-    fetchUserApps();
+  
 
 
-  }, [user, onRefresh]);
-
-
+      // localStorage.setItem(`userApps_${user.id}`, JSON.stringify(appsData));
 
   const toggleAddForm = () => {
     setAddingApp(!addingApp);
@@ -84,7 +85,30 @@ const AppDash = ({ onRefresh }) => {
     }
   
     try {
-      // Call the API route to check the domain status
+      const { data: userData, error: userError } = await supabase
+        .from('users')
+        .select('paid_plan_type')
+        .eq('auth_id', user.id)
+        .single();
+  
+      if (userError) throw userError;
+  
+      const planType = userData.paid_plan_type;
+      const planLimits = { null: 1, 'Starter': 1, 'Pro': 10, 'Premium': Infinity };
+      const appLimit = planLimits[planType];
+  
+      const { count, error: countError } = await supabase
+        .from('apps')
+        .select('id', { count: 'exact' })
+        .eq('user_id', user.id);
+  
+      if (countError) throw countError;
+  
+      if (count >= appLimit) {
+        alert(`Your current plan (${planType}) allows up to ${appLimit} app(s).`);
+        return null;
+      }
+  
       const checkDomainResponse = await fetch(`/api/checkDomain?domain=${encodeURIComponent(domain)}`);
       const checkDomainResult = await checkDomainResponse.json();
   
@@ -93,7 +117,6 @@ const AppDash = ({ onRefresh }) => {
         return null;
       }
   
-      // Insert a new app into the database
       const insertResponse = await supabase
         .from('apps')
         .insert([{ user_id: user.id, name, description, domain }])
@@ -101,7 +124,6 @@ const AppDash = ({ onRefresh }) => {
   
       if (insertResponse.error) throw insertResponse.error;
   
-      // Fetch the most recently added app
       const { data, error } = await supabase
         .from('apps')
         .select('*')
@@ -110,27 +132,28 @@ const AppDash = ({ onRefresh }) => {
         .limit(1);
   
       if (error) throw error;
-      return data[0]; // Get the most recently added app
+      return data[0];
     } catch (error) {
-      alert('Your Domain wasn\'t received by our servers, please try another domain or check yours to make sure it is up.');
       console.error("Error in addApp:", error);
+      alert('An error occurred while adding the app.');
       return null;
     }
   };
+  
   
   const handleSubmit = async (event) => {
     event.preventDefault();
     const name = event.target.name.value;
     const description = event.target.description.value;
     const domain = event.target.domain.value;
-    console.log('Finding New App......')
+    // console.log('Finding New App......')
     const newApp = await addApp(name, description, domain);
-    console.log('Found New App!')
+    // console.log('Found New App!')
     if (newApp) {
-      console.log('Made it through the loop')
+      // console.log('Made it through the loop')
       // Update apps state directly with the new app
       setApps(currentApps => [...currentApps, newApp]);
-      console.log('Supposed to show alert?')
+      // console.log('Supposed to show alert?')
       setShowAlert(true);
       setTimeout(() => setShowAlert(false), 3000);
       formRef.current.reset();
@@ -152,6 +175,15 @@ const AppDash = ({ onRefresh }) => {
       if (deleteSiteUrlsError) {
           throw deleteSiteUrlsError;
       }
+
+      const { error: deleteBlogsError } = await supabase
+      .from('blog') // Replace 'blogs' with your actual table name
+      .delete()
+      .match({ app_id: appId }); // Replace 'app_id' with the actual column name that relates blogs to apps
+
+  if (deleteBlogsError) {
+      throw deleteBlogsError;
+  }
   
       // Delete the app from the 'apps' table
       const { error: deleteAppError } = await supabase
@@ -162,6 +194,8 @@ const AppDash = ({ onRefresh }) => {
       if (deleteAppError) {
           throw deleteAppError;
       }
+
+      
   
       // Update local state to reflect the deletion
       setApps(currentApps => currentApps.filter(app => app.id !== appId));
@@ -172,7 +206,7 @@ const AppDash = ({ onRefresh }) => {
   
 
   const editApp = async (updatedApp) => {
-    console.log('updating');
+    // console.log('updating');
     try {
         const { data, error } = await supabase
             .from('apps') // Use your actual table name
@@ -195,7 +229,7 @@ const AppDash = ({ onRefresh }) => {
     }
 };
 
-  apps && console.log(apps)
+  // apps && console.log(apps)
 
 
   return (
@@ -204,11 +238,12 @@ const AppDash = ({ onRefresh }) => {
         <div className='dashboard-container appdash-container'>
           <Loading />
         </div>
-    ): user ? (
+    ):
+     user?.id ? (
         <div className='dashboard-container appdash-container'>
 
               <div className='appdash-add-container'>
-              <button className='appdash-add-btn' onClick={toggleAddForm}><IoMdAdd /></button>
+              <button className={apps.length == 0 ? 'appdash-add-btn glow-btn': 'appdash-add-btn'} onClick={toggleAddForm}><IoMdAdd /></button>
               </div>
               <div className={addingApp ? 'appdash-add-show' : 'appdash-add-none'}>
               {/* <AppForm onSubmit={handleSubmit} /> */}
@@ -241,20 +276,11 @@ const AppDash = ({ onRefresh }) => {
               <h1 className='dashboard-header'>Projects</h1>
 
               <div className='dashboard-grid appdash-grid'>
-              {apps.map((app, index) => ( // index is used only as a fallback
-
-              <li key={app.id || index} className='appdash-item'> {/* Prefer app.id */}
-                  {/* <div className='appdash-img-container'>
-                {app.logo && <img src={app.logo} className='appdash-grid-img' alt={`${app.name} logo`} />}
-                </div> */}
+              {apps.map((app, index) => ( 
+              <li key={app.id || index} className='appdash-item'> 
                   <h2 className='dashboard-grid-header appdash-appname'>{app.name}</h2>
-                  {/* <h6 className='dashboard-grid-subheader'>{app.domain}</h6> */}
-                  {/* <img src='/chatbot.png' className='appdash-grid-img' alt={app.name} /> */}
-                  {/* <p>{app.domain}</p> */}
                   <Link href={`/dashboard/${app.id}`}><button type='button' className='dash-button dashboard-button'>Dashboard</button></Link>
-
                 <br></br>
-          
                 <button onClick={() => deleteApp(app.id)} className='dash-button delete-button'>
                   <IoMdTrash />
                   </button>
@@ -314,3 +340,15 @@ export default AppDash;
 // useEffect(() => {
 //   fetchGA4Data();
 // }, []);
+
+
+
+         {/* <h6 className='dashboard-grid-subheader'>{app.domain}</h6> */}
+                  {/* <img src='/chatbot.png' className='appdash-grid-img' alt={app.name} /> */}
+                  {/* <p>{app.domain}</p> */}
+
+
+
+                          {/* <div className='appdash-img-container'>
+                {app.logo && <img src={app.logo} className='appdash-grid-img' alt={`${app.name} logo`} />}
+                </div> */}

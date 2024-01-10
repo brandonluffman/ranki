@@ -17,7 +17,7 @@ const DashContent = ({ slug }) => {
       }
   
       const fetchBlogs = async (slug) => {
-            console.log('Initiatyed Blog Fetch, Here is the provided slug: ', slug)
+            // console.log('Initiatyed Blog Fetch, Here is the provided slug: ', slug)
           const { data, error } = await supabase
               .from('blog')
               .select('*')
@@ -33,11 +33,11 @@ const DashContent = ({ slug }) => {
 
       useEffect(() => {
             const loadData = async () => {
-                  console.log('In the use effect')
+                //   console.log('In the use effect')
                 const fetchedBlogs = await fetchBlogs(slug);
-                console.log('Made it past the fetfch')
+                // console.log('Made it past the fetfch')
                 setBlogs(fetchedBlogs);
-                console.log('Tried to set blogs lets console them: ', blogs)
+                // console.log('Tried to set blogs lets console them: ', blogs)
             };
     
             loadData();

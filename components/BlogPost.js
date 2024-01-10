@@ -29,7 +29,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 const BlogPost = ({ blog }) => {
     const [isDark, setIsDark] = useState(true);
     const [floatClass, setFloatClass] = useState('')
-    {blog && console.log(blog)}
+    // {blog && console.log(blog)}
     // useEffect(() => {
     //     // if (!user) {
     //     //     console.error("User not authenticated");

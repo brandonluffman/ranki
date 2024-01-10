@@ -1,28 +1,55 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 // import { supabase } from '../utils/auth';
 import Link from 'next/link';
 import { BsArrowRight } from 'react-icons/bs';
 import { GiGrowth } from 'react-icons/gi';
 import { MdVerified } from "react-icons/md";
+import { UserContext } from '../context/UserContext';
+import { useRouter } from 'next/router';
+import { supabase } from '../utils/supabaseClient'; // Adjust the path as needed
+import Stripe from 'stripe';
+import { loadStripe } from '@stripe/stripe-js';
+
 
 const Pricing = () => {
-    const [user, setUser] = useState(null);
-
-    // useEffect(() => {
-    //     const fetchUser = async () => {
-    //         const { data, error } = await supabase.auth.getUser();
-    //         if (data) {
-    //             setUser(data);
-    //             console.log(data);
-    //         } else {
-    //             console.error('Error fetching user:', error);
-    //         }
-    //     };
-    //     fetchUser();
-    // }, []);
+    const { user, login, logout, updateUser } = useContext(UserContext);
+    const stripePromise = loadStripe(`${process.env.NEXT_PUBLIC_STRIPE_PUBLIC_KEY}`);
 
     const [active, setActive] = useState('monthly');
     const [teamMembers, setTeamMembers] = useState('25');
+
+    const nonAlert = (event) => {
+        alert('We currently do not accept Enterprise Accounts, please come back later.')
+    }
+        const handleCheckout = async (plan) => {
+        if (user.email != 'brandonluff10@gmail.com') {
+            alert('We are not currently accepting any new customers!')
+            return
+        }
+        if (user) {
+          const stripe = await stripePromise;
+          const response = await fetch('/api/create-checkout-session', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ userId: user.id, userEmail: user.email, plan }),
+          });
+          const session = await response.json();
+        //   console.log("Checkout session response:", session);
+
+          const result = await stripe.redirectToCheckout({
+            sessionId: session.sessionId,
+          });
+          if (result.error) {
+            console.error(result.error.message);
+          }
+        } else {
+          // Redirect to login or registration if no user is logged in
+        //   console.log('NO')
+        }
+      };
+      
 
     const addMember = () => {
         const currentMembers = teamMembers === '' ? 0 : parseInt(teamMembers, 10);
@@ -71,8 +98,8 @@ const Pricing = () => {
     const discountedCost = result.discountedCost;
     const trueCost = result.totalCostWithoutDiscount;
     
-    console.log(`Discounted cost: $${discountedCost.toFixed(2)}`);
-    console.log(`True cost without discount: $${trueCost.toFixed(2)}`);
+    // console.log(`Discounted cost: $${discountedCost.toFixed(2)}`);
+    // console.log(`True cost without discount: $${trueCost.toFixed(2)}`);
     return (
       <div className='pricing-container'>
       <h3 className='pricing-header'><span className='gradient-text'>Premium quality</span> without the premium price</h3>
@@ -96,41 +123,71 @@ const Pricing = () => {
                 {active === 'monthly' ? (
                 <div className='pricing-grid'>
                     <div className='pricing-grid-item'>
-                        <h3 className='pricing-grid-header'>$4.99</h3>
+                        <h3 className='pricing-grid-header'>Free</h3>
                         <div className='pricing-grid-p-container'>
                             <div className='anti-flexer'>
-                        <p className='pricing-grid-p'><MdVerified className='pricing-grid-icon' />10 Projects</p>
-                        <p className='pricing-grid-p'><MdVerified className='pricing-grid-icon' />5 AI Generated Blog Posts</p>
-                        <p className='pricing-grid-p'><MdVerified className='pricing-grid-icon' />Scheduled Content Automation</p>
+                        <p className='pricing-grid-p'><MdVerified className='pricing-grid-icon' />1 Project</p>
+                        <p className='pricing-grid-p'><MdVerified className='pricing-grid-icon' />1 AI Credit</p>
+                        <p className='pricing-grid-p'><MdVerified className='pricing-grid-icon' />No Content Automation</p>
+
+                        {/* <p className='pricing-grid-p'><MdVerified className='pricing-grid-icon' /></p> */}
                         </div>
                         </div>                        <hr className='pricing-grid-hr'></hr>
                         <h2 className='pricing-grid-plan blue-pricing-header'>Starter</h2>
-                        {user?.user ? ( <Link href='/test'><button className='pricing-grid-btn btn-tertiary' type='button'>Get Started</button></Link>):(<Link href='/register'><button className='btn-tertiary pricing-grid-btn' type='button'>Get Started</button></Link>)}
+                        {user ? ( <Link href='/dashboard'><button className='pricing-grid-btn btn-tertiary' type='button'>Get Started</button></Link>):(<Link href='/register'><button className='btn-tertiary pricing-grid-btn' type='button'>Get Started</button></Link>)}
                     </div>
                     <div className='pricing-grid-item'>
                         <h3 className='pricing-grid-header'>$9.99</h3>
                         <div className='pricing-grid-p-container'>
                             <div className='anti-flexer'>
-                        <p className='pricing-grid-p'><MdVerified className='pricing-grid-icon' />Unlimited Projects</p>
-                        <p className='pricing-grid-p'><MdVerified className='pricing-grid-icon' />15 AI Generated Blog Posts</p>
+                        <p className='pricing-grid-p'><MdVerified className='pricing-grid-icon' />10 Projects</p>
+                        <p className='pricing-grid-p'><MdVerified className='pricing-grid-icon' />15 AI Credits</p>
                         <p className='pricing-grid-p'><MdVerified className='pricing-grid-icon' />Scheduled Content Automation</p>
                         </div>
                         </div>                        <hr className='pricing-grid-hr'></hr>
                         <h2 className='pricing-grid-plan'>Pro</h2>
-                        {user?.user ? ( <Link href='https://buy.stripe.com/test_5kAfZWfRO11B8c89AA'><button className='btn-white pricing-grid-btn' type='button'>Get Started</button></Link>):(<Link href='/register'><button className='btn-white pricing-grid-btn' type='button'>Get Started</button></Link>)}
+                        {
+                            user ? (
+                                user.isPaid ? (
+                                <p>You already have access to our premium features!</p>
+                                ) : (
+                                <button className='btn pricing-grid-btn btn-primary' onClick={() => handleCheckout('pro')}>
+                                    Checkout
+                                </button>
+                                )
+                            ) : (
+                                <Link href='/register'>
+                                <button className='btn-white pricing-grid-btn btn-tertiary' type='button'>Get Started</button>
+                                </Link>
+                            )
+                            }
                     </div>
                     <div className='pricing-grid-item'>
                         <h3 className='pricing-grid-header'>$29.99</h3>
                         <div className='pricing-grid-p-container'>
                             <div className='anti-flexer'>
                         <p className='pricing-grid-p'><MdVerified className='pricing-grid-icon' />Unlimited Projects</p>
-                        <p className='pricing-grid-p'><MdVerified className='pricing-grid-icon' />50 AI Generated Blog Posts</p>
+                        <p className='pricing-grid-p'><MdVerified className='pricing-grid-icon' />50 AI Credits</p>
                         <p className='pricing-grid-p'><MdVerified className='pricing-grid-icon' />Scheduled Content Automation</p>
                         </div>
                         </div>
                                                 <hr className='pricing-grid-hr'></hr>
                         <h2 className='pricing-grid-plan platinum-header'>Premium</h2>
-                        {user?.user ? ( <Link href='/payment'><button className='btn-tertiary pricing-grid-btn' type='button'>Get Started</button></Link>):(<Link href='/register'><button className='btn-tertiary pricing-grid-btn' type='button'>Get Started</button></Link>)}
+                        {
+                            user ? (
+                                user.isPaid ? (
+                                <p>You already have access to our premium features!</p>
+                                ) : (
+                                    <button className='btn pricing-grid-btn btn-tertiary' onClick={() => handleCheckout('premium')}>
+                                    Checkout
+                                </button>
+                                )
+                            ) : (
+                                <Link href='/register'>
+                                <button className='btn-white pricing-grid-btn' type='button'>Get Started</button>
+                                </Link>
+                            )
+                            }
                     </div>
             </div>
         ) : (
@@ -160,7 +217,9 @@ const Pricing = () => {
                         <p className='pricing-grid-p'><MdVerified className='team-icon' />Scheduled Content Automation</p>
                         </div>
                         </div>
-                        {user?.user ? ( <Link href='https://buy.stripe.com/test_5kAfZWfRO11B8c89AA'><button className='btn-white pricing-grid-btn' type='button'>Get Started</button></Link>):(<Link href='/register'><button className='btn-white pricing-grid-btn' type='button'>Get Started</button></Link>)}
+                        <button onClick={() => nonAlert()} className='btn-white pricing-grid-btn' type='button'>Get Started</button>
+
+                        {/* {user ? ( <Link href='https://buy.stripe.com/test_5kAfZWfRO11B8c89AA'><button className='btn-white pricing-grid-btn' type='button'>Get Started</button></Link>):(<Link href='/register'><button className='btn-white pricing-grid-btn' type='button'>Get Started</button></Link>)} */}
                     </div>
       
         </div>
@@ -172,3 +231,19 @@ const Pricing = () => {
 };
 
 export default Pricing;
+
+
+
+
+    // useEffect(() => {
+    //     const fetchUser = async () => {
+    //         const { data, error } = await supabase.auth.getUser();
+    //         if (data) {
+    //             setUser(data);
+    //             console.log(data);
+    //         } else {
+    //             console.error('Error fetching user:', error);
+    //         }
+    //     };
+    //     fetchUser();
+    // }, []);

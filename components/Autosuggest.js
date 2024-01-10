@@ -36,7 +36,7 @@ const Form = () => {
           try {
             const res = await axios.get(`https://grsvumxr5onti4rnxgin73azyq0fgqvy.lambda-url.us-east-2.on.aws/blackwidow/products/${value}/`);
             const sug = await res.data;
-            console.log(sug)
+            // console.log(sug)
             setSuggestions(sug);
           } catch (error) {
             // Handle the error here (e.g. log it, display a message to the user)

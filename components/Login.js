@@ -1,4 +1,4 @@
-import { useState, useContext } from 'react';
+import { useState, useContext, useEffect } from 'react';
 import { supabase } from '../utils/supabaseClient';
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
@@ -7,20 +7,35 @@ import {IoIosUnlock} from 'react-icons/io'
 import {AiFillEye, AiFillEyeInvisible} from 'react-icons/ai'
 import Link from 'next/link'
 import { UserContext } from '../context/UserContext';
+import { useRouter } from 'next/router';
 
 
 
 
 export default function LoginComponent() {
-  const { login } = useContext(UserContext);
+  const { user, login } = useContext(UserContext);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [visible, setVisible] = useState(false);
+  const router = useRouter(); // Get the router object
+  useEffect(() => {
+    if (user) {
+      router.push('/dashboard');
+    }
+  }, [user, router]);
 
   const handleLogin = async (event) => {
     event.preventDefault();
-    await login(email, password);
+    const success = await login(email, password);
+    if (success) {
+      router.push('/dashboard');
+    }
   };
+
+  // const handleLogin = async (event) => {
+  //   event.preventDefault();
+  //   const success = await login(email, password);
+  // };
   return (
     <>
     <div className='login-container'>
@@ -48,31 +63,3 @@ export default function LoginComponent() {
     </>
   );
 }
-
-
-
-
-
-
-  // const handleLogin = async (e) => {
-  //   e.preventDefault();
-  //   try {
-  //     const { user, error } = await supabase.auth.signInWithPassword({
-  //       email,
-  //       password
-  //     });
-  
-  //     if (error) {
-  //       alert('Login failed. Please check your credentials.');
-  //     } else {
-  //       // Update user context
-  //       login(user); // Assuming the login function in context expects a user object
-  
-  //       alert('Login successful!');
-  //       // Redirect or navigate to the profile page
-  //       window.location.href = '/';
-  //     }
-  //   } catch (error) {
-  //     console.error('Error signing in:', error.message);
-  //   }
-  // };

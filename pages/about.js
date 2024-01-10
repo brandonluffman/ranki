@@ -47,7 +47,7 @@ export default function About() {
             <li>Lacking the desire or time to delve into the complexities of online optimization.</li>
             <li>Wishing to concentrate solely on nurturing and expanding your business.</li>
             </ol>
-            Recognizing these challenges, we were inspired to create a singular, all-encompassing solution designed to foster the growth of your website. Our application is more than just a tool; itapos;s a comprehensive ecosystem tailored to simplify your digital journey. Whether you&apos;re a newcomer to the digital realm or a seasoned entrepreneur with little interest in the technicalities of web optimization, our platform is engineered to cater to your needs.
+            Recognizing these challenges, we were inspired to create a singular, all-encompassing solution designed to foster the growth of your website. Our application is more than just a tool; it&apos;s a comprehensive ecosystem tailored to simplify your digital journey. Whether you&apos;re a newcomer to the digital realm or a seasoned entrepreneur with little interest in the technicalities of web optimization, our platform is engineered to cater to your needs.
 
             We present to you a platform that streamlines the process of enhancing your website&apos;s visibility and performance. Through our intuitive and user-friendly interface, you&apos;ll have access to all the essential tools and insights needed to elevate your site&apos;s ranking, without the hassle of juggling multiple applications or mastering the intricacies of SEO.
 

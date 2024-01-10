@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react'
 import { supabase } from '../utils/supabaseClient';
 import Link from 'next/link';
 
-const Blog = () => {
+const Blog = (limit) => {
     const [blogs, setBlogs] = useState([]);
     const slug = 37;
   
@@ -38,11 +38,13 @@ const Blog = () => {
         return 'No Slug Identified'
     }
   }, [slug]);
+
+  // limit && console.log(limit)
   return (
     <div className='blog-container'>
     {/* <h1 className='blog-header'>Blogs</h1> */}
     <div className='blog-grid-container'>
-    {blogs && blogs.map(blog => (
+    {blogs && limit && blogs.slice(0,limit.limit).map(blog => (
         <Link href={`/blog/${blog.id}`} key={blog.id}>
           <div className='blog-grid-item'>
             <img className='blog-grid-img' src='/shop.webp' />

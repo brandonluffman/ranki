@@ -32,15 +32,15 @@ const OnPageSEODashboard = ({ slug, domain }) => {
     useEffect(() => {
         const loadAnalysisResult = async () => {
             if (selectedPageURL) {
-                console.log(selectedPageURL)
+                // console.log(selectedPageURL)
                 // Attempt to fetch from local storage first
                 const savedAnalysisResult = localStorage.getItem(`analysisResult_${selectedPageURL}`);
                 if (savedAnalysisResult) {
-                    console.log('Found Analysis Result for:', selectedPageURL);
+                    // console.log('Found Analysis Result for:', selectedPageURL);
                     setAnalysisResult(JSON.parse(savedAnalysisResult));
                 } else {
                     // If not in local storage, fetch from the database
-                    console.log('Fetching new analysis result for:', selectedPageURL);
+                    // console.log('Fetching new analysis result for:', selectedPageURL);
                     try {
                         const { data, error } = await supabase
                             .from('site_urls')
@@ -51,7 +51,7 @@ const OnPageSEODashboard = ({ slug, domain }) => {
                         if (error) throw error;
         
                         if (data?.test_results) {
-                            console.log('Fetched data in the UseEffect :', data.test_results);
+                            // console.log('Fetched data in the UseEffect :', data.test_results);
                             setAnalysisResult(data.test_results);
                         }
                     } catch (error) {
@@ -59,7 +59,8 @@ const OnPageSEODashboard = ({ slug, domain }) => {
                     }
                 }
             } else {
-                console.log('No Selected Page URL');
+                // console.log('No Selected Page URL');
+                return
             }
         };
 
@@ -92,11 +93,11 @@ const OnPageSEODashboard = ({ slug, domain }) => {
                     if (error) throw error;
     
                     if (data && data.length) {
-                        console.log(`Domains already associated with app_id: ${slug}`);
+                        // console.log(`Domains already associated with app_id: ${slug}`);
                         // Optionally, you can set the pageOptions here if needed
                         setPageOptions(data.map(item => item.domain));
                     } else {
-                        console.log('Fetching Page Options');
+                        // console.log('Fetching Page Options');
                         fetchPages();
                     }
                 } catch (error) {
@@ -126,7 +127,7 @@ const OnPageSEODashboard = ({ slug, domain }) => {
         const apiUrl = `https://rankiai-fe08b8a427f4.herokuapp.com/get-unique-pages/?domain=${domain}`;
 
         
-        console.log('Fetching pages from:', apiUrl);
+        // console.log('Fetching pages from:', apiUrl);
         setIsLoading(true);
     
         try {
@@ -155,7 +156,7 @@ const OnPageSEODashboard = ({ slug, domain }) => {
                                 throw insertResponse.error;
                             }
                         } else {
-                            console.log(`URL already exists in the database: ${url}`);
+                            // console.log(`URL already exists in the database: ${url}`);
                         }
                     } catch (error) {
                         if (error.code === "23505") {
@@ -190,7 +191,7 @@ const OnPageSEODashboard = ({ slug, domain }) => {
                 .eq('domain', selectedPageURL); // Match the row by the domain
     
             if (error) throw error;
-            console.log('Saved analysis to DB for domain:', selectedPageURL);
+            // console.log('Saved analysis to DB for domain:', selectedPageURL);
 
             fetchLastTested(selectedPageURL);
 s
@@ -214,10 +215,10 @@ s
                 if (error) throw error;
     
                 if (data && data.last_tested) {
-                    console.log('Fetched data:', data); // This will correctly show the fetched data
+                    // console.log('Fetched data:', data); // This will correctly show the fetched data
                     setLastTested(data.last_tested); // Updates the state
                 }
-                console.log('Havent tested yet')
+                // console.log('Havent tested yet')
             } catch (error) {
                 console.error('Error fetching last tested date:', error);
             }

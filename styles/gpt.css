@@ -1,0 +1,42 @@
+.gpt-container {
+    text-align: center;
+    padding-top: 2rem;
+}
+.gpt-header {
+    margin-bottom: 2rem;
+    line-height: 8vh;
+}
+
+.gpt-subheader {
+    margin-bottom: 2rem;
+}
+
+.gpt-textarea {
+    width: 50%;
+    display: flex;
+    margin:0 auto;
+    margin-bottom: 2rem;
+    font-size: 2rem;
+}
+
+.gpt-wordcount {
+    width: 50%;
+    display: flex;
+    margin: 0 auto;
+    margin-bottom: 2rem;
+    font-size: 1.5rem;
+}
+
+.gpt-dropdown-container {
+    display: flex;
+    margin: 0 auto;
+    margin-bottom: 2rem;
+    justify-content: center;
+
+}
+
+.gpt-button {
+    margin: 0 auto;
+    margin-bottom: 4rem;
+}
+

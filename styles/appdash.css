@@ -120,6 +120,23 @@
 
 }
 
+.glow-btn {
+    animation: glow 3s ease-in-out infinite;
+
+}
+
+@keyframes glow {
+    0% {
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.2), 0 0 10px rgba(0, 0, 0, 0.2), 0 0 15px var(--primary), 0 0 20px var(--primary);
+    }
+    50% {
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.2), 0 0 20px rgba(0, 0, 0, 0.2), 0 0 30px var(--primary), 0 0 40px var(--primary);
+    }
+    100% {
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.2), 0 0 10px rgba(0, 0, 0, 0.2), 0 0 15px var(--primary), 0 0 20px var(--primary);
+    }
+}
+
 .appdash-add-btn:hover {
     background-color: white;
     color:var(--dark-blue);
@@ -143,7 +160,7 @@
     position:absolute;
     z-index:99999;
     
-    top: 40%;
+    top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     padding-top: 5rem;

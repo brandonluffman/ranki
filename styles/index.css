@@ -646,6 +646,7 @@
     opacity:1;
     transform: translateY(0px);
     letter-spacing: -0.05vw;
+    border:1px solid var(--primary);
     /* color:black; */
     /* border: 1px solid rgb(200, 200, 200); */
     box-shadow: 1px 1px 8px rgba(255,255,255,0.2);

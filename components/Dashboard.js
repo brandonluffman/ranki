@@ -19,6 +19,7 @@ import { UserContext } from '../context/UserContext';
 import appOptions from '../public/appOptions'
 import IntegrateDropdown from './IntegrateDropdown'
 import BlogDash from './BlogDash';
+import AddBlogOfficial from './AddBlogOfficial';
 
 
 const Dashboard = ({slugId}) => {
@@ -39,7 +40,7 @@ const Dashboard = ({slugId}) => {
     const formRef = useRef(null);
     const domain = app ? 'https://' + app.domain: null;
     const [siteUrls, setSiteUrls] = useState([]);
-
+  const [visible, setVisible] = useState(false);
 
 
 
@@ -53,7 +54,7 @@ const Dashboard = ({slugId}) => {
 
     const toggleSide = () => {
       setEditingApp(prevState => !prevState);
-      console.log(editingApp)
+      // console.log(editingApp)
     };
     const closeSide = () => {
       setEditingApp(prevState => !prevState);
@@ -75,7 +76,9 @@ const Dashboard = ({slugId}) => {
     }; 
  
 
-
+    const handleVisibility = (event) => {
+     setVisible(prevState => !prevState)
+  };
     
    
 
@@ -133,12 +136,13 @@ const fetchIntegratedApps = async (appSlug) => {
           if (error) throw error;
           setIntegratedApps(data[0].integrated_apps);
           localStorage.setItem(`integratedApps_${appSlug}`, JSON.stringify(data[0].integrated_apps));
-          console.log('Fetched integrated?')
+          // console.log('Fetched integrated?')
       } catch (error) {
           console.error('Error fetching integrated apps:', error);
       }
   // }
 };
+
 
 
 const handleSubmit = async (event) => {
@@ -232,11 +236,11 @@ const handleSubmit = async (event) => {
     }
 };
 
-{app && console.log(app)}
+// {app && console.log(app)}
 
   return (
     <>
-    {user ? (
+    {user.id ? (
     <div className='dashboard-container'>
     <Breadcrumbs appName={appName} slugId={slug} />
       {/* <Link href='/appdash' className='appdash-back-btn'><BsArrowLeft /> Back to AppDashboard</Link> */}
@@ -288,7 +292,7 @@ const handleSubmit = async (event) => {
           <div className='login-email-div'>
             <input type="text" name="url" placeholder="URL" className='login-input' />
           </div>
-          <button type="submit" className='btn btn-tertiary'>Integrate App</button>
+          <button type="submit" className='btn btn-tertiary integrate-btn'>Integrate App</button>
         </form>
       </div>
     )}
@@ -307,27 +311,6 @@ const handleSubmit = async (event) => {
                {/* {app?.seo_score ? (<GaugeChartComponent id="gauge-chart3" percent={app.technical_analysis['Truthy Values Count']} width="300px" className='seo-dash-chart'/>):(<GaugeChartComponent id="gauge-chart3" percent={score3} width="300px" className='seo-dash-chart'/>)} */}
                </div>
                </Link>
-
-        {/* <Link href={`/dashboard/seo/${slug}`}>
-        <div className='dashboard-grid-item'>
-            <h2 className='dashboard-grid-header'>Technical SEO</h2>
-            <GaugeChartComponent id="gauge-chart1" percent={score} width="250px" />
-        </div>
-        </Link>
-   
-            <Link href={`/dashboard/seo/${slug}`}>
-            <div className='dashboard-grid-item'>
-            <h2 className='dashboard-grid-header'>On-Page SEO</h2>
-            <GaugeChartComponent id="gauge-chart2" percent={score2} width="250px"/>
-            </div>
-            </Link>
-     
-              <Link href={`/dashboard/seo/${slug}`}>
-            <div className='dashboard-grid-item'>
-            <h2 className='dashboard-grid-header'>Off-Page SEO</h2>
-            <GaugeChartComponent id="gauge-chart3" percent={score3} width="250px"/>
-            </div>
-            </Link> */}
             </div>
    
         ):(
@@ -365,13 +348,16 @@ const handleSubmit = async (event) => {
           </div>
           
         )}
-      
-    
-     {app && <Link href={`/blogdashboard/${app.id}`}><DashContent slug={slug} /></Link>}
-     {/* {app && <Link href={`/blogdashboard/${app.id}`}><BlogDash /></Link>} */}
- 
 
-     {/* <GMBDash /> */}
+      <div className='generate-banner'>
+          <h2>Generate Article - Powered by AI</h2>
+          <button onClick={handleVisibility} className='btn btn-primary generate-btn'>Get Started &rarr;</button>
+          {/* {user.isPaid ? :<Link href='/pricing'><button className='btn btn-primary generate-btn'></button></Link>} */}
+          </div>
+ 
+      {visible && <AddBlogOfficial />}
+      {user && user.email == 'brandonluff10@gmail.com' && <DashContent />}
+
   </div>
     ):(
       <div className='no-user-container'>
@@ -417,3 +403,26 @@ export default Dashboard
         <h6>0</h6></div>
         <div className='appdash-alert-container warning-alert-container'><h6>Warnings</h6> <h6>2</h6></div>
       </div> */}
+
+
+
+              {/* <Link href={`/dashboard/seo/${slug}`}>
+        <div className='dashboard-grid-item'>
+            <h2 className='dashboard-grid-header'>Technical SEO</h2>
+            <GaugeChartComponent id="gauge-chart1" percent={score} width="250px" />
+        </div>
+        </Link>
+   
+            <Link href={`/dashboard/seo/${slug}`}>
+            <div className='dashboard-grid-item'>
+            <h2 className='dashboard-grid-header'>On-Page SEO</h2>
+            <GaugeChartComponent id="gauge-chart2" percent={score2} width="250px"/>
+            </div>
+            </Link>
+     
+              <Link href={`/dashboard/seo/${slug}`}>
+            <div className='dashboard-grid-item'>
+            <h2 className='dashboard-grid-header'>Off-Page SEO</h2>
+            <GaugeChartComponent id="gauge-chart3" percent={score3} width="250px"/>
+            </div>
+            </Link> */}

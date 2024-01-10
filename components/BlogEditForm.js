@@ -9,9 +9,9 @@ const BlogEditForm = ({ blog, toggle, submitForm }) => {
         if (blog) {
             setTitle(blog.title);
             setContent(blog.content);
-            console.log(blog)
+            // console.log(blog)
         } else {
-            console.log('No Blog')
+            // console.log('No Blog')
         }
     }, [blog]);
 

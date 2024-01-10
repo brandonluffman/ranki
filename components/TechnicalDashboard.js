@@ -74,7 +74,7 @@ const TechnicalDashboard = ({ slug, domain }) => {
         if (!app || !domain) return 'Not Happenin';
         // console.log(app.domain)
         // const domain = app.domain; // Example domain
-        console.log(domain)
+        // console.log(domain)
         // const apiUrl = `http://127.0.0.1:8000/technicalseo?url=${domain}`;
         const apiUrl = `https://rankiai-fe08b8a427f4.herokuapp.com/technicalseo?url=${domain}`;
 

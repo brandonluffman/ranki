@@ -26,6 +26,10 @@ import '../styles/blogedit.css';
 import '../styles/logoslider.css';
 import '../styles/blogpage.css';
 import '../styles/multistepform.css';
+import '../styles/gpt.css';
+import '../styles/generate.css';
+import '../styles/account.css';
+import '../styles/cancel.css';
 
 import NProgress from 'nprogress';
 import "nprogress/nprogress.css";

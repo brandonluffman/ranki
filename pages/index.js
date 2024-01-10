@@ -45,9 +45,13 @@ export default function Home(){
                 <Link href='/about'><button className='btn btn-translucent home-landing-btn'>Learn More <BsPlayBtnFill className='home-landing-btn-icon' /></button></Link>
             </div>
 
-            <video autoPlay loop muted className='home-landing-video'>
+            {/* <video autoPlay loop muted className='home-landing-video'>
             <source src="/surfer-ai.mp4" />
-          </video>
+          </video> */}
+
+          <div className='home-landing-img-banner'>
+            <img src='/home-graphic.webp' width='500'></img>
+          </div>
 
             {/* <div>
             <video src="/surfer-ai.mp4" autoplay muted loop width='600'></video>
@@ -173,8 +177,6 @@ export default function Home(){
 <p className='header-grey fun-landing-greyed'>Seriously, how often do you ever select the bottom search results?</p>
 </div>
 </div>
-
-
         {/* <div className='hiw-landing-container'>
           <h2 className='hiw-landing-header'>An <b>AI Content Writing Tool</b> built to rank your pages</h2>
           <p>Unlock the full potential of your digital presence with our AI Content Writing Tool, meticulously designed to elevate your pages to the top of search engine rankings. By harnessing the power of advanced AI algorithms, our tool not only crafts compelling content but also ensures it is SEO-optimized, increasing visibility and driving organic traffic. With a focus on relevance and engagement, our solution tailors content to resonate with your target audience, enhancing user experience and fostering higher conversion rates. Step into the realm of high-ranking pages and watch as your online influence grows, all while saving time and resources. This is more than just content creation; it&apos;s a strategic asset for your online success.</p>
@@ -184,9 +186,6 @@ export default function Home(){
           <h2 className='hiw-landing-header'>Generate <b>SEO-Optimized Content Writing</b> with the click of a button</h2>
           <p>Revolutionize your content creation process with our state-of-the-art tool that simplifies SEO-optimized content writing into a single click. This powerful solution is designed to cater to your need for efficiency and effectiveness in the digital space. With our advanced AI-driven technology, you can generate content that not only captivates your audience but also adheres to the best SEO practices, ensuring your pages rank higher on search engine results. From blog posts to product descriptions, our tool adapts to various formats, infusing each piece with the optimal blend of keywords, readability, and engagement. Say goodbye to the daunting task of continuous content optimization and welcome a future where high-ranking, impactful content is just a button click away. Elevate your online presence effortlessly, and stay ahead in the competitive digital landscape.</p>
         </div>  */}
-
-
-
 
         {/* <div className='hiw-landing-container'>
           <h2 className='hiw-landing-header'>Content Creation powered by AI</h2>
@@ -201,7 +200,7 @@ export default function Home(){
         <div className='blog-landing-container'>
           <h2 className='blog-landing-header'>Our Content</h2>
           {/* <h6>Yes ! Created with yours truly. </h6> */}
-          <Blog />
+          <Blog limit={3} />
           <Link href='/blog'><button className='btn btn-translucent'>View All <BsArrowRight className='arrow-right' /></button></Link>
         </div> 
      
@@ -212,21 +211,23 @@ export default function Home(){
               {/* <h4 className='faq-header'>Testing FAQ</h4> */}
               <DropdownFAQ
                  title="Can I use RankiAI for free?"
-              content="Yes, RankiAI provides a selection of free services that allow users to create a basic resume without any cost. However, we also offer a range of premium services for users who wish to access more comprehensive features, such as personalized templates, advanced AI writing assistance, and detailed performance analytics, designed to further enhance your resume and improve your job application success rate."
-         
+              content="RankiAI offers both free and premium services to cater to a variety of needs. Our free services enable users to create a basic resume at no cost, providing an easy and accessible way to start building your professional profile. For users seeking more advanced features, our premium services are the ideal choice. These include access to personalized templates, advanced AI writing assistance, and detailed performance analytics. These premium features are designed to enhance your resume significantly and improve your job application success rate. Whether you're just starting out or looking to give your resume a professional edge, RankiAI has the right tools for you."
             />
             <DropdownFAQ
-                 title="How can I customize my resume?"
-              content="You can customize your resume on our platform by choosing from various professional templates, adjusting fonts and colors, and organizing sections to best showcase your skills and experience. Our AI tools also offer suggestions to tailor your content to specific job postings, ensuring that your resume speaks directly to the roles you're applying for. For more personalized guidance, our premium services include one-on-one consultations with resume experts."
+                 title="What is the GPT API, and how does it help in creating SEO-optimized articles for my website?"
+              content="The GPT (Generative Pre-trained Transformer) API is an advanced AI tool that can generate human-like text. In our application, it's utilized to create SEO-optimized articles for your website. This means the API analyzes key SEO factors such as keywords, relevancy, and readability to produce articles that are not only engaging to your readers but also rank well on search engines. This feature saves you time and effort in content creation, allowing you to focus more on other aspects of your business."
             />
                 <DropdownFAQ
-                    title="Can I download my resume to Word or PDF?"
-                  content="Yes, once you've finished creating your resume with our builder, you can easily download it in multiple formats, including Word (.docx) and PDF, allowing you to submit your resume to potential employers in the format they prefer or keep for your own records."
+                    title="How can I organize my projects and businesses using the application?"
+                  content="Our application offers a user-friendly dashboard where you can add and manage multiple projects or businesses. You can create separate sections for each project, set goals, track progress, and organize tasks with deadlines. The dashboard is designed to give you a clear overview of all your ventures in one place, helping you stay organized and focused."
                 />
-              
                 <DropdownFAQ
-                    title="How do I cancel, downgrade or delete my account?"
-                  content="To cancel, downgrade, or delete your account, please navigate to the 'Settings' section of your account dashboard. From there, you can select the 'Subscription' option to cancel or downgrade your services. If you wish to delete your account, you'll find the option at the bottom of the 'Account' section. Follow the prompts to confirm your action. Should you need any assistance or encounter any issues, our customer support team is available to help you through the process."
+                    title="Is there any support or training available for new users to get accustomed to the application?"
+                  content="Yes, we provide comprehensive support and training for new users. This includes detailed tutorials, user guides, and customer support assistance. We also regularly conduct webinars and Q&A sessions to help users get the most out of our application. You can access these resources directly from the application dashboard or our website."
+                />
+                  <DropdownFAQ
+                    title="How secure is my data within the application, especially when using the GPT API for content creation?"
+                  content="Data security is our top priority. All information within the application is encrypted and securely stored. When using the GPT API for content creation, your data is processed with strict confidentiality, and we ensure that only authorized personnel have access to it. We comply with all major data protection regulations to safeguard your information against unauthorized access or breaches."
                 />
                 
           </div>

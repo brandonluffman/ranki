@@ -8,6 +8,7 @@ import Link from 'next/link';
 import { BsArrowLeft, BsGrid, BsGrid3X3GapFill, BsThreeDotsVertical } from 'react-icons/bs';
 import AddBlog from './AddBlog';
 import BlogEditForm from './BlogEditForm';
+import AddBlogOfficial from './AddBlogOfficial';
 
 const BlogDash = () => {
     const { user } = useContext(UserContext);
@@ -54,7 +55,7 @@ const BlogDash = () => {
         if (error) {
             console.error('Error deleting blog post:', error);
         } else {
-            console.log('Blog post deleted:', data);
+            // console.log('Blog post deleted:', data);
             // Optionally update the state to reflect the deletion
             setBlogs(blogs.filter(blog => blog.id !== postId));
         }
@@ -107,7 +108,7 @@ const BlogDash = () => {
         try {
             
             // const formData = new FormData(event.target);
-            console.log(formData, "Form Data")
+            // console.log(formData, "Form Data")
             const title = formData.title;
             const content = formData.content;
             
@@ -127,7 +128,7 @@ const BlogDash = () => {
             if (error) {
                 console.error('Error inserting data:', error);
             } else if (data) {
-                console.log('Inserted data:', data);
+                // console.log('Inserted data:', data);
                 // Here, 'data' will be an array containing the inserted row(s)
             }
             
@@ -165,7 +166,7 @@ const BlogDash = () => {
             if (error) {
                 console.error('Error updating data:', error);
             } else {
-                console.log('Updated data:', data);
+                // console.log('Updated data:', data);
                 setBlogs(blogs.map(blog => blog.id === editBlogId ? {...blog, title, content} : blog));
                 setToggled(false); // Close the edit form
             }
@@ -205,7 +206,7 @@ const BlogDash = () => {
 {isToggled ? (
     <div className='blog-add-container'>
 
-    <AddBlog submitForm={handleSubmit} toggle={toggleAddForm} />
+    <AddBlogOfficial submitForm={handleSubmit} toggle={toggleAddForm} />
 </div>
 ) : toggled ? (
     <div className='blog-add-container'>
@@ -224,7 +225,7 @@ const BlogDash = () => {
         <div className='dashboard-content-container'>
         <button type='submit' className='add-content-container' onClick={toggleAddForm}><IoMdAdd /></button>
             <h1 className='dash-content-header'>Content</h1>
-            <button onClick={toggleBlogGrid} className='toggle-grid'><BsGrid3X3GapFill /></button>
+            {blogs.length > 0 && <button onClick={toggleBlogGrid} className='toggle-grid'><BsGrid3X3GapFill /></button>}
 
             <div className={isGrid ? 'dash-content-grid-small': 'dash-content-grid'}>
             {blogs.map(blog => (

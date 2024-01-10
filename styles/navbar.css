@@ -149,10 +149,10 @@
 }
 
 .nav-link > svg > path {
-    stroke:white;
+    stroke: var(--primary);
 }
 .nav-icon {
-    color: white;
+    color: var(--primary);
 }
 .nav-link-btn-li {
     margin:0rem;
@@ -168,6 +168,11 @@
     margin:0;
     border-radius: 10px;
    text-transform: capitalize;
+   z-index:99999999 !important;
+}
+
+.login-nav-link {
+    z-index:99999999999999 !important;
 }
 
 .desktop-nav-link {
@@ -198,7 +203,11 @@
     color:white;
     font-size: 1.5rem;
 }
-
+@media (max-width: 800px) {
+    .nav-menu-toggled, .scrolled .nav-menu-toggled {
+        width: 80vw;
+    }
+}
 @media (max-width: 500px) {
 
     .chatbot-logo {
@@ -218,7 +227,7 @@
         margin-right: 1rem;
     }
 
-    .nav-menu-toggled {
+    .nav-menu-toggled, .scrolled .nav-menu-toggled {
         width: 80vw;
     }
 
