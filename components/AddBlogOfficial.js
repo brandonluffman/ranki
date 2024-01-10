@@ -148,7 +148,7 @@ import Link from 'next/link';
       
         return true;
       };
-      const sanitizedContent = DOMPurify.sanitize(generatedBios);
+      // const sanitizedContent = DOMPurify.sanitize(generatedBios);
       // {user && console.log(user)}
       
   return (
