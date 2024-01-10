@@ -28,9 +28,7 @@ import DOMPurify from 'isomorphic-dompurify';
   
     const handleValueChange = (event) => {
       const newValue = parseInt(event.target.value, 10);
-  
-      // Check if the new value is not NaN and less than or equal to MAX_VALUE
-      if (!isNaN(newValue) && newValue <= MAX_VALUE) {
+        if (!isNaN(newValue) && newValue <= MAX_VALUE) {
           setWordCount(newValue);
       }
   };
@@ -40,6 +38,9 @@ import DOMPurify from 'isomorphic-dompurify';
       getUserCredits(user.id).then(credits => {
         setUserCredits(credits);
       });
+    } else {
+      console.log('Couldnt find user or user id')
+ 
     }
   }, [user]);
   
