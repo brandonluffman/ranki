@@ -23,25 +23,25 @@ import Link from 'next/link';
     const MAX_VALUE = 100;
 
 
-    const prompt = `Generate an SEO optimized article about ${bio} in HTML Code Format with a max of ${wordCount} words. The tone of the article will be ${vibe}`;
+    // const prompt = `Generate an SEO optimized article about ${bio} in HTML Code Format with a max of ${wordCount} words. The tone of the article will be ${vibe}`;
   
-    const handleValueChange = (event) => {
-      const newValue = parseInt(event.target.value, 10);
-        if (!isNaN(newValue) && newValue <= MAX_VALUE) {
-          setWordCount(newValue);
-      }
-  };
+  //   const handleValueChange = (event) => {
+  //     const newValue = parseInt(event.target.value, 10);
+  //       if (!isNaN(newValue) && newValue <= MAX_VALUE) {
+  //         setWordCount(newValue);
+  //     }
+  // };
   
-  const handleFetchCredits = async () => {
-    const credits = await getUserCredits(user.id);
-    setUserCredits(credits);
-  };
-      const generateBio = async (e) => {
-              e.preventDefault();
-              console.log('POST')
-              alert('POST MADE')
+  // const handleFetchCredits = async () => {
+  //   const credits = await getUserCredits(user.id);
+  //   setUserCredits(credits);
+  // };
+  //     const generateBio = async (e) => {
+  //             e.preventDefault();
+  //             console.log('POST')
+  //             alert('POST MADE')
 
-  }
+  // }
     // const generateBio = async (e) => {
     //   e.preventDefault();
     //   setGeneratedBios("");
@@ -86,70 +86,70 @@ import Link from 'next/link';
     //   }
     // }
 
-    const getUserCredits = async (userId) => {
-        const { data, error } = await supabase
-          .from('users')
-          .select('api_credits')
-          .eq('auth_id', userId)
-          .single();
+    // const getUserCredits = async (userId) => {
+    //     const { data, error } = await supabase
+    //       .from('users')
+    //       .select('api_credits')
+    //       .eq('auth_id', userId)
+    //       .single();
       
-        if (error || !data) {
-          console.error('Error fetching user credits:', error);
-          return 0; // Return 0 if there's an error or no data
-        }
+    //     if (error || !data) {
+    //       console.error('Error fetching user credits:', error);
+    //       return 0; // Return 0 if there's an error or no data
+    //     }
       
-        return data.api_credits;
-      };
+    //     return data.api_credits;
+    //   };
 
       
 
-    const checkUserCredits = async (userId) => {
-        const { data, error } = await supabase
-          .from('users')
-          .select('api_credits')
-          .eq('auth_id', userId)
-          .single();
+    // const checkUserCredits = async (userId) => {
+    //     const { data, error } = await supabase
+    //       .from('users')
+    //       .select('api_credits')
+    //       .eq('auth_id', userId)
+    //       .single();
       
-        if (error || !data) {
-          console.error('Error fetching user credits:', error);
-          return false;  // Assuming error or no data means no credits
-        }
+    //     if (error || !data) {
+    //       console.error('Error fetching user credits:', error);
+    //       return false;  // Assuming error or no data means no credits
+    //     }
       
-        return data.api_credits > 0;
-      };
+    //     return data.api_credits > 0;
+    //   };
       
-      const decrementUserCredits = async (userId) => {
-        // First, retrieve the current credit count
-        let { data: userData, error: fetchError } = await supabase
-          .from('users')
-          .select('api_credits')
-          .eq('auth_id', userId)
-          .single();
+    //   const decrementUserCredits = async (userId) => {
+    //     // First, retrieve the current credit count
+    //     let { data: userData, error: fetchError } = await supabase
+    //       .from('users')
+    //       .select('api_credits')
+    //       .eq('auth_id', userId)
+    //       .single();
       
-        if (fetchError) {
-          console.error('Error fetching user credits:', fetchError);
-          return false;
-        }
+    //     if (fetchError) {
+    //       console.error('Error fetching user credits:', fetchError);
+    //       return false;
+    //     }
       
-        // Check if the user has enough credits
-        if (userData.api_credits <= 0) {
-          console.error('User does not have enough credits');
-          return false;
-        }
+    //     // Check if the user has enough credits
+    //     if (userData.api_credits <= 0) {
+    //       console.error('User does not have enough credits');
+    //       return false;
+    //     }
       
-        // Decrement the credits
-        const { error: updateError } = await supabase
-          .from('users')
-          .update({ api_credits: userData.api_credits - 1 })
-          .eq('auth_id', userId);
+    //     // Decrement the credits
+    //     const { error: updateError } = await supabase
+    //       .from('users')
+    //       .update({ api_credits: userData.api_credits - 1 })
+    //       .eq('auth_id', userId);
       
-        if (updateError) {
-          console.error('Error updating credits:', updateError);
-          return false;
-        }
+    //     if (updateError) {
+    //       console.error('Error updating credits:', updateError);
+    //       return false;
+    //     }
       
-        return true;
-      };
+    //     return true;
+    //   };
       // const sanitizedContent = DOMPurify.sanitize(generatedBios);
       
   return (
