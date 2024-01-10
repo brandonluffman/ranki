@@ -8,8 +8,8 @@ import Link from 'next/link';
 import DOMPurify from 'isomorphic-dompurify';
 
 // const AddBlogOfficial = ({ submitForm, toggle }) => {
-  const AddBlogOfficial = ({ user }) => {
-    // const { user } = useContext(UserContext);
+  const AddBlogOfficial = () => {
+    const { user } = useContext(UserContext);
   
     const [loading, setLoading] = useState(false);
     const [bio, setBio] = useState("");
@@ -23,7 +23,16 @@ import DOMPurify from 'isomorphic-dompurify';
     const MAX_VALUE = 100; // Set your max value here
 
 
-
+    useEffect(() => {
+      if (user) {
+        getUserCredits(user.id).then(credits => {
+          setUserCredits(credits);
+        });
+      } else {
+        console.log('Couldnt find user or user id', user)
+        
+      }
+    }, [user]);
     const prompt = `Generate an SEO optimized article about ${bio} in HTML Code Format with a max of ${wordCount} words. The tone of the article will be ${vibe}`;
   
     const handleValueChange = (event) => {
@@ -33,16 +42,7 @@ import DOMPurify from 'isomorphic-dompurify';
       }
   };
 
-  useEffect(() => {
-    if (user && user.id) {
-      getUserCredits(user.id).then(credits => {
-        setUserCredits(credits);
-      });
-    } else {
-      console.log('Couldnt find user or user id')
- 
-    }
-  }, [user]);
+
   
     const generateBio = async (e) => {
       e.preventDefault();
@@ -153,7 +153,7 @@ import DOMPurify from 'isomorphic-dompurify';
         return true;
       };
       const sanitizedContent = DOMPurify.sanitize(generatedBios);
-
+      {user && console.log(user)}
       
   return (
             <div className="gpt-container">
