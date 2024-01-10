@@ -4,7 +4,7 @@ import { BsArrowLeft, BsBook, BsBookFill, BsDot, BsLightbulb, BsLightbulbFill } 
 import CTA from './CTA';
 import Breadcrumbs from './Breadcrumbs';
 import ProgressBar from "react-scroll-progress-bar";
-import DOMPurify from 'dompurify';
+// import DOMPurify from 'dompurify';
 
 import {
   FacebookShareButton,
@@ -88,7 +88,7 @@ const BlogPost = ({ blog }) => {
         });
     };
 
-    const sanitizedContent = DOMPurify.sanitize(blog.content);
+    // const sanitizedContent = DOMPurify.sanitize(blog.content);
 
   return (
     <div className={isDark ? 'blog-post-container dark-post': 'blog-post-container'}>
@@ -105,7 +105,7 @@ const BlogPost = ({ blog }) => {
         <p className='blog-readtime flexer'><BsBookFill className='arrow'/> 4 min read</p>
         </div>
         {/* <h6 className='blog-post-content'>{blog.content}</h6> */}
-        <HTMLContent html={sanitizedContent} /> 
+        {/* <HTMLContent html={sanitizedContent} />  */}
 
         <CTA />
 
