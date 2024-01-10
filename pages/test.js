@@ -21,7 +21,7 @@ const test = () => {
         {/* <TextEditor /> */}
         {/* <GPTForm /> */}
         {/* <PricingOfficial /> */}
-        {/* <AddBlogOfficial /> */}
+        <AddBlogOfficial />
         </div>
     <Footer />
 </>

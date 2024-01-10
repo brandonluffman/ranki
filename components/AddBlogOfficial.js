@@ -20,7 +20,7 @@ import DOMPurify from 'isomorphic-dompurify';
     const [articleKeywords, setArticleKeywords] = useState([]);
     const [globalArticleCount, setGlobalArticleCount] = useState(256475);
     const [userCredits, setUserCredits] = useState(0);
-    const MAX_VALUE = 100; // Set your max value here
+    const MAX_VALUE = 100;
 
 
     const prompt = `Generate an SEO optimized article about ${bio} in HTML Code Format with a max of ${wordCount} words. The tone of the article will be ${vibe}`;
@@ -53,7 +53,7 @@ import DOMPurify from 'isomorphic-dompurify';
           setLoading(false);
           return;
         } else {
-            // console.log('User has credits')
+            console.log('User has credits')
         }
     
         const response = await fetch("/api/gpt", {
@@ -72,7 +72,7 @@ import DOMPurify from 'isomorphic-dompurify';
         setGeneratedBios(answer.choices[0].text);
     
         const success = await decrementUserCredits(user.id);
-        // console.log('Credits decremented:', success); // Debugging log
+        console.log('Credits decremented:', success); // Debugging log
         if (!success) {
           alert('Failed to update credits. Please try again.');
         }
@@ -149,14 +149,10 @@ import DOMPurify from 'isomorphic-dompurify';
         return true;
       };
       const sanitizedContent = DOMPurify.sanitize(generatedBios);
-      // {user && console.log(user)}
       
   return (
             <div className="gpt-container">
                   <h1 className="gpt-header">Generate your SEO-Optimized Article</h1>
-        {/* <p className="gpt-subheader">{globalArticleCount.toLocaleString()} articles generated so far.</p> */}
-        {/* <p className="gpt-subheader">You have <span className='primary'>{userCredits}</span> credits available.</p> */}
-        {/* <Link href='/pricing'><button className='btn btn-tertiary gpt-button'>Get More Credits</button></Link> */}
         <button className="btn btn-primary btn-margin" onClick={handleFetchCredits}>Check Credits</button>
             {userCredits && <p>You have {userCredits} credits</p>}
         <div className="gpt-form">
@@ -194,4 +190,11 @@ import DOMPurify from 'isomorphic-dompurify';
   )
 }
 
-export default AddBlogOfficial
+export default AddBlogOfficial;
+
+
+
+
+        {/* <p className="gpt-subheader">{globalArticleCount.toLocaleString()} articles generated so far.</p> */}
+        {/* <p className="gpt-subheader">You have <span className='primary'>{userCredits}</span> credits available.</p> */}
+        {/* <Link href='/pricing'><button className='btn btn-tertiary gpt-button'>Get More Credits</button></Link> */}
