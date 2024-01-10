@@ -153,7 +153,7 @@ import DOMPurify from 'isomorphic-dompurify';
         return true;
       };
       const sanitizedContent = DOMPurify.sanitize(generatedBios);
-      {user && console.log(user)}
+      // {user && console.log(user)}
       
   return (
             <div className="gpt-container">
