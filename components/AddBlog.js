@@ -6,7 +6,7 @@ import { BsArrowRight } from 'react-icons/bs';
 import SmallGaugeChart from './SmallGaugeChart';
 import { MdCheckCircleOutline, MdRadioButtonUnchecked } from 'react-icons/md';
 import TextEditor from '../components/TextEditor';
-import DOMPurify from 'dompurify';
+// import DOMPurify from 'dompurify';
 import Loading from './Loading';
 import { UserContext } from '../context/UserContext';
 
@@ -300,7 +300,7 @@ const HTMLContent = ({ html }) => {
 
   const StepThree = ({ prevStep, formData, submitForm, toggle }) => {
     // Sanitize the content outside the JSX return
-    const sanitizedContent = formData ? DOMPurify.sanitize(formData.content) : '';
+    // const sanitizedContent = formData ? DOMPurify.sanitize(formData.content) : '';
 
     return (
         <div className='step-container'>
