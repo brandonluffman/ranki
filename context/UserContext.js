@@ -25,7 +25,7 @@ export const UserProvider = ({ children }) => {
         localStorage.removeItem('user');
       }
     } else {
-      console.log("No stored user found");
+      // console.log("No stored user found");
     }
   }, []);
 

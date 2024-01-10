@@ -24,7 +24,7 @@ const DashContent = ({ slug }) => {
               .eq('app_id', slug);
       
           if (error) {
-              console.error('Error fetching blogs:', error);
+            //   console.error('Error fetching blogs:', error);
               return [];
           }
       

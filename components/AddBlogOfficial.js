@@ -193,25 +193,10 @@ const AddBlogOfficial = ({ submitForm, toggle }) => {
             <button className="btn btn-primary" disabled><Loading /></button>
           )}
         </div>
-        {/* <Toaster
-          position="top-center"
-          reverseOrder={false}
-          toastOptions={{ duration: 2000 }}
-        /> */}
+
         <hr className="" />
         <h2 className='gpt-header'>Generated Article:</h2>
 
-          {/* {generatedBios && (
-              <div
-                  className=""
-                  onClick={() => {
-                      navigator.clipboard.writeText(generatedBios);
-                      toast("Article copied to clipboard", { icon: "✂️" });
-                  }}
-              >
-                  <p>{generatedBios}</p>
-              </div>
-          )} */}
 
 <div dangerouslySetInnerHTML={{ __html: safeHTMLContent }}></div>
 
