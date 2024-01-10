@@ -8,6 +8,7 @@ import TextEditor from '../components/TextEditor';
 import GPTForm from '../components/GPTForm';
 import { UserContext } from '../context/UserContext';
 import PricingOfficial from '../components/PricingOfficial';
+import AddBlogOfficial from '../components/AddBlogOfficial';
 
 const test = () => {
 
@@ -20,6 +21,7 @@ const test = () => {
         {/* <TextEditor /> */}
         {/* <GPTForm /> */}
         {/* <PricingOfficial /> */}
+        <AddBlogOfficial />
         </div>
     <Footer />
 </>
