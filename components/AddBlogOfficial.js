@@ -5,7 +5,7 @@ import Loading from './Loading';
 import { UserContext } from '../context/UserContext';
 import { supabase } from '../utils/supabaseClient'; // Import your initialized Supabase client
 import Link from 'next/link';
-import DOMPurify from 'isomorphic-dompurify';
+// import DOMPurify from 'isomorphic-dompurify';
 
 // const AddBlogOfficial = ({ submitForm, toggle }) => {
   const AddBlogOfficial = () => {
@@ -189,7 +189,7 @@ import DOMPurify from 'isomorphic-dompurify';
       
         <hr className="" />
         <h2 className='gpt-header'>Generated Article:</h2>
-        {sanitizedContent && <div dangerouslySetInnerHTML={{ __html: sanitizedContent }}></div>}
+        {/* {sanitizedContent && <div dangerouslySetInnerHTML={{ __html: sanitizedContent }}></div>} */}
         </div>
   )
 }
