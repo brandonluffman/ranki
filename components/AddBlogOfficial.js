@@ -40,49 +40,55 @@ import DOMPurify from 'isomorphic-dompurify';
     const credits = await getUserCredits(user.id);
     setUserCredits(credits);
   };
-    const generateBio = async (e) => {
-      e.preventDefault();
-      setGeneratedBios("");
-      setLoading(true);
+      const generateBio = async (e) => {
+              e.preventDefault();
+              console.log('POST')
+              alert('POST MADE')
+
+  }
+    // const generateBio = async (e) => {
+    //   e.preventDefault();
+    //   setGeneratedBios("");
+    //   setLoading(true);
   
-      try {
-        const hasCredits = await checkUserCredits(user.id);
-        // console.log('User has credits:', hasCredits); // Debugging log
-        if (!hasCredits) {
-          alert('You do not have enough credits to generate a bio.');
-          setLoading(false);
-          return;
-        } else {
-            console.log('User has credits')
-        }
+    //   try {
+    //     const hasCredits = await checkUserCredits(user.id);
+    //     // console.log('User has credits:', hasCredits); // Debugging log
+    //     if (!hasCredits) {
+    //       alert('You do not have enough credits to generate a bio.');
+    //       setLoading(false);
+    //       return;
+    //     } else {
+    //         console.log('User has credits')
+    //     }
     
-        const response = await fetch("/api/gpt", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({ prompt }),
-        });
+    //     const response = await fetch("/api/gpt", {
+    //       method: "POST",
+    //       headers: {
+    //         "Content-Type": "application/json",
+    //       },
+    //       body: JSON.stringify({ prompt }),
+    //     });
     
-        if (!response.ok) {
-          throw new Error(`API response error: ${response.statusText}`);
-        }
+    //     if (!response.ok) {
+    //       throw new Error(`API response error: ${response.statusText}`);
+    //     }
     
-        const answer = await response.json();
-        setGeneratedBios(answer.choices[0].text);
+    //     const answer = await response.json();
+    //     setGeneratedBios(answer.choices[0].text);
     
-        const success = await decrementUserCredits(user.id);
-        console.log('Credits decremented:', success); // Debugging log
-        if (!success) {
-          alert('Failed to update credits. Please try again.');
-        }
-      } catch (error) {
-        console.error('Error:', error.message);
-        alert('Failed to generate bio. Please try again.');
-      } finally {
-        setLoading(false);
-      }
-    }
+    //     const success = await decrementUserCredits(user.id);
+    //     console.log('Credits decremented:', success); // Debugging log
+    //     if (!success) {
+    //       alert('Failed to update credits. Please try again.');
+    //     }
+    //   } catch (error) {
+    //     console.error('Error:', error.message);
+    //     alert('Failed to generate bio. Please try again.');
+    //   } finally {
+    //     setLoading(false);
+    //   }
+    // }
 
     const getUserCredits = async (userId) => {
         const { data, error } = await supabase
