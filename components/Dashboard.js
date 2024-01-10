@@ -344,9 +344,9 @@ const handleSubmit = async (event) => {
           {/* {user.isPaid ? :<Link href='/pricing'><button className='btn btn-primary generate-btn'></button></Link>} */}
           </div>
  
-      <div className={visible ? "visible": 'none'}>
+      {/* <div className={visible ? "visible": 'none'}> */}
       <AddBlogOfficial />
-      </div>
+      {/* </div> */}
       {user && user.email == 'brandonluff10@gmail.com' && <DashContent />}
 
   </div>
