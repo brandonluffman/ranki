@@ -1,26 +1,26 @@
 import React, {useContext, useState, useEffect} from 'react'
-import { Toaster } from 'react-hot-toast';
-import { IoMdClose } from 'react-icons/io'
-import Loading from './Loading';
-import { UserContext } from '../context/UserContext';
-import { supabase } from '../utils/supabaseClient'; // Import your initialized Supabase client
-import Link from 'next/link';
+// import { Toaster } from 'react-hot-toast';
+// import { IoMdClose } from 'react-icons/io'
+// import Loading from './Loading';
+// import { UserContext } from '../context/UserContext';
+// import { supabase } from '../utils/supabaseClient';
+// import Link from 'next/link';
 // import DOMPurify from 'isomorphic-dompurify';
 
 // const AddBlogOfficial = ({ submitForm, toggle }) => {
   const AddBlogOfficial = () => {
-    const { user } = useContext(UserContext);
+    // const { user } = useContext(UserContext);
   
-    const [loading, setLoading] = useState(false);
-    const [bio, setBio] = useState("");
-    const [vibe, setVibe] = useState("Professional");
-    const [generatedBios, setGeneratedBios] = useState("");
-    const [tone, setTone] = useState('Professional');
-    const [wordCount, setWordCount] = useState(0);
-    const [articleKeywords, setArticleKeywords] = useState([]);
-    const [globalArticleCount, setGlobalArticleCount] = useState(256475);
-    const [userCredits, setUserCredits] = useState(0);
-    const MAX_VALUE = 100;
+    // const [loading, setLoading] = useState(false);
+    // const [bio, setBio] = useState("");
+    // const [vibe, setVibe] = useState("Professional");
+    // const [generatedBios, setGeneratedBios] = useState("");
+    // const [tone, setTone] = useState('Professional');
+    // const [wordCount, setWordCount] = useState(0);
+    // const [articleKeywords, setArticleKeywords] = useState([]);
+    // const [globalArticleCount, setGlobalArticleCount] = useState(256475);
+    // const [userCredits, setUserCredits] = useState(0);
+    // const MAX_VALUE = 100;
 
 
     // const prompt = `Generate an SEO optimized article about ${bio} in HTML Code Format with a max of ${wordCount} words. The tone of the article will be ${vibe}`;

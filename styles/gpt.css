@@ -3,6 +3,7 @@
     padding-top: 2rem;
     min-height: 700px;
     color:white;
+    display: flex !important;
 }
 .gpt-header {
     margin-bottom: 2rem;
