@@ -229,7 +229,7 @@ const handleSubmit = async (event) => {
 
   return (
     <>
-    {user.id ? (
+    {user?.id ? (
     <div className='dashboard-container'>
     <Breadcrumbs appName={appName} slugId={slug} />
       {/* <Link href='/appdash' className='appdash-back-btn'><BsArrowLeft /> Back to AppDashboard</Link> */}

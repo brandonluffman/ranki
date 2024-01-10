@@ -7,7 +7,9 @@ import { supabase } from '../utils/supabaseClient'; // Import your initialized S
 import Link from 'next/link';
 import DOMPurify from 'dompurify';
 
-const AddBlogOfficial = ({ submitForm, toggle }) => {
+// const AddBlogOfficial = ({ submitForm, toggle }) => {
+  const AddBlogOfficial = () => {
+
     const MAX_VALUE = 100; // Set your max value here
     const { user } = useContext(UserContext);
   
@@ -191,10 +193,7 @@ const AddBlogOfficial = ({ submitForm, toggle }) => {
 
         <hr className="" />
         <h2 className='gpt-header'>Generated Article:</h2>
-
-
-<div dangerouslySetInnerHTML={{ __html: safeHTMLContent }}></div>
-
+          <div dangerouslySetInnerHTML={{ __html: safeHTMLContent }}></div>
         </div>
       </div>
   )
