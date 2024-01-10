@@ -100,10 +100,6 @@ const Dashboard = ({slugId}) => {
 
   const fetchAppName = async (appSlug) => {
     const cachedApp = localStorage.getItem(`appDetails_${appSlug}`);
-    // if (cachedApp) {
-    //   console.log('Found the cached app')
-    //     setApp(JSON.parse(cachedApp));
-    // } else {
         try {
             const { data, error } = await supabase
                 .from('apps')
@@ -121,13 +117,6 @@ const Dashboard = ({slugId}) => {
 };
 
 const fetchIntegratedApps = async (appSlug) => {
-  // const cachedApps = localStorage.getItem(`integratedApps_${appSlug}`);
-  // console.log(cachedApps)
-  // if (cachedApps !== null && cachedApps !== 'null') {
-  //     setIntegratedApps(JSON.parse(cachedApps));
-  //     console.log('Found cached apps')
-  //     console.log(cachedApps)
-  // } else {
       try {
           const { data, error } = await supabase
               .from('apps')
@@ -355,7 +344,9 @@ const handleSubmit = async (event) => {
           {/* {user.isPaid ? :<Link href='/pricing'><button className='btn btn-primary generate-btn'></button></Link>} */}
           </div>
  
-      {visible && <AddBlogOfficial />}
+      <div className={visible ? "visible": 'none'}>
+      <AddBlogOfficial />
+      </div>
       {user && user.email == 'brandonluff10@gmail.com' && <DashContent />}
 
   </div>
@@ -426,3 +417,21 @@ export default Dashboard
             <GaugeChartComponent id="gauge-chart3" percent={score3} width="250px"/>
             </div>
             </Link> */}
+
+
+
+              // const cachedApps = localStorage.getItem(`integratedApps_${appSlug}`);
+  // console.log(cachedApps)
+  // if (cachedApps !== null && cachedApps !== 'null') {
+  //     setIntegratedApps(JSON.parse(cachedApps));
+  //     console.log('Found cached apps')
+  //     console.log(cachedApps)
+  // } else {
+
+
+
+
+      // if (cachedApp) {
+    //   console.log('Found the cached app')
+    //     setApp(JSON.parse(cachedApp));
+    // } else {

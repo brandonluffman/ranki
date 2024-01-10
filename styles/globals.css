@@ -114,6 +114,13 @@ p {
     font-size: 1rem;
     position: relative;
 }
+
+.visible {
+    display: block;
+}
+.none {
+    display: none !important;
+}
 .flexer {
     display: flex;
     align-items: center;
