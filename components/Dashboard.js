@@ -342,11 +342,8 @@ const handleSubmit = async (event) => {
           <h2>Generate Article - Powered by AI</h2>
           <button onClick={handleVisibility} className='btn btn-primary generate-btn'>Get Started &rarr;</button>
           {/* {user.isPaid ? :<Link href='/pricing'><button className='btn btn-primary generate-btn'></button></Link>} */}
-          </div>
- 
-      {/* <div className={visible ? "visible": 'none'}> */}
-      <AddBlogOfficial />
-      {/* </div> */}
+        </div>
+       <AddBlogOfficial />
       {user && user.email == 'brandonluff10@gmail.com' && <DashContent />}
 
   </div>

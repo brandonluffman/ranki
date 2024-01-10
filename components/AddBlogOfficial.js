@@ -156,12 +156,7 @@ const AddBlogOfficial = ({ submitForm, toggle }) => {
       
   return (
     <div className='generate-blog-container'>
-           {/* <button onClick={toggle} className="close-btn"><IoMdClose /></button> */}
-
-            {/* <h2 className='blog-add-header'>Blog Builder</h2> */}
             <div className="gpt-container">
-      {user ? (
-        <div>
                   <h1 className="gpt-header">Generate your SEO-Optimized Article</h1>
         {/* <p className="gpt-subheader">{globalArticleCount.toLocaleString()} articles generated so far.</p> */}
         <p className="gpt-subheader">You have <span className='primary'>{userCredits}</span> credits available.</p>
@@ -201,14 +196,7 @@ const AddBlogOfficial = ({ submitForm, toggle }) => {
 <div dangerouslySetInnerHTML={{ __html: safeHTMLContent }}></div>
 
         </div>
-      ):(
-        <div>Login</div>
-      )}
-
-
       </div>
- 
-        </div>
   )
 }
 
