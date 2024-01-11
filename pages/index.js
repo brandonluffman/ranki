@@ -50,7 +50,7 @@ export default function Home(){
           </video> */}
 
           <div className='home-landing-img-banner'>
-            <img src='/home-graphic.webp' width='500'></img>
+            <img src='/home-graphic.webp' className='home-landing-img'></img>
           </div>
 
             {/* <div>
@@ -197,12 +197,11 @@ export default function Home(){
           <Reviews />
         </div> 
 
-        <div className='blog-landing-container'>
+        {/* <div className='blog-landing-container'>
           <h2 className='blog-landing-header'>Our Content</h2>
-          {/* <h6>Yes ! Created with yours truly. </h6> */}
           <Blog limit={3} />
           <Link href='/blog'><button className='btn btn-translucent'>View All <BsArrowRight className='arrow-right' /></button></Link>
-        </div> 
+        </div>  */}
      
 
         <div className='index-faqs-container'>

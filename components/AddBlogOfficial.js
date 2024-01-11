@@ -36,12 +36,7 @@ import React, {useContext, useState, useEffect} from 'react'
   //   const credits = await getUserCredits(user.id);
   //   setUserCredits(credits);
   // };
-  //     const generateBio = async (e) => {
-  //             e.preventDefault();
-  //             console.log('POST')
-  //             alert('POST MADE')
 
-  // }
     // const generateBio = async (e) => {
     //   e.preventDefault();
     //   setGeneratedBios("");
@@ -157,32 +152,7 @@ import React, {useContext, useState, useEffect} from 'react'
                   <h1 className="generate-header">Generate your SEO-Optimized Article</h1>
         {/* <button className="btn btn-primary btn-margin" onClick={handleFetchCredits}>Check Credits</button>
             {userCredits && <p>You have {userCredits} credits</p>} */}
-        {/* <div className="gpt-form">
-    
-          <textarea
-            value={bio}
-            onChange={(e) => setBio(e.target.value)}
-            rows={4}
-            className="gpt-textarea"
-            placeholder={
-              "What would you like the article to be about?"
-            }
-          />
 
-          <input type='number'
-                onChange={handleValueChange}
-                placeholder="Article Word Count ** 100 Word MAX" 
-                  className="gpt-wordcount"
-
-                  />
-
-          {!loading && (
-            <button className="btn btn-primary gpt-button" onClick={(e) => generateBio(e)} >Generate your article &rarr;</button>
-          )}
-          {loading && (
-            <button className="btn btn-primary" disabled><Loading /></button>
-          )}
-        </div> */}
 
       
         <hr className="" />

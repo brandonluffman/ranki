@@ -65,6 +65,10 @@
 
 }
 
+.home-landing-img {
+    width:90%;
+}
+
 
 
 @media (max-width: 900px) {
@@ -324,7 +328,7 @@
 @media (max-width: 500px) {
     .header-grey {
         font-weight: 400;
-        color: rgb(175, 175, 175);
+        color: rgb(100, 100, 100);
         font-size: 2rem;
         margin-left: 0rem;
         margin-bottom: 2rem;
@@ -431,8 +435,8 @@
 @media (max-width: 500px) {
 
     .why-landing-header {
-        width: 95%;
-        font-size: 2.5rem;
+        width: 100%;
+        font-size: 2rem;
          line-height: 6.5vh;
     }
 
@@ -526,7 +530,7 @@
 
 @media (max-width: 500px) {
     .fun-landing-header {
-        font-size: 1.5rem;
+        font-size: 1.25rem;
     }
 
     .fun-landing-header:nth-of-type(1) {
@@ -570,11 +574,13 @@
 
 
 
-.blog-landing-header {
-    margin-bottom: 4rem;
+
+
+@media (max-width: 500px) {
+    .blog-landing-header {
+       font-size: 2rem;
+    }
 }
-
-
 
 
 /* FAQ */
@@ -661,18 +667,24 @@
 
     .index-faqs-header {
         margin-bottom: 2rem;
+        font-size: 2rem;
     }
     .faq-item {
         width: 95%;
     }
 
     .faq-header {
-        font-size: 1.5rem;
+        font-size: 1.1rem;
+        line-height: 4vh;
     }
 
     .faq-dropdown-content {
         width: 90%;
         font-size: 1.25rem;
+    }
+    .dropdown-icon {
+        min-width: 55px;
+        font-size: 3rem;
     }
 }
 

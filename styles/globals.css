@@ -81,7 +81,7 @@ p {
     margin-bottom: 2rem;
   }
   .light {
-    color: rgb(242, 255, 166);
+    color: var(--secondary);
   }
 
   .next-btn {
