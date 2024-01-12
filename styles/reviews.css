@@ -173,6 +173,7 @@
 
     .reviews-profile {
         display: block;
+        text-align: center;
     }
 
     .reviews-logo-img {
@@ -181,5 +182,6 @@
 
     .reviews-profile-img {
         margin-bottom: 1rem;
+        margin-right: 0;
     }
 }

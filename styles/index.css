@@ -684,7 +684,7 @@
     }
 
     .faq-dropdown-content-closed {
-        height: 0px;
+        height: 1px;
     }
     .dropdown-icon {
         min-width: 55px;
@@ -694,6 +694,7 @@
     .faq-header {
         line-height: 4vh;
         margin:0;
+        margin: 1rem 0rem;
     }
 }
 
