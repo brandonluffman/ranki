@@ -682,6 +682,10 @@
         width: 90%;
         font-size: 1.25rem;
     }
+
+    .faq-dropdown-content-closed {
+        height: 0px;
+    }
     .dropdown-icon {
         min-width: 55px;
         font-size: 3rem;
