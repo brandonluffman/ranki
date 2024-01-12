@@ -17,7 +17,7 @@ const Account = () => {
         <div className="account-container">
             {user ? (
                 <div className="account-details">
-                    <h2>Welcome, {user.email}</h2>
+                    <h2>Welcome, <span className='primary'>{user.email}</span></h2>
                     {paidPlanType ? <p>You are on the <span className='primary bold'>{paidPlanType}</span> plan</p>:<p>Upgrade your account</p>}
                     <button onClick={handleDeleteAccount} className="delete-account-button">
                         <BsTrash className="icon"/> Delete My Account

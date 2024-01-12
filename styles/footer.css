@@ -7,7 +7,7 @@
 
 .footer {
     padding-top:2rem;
-    box-shadow:0 0 20px 1px rgb(40, 40, 40) inset;
+    box-shadow:0 0 10px 1px rgb(40, 40, 40);
     padding-bottom:10px;
     overflow:hidden;
 }

@@ -39,7 +39,6 @@ export default function About() {
         <div className='home-about-content-text'>
         <h3 className='home-about-subheader'>Our <span className='primary'>Mission</span></h3>
         <p className='home-about-p'>
-        Our Mission
 
             At the heart of our endeavor lies a simple yet profound understanding: navigating the intricacies of website ranking can be overwhelmingly complex. This is especially true if you find yourself in any of these scenarios:
             <ol>

@@ -238,4 +238,13 @@
     .hamburger-header {
         margin-bottom: 4rem;
     }
+
+    .mobile-nav-link-container {
+        margin-bottom: 3rem;
+    }
+
+    .nav-menu-btns {
+        display: block;
+        margin:0 auto;
+    }
 }

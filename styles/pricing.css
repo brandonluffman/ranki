@@ -310,6 +310,7 @@
     .pricing-header {
         font-size:2.5rem;
         line-height: 6vh;
+        margin-bottom: 1rem;
     }
     .pricing-subheader {
         margin:1rem 0.5rem;
@@ -318,5 +319,51 @@
     }
     .pricing-grid {
         padding:0rem;
+    }
+
+    .pricing-subheader {
+        width:100%;
+        margin:0;
+        font-size: 1.25rem !important;
+        margin-bottom: 2rem;
+    }
+
+    /* .pricing-grid-toggle-btn {
+        padding: 20px 20px;
+        background-color: rgb(245, 245, 245);
+        cursor: pointer;
+        width: 100%;
+    } */
+
+    .pricing-grid-toggle-container {
+        /* display: flex; */
+        justify-content: center;
+        margin: 20px;
+        background-color: rgb(200,200,200);
+        width: 100%;
+        margin: 0 auto;
+        display: flex;
+        border: none;
+        border-radius: 40px !important;
+        border: 3px solid var(--primary);
+        overflow: hidden;
+        margin-bottom: 4rem;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .div-content {
+        overflow: hidden;
+    }
+
+    .members-count {
+        max-width:100px;
+    }
+
+    .pricing-grid-header {
+        /* font-size: 2.5rem !important; */
+    }
+
+    .pricing-grid-p {
+        font-size: 1rem;
     }
 }

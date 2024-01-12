@@ -92,10 +92,37 @@ const Navbar = () => {
             <Link className='nav-link' href='/pricing'><IoMdPricetags className='nav-icon'/> Pricing</Link>
             <Link className='nav-link' href='/blog'><IoNewspaper className='nav-icon'/> Blog</Link>
             <Link className='nav-link' href='/account'><CgProfile className='nav-icon'/> Account</Link>
-
             <Link className='nav-link' href='/about'><GrCircleInformation className='nav-icon'/> About</Link>
+        
             {/* <Link className='nav-link' href='/ranking'><GrCircleInformation className='nav-icon'/> Rankings</Link> */}
             </div>
+            {user ? (
+              <div className='login-nav-link'>
+                <button className='logout-nav-btn logout-logged-in btn nav-btn btn-secondary nav-log-btn nav-menu-btns' onClick={logout}>
+                  Logout
+                </button>
+              </div>
+            ) : (
+              <div className='nav-link desktop-nav-link'>
+                <li className='nav-link nav-link-btn-li'>
+                  <Link href='/login'>
+                    {/* <button type='button' className={navbar ? 'nav-link-btn nav-login-btn btn btn-primary':'nav-link-btn nav-login-btn-scrolled btn btn-primary'}>
+                      Log In
+                    </button> */}
+                    <button type='button' className='nav-link-btn nav-login-btn-scrolled btn btn-primary nav-log-btn nav-menu-btns'>
+                      Login
+                    </button>
+                  </Link>
+                </li>
+                <li className='nav-link nav-link-btn-li'>
+                  <Link href='/register'>
+                    <button type='button' className='nav-link-btn nav-signup-btn btn btn-tertiary nav-log-btn nav-menu-btns'>
+                      Sign Up
+                    </button>
+                  </Link>
+                </li>
+              </div>
+            )}
             </div>
         </div>
         <div className='login-menu'>
