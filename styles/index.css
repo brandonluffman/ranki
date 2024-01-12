@@ -686,6 +686,11 @@
         min-width: 55px;
         font-size: 3rem;
     }
+
+    .faq-header {
+        line-height: 4vh;
+        margin:0;
+    }
 }
 
 

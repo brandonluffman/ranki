@@ -356,10 +356,14 @@ padding: 2rem 5rem 3rem 5rem;
     }
     .about-header {
         line-height: 14vh;
-        font-size:4rem;
+        font-size:2rem;
+    }
+
+    .about-subheader {
+        line-height: 5vh;
     }
     .about-container {
-        height:60vh;
-        margin-bottom:6rem;
+        height:500px;
+        /* margin-bottom:6rem; */
     }
    }

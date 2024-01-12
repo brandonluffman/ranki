@@ -213,19 +213,19 @@ export default function Home(){
               content="RankiAI offers both free and premium services to cater to a variety of needs. Our free services enable users to create a basic resume at no cost, providing an easy and accessible way to start building your professional profile. For users seeking more advanced features, our premium services are the ideal choice. These include access to personalized templates, advanced AI writing assistance, and detailed performance analytics. These premium features are designed to enhance your resume significantly and improve your job application success rate. Whether you're just starting out or looking to give your resume a professional edge, RankiAI has the right tools for you."
             />
             <DropdownFAQ
-                 title="What is the GPT API, and how does it help in creating SEO-optimized articles for my website?"
+                 title="What is the GPT API, and how does it help?"
               content="The GPT (Generative Pre-trained Transformer) API is an advanced AI tool that can generate human-like text. In our application, it's utilized to create SEO-optimized articles for your website. This means the API analyzes key SEO factors such as keywords, relevancy, and readability to produce articles that are not only engaging to your readers but also rank well on search engines. This feature saves you time and effort in content creation, allowing you to focus more on other aspects of your business."
             />
                 <DropdownFAQ
-                    title="How can I organize my projects and businesses using the application?"
+                    title="How can I organize my projects/businesses?"
                   content="Our application offers a user-friendly dashboard where you can add and manage multiple projects or businesses. You can create separate sections for each project, set goals, track progress, and organize tasks with deadlines. The dashboard is designed to give you a clear overview of all your ventures in one place, helping you stay organized and focused."
                 />
                 <DropdownFAQ
-                    title="Is there any support or training available for new users to get accustomed to the application?"
+                    title="Is there any support or training available?"
                   content="Yes, we provide comprehensive support and training for new users. This includes detailed tutorials, user guides, and customer support assistance. We also regularly conduct webinars and Q&A sessions to help users get the most out of our application. You can access these resources directly from the application dashboard or our website."
                 />
                   <DropdownFAQ
-                    title="How secure is my data within the application, especially when using the GPT API for content creation?"
+                    title="How secure is my data?"
                   content="Data security is our top priority. All information within the application is encrypted and securely stored. When using the GPT API for content creation, your data is processed with strict confidentiality, and we ensure that only authorized personnel have access to it. We comply with all major data protection regulations to safeguard your information against unauthorized access or breaches."
                 />
                 

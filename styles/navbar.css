@@ -208,6 +208,11 @@
         width: 80vw;
     }
 }
+@media (min-width: 500px) {
+    .nav-menu-btns {
+        display: none;
+    }
+}
 @media (max-width: 500px) {
 
     .chatbot-logo {

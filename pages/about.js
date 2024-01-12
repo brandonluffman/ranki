@@ -10,6 +10,9 @@ import Image from 'next/image';
 
 
 export default function About() {
+  const [visible, setVisisble] = useState(false);
+
+
   return (
     <>
       <Head>
@@ -30,10 +33,10 @@ export default function About() {
           {/* <h1 className='about-header'>RANKI AI</h1> */}
           <img src='/R.png' alt='Brand Logo' width='600' className='about-logo'></img>
           </div>
-          <h2 className='landing-subheader'><span className='primary'>Automated</span> AI Content Generation</h2>
+          <h2 className='landing-subheader about-subheader'><span className='primary'>Automated</span> AI Content Generation</h2>
         </div>
       </div>
-
+      {visible && 
       <div className='home-about-container'>
         <div className='home-about-content'>
         <div className='home-about-content-text'>
@@ -73,6 +76,7 @@ export default function About() {
         </div>
         </div>
       </div>
+      }
       <Footer />
     </>
   )
