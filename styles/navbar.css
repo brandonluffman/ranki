@@ -229,7 +229,7 @@
     }
 
     .hamburger-menu {
-        margin-right: 1rem;
+        margin-right: 0rem;
     }
 
     .nav-menu-toggled, .scrolled .nav-menu-toggled {

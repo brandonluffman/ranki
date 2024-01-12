@@ -24,3 +24,10 @@
 .generate-btn {
     margin:0 auto;
 }
+
+@media (max-width: 500px) {
+    .generate-banner {
+        margin:0;
+        margin-top:2rem;
+    }
+}

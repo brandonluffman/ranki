@@ -66,7 +66,7 @@
 }
 
 .home-landing-img {
-    width:90%;
+    width:30%;
 }
 
 
@@ -78,6 +78,9 @@
         margin:0 auto;
         margin-bottom: 2rem;
     
+    }
+    .home-landing-img {
+        width:60%;
     }
 }
 
@@ -97,6 +100,9 @@
         margin:0 auto;
         margin-bottom: 4rem;
     
+    }
+    .home-landing-img {
+        width:60%;
     }
 }
 
@@ -123,6 +129,10 @@
         margin-top: 9rem;
         padding-bottom: 100px;
     
+    }
+
+    .home-landing-img {
+        width:90%;
     }
 
     .home-landing-video { 
@@ -191,6 +201,15 @@
        width: 100%;
        font-size: 1.85rem;
         line-height: 5.5vh;
+    }
+
+    .about-landing-banners {
+        display: grid;
+        grid-template-columns: repeat(1,1fr);
+    }
+
+    .about-landing-banner {
+        margin: 1rem 0rem;
     }
 }
 

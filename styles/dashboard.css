@@ -674,3 +674,38 @@
     font-size: 3rem;
 }
 
+@media (max-width: 900px) {
+    .dashboard-grid {
+        grid-template-columns: repeat(2,2fr);
+        padding:0rem 1rem;
+
+    }
+}
+
+@media (max-width: 500px) {
+    .dashboard-grid {
+        grid-template-columns: repeat(1,1fr);
+        padding:0rem;
+        margin:0;
+    }
+
+    .appdash-health-tabs {
+        margin:0rem 0rem 2rem 0rem;
+    }
+
+    .gauge-chart {
+    
+    }
+
+    .seo-dash-item {
+        margin: 1rem;
+    }
+    .dashboard-content-container {
+        margin:2rem 0rem;
+    }
+
+    .dashboard-container {
+        padding-bottom:50px;
+        padding-top:75px;
+    }
+}

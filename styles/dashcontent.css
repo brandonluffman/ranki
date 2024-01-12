@@ -76,3 +76,10 @@
     background-color: white;
     color:var(--dark-blue);
 }
+
+@media (max-width: 500px) {
+
+    .dashboard-content-container {
+        margin:2rem 0rem;
+    }
+}

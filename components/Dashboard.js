@@ -291,7 +291,7 @@ const handleSubmit = async (event) => {
  
         {siteUrls ? (
                <div className='dashboard-grid seo-dash-grid'>
-                <Link  className='seo-dash-item' href={`/dashboard/seo/${slug}`}>
+                <Link  className='' href={`/dashboard/seo/${slug}`}>
 
                <div className='seo-dash-item'>
                <h2>SEO</h2>
