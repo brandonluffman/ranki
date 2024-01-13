@@ -17,17 +17,33 @@
     padding:2rem 1rem;
 }
 
-.generate-banner > h2 {
+.generate-banner > p {
     margin-bottom: 2rem;
 }
 
 .generate-btn {
     margin:0 auto;
+    margin-bottom: 1rem;
+}
+
+@media (max-width: 900px) {
+    .generate-header {
+        /* font-size: 2.5rem; */
+        line-height: 9vh;
+    } 
 }
 
 @media (max-width: 500px) {
     .generate-banner {
         margin:0;
         margin-top:2rem;
+    }
+    .generate-header {
+        font-size: 2.5rem;
+        line-height: 7vh;
+    }
+
+    .generate-container {
+        padding-top:0px;
     }
 }

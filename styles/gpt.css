@@ -20,6 +20,9 @@
     margin:0 auto;
     margin-bottom: 2rem;
     font-size: 2rem;
+    border-radius: 20px;
+    padding:1rem;
+    outline: none;
 }
 
 .gpt-wordcount {
@@ -28,7 +31,12 @@
     margin: 0 auto;
     margin-bottom: 2rem;
     font-size: 1.5rem;
+    border-radius: 20px;
+    padding:1rem;
+    outline: none;
 }
+
+.gpt-wordcount {}
 
 .gpt-dropdown-container {
     display: flex;
@@ -45,4 +53,28 @@
 
 .gpt-form {
     margin-top:2rem;
+}
+@media (max-width: 900px) {
+    .gpt-wordcount {
+        width: 75%;
+    }
+    .gpt-textarea {
+        width: 75%;
+    }
+}
+@media (max-width: 500px) {
+    .gpt-textarea {
+        width: 90%;
+        font-size: 1.5rem;
+    }
+
+    .gpt-wordcount {
+        width: 90%;
+        font-size: 1.5rem;
+    }
+    .test-container {
+        padding:0rem 1rem;
+        padding-top:100px;
+        padding-bottom: 50px;
+    }
 }

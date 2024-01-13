@@ -291,7 +291,7 @@ const handleSubmit = async (event) => {
  
         {siteUrls ? (
                <div className='dashboard-grid seo-dash-grid'>
-                <Link  className='' href={`/dashboard/seo/${slug}`}>
+                <Link  className='seo-dash-link' href={`/dashboard/seo/${slug}`}>
 
                <div className='seo-dash-item'>
                <h2>SEO</h2>
@@ -339,8 +339,9 @@ const handleSubmit = async (event) => {
         )}
 
       <div className='generate-banner'>
-          <h2>Generate Article - Powered by AI</h2>
-          <button onClick={handleVisibility} className='btn btn-primary generate-btn'>Get Started &rarr;</button>
+          <h2>Generate Article</h2>
+          <p>Powered by AI</p>
+          <Link href='/test'><button onClick={handleVisibility} className='btn btn-primary generate-btn'>Get Started &rarr;</button></Link>
           {/* {user.isPaid ? :<Link href='/pricing'><button className='btn btn-primary generate-btn'></button></Link>} */}
         </div>
        {/* <AddBlogOfficial /> */}

@@ -8,7 +8,7 @@ const Loading = () => {
     //     {/* <p className='loading-text'>This may take up to 15 seconds</p> */}
     //     </div>
     // </div>
-    <div className='lds-container'><div class="lds-ring"><div></div><div></div><div></div><div></div></div></div>
+    <div className='lds-container loading-container'><div class="lds-ring"><div></div><div></div><div></div><div></div></div></div>
   )
 }
 

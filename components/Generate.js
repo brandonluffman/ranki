@@ -2,7 +2,7 @@ import React, { useContext, useState } from 'react'
 import { UserContext } from '../context/UserContext';
 import Loading from './Loading';
 import { supabase } from '../utils/supabaseClient';
-import DOMPurify from 'isomorphic-dompurify';
+import DOMPurify from 'dompurify';
 import TextEditor from './TextEditor';
 
 const Generate = () => {
@@ -17,27 +17,29 @@ const Generate = () => {
     // const [globalArticleCount, setGlobalArticleCount] = useState(256475);
     const [userCredits, setUserCredits] = useState(0);
     const MAX_VALUE = 100;
+    const [visible, setVisible] = useState(false)
+    const [editedContent, setEditedContent] = useState('')
 
-
-    const prompt = `Generate an SEO optimized article about ${bio} in HTML Code Format with a max of ${wordCount} words. The tone of the article will be ${vibe}`;
+    const prompt = `Generate a blog post about ${bio} in HTML Code Format optimized for SEO. The tone of the article will be ${vibe}`;
 
 
       const handleFetchCredits = async () => {
         if (user) {
           const credits = await getUserCredits(user.id);
           setUserCredits(credits);
+          setVisible(!visible)
         } else {
           alert('You are not signed in')
         }
             
     };
 
-        const handleValueChange = (event) => {
-      const newValue = parseInt(event.target.value, 10);
-        if (!isNaN(newValue) && newValue <= MAX_VALUE) {
-          setWordCount(newValue);
-      }
-  };
+  //       const handleValueChange = (event) => {
+  //     const newValue = parseInt(event.target.value, 10);
+  //       if (!isNaN(newValue) && newValue <= MAX_VALUE) {
+  //         setWordCount(newValue);
+  //     }
+  // };
     const generateBio = async (e) => {
       e.preventDefault();
       setGeneratedBios("");
@@ -68,7 +70,8 @@ const Generate = () => {
     
         const answer = await response.json();
         setGeneratedBios(answer.choices[0].text);
-    
+        setEditedContent(DOMPurify.sanitize(answer.choices[0].text));
+
         const success = await decrementUserCredits(user.id);
         console.log('Credits decremented:', success); // Debugging log
         if (!success) {
@@ -147,7 +150,8 @@ const Generate = () => {
         return true;
       };
       const sanitizedContent = DOMPurify.sanitize(generatedBios);
-
+      console.log(generatedBios)
+      // console.log(sanitizedContent)
       const handleEditorChange = (newContent) => {
         setEditedContent(newContent);
     };
@@ -155,9 +159,9 @@ const Generate = () => {
 <>
     {user?.id ? (
         <div className="generate-container">
-        <h1 className="generate-header">Generate your SEO-Optimized Article</h1>
-    <button className="btn btn-primary btn-margin" onClick={handleFetchCredits}>Check Credits</button>
-    {userCredits > 0 ? <p>You have {userCredits} credits</p>:<p>You are out of credits</p>}
+        <h1 className="generate-header">Generate Article</h1>
+    <button className="btn btn-tertiary btn-margin generate-btn" onClick={handleFetchCredits}>Check Credits</button>
+    {visible && (userCredits > 0 ? <p className='primary-banner'>You have {userCredits} credits</p> : <p className='red'>You are out of credits</p>)}
     <div className="gpt-form">
 
         <textarea
@@ -170,25 +174,28 @@ const Generate = () => {
             }
         />
 
-        <input type='number'
+        {/* <input type='number'
                 onChange={handleValueChange}
-                placeholder="Article Word Count ** 100 Word MAX" 
+                placeholder="Article Word Count" 
                 className="gpt-wordcount"
 
-                />
+                /> */}
 
         {!loading && (
             <button className="btn btn-primary gpt-button" onClick={(e) => generateBio(e)} >Generate your article &rarr;</button>
         )}
         {loading && (
-            <button className="btn btn-primary" disabled><Loading /></button>
+            <Loading />
         )}
 </div>
 <hr className="" />
         <h2 className='generate-header'>Generated Article:</h2>
-        {sanitizedContent && <div dangerouslySetInnerHTML={{ __html: sanitizedContent }}></div>}
-        <TextEditor value={sanitizedContent} onChange={handleEditorChange} />
-
+        {/* {sanitizedContent && <div dangerouslySetInnerHTML={{ __html: sanitizedContent }}></div>} */}
+        {sanitizedContent &&   <TextEditor 
+                value={editedContent} 
+                onChange={handleEditorChange} 
+            />}
+          {/* {generatedBios && <div>{generatedBios}</div>} */}
         {/* <TextEditor /> */}
 </div>
 
