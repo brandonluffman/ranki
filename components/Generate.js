@@ -2,7 +2,7 @@ import React, { useContext, useState } from 'react'
 import { UserContext } from '../context/UserContext';
 import Loading from './Loading';
 import { supabase } from '../utils/supabaseClient';
-import DOMPurify from 'dompurify';
+import DOMPurify from 'isomorphic-dompurify';
 import TextEditor from './TextEditor';
 
 const Generate = () => {

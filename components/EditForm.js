@@ -50,7 +50,7 @@ const EditForm = ({ appData, onSubmit, id }) => {
 
         />
         <br></br>
-        <button type="submit" className='btn btn-primary appdash-form-btn'>Submit</button>
+        <button type="submit" className='btn btn-primary appdash-form-btn btn-margin'>Submit</button>
       </form>
     );
 };
