@@ -33,14 +33,13 @@ const BlogDash = () => {
         setToggled(prev => !prev);
     }
     const fetchBlogs = async (slug) => {
+        console.log('fetching')
         const { data, error } = await supabase
-            .from('blog')
+            .from('blogs')
             .select('*')
-            .eq('app_id', slug);
-    
+            .eq('app_id', slug);      
         if (error) {
-            console.error('Error fetching blogs:', error);
-            return [];
+            console.log('Faled to fetch', error)
         }
     
         return data;
@@ -71,7 +70,9 @@ const BlogDash = () => {
             return;
           }
         const loadData = async () => {
+            console.log('loading')
             const fetchedBlogs = await fetchBlogs(slug);
+            console.log('passed')
             setBlogs(fetchedBlogs);
         };
       
@@ -192,9 +193,6 @@ const BlogDash = () => {
     
       }
 
-    const createSlug = (title) => {
-        return title.toLowerCase().replace(/\s+/g, '-');
-    }
 
     const truncateText = (text, maxLength) => {
         if (text.length <= maxLength) return text;
@@ -235,7 +233,7 @@ const BlogDash = () => {
                     <div className='antiflexer'>
                         <h6 className='serp-name'>RankiAI</h6>
                    
-                       {isGrid ? (
+                       {/* {isGrid ? (
                        <a href={`https://ranki.ai/blog/${createSlug(blog.title)}`}>
                         {truncateText(`https://ranki.ai/blog/${createSlug(blog.title)}`, 35)}
                             </a>
@@ -243,12 +241,12 @@ const BlogDash = () => {
                             <a href={`https://ranki.ai/blog/${createSlug(blog.title)}`}>
                             https://ranki.ai/blog/{createSlug(blog.title)}
                        </a>
-                       )} 
+                       )}  */}
                       
                     </div>
                     </div>
                     <h2 className='content-item-header'>{blog.title}</h2>
-                    <p className='serp-description'><span className='serp-date'>{formatDate(blog.created_at)} -</span> {blog.content}</p>
+                    <p className='serp-description'><span className='serp-date'>{formatDate(blog.created_at)} -</span> {blog.meta_description}</p>
                     {/* Render other blog details as needed */}
                     <button onClick={() => deleteBlogPost(blog.id)} className='delete-button blog-delete-btn'>
                             <IoMdClose />

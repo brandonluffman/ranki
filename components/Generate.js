@@ -1,9 +1,11 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useState, useEffect } from 'react'
 import { UserContext } from '../context/UserContext';
 import Loading from './Loading';
 import { supabase } from '../utils/supabaseClient';
 import DOMPurify from 'isomorphic-dompurify';
 import TextEditor from './TextEditor';
+import IntegrateDropdown from './IntegrateDropdown';
+import toneOptions from '../public/toneOptions'
 
 const Generate = () => {
     const { user } = useContext(UserContext);
@@ -11,7 +13,7 @@ const Generate = () => {
     const [bio, setBio] = useState("");
     const [vibe, setVibe] = useState("Professional");
     const [generatedBios, setGeneratedBios] = useState("");
-    // const [tone, setTone] = useState('Professional');
+    const [tone, setTone] = useState('Professional');
     const [wordCount, setWordCount] = useState(0);
     // const [articleKeywords, setArticleKeywords] = useState([]);
     // const [globalArticleCount, setGlobalArticleCount] = useState(256475);
@@ -19,9 +21,22 @@ const Generate = () => {
     const MAX_VALUE = 100;
     const [visible, setVisible] = useState(false)
     const [editedContent, setEditedContent] = useState('')
+    const [currentInput, setCurrentInput] = useState('');
+    const [savedInputs, setSavedInputs] = useState([]);
+    const [selectedValue, setSelectedValue] = useState('');
+    const [userApps, setUserApps] = useState([]);
+    const [selectedAppId, setSelectedAppId] = useState('');
+  const [metaDescription, setMetaDescription] = useState('');
+  const [showSuccessMessage, setShowSuccessMessage] = useState(false);
 
-    const prompt = `Generate a blog post about ${bio} in HTML Code Format optimized for SEO. The tone of the article will be ${vibe}`;
+    const prompt = `Generate a blog post about ${bio} in HTML Code Format optimized for SEO. The tone of the article will be ${tone}`;
 
+
+    useEffect(() => {
+      if (user?.id) {
+          fetchUserApps();
+      }
+  }, [user]);
 
       const handleFetchCredits = async () => {
         if (user) {
@@ -33,6 +48,21 @@ const Generate = () => {
         }
             
     };
+
+    const fetchUserApps = async () => {
+      try {
+          const { data, error } = await supabase
+              .from('apps') // Assuming 'apps' is your table name
+              .select('*')
+              .eq('user_id', user.id);
+  
+          if (error) throw error;
+          setUserApps(data);
+      } catch (error) {
+          console.error('Error fetching apps:', error);
+      }
+  };
+
 
   //       const handleValueChange = (event) => {
   //     const newValue = parseInt(event.target.value, 10);
@@ -84,6 +114,46 @@ const Generate = () => {
         setLoading(false);
       }
     }
+    const resetForm = () => {
+      setBio("");
+      setEditedContent("");
+      setCurrentInput("");
+      setSavedInputs([]);
+      setSelectedAppId("");
+      setMetaDescription("");
+      // Reset any other states you need to
+  };
+    // Function to insert a new blog into the Supabase database
+const saveBlogToDatabase = async (blogContent, appId, metaDescription) => {
+  try {
+            const { data, error } = await supabase
+            .from('blogs')
+            .insert([
+                { 
+                    content: blogContent, 
+                    app_id: appId, 
+                    meta_description: metaDescription
+                }
+            ]);
+
+      if (error) {
+          console.error('Error inserting blog into database:', error);
+          alert('Failed to save the blog. Please try again. ERROR 1');
+      } else {
+          console.log('Blog saved successfully:', data);
+          setShowSuccessMessage(true);
+          resetForm(); // Reset the form fields
+
+          setTimeout(() => {
+              setShowSuccessMessage(false);
+          }, 3000);
+      }
+  } catch (error) {
+      console.error('Error:', error);
+      alert('Failed to save the blog. Please try again. ERROR 2');
+  }
+};
+
 
 
 
@@ -150,11 +220,46 @@ const Generate = () => {
         return true;
       };
       const sanitizedContent = DOMPurify.sanitize(generatedBios);
-      console.log(generatedBios)
+      // console.log(generatedBios)
       // console.log(sanitizedContent)
       const handleEditorChange = (newContent) => {
         setEditedContent(newContent);
     };
+
+    const handleKeyPress = (e) => {
+      // Check for 'Enter' key press without submitting the form
+      if (e.key === 'Enter' && currentInput.trim() !== '' && savedInputs.length < 4) {
+          e.preventDefault(); // Prevent the default form submission on enter key
+          setSavedInputs(prev => [...prev, currentInput.trim()]);
+          setCurrentInput('');
+      }
+  };
+
+  const handleInputChange = (e) => {
+    setCurrentInput(e.target.value);
+};
+const handleAppSelection = (selectedApp) => {
+  // Update the state or perform any action required when an app is selected
+  setTone(selectedApp.name);
+  // ... other actions based on selected app ...
+};
+
+const handleDescriptionChange = (e) => {
+  setMetaDescription(e.target.value);
+};
+
+const handleSaveDraft = () => {
+  if (!selectedAppId) {
+      alert('Please select an app to save the draft.');
+      return;
+  }
+  if (!metaDescription.trim()) {
+    alert('Please enter a meta description for the article.');
+    return;
+}
+  saveBlogToDatabase(editedContent, selectedAppId, metaDescription);
+};
+
   return (
 <>
     {user?.id ? (
@@ -163,7 +268,7 @@ const Generate = () => {
     <button className="btn btn-tertiary btn-margin generate-btn" onClick={handleFetchCredits}>Check Credits</button>
     {visible && (userCredits > 0 ? <p className='primary-banner'>You have {userCredits} credits</p> : <p className='red'>You are out of credits</p>)}
     <div className="gpt-form">
-
+        <label className='generate-label'>Describe your topic</label>
         <textarea
             value={bio}
             onChange={(e) => setBio(e.target.value)}
@@ -173,7 +278,31 @@ const Generate = () => {
             "What would you like the article to be about?"
             }
         />
+                  <label className='generate-label'>Primary Keywords</label>
 
+               {savedInputs.length < 4 && (
+                        <input
+                            type="text"
+                            value={currentInput}
+                            onChange={handleInputChange}
+                            onKeyPress={handleKeyPress}
+                            placeholder='Keywords...'
+                            className='keywords-input'
+                        />
+                    )}
+
+                    <div className='keyword-render-container'>
+                        {savedInputs.map((input, index) => (
+                            <div key={index} style={{ color: 'grey' }} className='keyword-render-div'>
+                                {input}
+                            </div>
+                        ))}
+                    </div>
+                    <label className='generate-label'>Select a Tone</label>
+                    <IntegrateDropdown options={toneOptions} onOptionSelected={handleAppSelection} />
+                    <label>Meta Description</label>
+                    <input type='text' className='description-input' placeholder='Enter your articles description' onChange={handleDescriptionChange}     value={metaDescription} required/>
+                          
         {/* <input type='number'
                 onChange={handleValueChange}
                 placeholder="Article Word Count" 
@@ -195,8 +324,28 @@ const Generate = () => {
                 value={editedContent} 
                 onChange={handleEditorChange} 
             />}
-          {/* {generatedBios && <div>{generatedBios}</div>} */}
-        {/* <TextEditor /> */}
+ 
+        <label>Select A Project</label>
+        <div className="app-selection">
+    {userApps.map(app => (
+        <label key={app.id}>
+            <input
+                type="radio"
+                name="app"
+                value={app.id}
+                onChange={(e) => setSelectedAppId(e.target.value)}
+            />
+            {app.name}
+        </label>
+    ))}
+</div>
+
+        <button className="btn btn-primary btn-margin" onClick={handleSaveDraft}>Save Draft</button>
+        {showSuccessMessage && (
+                    <div className="success-message">
+                        Blog saved successfully!
+                    </div>
+                )}
 </div>
 
     ): (

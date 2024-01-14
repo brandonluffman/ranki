@@ -5,7 +5,7 @@ import Breadcrumbs from './Breadcrumbs';
 import { useRouter, router } from 'next/router';
 import { supabase } from '../utils/supabaseClient';
 import Link from 'next/link';
-import { BsThreeDotsVertical } from 'react-icons/bs';
+import { BsArrowRight, BsThreeDotsVertical } from 'react-icons/bs';
 
 const DashContent = ({ slug }) => {
       const { user } = useContext(UserContext);
@@ -19,7 +19,7 @@ const DashContent = ({ slug }) => {
       const fetchBlogs = async (slug) => {
             // console.log('Initiatyed Blog Fetch, Here is the provided slug: ', slug)
           const { data, error } = await supabase
-              .from('blog')
+              .from('blogs')
               .select('*')
               .eq('app_id', slug);
       
@@ -100,8 +100,9 @@ const DashContent = ({ slug }) => {
                       
                     </div>
                     </div>
-                    <h2 className='content-item-header'>{blog.title}</h2>
-                    <p className='serp-description'><span className='serp-date'>{formatDate(blog.created_at)} -</span> {blog.content}</p>
+                    {/* <h2 className='content-item-header'>{blog.title}</h2> */}
+                    <p className='serp-description'><span className='serp-date'>{formatDate(blog.created_at)} -</span> {blog.meta_description}</p>
+                    {blog.is_published ? <h6>Published</h6>:<h6>Draft</h6>}
                     {/* Render other blog details as needed */}
                     {/* <button onClick={() => deleteBlogPost(blog.id)} className='delete-button blog-delete-btn'>
                             <IoMdClose />
@@ -110,11 +111,15 @@ const DashContent = ({ slug }) => {
                             <BsThreeDotsVertical />
                         </button> */}
                 </div>
+                
             ))
+            
         
          : (
             <div className='no-blogs'><p>No blogs found, start growing your sites Google Rankings now by creating content <Link href={`/blogdashboard/${slug}`} className='link'>here</Link></p></div>
         )}
+                            <Link href={`/blogdashboard/${slug}`} className='link'>View All Content <BsArrowRight className='arrow-right' /></Link>
+
           </div>
       </div>
 </div>

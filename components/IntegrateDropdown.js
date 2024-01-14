@@ -20,7 +20,7 @@ const IntegrateDropdown = ({ options, onOptionSelected }) => {
         <div className="dropdown-container">
             <div className="dropdown-header" onClick={toggleDropdown}>
                 {selectedOption.imgSrc && (
-                    <Image src={selectedOption.imgSrc} alt="" width={20} height={20} />
+                    <img src={selectedOption.imgSrc} alt="" className='dropdown-img' />
                 )}
                 {selectedOption.name}
             </div>

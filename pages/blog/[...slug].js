@@ -28,7 +28,7 @@ const [isAuthor, setIsAuthor] = useState(false)
         if (slug) {
             try {
                 const { data, error } = await supabase
-                    .from('blog')
+                    .from('blogs')
                     .select('*')
                     .eq('id', slug)
                     .single();

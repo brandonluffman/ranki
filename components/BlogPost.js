@@ -4,7 +4,7 @@ import { BsArrowLeft, BsBook, BsBookFill, BsDot, BsLightbulb, BsLightbulbFill } 
 import CTA from './CTA';
 import Breadcrumbs from './Breadcrumbs';
 import ProgressBar from "react-scroll-progress-bar";
-// import DOMPurify from 'dompurify';
+import DOMPurify from 'dompurify';
 
 import {
   FacebookShareButton,
@@ -88,7 +88,7 @@ const BlogPost = ({ blog }) => {
         });
     };
 
-    // const sanitizedContent = DOMPurify.sanitize(blog.content);
+    const sanitizedContent = DOMPurify.sanitize(blog.content);
 
   return (
     <div className={isDark ? 'blog-post-container dark-post': 'blog-post-container'}>
@@ -98,14 +98,14 @@ const BlogPost = ({ blog }) => {
 
         <img src='/dashboard.png' className='blog-post-cover'></img>
 
-        <h1 className='blog-post-header'>{blog.title}</h1>
+        {/* <h1 className='blog-post-header'>{blog.title}</h1> */}
         <div className='flexer blog-post-details'>
           <p className='blog-author flexer'><img src='/headshot.webp' width='30'></img> <b>Ranki AI</b></p>
         <p className='blog-post-date'>{formatDate(blog.created_at)}</p>
         <p className='blog-readtime flexer'><BsBookFill className='arrow'/> 4 min read</p>
         </div>
         {/* <h6 className='blog-post-content'>{blog.content}</h6> */}
-        {/* <HTMLContent html={sanitizedContent} />  */}
+        <HTMLContent html={sanitizedContent} /> 
 
         <CTA />
 

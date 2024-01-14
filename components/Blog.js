@@ -4,11 +4,11 @@ import Link from 'next/link';
 
 const Blog = (limit) => {
     const [blogs, setBlogs] = useState([]);
-    const slug = 37;
+    const slug = 84;
   
     const fetchBlogs = async (slug) => {
       const { data, error } = await supabase
-          .from('blog')
+          .from('blogs')
           .select('*')
           .eq('app_id', slug);
   
@@ -42,15 +42,15 @@ const Blog = (limit) => {
   // limit && console.log(limit)
   return (
     <div className='blog-container'>
-    {/* <h1 className='blog-header'>Blogs</h1> */}
+    <h1 className='blog-header'>Blogs</h1>
     <div className='blog-grid-container'>
     {blogs && limit && blogs.slice(0,limit.limit).map(blog => (
         <Link href={`/blog/${blog.id}`} key={blog.id}>
           <div className='blog-grid-item'>
             <img className='blog-grid-img' src='/shop.webp' />
             <div className='blog-grid-text'>
-              <h2 className='content-item-header blog-grid-item-header'>{blog.title}</h2>
-              <p>{blog.content}</p>
+              {/* <h2 className='content-item-header blog-grid-item-header'>{blog.title}</h2> */}
+              <p>{blog.meta_description}</p>
               </div>
           </div>
           </Link>

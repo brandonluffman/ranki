@@ -347,7 +347,7 @@ const handleSubmit = async (event) => {
        {/* <AddBlogOfficial /> */}
 
        
-      {user && user.email == 'brandonluff10@gmail.com' && <DashContent />}
+      {user && user.email == 'brandonluff10@gmail.com' && <DashContent slug={slug} />}
 
   </div>
     ):(
