@@ -345,7 +345,7 @@ const handleSubmit = async (event) => {
       <div className='generate-banner'>
           <h2>Generate Article</h2>
           <p>Powered by AI</p>
-          <Link href='/test'><button onClick={handleVisibility} className='btn btn-primary generate-btn'>Get Started &rarr;</button></Link>
+          <Link href='/test'><button className='btn btn-primary generate-btn'>Get Started &rarr;</button></Link>
           {/* {user.isPaid ? :<Link href='/pricing'><button className='btn btn-primary generate-btn'></button></Link>} */}
         </div>
        {/* <AddBlogOfficial /> */}
