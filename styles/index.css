@@ -73,7 +73,6 @@
 
 @media (max-width: 900px) {
     .home-landing-header {
-        line-height: 9vh;
         width: 90%;
         margin:0 auto;
         margin-bottom: 2rem;
@@ -86,7 +85,6 @@
 
 @media (max-width: 768px) {
     .home-landing-header {
-        line-height: 8vh;
         width: 95%;
         margin:0 auto;
         margin-bottom: 2rem;
@@ -108,7 +106,6 @@
 
 @media (max-width: 500px) {
     .home-landing-header {
-        line-height: 5.5vh;
         width: 95%;
         margin:0 auto;
         margin-bottom: 2rem;
@@ -170,7 +167,7 @@
     border-radius: 20px;
     margin:0rem 1rem;
     letter-spacing: -0.1vw;
-    line-height: 7vh;
+    line-height: 110%;
     border:1px solid white;
     padding-top: 1rem;
 }
@@ -185,7 +182,7 @@
 
 .about-banner-header {
     font-size: 2rem;
-    line-height: 5vh;
+    line-height: 110%;
 }
 
 .about-landing-banner > div > div {
@@ -200,7 +197,6 @@
     .about-landing-header {
        width: 100%;
        font-size: 1.85rem;
-        line-height: 5.5vh;
     }
 
     .about-landing-banners {
@@ -234,7 +230,6 @@
         border-radius: 20px;
         margin:0rem 1rem;
         letter-spacing: -0.1vw;
-        line-height: 7vh;
         border:1px solid white;
         padding-top: 1rem;
     }
@@ -356,7 +351,6 @@
     .hiw-landing-header {
         width: 95%;
         font-size: 2rem;
-         line-height: 5.5vh;
     }
 
     .hiw-landing-subheader {
@@ -456,7 +450,6 @@
     .why-landing-header {
         width: 100%;
         font-size: 2rem;
-         line-height: 6.5vh;
     }
 
     .why-landing-subheader {
@@ -469,7 +462,6 @@
 
   .landing-step > h3 {
     font-size: 2rem;
-    line-height: 5vh;
     margin-bottom: 2rem;
   }
 
@@ -571,7 +563,6 @@
 
 @media (max-width: 500px) {
     .reviews-landing-header {
-        line-height: 5.5vh;
         width: 90%;
         font-size: 2rem;
     }
@@ -695,7 +686,6 @@
 
     .faq-header {
         font-size: 1.1rem;
-        line-height: 4vh;
     }
 
     .faq-dropdown-content {
@@ -712,7 +702,6 @@
     }
 
     .faq-header {
-        line-height: 4vh;
         margin:0;
         margin: 1rem 0rem;
     }
@@ -773,7 +762,6 @@
     }
    .cta-header {
     font-size: 2rem;
-    line-height: 5vh;
 
    }
 
