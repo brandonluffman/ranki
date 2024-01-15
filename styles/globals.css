@@ -29,12 +29,12 @@ h1, h2, h3, h4, h5, h6, p {
 }
 h1 {
     font-size: 4rem;
-    line-height: 5vh;
+    line-height: 110%;
     font-weight: 800;
 }
 h2 {
     font-size: 3rem;
-    line-height: 7vh;
+    line-height: 110%;
     font-weight: 800;
 
 }
