@@ -76,6 +76,17 @@ p {
     color:rgb(80, 85, 215);
   }
 
+  .dark-link {
+    color:#00204f;
+    transition: 0.2s ease all;
+    font-size: 1.25rem;
+    font-weight: 700;
+  }
+
+  .dark-link:hover {
+    /* transform: scale(1.05); */
+    color:rgb(80, 85, 215);
+  }
   .primary {
     color:var(--primary);
   }

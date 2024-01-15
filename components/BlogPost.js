@@ -65,12 +65,25 @@ const BlogPost = ({ blog }) => {
     }, []);
   
     const handleScroll = () => {
-      if (window.scrollY > 200 && window.scrollY < 1000) {
+      // Get the total height of the document
+      const totalHeight = document.documentElement.scrollHeight;
+    
+      // Define your desired percentages
+      const upperPercentage = 10; // Example: 20% of the page
+      const lowerPercentage = 60; // Example: 100% of the page
+    
+      // Calculate the actual pixel values based on percentages
+      const upperLimit = totalHeight * (upperPercentage / 100);
+      const lowerLimit = totalHeight * (lowerPercentage / 100);
+    
+      // Check if the current scroll position is within the desired range
+      if (window.scrollY > upperLimit && window.scrollY < lowerLimit) {
         setFloatClass('float');
       } else {
         setFloatClass('');
       }
     };
+    
 
     const toggleDark = () => {
       setIsDark(!isDark)
@@ -93,7 +106,7 @@ const BlogPost = ({ blog }) => {
   return (
     <div className={isDark ? 'blog-post-container dark-post': 'blog-post-container'}>
       <Breadcrumbs />
-        <button className='blog-post-dark-toggle'><BsLightbulbFill onClick={toggleDark} /></button>
+        {/* <button className='blog-post-dark-toggle'><BsLightbulbFill onClick={toggleDark} /></button> */}
         <div className={`nofloat ${floatClass}`}>FLOATING</div>
 
         <img src='/dashboard.png' className='blog-post-cover'></img>

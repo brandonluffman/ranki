@@ -54,6 +54,21 @@ const DashContent = ({ slug }) => {
                 // second: '2-digit'
             });
         };
+
+        const createSlug = (text) => {
+            return text
+                .toLowerCase()
+                .trim()
+                .replace(/\s+/g, '-')
+                .replace(/[^a-zA-Z0-9-]/g, '');
+        };
+
+        const truncateText = (text, maxLength) => {
+            if (text.length <= maxLength) return text;
+            return text.substr(0, maxLength) + '...';
+        };
+    
+          
   return (
       <div className='blog-dashcontent-container'>
       {/* <div className={isToggled ? 'blog-dashboard-addform-container': 'blog-dashboard-addform-container-noshow'}>
@@ -67,7 +82,7 @@ const DashContent = ({ slug }) => {
       <div className='dashboard-content-container'>
       {/* <button type='submit' className='add-content-container' onClick={toggleAddForm}><IoMdAdd /></button> */}
           <h1 className='blog-dashcontent-header'>Content</h1>
-          <div className='dash-content-grid'>
+          <div className='dash-content-grid-small'>
           {/* {blogs && blogs.length > 0 ? (
             blogs.map(blog => (
                 <div key={blog.id} className='dash-content-grid-item'>
@@ -81,28 +96,23 @@ const DashContent = ({ slug }) => {
                     </button> */}
 
             {blogs && blogs.length > 0 ? 
-            blogs.map(blog => (
+            blogs.slice(0,3).map(blog => (
                 <div key={blog.id} className='dash-content-grid-item searchresult'>
                     <div className='flexer search-result-flexer'>
                     <img src='/ranki-logo.png' className='serp-favicon'></img>
                     <div className='antiflexer'>
                         <h6 className='serp-name'>RankiAI</h6>
                    
-                       {/* {isGrid ? (
                        <a href={`https://ranki.ai/blog/${createSlug(blog.title)}`}>
                         {truncateText(`https://ranki.ai/blog/${createSlug(blog.title)}`, 35)}
                             </a>
-                            ):(
-                            <a href={`https://ranki.ai/blog/${createSlug(blog.title)}`}>
-                            https://ranki.ai/blog/{createSlug(blog.title)}
-                       </a>
-                       )}  */}
+                       
                       
                     </div>
                     </div>
                     {/* <h2 className='content-item-header'>{blog.title}</h2> */}
                     <p className='serp-description'><span className='serp-date'>{formatDate(blog.created_at)} -</span> {blog.meta_description}</p>
-                    {blog.is_published ? <h6>Published</h6>:<h6>Draft</h6>}
+                    {blog.is_published ? <h6 className='is-draft'>Published</h6>:<h6 className='is-draft'>Draft</h6>}
                     {/* Render other blog details as needed */}
                     {/* <button onClick={() => deleteBlogPost(blog.id)} className='delete-button blog-delete-btn'>
                             <IoMdClose />
@@ -118,9 +128,10 @@ const DashContent = ({ slug }) => {
          : (
             <div className='no-blogs'><p>No blogs found, start growing your sites Google Rankings now by creating content <Link href={`/blogdashboard/${slug}`} className='link'>here</Link></p></div>
         )}
-                            <Link href={`/blogdashboard/${slug}`} className='link'>View All Content <BsArrowRight className='arrow-right' /></Link>
 
           </div>
+          <Link href={`/blogdashboard/${slug}`} className='dark-link'>View All Content <BsArrowRight className='arrow-right' /></Link>
+
       </div>
 </div>
   )

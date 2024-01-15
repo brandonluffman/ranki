@@ -11,7 +11,7 @@
 
 .blog-content {
     min-height: 700px;
-    
+    padding:0rem 2rem;
 }
 .blog-post-header {
     margin-bottom: 2rem;
@@ -89,11 +89,31 @@
     opacity:0;
     transition: 0.2s ease all;
     z-index: 999999999 !important;
+    border-radius: 20px;
 }
 
 .float {
     display: block;
     opacity: 1;
+}
+.blog-content h1 {
+    text-align: center;
+    line-height: 9vh;
+    padding:0rem 2rem;
+    letter-spacing: -0.05vw;
+}
+.blog-content h1, .blog-content h2 {
+    margin:2rem 0rem;
+}
+
+.blog-content p {
+    margin:2rem 0rem;
+    line-height: 5vh;
+    color:rgb(220,220,220);
+}
+
+.blog-content p:last-of-type {
+    margin-bottom: 6rem;
 }
 @media only screen and (max-width: 1200px) {
     .blogs-main {

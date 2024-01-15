@@ -49,7 +49,7 @@ const Blog = (limit) => {
           <div className='blog-grid-item'>
             <img className='blog-grid-img' src='/shop.webp' />
             <div className='blog-grid-text'>
-              {/* <h2 className='content-item-header blog-grid-item-header'>{blog.title}</h2> */}
+              <h2 className='content-item-header blog-grid-item-header'>{blog.title}</h2>
               <p>{blog.meta_description}</p>
               </div>
           </div>

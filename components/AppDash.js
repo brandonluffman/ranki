@@ -234,12 +234,12 @@ const AppDash = ({ onRefresh }) => {
 
   return (
     <>
-    {isLoading ? (
+    {/* {isLoading ? (
         <div className='dashboard-container appdash-container'>
           <Loading />
         </div>
-    ):
-     user?.id ? (
+    ): */}
+     {user?.id ? (
         <div className='dashboard-container appdash-container'>
 
               <div className='appdash-add-container'>

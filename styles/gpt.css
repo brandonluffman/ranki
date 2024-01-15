@@ -19,9 +19,9 @@
     display: flex;
     margin:0 auto;
     margin-bottom: 2rem;
-    font-size: 2rem;
+    font-size: 1.25rem;
     border-radius: 20px;
-    padding:1rem;
+    padding:10px;
     outline: none;
 }
 

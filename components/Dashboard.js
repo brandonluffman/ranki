@@ -294,6 +294,10 @@ const handleSubmit = async (event) => {
                 <Link  className='seo-dash-link' href={`/dashboard/seo/${slug}`}>
 
                <div className='seo-dash-item'>
+                <div className='seo-dash-glass'><div className='seo-dash-flexer flexer'><div className='anti-flexer'>
+                  <p className='seo-glass-p'>Upgrade your account to view SEO analytics</p>
+                  <Link href='/pricing'><button className='btn btn-primary btn-margin'>Upgrade Account</button></Link>
+                  </div></div></div>
                <h2>SEO</h2>
                {app?.technical_analysis ? (<GaugeChartComponent id="gauge-chart3" percent={((app.technical_analysis['Truthy Values Count'])/16)*100} width="300px" className='seo-dash-chart'/>):(<GaugeChartComponent id="gauge-chart3" percent={score3} width="300px" className='seo-dash-chart'/>)}
 
@@ -347,7 +351,7 @@ const handleSubmit = async (event) => {
        {/* <AddBlogOfficial /> */}
 
        
-      {user && user.email == 'brandonluff10@gmail.com' && <DashContent slug={slug} />}
+      {user && <DashContent slug={slug} />}
 
   </div>
     ):(

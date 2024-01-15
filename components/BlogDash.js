@@ -9,6 +9,7 @@ import { BsArrowLeft, BsGrid, BsGrid3X3GapFill, BsThreeDotsVertical } from 'reac
 import AddBlog from './AddBlog';
 import BlogEditForm from './BlogEditForm';
 import AddBlogOfficial from './AddBlogOfficial';
+import Generate from './Generate';
 
 const BlogDash = () => {
     const { user } = useContext(UserContext);
@@ -47,7 +48,7 @@ const BlogDash = () => {
 
     const deleteBlogPost = async (postId) => {
         const { data, error } = await supabase
-            .from('blog')
+            .from('blogs')
             .delete()
             .match({ id: postId });
     
@@ -57,6 +58,7 @@ const BlogDash = () => {
             // console.log('Blog post deleted:', data);
             // Optionally update the state to reflect the deletion
             setBlogs(blogs.filter(blog => blog.id !== postId));
+            console.log('DELETED')
         }
     };
     
@@ -204,7 +206,9 @@ const BlogDash = () => {
 {isToggled ? (
     <div className='blog-add-container'>
 
-    <AddBlogOfficial submitForm={handleSubmit} toggle={toggleAddForm} />
+    {/* <AddBlogOfficial submitForm={handleSubmit} toggle={toggleAddForm} /> */}
+    <Generate />
+
 </div>
 ) : toggled ? (
     <div className='blog-add-container'>

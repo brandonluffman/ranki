@@ -51,6 +51,8 @@
     overflow-x: hidden;
     z-index: 999999999999999 !important;
     position: relative;
+    margin-top:100px;
+
     
 }
 .blog-dashboard-addform-container-noshow {
@@ -120,6 +122,17 @@
     position: relative;
 }
 
+.dash-content-grid-item .is-draft {
+    position: absolute;
+    right: 5px;
+    top:5px;
+    font-size: 1.2rem;
+    background-color: white;
+    border-radius: 20px;
+    padding:5px 10px;
+    color:var(--primary)
+}
+
 .blog-delete-btn {
     top:10px;
     position: absolute;
@@ -144,7 +157,7 @@
 }
 
 .blog-container {
-    /* padding:0rem 1rem; */
+    padding:0rem 1rem;
 }
 
 
@@ -325,7 +338,9 @@
     min-height: 700px; 
 }
 
-
+.keywords-input {
+    margin-bottom: 2rem;
+}
 
 
 /* Blog Editor */
@@ -338,5 +353,92 @@
 
 
 .text-editor {
-    
+    background-color: white;
+    color: var(--dark-blue);
+    border-radius: 20px;
+    border: none;
+    overflow: hidden;
+    margin-bottom: 4rem;
+}
+
+.ql-toolbar.ql-snow + .ql-container.ql-snow {
+    min-height: 200px;
+}
+
+.gpt-form label {
+    font-size: 2rem;
+}
+
+.gpt-label {
+    font-size: 2rem;
+margin-bottom: 1rem;
+font-weight: 300;
+}
+
+.app-selection {
+    display: flex;
+    flex-direction: column;
+    margin: 20px;
+}
+
+/* Container for each radio button and its label */
+.app-selection .radio-container {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out;
+}
+
+/* Hide the default radio button */
+.app-selection input[type="radio"] {
+    display: none;
+}
+
+/* Custom radio button design */
+.app-selection input[type="radio"] + label::before {
+    content: '';
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+    border-radius: 50%;
+    border: 2px solid #4a90e2; /* Replace with your theme color */
+    background-color: transparent;
+    vertical-align: middle;
+    transition: background-color 0.2s ease-in-out, transform 0.2s ease;
+}
+
+/* Change design when the radio button is checked */
+.app-selection input[type="radio"]:checked + label::before {
+    background-color: #4a90e2; /* Replace with your theme color */
+}
+
+/* Styling the label */
+.app-selection label {
+    font-size: 16px;
+    color: white;
+    user-select: none;
+    transition: 0.2s ease-in-out;
+}
+
+/* Hover effect on the label and custom radio button */
+.app-selection .radio-container:hover label,
+.app-selection .radio-container:hover label::before {
+    color: #3a78d4; /* Darker or different shade of the theme color for text */
+    border-color: #3a78d4; /* Darker or different shade of the theme color for radio */
+    transform: scale(1.1); /* Slightly enlarges the radio button */
+    cursor: pointer;
+}
+
+/* Focus state for accessibility */
+.app-selection input[type="radio"]:focus + label::before {
+    box-shadow: 0 0 0 3px rgba(74, 144, 226, 0.5); /* Adjust the color to match the theme */
+}
+
+/* Optional: Responsive design for smaller screens */
+@media (max-width: 600px) {
+    .app-selection {
+        flex-direction: column;
+    }
 }

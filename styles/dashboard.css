@@ -26,6 +26,29 @@
     border-radius:10px;
     cursor: pointer;
 }
+
+.seo-dash-glass {
+    position: absolute;
+    z-index: 99999;
+    color: white;
+    background: rgba(255, 255, 255, 0.11);
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    margin: 0;
+    width: 100%;
+    padding: 0;
+    left: 0;
+    right: 0;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    /* padding-top: 5rem; */
+    top: 0;
+    bottom: 0;
+}
 .dashboard-header {
     margin-bottom: 2rem;
     font-size: 3rem;
@@ -57,6 +80,10 @@
 .seo-dash-link {
     margin: 1rem 0rem;
 }
+
+.seo-glass-p {
+    margin-bottom: 1rem;
+}
 .seo-dash-item {
     grid-column: 1 / -1; /* This makes the first item span all columns */
     /* color:var(--dark-blue); */
@@ -67,10 +94,17 @@
     transition: 0.2s ease all;
 }
 
-.seo-dash-item:hover {
+.seo-dash-flexer {
+    text-align: center;
+    justify-content: center;
+    width: 100%;
+    font-size: 2rem;
+}
+
+/* .seo-dash-item:hover {
     transform:scale(1.01);
     cursor: pointer;
-}
+} */
 
 .seo-integrate-header {
     width: 70%;

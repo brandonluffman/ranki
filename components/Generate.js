@@ -6,7 +6,8 @@ import DOMPurify from 'isomorphic-dompurify';
 import TextEditor from './TextEditor';
 import IntegrateDropdown from './IntegrateDropdown';
 import toneOptions from '../public/toneOptions'
-
+import { IoMdClose } from 'react-icons/io'
+import ToneDropdown from './ToneDropdown';
 const Generate = () => {
     const { user } = useContext(UserContext);
     const [loading, setLoading] = useState(false);
@@ -28,8 +29,8 @@ const Generate = () => {
     const [selectedAppId, setSelectedAppId] = useState('');
   const [metaDescription, setMetaDescription] = useState('');
   const [showSuccessMessage, setShowSuccessMessage] = useState(false);
-
-    const prompt = `Generate a blog post about ${bio} in HTML Code Format optimized for SEO. The tone of the article will be ${tone}`;
+  const [title, setTitle] = useState('')
+  const [images, setImages] = useState([]);
 
 
     useEffect(() => {
@@ -74,7 +75,9 @@ const Generate = () => {
       e.preventDefault();
       setGeneratedBios("");
       setLoading(true);
-  
+      const keywordsString = savedInputs.join(", ");
+      const prompt = `Generate an SEO Optimized blog post about ${bio} in a ${tone} tone, using the following keywords: ${keywordsString}. Send back in HTML Code Format (ie, using h1, h2, h3, p, a, elements).`;
+      console.log('prompt', prompt)
       try {
         const hasCredits = await checkUserCredits(user.id);
         // console.log('User has credits:', hasCredits); // Debugging log
@@ -121,6 +124,7 @@ const Generate = () => {
       setSavedInputs([]);
       setSelectedAppId("");
       setMetaDescription("");
+      setTitle("");
       // Reset any other states you need to
   };
     // Function to insert a new blog into the Supabase database
@@ -132,7 +136,9 @@ const saveBlogToDatabase = async (blogContent, appId, metaDescription) => {
                 { 
                     content: blogContent, 
                     app_id: appId, 
-                    meta_description: metaDescription
+                    meta_description: metaDescription,
+                    title: title,
+                    keywords: JSON.stringify(savedInputs)
                 }
             ]);
 
@@ -248,6 +254,10 @@ const handleDescriptionChange = (e) => {
   setMetaDescription(e.target.value);
 };
 
+const handleTitleChange = (e) => {
+  setTitle(e.target.value);
+}
+
 const handleSaveDraft = () => {
   if (!selectedAppId) {
       alert('Please select an app to save the draft.');
@@ -260,15 +270,24 @@ const handleSaveDraft = () => {
   saveBlogToDatabase(editedContent, selectedAppId, metaDescription);
 };
 
+const deleteKeyword = (indexToDelete) => {
+  setSavedInputs(savedInputs.filter((_, index) => index !== indexToDelete));
+};
+
+const handleImageChange = (e) => {
+  setImages([...e.target.files]);
+};
+
   return (
 <>
     {user?.id ? (
         <div className="generate-container">
         <h1 className="generate-header">Generate Article</h1>
-    <button className="btn btn-tertiary btn-margin generate-btn" onClick={handleFetchCredits}>Check Credits</button>
-    {visible && (userCredits > 0 ? <p className='primary-banner'>You have {userCredits} credits</p> : <p className='red'>You are out of credits</p>)}
     <div className="gpt-form">
-        <label className='generate-label'>Describe your topic</label>
+    <h6 className='gpt-label'>Article Title</h6>
+    <input type='text' className='title-input' placeholder='Enter your articles title' onChange={handleTitleChange}     value={title} required/>
+
+    <h6 className='gpt-label'>Describe Your Topic</h6>
         <textarea
             value={bio}
             onChange={(e) => setBio(e.target.value)}
@@ -278,7 +297,15 @@ const handleSaveDraft = () => {
             "What would you like the article to be about?"
             }
         />
-                  <label className='generate-label'>Primary Keywords</label>
+        {/* <h6 className='gpt-label'>Insert Primary Image</h6> */}
+
+{/* <input 
+  type="file" 
+  accept="image/*" 
+  multiple 
+  onChange={handleImageChange} 
+/> */}
+        <h6 className='gpt-label'>Select Keywords (Up to 4)</h6>
 
                {savedInputs.length < 4 && (
                         <input
@@ -293,14 +320,16 @@ const handleSaveDraft = () => {
 
                     <div className='keyword-render-container'>
                         {savedInputs.map((input, index) => (
-                            <div key={index} style={{ color: 'grey' }} className='keyword-render-div'>
+                            <div key={index} className='keyword-render-div'>
                                 {input}
+                                <button onClick={() => deleteKeyword(index)} className='delete-btn'><IoMdClose /></button>
+
                             </div>
                         ))}
                     </div>
-                    <label className='generate-label'>Select a Tone</label>
-                    <IntegrateDropdown options={toneOptions} onOptionSelected={handleAppSelection} />
-                    <label>Meta Description</label>
+                    <h6 className='gpt-label'>Select a Tone</h6>
+                    <ToneDropdown options={toneOptions} onOptionSelected={handleAppSelection} />
+                    <h6 className='gpt-label'>Meta Description</h6>
                     <input type='text' className='description-input' placeholder='Enter your articles description' onChange={handleDescriptionChange}     value={metaDescription} required/>
                           
         {/* <input type='number'
@@ -316,43 +345,60 @@ const handleSaveDraft = () => {
         {loading && (
             <Loading />
         )}
-</div>
-<hr className="" />
+        </div>
+        {sanitizedContent && 
+       <div>
+        <hr className="" />
         <h2 className='generate-header'>Generated Article:</h2>
-        {/* {sanitizedContent && <div dangerouslySetInnerHTML={{ __html: sanitizedContent }}></div>} */}
-        {sanitizedContent &&   <TextEditor 
+         <TextEditor 
                 value={editedContent} 
                 onChange={handleEditorChange} 
-            />}
- 
-        <label>Select A Project</label>
-        <div className="app-selection">
-    {userApps.map(app => (
-        <label key={app.id}>
-            <input
-                type="radio"
-                name="app"
-                value={app.id}
-                onChange={(e) => setSelectedAppId(e.target.value)}
             />
-            {app.name}
-        </label>
-    ))}
-</div>
+ 
+        <h6 className='gpt-label'>Which Project Is This For?</h6>
+        <div className="app-selection">
+            {userApps.map(app => (
+                <div key={app.id} className="radio-container">
+                    <input
+                        type="radio"
+                        id={`app-${app.id}`}
+                        name="app"
+                        value={app.id}
+                        onChange={(e) => setSelectedAppId(e.target.value)}
+                    />
+                    <label htmlFor={`app-${app.id}`}>
+                        {app.name}
+                    </label>
+                </div>
+            ))}
+        </div>
 
+      
         <button className="btn btn-primary btn-margin" onClick={handleSaveDraft}>Save Draft</button>
         {showSuccessMessage && (
                     <div className="success-message">
                         Blog saved successfully!
                     </div>
-                )}
-</div>
+          )}
+        
 
+        </div>
+}
+        </div>
+        
     ): (
+      <div className='flexer'>
 <h2>Login</h2>
+</div>
     )}
      </>   
   )
 }
 
 export default Generate
+
+
+
+        {/* {sanitizedContent && <div dangerouslySetInnerHTML={{ __html: sanitizedContent }}></div>} */}
+        // <button className="btn btn-tertiary btn-margin generate-btn" onClick={handleFetchCredits}>Check Credits</button>
+        // {visible && (userCredits > 0 ? <p className='primary-banner'>You have {userCredits} credits</p> : <p className='red'>You are out of credits</p>)}

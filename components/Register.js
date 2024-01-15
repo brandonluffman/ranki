@@ -56,6 +56,8 @@ export default function RegisterComponent() {
             <input className='login-input login-password-input' placeholder='Password' type={visible ? "text" : "password"} value={password} onChange={(e) => setPassword(e.target.value)}></input>
             <button className='password-vis-button' type='button' onClick={() => setVisible(!visible)}><AiFillEye className='visibility-icon'/></button>  
         </div>
+        <Link href='/login'><p className='create-account'>Already have an account?</p></Link>
+
         <button type='submit' className='login-button'>Register</button>
         </form>
     </div>

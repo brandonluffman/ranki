@@ -35,7 +35,7 @@
 
 .dash-content-grid-small {
     display: grid;
-    grid-template-columns: repeat(3,3fr);
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
 }
 .content-item-header {
     width: 1;
@@ -46,7 +46,7 @@
 }
 
 .blog-grid-item-header {
-    min-height: 75px;
+    min-height: 50px;
 }
 
 .blog-grid-text > p {

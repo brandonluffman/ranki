@@ -17,7 +17,7 @@ export default async function handler(req, res) {
         model: "gpt-3.5-turbo-instruct",
         prompt,
         temperature: 0.7,
-        max_tokens: 200,
+        max_tokens: 2000,
         top_p: 1,
         frequency_penalty: 0,
         presence_penalty: 0,
