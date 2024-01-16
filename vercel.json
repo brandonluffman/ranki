@@ -1,6 +1,6 @@
 {
     "functions": {
-      "api/gpt.js": {
+      "pages/api/gpt.js": {
         "maxDuration": 300
       }
     }
