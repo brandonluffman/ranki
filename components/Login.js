@@ -41,7 +41,7 @@ export default function LoginComponent() {
     <div className='login-container'>
     <div className='login-box'>
         <div className='login-avatar-div'>
-        <img src='/avatar.png' width='100'></img>
+        <img src='/avatar.png' className='login-avatar-img'></img>
         </div>
         <form onSubmit={handleLogin}>
         <div className='login-email-div'>

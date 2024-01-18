@@ -43,7 +43,7 @@ export default function RegisterComponent() {
     <h1>Register</h1>
 
         <div className='login-avatar-div'>
-        <img src='/avatar.png' width='100'></img>
+        <img src='/avatar.png' className='login-avatar-img'></img>
         </div>
         <form onSubmit={handleRegister}>
         <div className='login-email-div'>

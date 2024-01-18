@@ -192,9 +192,28 @@
     margin-bottom: 1rem;
 }
 
+.login-avatar-img {
+    width: 80%;
+}
+
+.login-input {
+    font-family: 'Urbanist', sans-serif !important;
+}
+
 
 @media (max-width: 500px) {
     .login-box {
-        width: 85%;
+        width: 90%;
+    }
+
+    .login-icon {
+        left:25px;
+    }
+    .password-vis-button {
+        right:20px;
+    }
+
+    .login-avatar-div {
+        padding:1rem 0.5rem;
     }
 }
