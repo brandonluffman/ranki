@@ -98,7 +98,7 @@
 }
 .blog-content h1 {
     text-align: center;
-    line-height: 9vh;
+    /* line-height: 9vh; */
     padding:0rem 2rem;
     letter-spacing: -0.05vw;
 }
@@ -142,7 +142,41 @@
 
 @media only screen and (max-width: 450px) {
     .blogs-container {
-        padding:17rem 2rem 10rem 2rem;
+        padding:6rem 0rem 6rem 0rem;
     }
 
+    .blog-post-cover {
+        width: 100%;
+    }
+    .blog-post-details {
+        display: block;
+        
+    width: 100%;
+
+    }
+
+    .blog-author {
+        margin-bottom: 1rem;
+    }
+
+    .blog-post-date {
+        margin-bottom: 1rem;
+    }
+
+    .blog-content h1 {
+        font-size: 2.5rem;
+        padding: 0rem;
+    }
+
+    .blog-content {
+        padding: 0rem 0rem;
+    }
+
+    .blog-post-container .cta-banner {
+        margin-bottom: 0rem;
+    }
+
+    .blog-post-container {
+        padding-bottom: 50px;
+    }
 }

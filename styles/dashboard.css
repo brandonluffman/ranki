@@ -735,14 +735,14 @@
     
     }
 
-    .seo-dash-item {
-        margin: 1rem;
-    }
+
     .dashboard-content-container {
         margin:2rem 0rem;
     }
 
     .dashboard-container {
+        padding:0rem 0.5rem;
+
         padding-bottom:50px;
         padding-top:75px;
     }
@@ -760,4 +760,17 @@
         width: 100%;
     }
 
+}
+
+@media (max-width: 400px) {
+    .seo-dash-item {
+        margin: 0rem;
+    }
+    .seo-dash-grid {
+        padding: 1rem;
+    }
+
+    .blog-dashcontent-header {
+        margin-bottom: 0rem;
+    }
 }

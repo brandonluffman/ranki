@@ -210,6 +210,7 @@ const AppDash = ({ onRefresh }) => {
   const editApp = async (updatedApp) => {
     // console.log('updating');
     try {
+      console.log(updatedApp.id)
         const { data, error } = await supabase
             .from('apps') // Use your actual table name
             .update({ 
@@ -221,11 +222,15 @@ const AppDash = ({ onRefresh }) => {
 
         if (error) throw error;
 
-        setApps(currentApps => 
+        if (data && data.length > 0) {
+          setApps(currentApps => 
             currentApps.map(app => 
-                app.id === updatedApp.id ? { ...app, ...data[0] } : app
+                app.id === updatedApp.id ? { ...app, ...updatedData } : app
             )
         );
+        } else {
+            console.error('No data returned from the update operation');
+        }
     } catch (error) {
         console.error('Error updating app:', error);
     }

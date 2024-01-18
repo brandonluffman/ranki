@@ -222,6 +222,11 @@
     .navbar {
         padding: 0.75rem 0rem;
         justify-content: space-between;
+        padding-right: 10px;
+    }
+
+    .scrolled {
+        border: 3px solid var(--primary);
     }
 
     .nav-log-btn {
@@ -232,8 +237,14 @@
         margin-right: 0rem;
     }
 
-    .nav-menu-toggled, .scrolled .nav-menu-toggled {
+    .scrolled .nav-menu-toggled {
         width: 80vw;
+        right: 59px;
+        padding-top: 100px;
+    }
+
+    .nav-menu-toggled {
+        right: 0px;
     }
 
     .nav-img {

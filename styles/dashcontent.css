@@ -81,5 +81,14 @@
 
     .dashboard-content-container {
         margin:2rem 0rem;
+        padding:1rem;
+    }
+
+    .dash-content-grid-small {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    }
+    .no-blogs {
+        margin-bottom: 2rem;
     }
 }
