@@ -402,7 +402,7 @@ const handleFileUpload = (file) => {
         )}
         </div>
 
-        <button onClick={handleQuillVisibility} className='btn btn-primary btn-margin'>No GPT?</button>
+        <button onClick={handleQuillVisibility} className='btn btn-tertiary btn-margin'>Generate without GPT</button>
 
         {quillVisibility && 
        <div>
