@@ -138,9 +138,54 @@
     color:red;
 }
 
+.file-upload-wrapper {
+    display: inline-block;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.file-upload-button {
+    display: inline-block;
+    padding: 10px 20px;
+    background: linear-gradient(45deg, #ff416c, #ff4b2b);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.file-upload-button:hover {
+    background: linear-gradient(45deg, #ff6333, #ff3f4b);
+    box-shadow: 0 4px 15px rgba(255, 48, 48, 0.3);
+}
+.file-names {
+    margin-top: 10px;
+    color: var(--primary);
+    font-size: 2rem;
+}
+
+.drop-zone {
+    background-color: white;
+    border-radius: 20px;
+    color:var(--dark-blue);
+    border:2px solid var(--primary);
+    min-height: 100px;
+    cursor: pointer;
+    /* padding:2rem; */
+}
+
+.drop-zone input {
+    height: 100px;
+    cursor: pointer;
+    width: 100%;
+    display: none;
+}
 @media (max-width: 900px) {
     .generate-header {
         /* font-size: 2.5rem; */
+        
         line-height: 9vh;
     } 
 }

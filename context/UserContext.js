@@ -216,9 +216,9 @@ const login = async (email, password) => {
   
       // Delete user data from the 'blogs' table
       let { error: blogsError } = await supabase
-        .from('blog')
+        .from('blogs')
         .delete()
-        .match({ author_id: userId });
+        .match({ user_id: userId });
       if (blogsError) throw blogsError;
   
       // Delete user data from the 'users' table

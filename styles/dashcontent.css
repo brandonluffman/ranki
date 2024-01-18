@@ -40,7 +40,7 @@
 .content-item-header {
     width: 1;
     font-size: 1.5rem;
-    line-height: 5vh;
+    /* line-height: 5vh; */
     text-align: left;
     margin-bottom: 0.5rem;
 }

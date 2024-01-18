@@ -167,7 +167,7 @@
 }
 .blog-grid-container {
     display: grid;
-    grid-template-columns: repeat(3,3fr);
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
     gap:40px;
     margin-bottom: 2rem;
 }
@@ -193,13 +193,23 @@
 
 }
 
+.blog-readtime svg {
+    color:var(--primary);
+}
 .blog-grid-img {
     display: flex;
     justify-content: center;
     text-align: center;
     margin: 0 auto;
-    width: 50%;
+    width: 200px;
     margin-bottom: 0rem;
+    border-radius: 20px;
+    box-shadow: 1px 1px 8px rgba(0,0,0,0.2);
+}
+
+.blog-grid-img-container {
+    min-height: 200px;
+    
 }
 
 
@@ -242,6 +252,9 @@
 }
 
 
+.blog-grid-item-header {
+    font-weight: 800;
+}
 
 
 

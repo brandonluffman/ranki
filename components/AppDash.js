@@ -24,9 +24,11 @@ const AppDash = ({ onRefresh }) => {
   useEffect(() => {
     if (!user) {
       // Redirect to login if there's no user
-      // router.push('/login');
+      console.log('Found no user, going to Login Page')
+      router.push('/login');
       return
     } else {
+      console.log('User found, fetching user apps')
       fetchUserApps();
     }
   }, [user, router, onRefresh]);
@@ -37,9 +39,9 @@ const AppDash = ({ onRefresh }) => {
       return;
     }
   
-    setIsLoading(true);
+    // setIsLoading(true);
     try {
-      // console.log('Made it v1')
+      console.log('Made it v1')
 
       const { data: appsData, error } = await supabase
         .from('apps')
@@ -49,7 +51,7 @@ const AppDash = ({ onRefresh }) => {
       if (error) {
         throw error;
       }
-      // console.log('Made it')
+      console.log('Made it')
   
       setApps(appsData);
     } catch (error) {
@@ -177,7 +179,7 @@ const AppDash = ({ onRefresh }) => {
       }
 
       const { error: deleteBlogsError } = await supabase
-      .from('blog') // Replace 'blogs' with your actual table name
+      .from('blogs') // Replace 'blogs' with your actual table name
       .delete()
       .match({ app_id: appId }); // Replace 'app_id' with the actual column name that relates blogs to apps
 

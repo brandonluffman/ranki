@@ -35,6 +35,7 @@ const [isAuthor, setIsAuthor] = useState(false)
                 
                 if (error) throw error;
                 setBlog(data);
+                console.log('blog', data)
                 // fetchPages(data.domain);
             } catch (error) {
                 console.error('Error fetching app:', error);

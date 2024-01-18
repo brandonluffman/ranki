@@ -11,6 +11,7 @@ import PricingOfficial from '../components/PricingOfficial';
 import AddBlogOfficial from '../components/AddBlogOfficial';
 import Generate from '../components/Generate';
 import Loading from '../components/Loading';
+import ImageUpload from '../components/ImageUpload';
 
 const test = () => {
 
@@ -18,6 +19,8 @@ const test = () => {
     <>
     <Navbar />
     <div className='test-container'>
+      {/* <Generate /> */}
+      {/* <ImageUpload /> */}
       <Generate />
       {/* <Loading /> */}
     </div>

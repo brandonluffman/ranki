@@ -8,6 +8,11 @@ import IntegrateDropdown from './IntegrateDropdown';
 import toneOptions from '../public/toneOptions'
 import { IoMdClose } from 'react-icons/io'
 import ToneDropdown from './ToneDropdown';
+import FileDropZone from './FileDropZone';
+
+
+
+
 const Generate = () => {
     const { user } = useContext(UserContext);
     const [loading, setLoading] = useState(false);
@@ -27,17 +32,22 @@ const Generate = () => {
     const [selectedValue, setSelectedValue] = useState('');
     const [userApps, setUserApps] = useState([]);
     const [selectedAppId, setSelectedAppId] = useState('');
-  const [metaDescription, setMetaDescription] = useState('');
-  const [showSuccessMessage, setShowSuccessMessage] = useState(false);
-  const [title, setTitle] = useState('')
-  const [images, setImages] = useState([]);
-
+    const [metaDescription, setMetaDescription] = useState('');
+    const [showSuccessMessage, setShowSuccessMessage] = useState(false);
+    const [title, setTitle] = useState('')
+    const [images, setImages] = useState([]);
+    const [quillVisibility, setQuillVisibility] = useState(false)
 
     useEffect(() => {
       if (user?.id) {
           fetchUserApps();
       }
   }, [user]);
+
+  const handleQuillVisibility = (e) => {
+    setQuillVisibility(!quillVisibility);
+
+  }
 
       const handleFetchCredits = async () => {
         if (user) {
@@ -64,13 +74,6 @@ const Generate = () => {
       }
   };
 
-
-  //       const handleValueChange = (event) => {
-  //     const newValue = parseInt(event.target.value, 10);
-  //       if (!isNaN(newValue) && newValue <= MAX_VALUE) {
-  //         setWordCount(newValue);
-  //     }
-  // };
     const generateBio = async (e) => {
       e.preventDefault();
       setGeneratedBios("");
@@ -128,7 +131,7 @@ const Generate = () => {
       // Reset any other states you need to
   };
     // Function to insert a new blog into the Supabase database
-const saveBlogToDatabase = async (blogContent, appId, metaDescription) => {
+const saveBlogToDatabase = async (blogContent, appId, metaDescription, imagePaths) => {
   try {
             const { data, error } = await supabase
             .from('blogs')
@@ -138,7 +141,8 @@ const saveBlogToDatabase = async (blogContent, appId, metaDescription) => {
                     app_id: appId, 
                     meta_description: metaDescription,
                     title: title,
-                    keywords: JSON.stringify(savedInputs)
+                    keywords: JSON.stringify(savedInputs),
+                    images: JSON.stringify(imagePaths)
                 }
             ]);
 
@@ -159,9 +163,6 @@ const saveBlogToDatabase = async (blogContent, appId, metaDescription) => {
       alert('Failed to save the blog. Please try again. ERROR 2');
   }
 };
-
-
-
 
     const getUserCredits = async (userId) => {
         const { data, error } = await supabase
@@ -258,28 +259,78 @@ const handleTitleChange = (e) => {
   setTitle(e.target.value);
 }
 
-const handleSaveDraft = () => {
-  if (!selectedAppId) {
-      alert('Please select an app to save the draft.');
-      return;
+const uploadImagesToSupabase = async () => {
+  const uploadedImagePaths = [];
+
+  for (const image of images) {
+      const { error, data } = await supabase.storage
+          .from('blogimages')
+          .upload(image.name, image);
+
+      if (error) {
+          console.error('Error uploading image:', error);
+          return [];
+      } else {
+          // Assuming the bucket is public, constructing the URL
+          const imagePath = `https://gnbnxykwoaijcalzbtbs.supabase.co/storage/v1/object/public/blogimages/${image.name}`;
+          uploadedImagePaths.push(imagePath);
+      }
   }
+
+  return uploadedImagePaths;
+};
+
+
+const handleSaveDraft = async () => {
+  if (!selectedAppId) {
+    alert('Please select an app to save the draft.');
+    return;
+  }
+
+  let imagePaths = [];
+  if (images.length > 0) {
+    imagePaths = await uploadImagesToSupabase();
+    console.log('Image Paths, this should be first', imagePaths);
+    if (imagePaths.length === 0) {
+        alert('Failed to upload images.');
+        return;
+    }
+  } else {
+    console.log('No images to upload');
+  }
+
   if (!metaDescription.trim()) {
     alert('Please enter a meta description for the article.');
     return;
-}
-  saveBlogToDatabase(editedContent, selectedAppId, metaDescription);
+  }
+
+  saveBlogToDatabase(editedContent, selectedAppId, metaDescription, imagePaths);
+  console.log('Saved Blog')
 };
+
 
 const deleteKeyword = (indexToDelete) => {
   setSavedInputs(savedInputs.filter((_, index) => index !== indexToDelete));
 };
 
 const handleImageChange = (e) => {
-  setImages([...e.target.files]);
+  const files = e.target.files;
+  setImages([...files]);
+  const fileNames = [...files].map(file => file.name).join(', ');
+  document.getElementById('file-upload-names').textContent = fileNames;
 };
 
+const handleFileUpload = (file) => {
+  // Add the uploaded file to the images state
+  setImages([file]);
+  console.log('Got the image')
+};
+
+
+
+
   return (
-<>
+    <>
     {user?.id ? (
         <div className="generate-container">
         <h1 className="generate-header">Generate Article</h1>
@@ -297,14 +348,25 @@ const handleImageChange = (e) => {
             "What would you like the article to be about?"
             }
         />
-        {/* <h6 className='gpt-label'>Insert Primary Image</h6> */}
+        <h6 className='gpt-label'>Insert Primary Image</h6>
 
-{/* <input 
-  type="file" 
-  accept="image/*" 
-  multiple 
-  onChange={handleImageChange} 
-/> */}
+        {/* <div className="file-upload-wrapper">
+            <input 
+                type="file" 
+                accept="image/*" 
+                multiple 
+                id="file-upload"
+                onChange={handleImageChange} 
+                style={{ display: 'none' }} // Hide the default input
+            />
+            <label htmlFor="file-upload" className="file-upload-button">
+                Upload Images
+            </label>
+        </div> */}
+
+        <FileDropZone onFileUpload={handleFileUpload} handleImageChange={handleImageChange} />
+
+
         <h6 className='gpt-label'>Select Keywords (Up to 4)</h6>
 
                {savedInputs.length < 4 && (
@@ -331,13 +393,6 @@ const handleImageChange = (e) => {
                     <ToneDropdown options={toneOptions} onOptionSelected={handleAppSelection} />
                     <h6 className='gpt-label'>Meta Description</h6>
                     <input type='text' className='description-input' placeholder='Enter your articles description' onChange={handleDescriptionChange}     value={metaDescription} required/>
-                          
-        {/* <input type='number'
-                onChange={handleValueChange}
-                placeholder="Article Word Count" 
-                className="gpt-wordcount"
-
-                /> */}
 
         {!loading && (
             <button className="btn btn-primary gpt-button" onClick={(e) => generateBio(e)} >Generate your article &rarr;</button>
@@ -346,6 +401,45 @@ const handleImageChange = (e) => {
             <Loading />
         )}
         </div>
+
+        <button onClick={handleQuillVisibility} className='btn btn-primary btn-margin'>No GPT?</button>
+
+        {quillVisibility && 
+       <div>
+        <hr className="" />
+        <h2 className='generate-header'>Generated Article:</h2>
+         <TextEditor 
+                value={editedContent} 
+                onChange={handleEditorChange} 
+            />
+ 
+        <h6 className='gpt-label'>Which Project Is This For?</h6>
+        <div className="app-selection">
+            {userApps.map(app => (
+                <div key={app.id} className="radio-container">
+                    <input
+                        type="radio"
+                        id={`app-${app.id}`}
+                        name="app"
+                        value={app.id}
+                        onChange={(e) => setSelectedAppId(e.target.value)}
+                    />
+                    <label htmlFor={`app-${app.id}`}>
+                        {app.name}
+                    </label>
+                </div>
+            ))}
+        </div>
+
+        <button className="btn btn-primary btn-margin" onClick={handleSaveDraft}>Save Draft</button>
+        {showSuccessMessage && (
+                    <div className="success-message">
+                        Blog saved successfully!
+                    </div>
+          )}
+        </div>
+        }
+
         {sanitizedContent && 
        <div>
         <hr className="" />
@@ -373,7 +467,6 @@ const handleImageChange = (e) => {
             ))}
         </div>
 
-      
         <button className="btn btn-primary btn-margin" onClick={handleSaveDraft}>Save Draft</button>
         {showSuccessMessage && (
                     <div className="success-message">
@@ -383,15 +476,14 @@ const handleImageChange = (e) => {
         
 
         </div>
-}
-        </div>
-        
-    ): (
+        }
+      </div>    
+    ):(
       <div className='flexer'>
-<h2>Login</h2>
-</div>
+          <h2>Login</h2>
+      </div>
     )}
-     </>   
+    </>   
   )
 }
 
@@ -402,3 +494,19 @@ export default Generate
         {/* {sanitizedContent && <div dangerouslySetInnerHTML={{ __html: sanitizedContent }}></div>} */}
         // <button className="btn btn-tertiary btn-margin generate-btn" onClick={handleFetchCredits}>Check Credits</button>
         // {visible && (userCredits > 0 ? <p className='primary-banner'>You have {userCredits} credits</p> : <p className='red'>You are out of credits</p>)}
+
+
+         //       const handleValueChange = (event) => {
+  //     const newValue = parseInt(event.target.value, 10);
+  //       if (!isNaN(newValue) && newValue <= MAX_VALUE) {
+  //         setWordCount(newValue);
+  //     }
+  // };
+
+
+          {/* <input type='number'
+                onChange={handleValueChange}
+                placeholder="Article Word Count" 
+                className="gpt-wordcount"
+
+                /> */}

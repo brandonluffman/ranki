@@ -96,17 +96,17 @@ const DashContent = ({ slug }) => {
                     </button> */}
 
             {blogs && blogs.length > 0 ? 
-            blogs.slice(0,3).map(blog => (
+            blogs.slice(0,4).map(blog => (
                 <div key={blog.id} className='dash-content-grid-item searchresult'>
                     <div className='flexer search-result-flexer'>
                     <img src='/ranki-logo.png' className='serp-favicon'></img>
                     <div className='antiflexer'>
                         <h6 className='serp-name'>RankiAI</h6>
                    
-                       <a href={`https://ranki.ai/blog/${createSlug(blog.title)}`}>
+                      {blog.title && <a href={`https://ranki.ai/blog/${createSlug(blog.title)}`}>
                         {truncateText(`https://ranki.ai/blog/${createSlug(blog.title)}`, 35)}
                             </a>
-                       
+                        }
                       
                     </div>
                     </div>
