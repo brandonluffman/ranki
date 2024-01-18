@@ -205,7 +205,7 @@ const BlogDash = () => {
     <>
 {isToggled ? (
     <div className='blog-add-container'>
-
+        <div className='blog-add-close' onClick={toggleAddForm}><IoMdClose /></div>
     {/* <AddBlogOfficial submitForm={handleSubmit} toggle={toggleAddForm} /> */}
     <Generate />
 

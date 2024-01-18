@@ -52,7 +52,7 @@
     z-index: 999999 !important;
         position: relative;
     margin-top:100px;
-
+    padding-top:25px;
     
 }
 .blog-dashboard-addform-container-noshow {
@@ -469,5 +469,10 @@ font-weight: 300;
 
     .blog-dashboard-container {
         padding-bottom: 50px;
+    }
+
+    .blog-add-container {
+        padding-top:50px;
+        margin-top:75px;
     }
 }

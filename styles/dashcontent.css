@@ -81,6 +81,19 @@
     margin-left:0rem !important;
 }
 
+.blog-add-close {
+    position: absolute;
+    right: 10px;
+    top:0px;
+    font-size: 2rem;
+    cursor: pointer;
+    transition: 0.2s ease all;
+
+}
+
+.blog-add-close:hover {
+    color:red;
+}
 @media (max-width: 500px) {
 
     .dashboard-content-container {
