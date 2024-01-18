@@ -202,6 +202,13 @@
 
 
 @media (max-width: 500px) {
+    .login-box h1 {
+        margin:1rem 0rem 2rem 0rem;
+        font-size: 2rem;
+      }
+    .login-container {
+        padding-top:5rem;
+    }
     .login-box {
         width: 90%;
     }
