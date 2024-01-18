@@ -336,7 +336,7 @@ const handleFileUpload = (file) => {
         <h1 className="generate-header">Generate Article</h1>
     <div className="gpt-form">
     <h6 className='gpt-label'>Article Title</h6>
-    <input type='text' className='title-input' placeholder='Enter your articles title' onChange={handleTitleChange}     value={title} required/>
+    <input type='text' className='title-input generate-input' placeholder='Enter your articles title' onChange={handleTitleChange}     value={title} required/>
 
     <h6 className='gpt-label'>Describe Your Topic</h6>
         <textarea
@@ -376,7 +376,7 @@ const handleFileUpload = (file) => {
                             onChange={handleInputChange}
                             onKeyPress={handleKeyPress}
                             placeholder='Keywords...'
-                            className='keywords-input'
+                            className='keywords-input generate-input'
                         />
                     )}
 
@@ -392,7 +392,7 @@ const handleFileUpload = (file) => {
                     <h6 className='gpt-label'>Select a Tone</h6>
                     <ToneDropdown options={toneOptions} onOptionSelected={handleAppSelection} />
                     <h6 className='gpt-label'>Meta Description</h6>
-                    <input type='text' className='description-input' placeholder='Enter your articles description' onChange={handleDescriptionChange}     value={metaDescription} required/>
+                    <input type='text' className='description-input generate-input' placeholder='Enter your articles description' onChange={handleDescriptionChange}     value={metaDescription} required/>
 
         {!loading && (
             <button className="btn btn-primary gpt-button" onClick={(e) => generateBio(e)} >Generate your article &rarr;</button>
@@ -402,7 +402,7 @@ const handleFileUpload = (file) => {
         )}
         </div>
 
-        <button onClick={handleQuillVisibility} className='btn btn-tertiary btn-margin'>Generate without GPT</button>
+        <button onClick={handleQuillVisibility} className='btn btn-tertiary btn-margin no-gpt-btn'>Generate without GPT</button>
 
         {quillVisibility && 
        <div>

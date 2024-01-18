@@ -49,8 +49,8 @@
     height: auto;
     text-align: center;
     overflow-x: hidden;
-    z-index: 999999999999999 !important;
-    position: relative;
+    z-index: 999999 !important;
+        position: relative;
     margin-top:100px;
 
     
@@ -453,5 +453,21 @@ font-weight: 300;
 @media (max-width: 600px) {
     .app-selection {
         flex-direction: column;
+    }
+}
+
+@media (max-width: 500px) {
+    .blog-delete-btn {
+        top:7px;
+        right:5px;
+    }
+
+    .blog-edit-btn {
+        top:9px;
+        right: 50px;
+    }
+
+    .blog-dashboard-container {
+        padding-bottom: 50px;
     }
 }

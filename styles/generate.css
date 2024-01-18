@@ -188,6 +188,10 @@
     width: 100%;
     display: none;
 }
+
+.no-gpt-btn {
+    margin-bottom: 2rem;
+}
 @media (max-width: 900px) {
     .generate-header {
         /* font-size: 2.5rem; */
@@ -209,4 +213,44 @@
     .generate-container {
         padding-top:0px;
     }
+
+    .generate-input, .drop-zone, .tone-dropdown {
+        width: 90%;
+    }
+
+    .drop-zone #text {
+        padding:0rem 1rem;
+    }
+
+    .keywords-input {
+        margin-bottom: 1rem;
+    }
+
+    .keyword-render-container {
+        width: 85%;
+    }
+
+    .description-input {
+        margin-bottom: 4rem;
+    }
+
+    .dropdown-img {
+        width: 10%;
+    }
+
+    .tone-dropdown {
+        border-radius: 30px;
+        width: 95%;
+    }
+
+    .drop-zone {
+        width: 95%;
+    }
+
+    .gpt-label {
+        font-size: 1.5rem;
+        color:rgb(200,200,200);
+    }
+
+
 }
