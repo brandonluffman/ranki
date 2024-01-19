@@ -228,8 +228,12 @@ const AppDash = ({ onRefresh }) => {
                 app.id === updatedApp.id ? { ...app, ...updatedData } : app
             )
         );
+
+        setEditingApp(null)
         } else {
             console.error('No data returned from the update operation');
+            setEditingApp(null)
+
         }
     } catch (error) {
         console.error('Error updating app:', error);

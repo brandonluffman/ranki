@@ -172,6 +172,7 @@ const handleSubmit = async (event) => {
       console.error('Error updating app:', error);
     } else {
       localStorage.setItem('integratedApps', JSON.stringify(updatedApps));
+      toggleAppIntegrate()
     }
   } catch (error) {
     console.error('Error updating app:', error);

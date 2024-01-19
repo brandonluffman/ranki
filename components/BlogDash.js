@@ -212,9 +212,8 @@ const BlogDash = () => {
 </div>
 ) : toggled ? (
     <div className='blog-add-container'>
-
-    <BlogEditForm toggle={toggleEditForm} blog={blogs.find(blog => blog.id === editBlogId)} submitForm={handleEdit} />
-</div>
+        <BlogEditForm toggle={toggleEditForm} blog={blogs.find(blog => blog.id === editBlogId)} submitForm={handleEdit} />
+    </div>
 )
 :(
     <div className='blog-dashboard-container'>
