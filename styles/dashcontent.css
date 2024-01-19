@@ -27,6 +27,7 @@
 }
 .dash-content-header {
     margin-bottom: 6rem;
+    letter-spacing: -0.2rem;
 }
 .dash-content-grid {
    display: grid;
@@ -96,6 +97,14 @@
 
 .blog-add-close:hover {
     color:red;
+}
+
+.save-draft-btn {
+    margin-bottom: 2rem;
+}
+
+.sanitized-content-div {
+    padding-bottom: 50px;
 }
 @media (max-width: 500px) {
 

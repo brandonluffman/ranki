@@ -405,7 +405,7 @@ const handleFileUpload = (file) => {
         <button onClick={handleQuillVisibility} className='btn btn-tertiary btn-margin no-gpt-btn'>Generate without GPT</button>
 
         {quillVisibility && 
-       <div>
+       <div className='sanitized-content-div'>
         <hr className="" />
         <h2 className='generate-header'>Generated Article:</h2>
          <TextEditor 
@@ -431,7 +431,7 @@ const handleFileUpload = (file) => {
             ))}
         </div>
 
-        <button className="btn btn-primary btn-margin" onClick={handleSaveDraft}>Save Draft</button>
+        <button className="btn btn-primary btn-margin save-draft-btn" onClick={handleSaveDraft}>Save Draft</button>
         {showSuccessMessage && (
                     <div className="success-message">
                         Blog saved successfully!
@@ -441,7 +441,7 @@ const handleFileUpload = (file) => {
         }
 
         {sanitizedContent && 
-       <div>
+       <div className='santitized-content-div'>
         <hr className="" />
         <h2 className='generate-header'>Generated Article:</h2>
          <TextEditor 
@@ -467,7 +467,7 @@ const handleFileUpload = (file) => {
             ))}
         </div>
 
-        <button className="btn btn-primary btn-margin" onClick={handleSaveDraft}>Save Draft</button>
+        <button className="btn btn-primary btn-margin save-draft-btn" onClick={handleSaveDraft}>Save Draft</button>
         {showSuccessMessage && (
                     <div className="success-message">
                         Blog saved successfully!

@@ -258,7 +258,7 @@ const AppDash = ({ onRefresh }) => {
               </div>
               <div className={addingApp ? 'appdash-add-show' : 'appdash-add-none'}>
               {/* <AppForm onSubmit={handleSubmit} /> */}
-              <div className='login-box'>
+              <div className='appdash-add-form-box'>
                     <h1 className='test-header'>Connect Application</h1>
                     <div className='login-avatar-div'>
                         <img src='/avatar.png' width='100'></img>

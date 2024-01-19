@@ -250,43 +250,66 @@ const handleSubmit = async (event) => {
       </div>
 
       <div className='appdash-health-tabs'>
-            {integratedApps && integratedApps.map((app, index) => (
-                <div key={index} className='integrated-div'>
-                    <Link href={app.url} rel='noreferrer' target="_blank">
-                        <div className='appdash-health-tab fancy'>
-                            <img src={app.imgSrc} width='50' alt={`App ${index}`} />
+
+              {integratedApps.length > 0 && 
+                integratedApps.map((app, index) => (
+                    <div key={index} className='integrated-div'>
+                        <Link href={app.url} rel='noreferrer' target="_blank">
+                            <div className='appdash-health-tab fancy'>
+                                <img src={app.imgSrc} width='50' alt={`App ${index}`} />
+                            </div>
+                        </Link>
+                        <button onClick={() => deleteApp(index)} className="delete-integrated-btn">
+                            <IoMdClose />
+                        </button>
+
+                    </div>
+                ))}
+                <div className='appdash-health-tab fancy health-tab-add' onClick={toggleAppIntegrate}><IoMdAdd /></div>
+
+
+              {appIntegrate && (
+                  <div className='app-integrate-container'>
+                      <button onClick={toggleAppIntegrate} className='side-close'><IoMdClose /></button>
+                      <h3 className='app-integrate-header'>Integrate Your App</h3>
+                      <form className='app-integrate-form' ref={formRef} onSubmit={handleSubmit}>
+                        <IntegrateDropdown options={appOptions} onOptionSelected={handleAppSelection} />
+                        <div className='app-integrate-div'>
+                          <input type="text" name="url" placeholder="URL" className='app-integrate-input' />
                         </div>
-                    </Link>
-                    <button onClick={() => deleteApp(index)} className="delete-integrated-btn">
-                        <IoMdClose />
-                    </button>
-                </div>
-            ))}
+                        <button type="submit" className='btn btn-tertiary integrate-btn'>Integrate App</button>
+                      </form>
+                  </div>
+                )}
+           
+           </div>
 
-        <div className='appdash-health-tab fancy health-tab-add' onClick={toggleAppIntegrate}><IoMdAdd /></div>
-        {appIntegrate && (
-      <div className='app-integrate-container'>
-                <button onClick={toggleAppIntegrate} className='side-close'><IoMdClose /></button>
 
-        <h3 className='app-integrate-header'>Integrate Your App</h3>
-        <form className='app-integrate-form' ref={formRef} onSubmit={handleSubmit}>
-          {/* <div className='login-email-div'>
-            <select className='integrate-select' value={selectedValue} onChange={handleUpdate}>
-              <option value="">Select A Page</option>
-              {appOptions.map((page, index) => (
-                <option key={index} value={page.name} className='integrate-option'><img src={page.imgSrc}></img>{page.name}</option>
-              ))}
-            </select>
-          </div>        */}
-          <IntegrateDropdown options={appOptions} onOptionSelected={handleAppSelection} />
-          <div className='login-email-div'>
-            <input type="text" name="url" placeholder="URL" className='login-input' />
-          </div>
-          <button type="submit" className='btn btn-tertiary integrate-btn'>Integrate App</button>
-        </form>
-      </div>
-    )}
-      </div>
+
+
+            {integratedApps.length == 0 && 
+            <div className='appdash-health-tabs'>
+              <div className='integrated-div'>
+                  <Link href='https://google.com' rel='noreferrer' target="_blank" className='integrated-link'>
+                      <div className='appdash-health-tab fancy'>
+                          <img src='/website-icon.png' width='50' alt='Integrated App' />
+                          <button onClick={() => deleteApp(index)} className="delete-integrated-btn">
+                              <IoMdClose />
+                          </button>
+                      </div>   
+                  </Link>
+                  </div>
+
+                      <div className='appdash-health-tab non-fancy'>
+                      </div>
+                      <div className='appdash-health-tab non-fancy'>
+                      </div>
+                 
+                   
+                      <div className='appdash-health-tab fancy health-tab-add' onClick={toggleAppIntegrate}><IoMdAdd /></div>
+
+                   </div>
+            }
 
       {/* <AppDashAnalytics /> */}
  
