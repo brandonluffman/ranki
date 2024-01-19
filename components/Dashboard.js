@@ -90,16 +90,19 @@ const Dashboard = ({slugId}) => {
     useEffect(() => {
       const actualSlug = slug || slugId;
       if (actualSlug) {
+        console.log('Actual Slug Found')
           // Fetch the specific app details
           fetchAppName(actualSlug);
 
           // Fetch integrated apps for this specific app
           fetchIntegratedApps(actualSlug);
+      } else {
+      console.log('None Found')
       }
   }, [slug, slugId]);
 
   const fetchAppName = async (appSlug) => {
-    const cachedApp = localStorage.getItem(`appDetails_${appSlug}`);
+    // const cachedApp = localStorage.getItem(`appDetails_${appSlug}`);
         try {
             const { data, error } = await supabase
                 .from('apps')
@@ -184,24 +187,24 @@ const handleSubmit = async (event) => {
   
 
 
-  useEffect(() => {
-    const fetchSiteUrls = async () => {
-        try {
-            const response = await supabase
-                .from('site_urls')
-                .select('*')
-                .eq('app_id', slug);
+//   useEffect(() => {
+//     const fetchSiteUrls = async () => {
+//         try {
+//             const response = await supabase
+//                 .from('site_urls')
+//                 .select('*')
+//                 .eq('app_id', slug);
 
-            if (response.data) {
-                setSiteUrls(response.data);
-            }
-        } catch (error) {
-            console.error('Error fetching site URLs:', error);
-        }
-    };
+//             if (response.data) {
+//                 setSiteUrls(response.data);
+//             }
+//         } catch (error) {
+//             console.error('Error fetching site URLs:', error);
+//         }
+//     };
 
-    fetchSiteUrls();
-}, [slug]);
+//     fetchSiteUrls();
+// }, [slug]);
 
 
 

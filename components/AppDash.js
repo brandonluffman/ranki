@@ -25,7 +25,7 @@ const AppDash = ({ onRefresh }) => {
     if (!user) {
       // Redirect to login if there's no user
       console.log('Found no user, going to Login Page')
-      router.push('/login');
+      // router.push('/login');
       return
     } else {
       console.log('User found, fetching user apps')
