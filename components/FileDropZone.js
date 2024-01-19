@@ -37,22 +37,24 @@ const FileDropZone = ({ onFileUpload, handleImageChange }) => {
 
   return (
     <div 
-    className={`drop-zone ${dragOver ? 'drag-over' : ''}`}
-    onDragEnter={handleDragEnter}
-    onDragLeave={handleDragLeave}
-    onDragOver={handleDragOver}
-    onDrop={handleDrop}
-  >
-    Drag and drop a file here, or click to select a file
-    <input
-      type="file"
-      onChange={(e) => {
-        handleImageChange(e);
-        onFileUpload(e.target.files[0]);
-      }}
-      style={{ display: 'none' }}
-    />
-  </div>
+      className={`drop-zone ${dragOver ? 'drag-over' : ''}`}
+      onClick={openFileDialog} // Added click handler here
+      onDragEnter={handleDragEnter}
+      onDragLeave={handleDragLeave}
+      onDragOver={handleDragOver}
+      onDrop={handleDrop}
+    >
+      Drag and drop a file here, or click to select a file
+      <input
+        type="file"
+        ref={fileInputRef} // Attached ref to the input
+        onChange={(e) => {
+          handleImageChange(e);
+          onFileUpload(e.target.files[0]);
+        }}
+        style={{ display: 'none' }}
+      />
+    </div>
   );
 };
 

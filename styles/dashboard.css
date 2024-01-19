@@ -758,6 +758,10 @@
     font-size: 3rem;
 }
 
+.seo-dash-content-container {
+    /* margin:2rem 0rem; */
+}
+
 @media (max-width: 900px) {
     .dashboard-grid {
         grid-template-columns: repeat(2,2fr);

@@ -248,11 +248,11 @@ const handleSubmit = async (event) => {
       {/* {app && <Link href={domain} rel='noreferrer' target="_blank" className='link header-link'><h6 className='appdash-header-domain'>{app.domain}</h6></Link>} */}
 
       </div>
+      {integratedApps.length > 0 ? ( 
 
       <div className='appdash-health-tabs'>
 
-              {integratedApps.length > 0 && 
-                integratedApps.map((app, index) => (
+                {integratedApps.map((app, index) => (
                     <div key={index} className='integrated-div'>
                         <Link href={app.url} rel='noreferrer' target="_blank">
                             <div className='appdash-health-tab fancy'>
@@ -264,11 +264,36 @@ const handleSubmit = async (event) => {
                         </button>
 
                     </div>
+                    
                 ))}
-                <div className='appdash-health-tab fancy health-tab-add' onClick={toggleAppIntegrate}><IoMdAdd /></div>
+                  <div className='appdash-health-tab fancy health-tab-add' onClick={toggleAppIntegrate}><IoMdAdd /></div>
+
+              
+           
+           </div>
+              ):(
+                <div className='appdash-health-tabs'>
+                <div className='integrated-div'>
+                    <Link href='https://google.com' rel='noreferrer' target="_blank" className='integrated-link'>
+                        <div className='appdash-health-tab fancy'>
+                            <img src='/website-icon.png' width='50' alt='Integrated App' />
+                            <button onClick={() => deleteApp(index)} className="delete-integrated-btn">
+                                <IoMdClose />
+                            </button>
+                        </div>   
+                    </Link>
+                  </div>
+                  <div className='appdash-health-tab non-fancy'>
+                  </div>
+                  <div className='appdash-health-tab non-fancy'>
+                  </div>
+                  <div className='appdash-health-tab fancy health-tab-add' onClick={toggleAppIntegrate}><IoMdAdd /></div>
+               </div>
+       
+              )}
 
 
-              {appIntegrate && (
+                  {appIntegrate && (
                   <div className='app-integrate-container'>
                       <button onClick={toggleAppIntegrate} className='side-close'><IoMdClose /></button>
                       <h3 className='app-integrate-header'>Integrate Your App</h3>
@@ -280,36 +305,26 @@ const handleSubmit = async (event) => {
                         <button type="submit" className='btn btn-tertiary integrate-btn'>Integrate App</button>
                       </form>
                   </div>
-                )}
-           
-           </div>
-
-
-
-
-            {integratedApps.length == 0 && 
+                   )}
+            {/* {integratedApps.length == 0 && 
             <div className='appdash-health-tabs'>
-              <div className='integrated-div'>
-                  <Link href='https://google.com' rel='noreferrer' target="_blank" className='integrated-link'>
-                      <div className='appdash-health-tab fancy'>
-                          <img src='/website-icon.png' width='50' alt='Integrated App' />
-                          <button onClick={() => deleteApp(index)} className="delete-integrated-btn">
-                              <IoMdClose />
-                          </button>
-                      </div>   
-                  </Link>
-                  </div>
-
-                      <div className='appdash-health-tab non-fancy'>
+                    <div className='integrated-div'>
+                        <Link href='https://google.com' rel='noreferrer' target="_blank" className='integrated-link'>
+                            <div className='appdash-health-tab fancy'>
+                                <img src='/website-icon.png' width='50' alt='Integrated App' />
+                                <button onClick={() => deleteApp(index)} className="delete-integrated-btn">
+                                    <IoMdClose />
+                                </button>
+                            </div>   
+                        </Link>
                       </div>
                       <div className='appdash-health-tab non-fancy'>
                       </div>
-                 
-                   
+                      <div className='appdash-health-tab non-fancy'>
+                      </div>
                       <div className='appdash-health-tab fancy health-tab-add' onClick={toggleAppIntegrate}><IoMdAdd /></div>
-
                    </div>
-            }
+            } */}
 
       {/* <AppDashAnalytics /> */}
  
@@ -322,9 +337,10 @@ const handleSubmit = async (event) => {
                   <p className='seo-glass-p'>Upgrade your account to view SEO analytics</p>
                   <Link href='/pricing'><button className='btn btn-primary btn-margin'>Upgrade Account</button></Link>
                   </div></div></div>
+                  <div className='seo-dash-content-container'>
                <h2>SEO</h2>
                {app?.technical_analysis ? (<GaugeChartComponent id="gauge-chart3" percent={((app.technical_analysis['Truthy Values Count'])/16)*100} width="200px" className='seo-dash-chart'/>):(<GaugeChartComponent id="gauge-chart3" percent={score3} width="200px" className='seo-dash-chart'/>)}
-
+                </div>
                {/* {app?.seo_score ? (<GaugeChartComponent id="gauge-chart3" percent={app.technical_analysis['Truthy Values Count']} width="300px" className='seo-dash-chart'/>):(<GaugeChartComponent id="gauge-chart3" percent={score3} width="300px" className='seo-dash-chart'/>)} */}
                </div>
                {/* </Link> */}

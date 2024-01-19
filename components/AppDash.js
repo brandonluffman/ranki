@@ -259,10 +259,10 @@ const AppDash = ({ onRefresh }) => {
               <div className={addingApp ? 'appdash-add-show' : 'appdash-add-none'}>
               {/* <AppForm onSubmit={handleSubmit} /> */}
               <div className='appdash-add-form-box'>
-                    <h1 className='test-header'>Connect Application</h1>
-                    <div className='login-avatar-div'>
+                    <h1 className='appdash-add-header'>Connect Application</h1>
+                    {/* <div className='login-avatar-div'>
                         <img src='/avatar.png' width='100'></img>
-                        </div>
+                        </div> */}
                     <form onSubmit={handleSubmit} ref={formRef}>
                         <div className='login-email-div'>
                     <input type="text" name="name" placeholder="App Name" className='login-input' required />
@@ -271,7 +271,7 @@ const AppDash = ({ onRefresh }) => {
 
                     <textarea name="description" placeholder="Description" className='login-input textarea-input'></textarea>
                     </div>        
-                    <div className='login-email-div'>
+                    <div className='login-email-div domain-div'>
 
                     <input type="text" name="domain" placeholder="Domain" className='login-input domain-input' />
                     </div>
