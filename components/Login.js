@@ -40,6 +40,7 @@ export default function LoginComponent() {
     <>
     <div className='login-container'>
     <div className='login-box'>
+      {/* <h1>Login</h1> */}
         <div className='login-avatar-div'>
         <img src='/avatar.png' className='login-avatar-img'></img>
         </div>
