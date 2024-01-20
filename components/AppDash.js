@@ -158,6 +158,13 @@ const AppDash = ({ onRefresh }) => {
     }
   };
 
+
+  const handleDeleteApp = (appId) => {
+    if (window.confirm("Are you sure you want to delete your account? This cannot be undone.")) {
+        deleteApp(appId);
+    }
+};
+
   const deleteApp = async (appId) => {
     try {
       // Handle dependent records in the 'site_urls' table
@@ -285,7 +292,7 @@ const AppDash = ({ onRefresh }) => {
                   <h2 className='dashboard-grid-header appdash-appname'>{app.name}</h2>
                   <Link href={`/dashboard/${app.id}`}><button type='button' className='dash-button dashboard-button'>Dashboard</button></Link>
                 <br></br>
-                <button onClick={() => deleteApp(app.id)} className='dash-button delete-button'>
+                <button onClick={() => handleDeleteApp(app.id)} className='dash-button delete-button'>
                   <IoMdTrash />
                   </button>
                   <button onClick={() => toggleEditForm(app)} className='dash-button edit-button'>

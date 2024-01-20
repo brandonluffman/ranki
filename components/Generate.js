@@ -335,9 +335,10 @@ const handleFileUpload = (file) => {
         <div className="generate-container">
         <h1 className="generate-header">Generate Article</h1>
     <div className="gpt-form">
-    <h6 className='gpt-label'>Article Title</h6>
-    <input type='text' className='title-input generate-input' placeholder='Enter your articles title' onChange={handleTitleChange}     value={title} required/>
-
+    <h6 className='gpt-label'>Title</h6>
+    <input type='text' className='title-input generate-input' placeholder='Enter your articles title' onChange={handleTitleChange} value={title} required/>
+    <h6 className='gpt-label'>Meta Description</h6>
+                    <input type='text' className='description-input generate-input' placeholder='Enter your articles description' onChange={handleDescriptionChange}     value={metaDescription} required/>
     <h6 className='gpt-label'>Describe Your Topic</h6>
         <textarea
             value={bio}
@@ -391,8 +392,10 @@ const handleFileUpload = (file) => {
                     </div>
                     <h6 className='gpt-label'>Select a Tone</h6>
                     <ToneDropdown options={toneOptions} onOptionSelected={handleAppSelection} />
-                    <h6 className='gpt-label'>Meta Description</h6>
-                    <input type='text' className='description-input generate-input' placeholder='Enter your articles description' onChange={handleDescriptionChange}     value={metaDescription} required/>
+
+
+
+
 
         {!loading && (
             <button className="btn btn-primary gpt-button" onClick={(e) => generateBio(e)} >Generate your article &rarr;</button>

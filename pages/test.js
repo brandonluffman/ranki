@@ -12,6 +12,7 @@ import AddBlogOfficial from '../components/AddBlogOfficial';
 import Generate from '../components/Generate';
 import Loading from '../components/Loading';
 import ImageUpload from '../components/ImageUpload';
+import MultiStepForm from '../components/MultiStepForm';
 
 const test = () => {
 
@@ -22,6 +23,7 @@ const test = () => {
       {/* <Generate /> */}
       {/* <ImageUpload /> */}
       <Generate />
+      {/* <MultiStepForm /> */}
       {/* <Loading /> */}
     </div>
     <Footer />

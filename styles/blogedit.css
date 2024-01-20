@@ -38,3 +38,23 @@
     margin-top: 2rem;
 
 }
+
+.blog-edit-close {
+    top:100px;
+    transition: 0.2s ease all;
+}
+
+.blog-edit-close:hover {
+    color:red;
+}
+
+@media (max-width: 900px) {
+
+    .blog-edit-form {
+        width: 90%;
+    }
+
+    .blog-edit-close {
+        right:5px;
+    }
+}
