@@ -22,15 +22,8 @@ const AppDash = ({ onRefresh }) => {
 
 
   useEffect(() => {
-    if (!user) {
-      // Redirect to login if there's no user
-      console.log('Found no user, going to Login Page')
-      // router.push('/login');
-      return
-    } else {
-      console.log('User found, fetching user apps')
+      // console.log('User found, fetching user apps')
       fetchUserApps();
-    }
   }, [user, router, onRefresh]);
 
   const fetchUserApps = async () => {
