@@ -9,6 +9,7 @@ import toneOptions from '../public/toneOptions'
 import { IoMdClose } from 'react-icons/io'
 import ToneDropdown from './ToneDropdown';
 import FileDropZone from './FileDropZone';
+import SmallGaugeChart from './SmallGaugeChart';
 
 
 
@@ -327,6 +328,46 @@ const handleFileUpload = (file) => {
 };
 
 
+/* Blog Metrics */
+
+const [metrics, setMetrics] = useState({
+  characters: 0,
+  headings: 0,
+  paragraphs: 0,
+  images: 0,
+});
+
+useEffect(() => {
+  setMetrics({
+      characters: getCharacterCount(editedContent),
+      headings: getHeadingCount(editedContent),
+      paragraphs: getParagraphCount(editedContent),
+      images: getImageCount(editedContent),
+  });
+}, [editedContent]);
+
+const getCharacterCount = (html) => {
+  if (!html) return 0;
+  const text = html.replace(/<[^>]*>/g, '');
+  return text.length;
+};
+
+const getHeadingCount = (html) => {
+  const headingMatch = html.match(/<h[1-6][^>]*>(.*?)<\/h[1-6]>/gi);
+  return headingMatch ? headingMatch.length : 0;
+};
+
+const getParagraphCount = (html) => {
+  const paragraphMatch = html.match(/<p[^>]*>(.*?)<\/p>/gi);
+  return paragraphMatch ? paragraphMatch.length : 0;
+};
+
+const getImageCount = (html) => {
+  const imageMatch = html.match(/<img [^>]*src="[^"]*"[^>]*>/gi);
+  return imageMatch ? imageMatch.length : 0;
+};
+
+
 
 
   return (
@@ -334,12 +375,110 @@ const handleFileUpload = (file) => {
     {user?.id ? (
         <div className="generate-container">
         <h1 className="generate-header">Generate Article</h1>
-    <div className="gpt-form">
-    <h6 className='gpt-label'>Title</h6>
-    <input type='text' className='title-input generate-input' placeholder='Enter your articles title' onChange={handleTitleChange} value={title} required/>
-    <h6 className='gpt-label'>Meta Description</h6>
-                    <input type='text' className='description-input generate-input' placeholder='Enter your articles description' onChange={handleDescriptionChange}     value={metaDescription} required/>
-    <h6 className='gpt-label'>Describe Your Topic</h6>
+        <div className="gpt-form">
+        <h6 className='gpt-label'>Title</h6>
+        <input type='text' className='title-input generate-input' placeholder='Enter your articles title' onChange={handleTitleChange} value={title} required/>
+        <h6 className='gpt-label'>Meta Description</h6>
+        <input type='text' className='description-input generate-input' placeholder='Enter your articles description' onChange={handleDescriptionChange}  value={metaDescription} required />
+        {/* <h6 className='gpt-label'>Select a Tone</h6>
+        <ToneDropdown options={toneOptions} onOptionSelected={handleAppSelection} /> */}
+     
+
+            <div className='blog-metrics-container'>
+                                    <h2 className='blog-metrics-header'>Content</h2>
+                                    <SmallGaugeChart score={30} />
+                                    <div className='blog-metrics-grid'>
+                                    <div className='blog-metrics-grid-item'>
+                                            <h6>Characters</h6>
+                                            <p>{metrics.characters}</p>
+                                        </div>
+                                        <div className='blog-metrics-grid-item'>
+                                            <h6>Headings</h6>
+                                            <p>{metrics.headings}</p>
+                                        </div>
+                                        <div className='blog-metrics-grid-item'>
+                                            <h6>Paragraphs</h6>
+                                            <p>{metrics.paragraphs}</p>
+                                        </div>
+                                        <div className='blog-metrics-grid-item'>
+                                            <h6>Images</h6>
+                                            <p>{metrics.images}</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+         {!loading && (
+            <button className="btn btn-primary gpt-button" onClick={(e) => generateBio(e)} >AI Generate</button>
+        )}
+        {loading && (
+            <Loading />
+        )}
+        <TextEditor value={editedContent} onChange={handleEditorChange} />
+           
+        <h6 className='gpt-label'>Which Project Is This For?</h6>
+
+        <div className="app-selection">
+            {userApps.map(app => (
+                <div key={app.id} className="radio-container">
+                    <input
+                        type="radio"
+                        id={`app-${app.id}`}
+                        name="app"
+                        value={app.id}
+                        onChange={(e) => setSelectedAppId(e.target.value)}
+                    />
+                    <label htmlFor={`app-${app.id}`}>
+                        {app.name}
+                    </label>
+                </div>
+            ))}
+        </div>
+
+        <button className="btn btn-primary btn-margin save-draft-btn" onClick={handleSaveDraft}>Save As Draft</button>
+        {showSuccessMessage && (
+                    <div className="success-message">
+                        Blog saved successfully!
+                    </div>
+          )}
+        </div>
+      </div>    
+    ):(
+      <div className='flexer'>
+          <h2>Login</h2>
+      </div>
+    )}
+    </>   
+  )
+}
+
+export default Generate
+
+
+
+        {/* {sanitizedContent && <div dangerouslySetInnerHTML={{ __html: sanitizedContent }}></div>} */}
+        // <button className="btn btn-tertiary btn-margin generate-btn" onClick={handleFetchCredits}>Check Credits</button>
+        // {visible && (userCredits > 0 ? <p className='primary-banner'>You have {userCredits} credits</p> : <p className='red'>You are out of credits</p>)}
+
+
+         //       const handleValueChange = (event) => {
+  //     const newValue = parseInt(event.target.value, 10);
+  //       if (!isNaN(newValue) && newValue <= MAX_VALUE) {
+  //         setWordCount(newValue);
+  //     }
+  // };
+
+
+          {/* <input type='number'
+                onChange={handleValueChange}
+                placeholder="Article Word Count" 
+                className="gpt-wordcount"
+
+                /> */}
+
+
+
+      
+        {/* <h6 className='gpt-label'>Describe Your Topic</h6>
         <textarea
             value={bio}
             onChange={(e) => setBio(e.target.value)}
@@ -350,20 +489,6 @@ const handleFileUpload = (file) => {
             }
         />
         <h6 className='gpt-label'>Insert Primary Image</h6>
-
-        {/* <div className="file-upload-wrapper">
-            <input 
-                type="file" 
-                accept="image/*" 
-                multiple 
-                id="file-upload"
-                onChange={handleImageChange} 
-                style={{ display: 'none' }} // Hide the default input
-            />
-            <label htmlFor="file-upload" className="file-upload-button">
-                Upload Images
-            </label>
-        </div> */}
 
         <FileDropZone onFileUpload={handleFileUpload} handleImageChange={handleImageChange} />
 
@@ -389,25 +514,12 @@ const handleFileUpload = (file) => {
 
                             </div>
                         ))}
-                    </div>
-                    <h6 className='gpt-label'>Select a Tone</h6>
-                    <ToneDropdown options={toneOptions} onOptionSelected={handleAppSelection} />
+                    </div> */}
 
 
+       {/* <button onClick={handleQuillVisibility} className='btn btn-tertiary btn-margin no-gpt-btn'>Generate without GPT</button> */}
 
-
-
-        {!loading && (
-            <button className="btn btn-primary gpt-button" onClick={(e) => generateBio(e)} >Generate your article &rarr;</button>
-        )}
-        {loading && (
-            <Loading />
-        )}
-        </div>
-
-        <button onClick={handleQuillVisibility} className='btn btn-tertiary btn-margin no-gpt-btn'>Generate without GPT</button>
-
-        {quillVisibility && 
+        {/* {quillVisibility && 
        <div className='sanitized-content-div'>
         <hr className="" />
         <h2 className='generate-header'>Generated Article:</h2>
@@ -441,9 +553,9 @@ const handleFileUpload = (file) => {
                     </div>
           )}
         </div>
-        }
+        } */}
 
-        {sanitizedContent && 
+        {/* {sanitizedContent && 
        <div className='santitized-content-div'>
         <hr className="" />
         <h2 className='generate-header'>Generated Article:</h2>
@@ -479,37 +591,4 @@ const handleFileUpload = (file) => {
         
 
         </div>
-        }
-      </div>    
-    ):(
-      <div className='flexer'>
-          <h2>Login</h2>
-      </div>
-    )}
-    </>   
-  )
-}
-
-export default Generate
-
-
-
-        {/* {sanitizedContent && <div dangerouslySetInnerHTML={{ __html: sanitizedContent }}></div>} */}
-        // <button className="btn btn-tertiary btn-margin generate-btn" onClick={handleFetchCredits}>Check Credits</button>
-        // {visible && (userCredits > 0 ? <p className='primary-banner'>You have {userCredits} credits</p> : <p className='red'>You are out of credits</p>)}
-
-
-         //       const handleValueChange = (event) => {
-  //     const newValue = parseInt(event.target.value, 10);
-  //       if (!isNaN(newValue) && newValue <= MAX_VALUE) {
-  //         setWordCount(newValue);
-  //     }
-  // };
-
-
-          {/* <input type='number'
-                onChange={handleValueChange}
-                placeholder="Article Word Count" 
-                className="gpt-wordcount"
-
-                /> */}
+        } */}

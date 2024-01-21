@@ -1,6 +1,6 @@
 .navbar {
     display: flex;
-    /* justify-content: space-around; */
+    justify-content: space-between;
     box-shadow:1px 5px 12px rgba(200,200,200,0);
     width: 100%;
     align-items: center;
@@ -27,13 +27,13 @@
     left: 0%;
     right: 0%;
     padding:0.75rem 1rem;
-
+        border: 3px solid var(--primary);
     /* transform: translateX(-50%); */
 }
 
 
 .nav-logo {
-    width: 50%;
+    width: 150px;
     margin-left: 4rem;
 }
 
@@ -229,9 +229,7 @@
         /* padding-right: 10px; */
     }
 
-    .scrolled {
-        border: 3px solid var(--primary);
-    }
+
 
     .nav-log-btn {
         display: none;

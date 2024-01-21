@@ -53,6 +53,7 @@
         position: relative;
     margin-top:100px;
     padding-top:25px;
+    padding-bottom: 100px;
     
 }
 .blog-dashboard-addform-container-noshow {
@@ -88,9 +89,10 @@
 }
 
 .blog-metrics-container {
-    width: 45%;
+    width: 90%;
     /* display: flex; */
     padding:1rem;
+    margin:0 auto;
 }
 
 .blog-metrics-grid {
@@ -373,11 +375,13 @@
     border-radius: 20px;
     border: none;
     overflow: hidden;
+    margin:0rem 1rem;
     margin-bottom: 4rem;
+
 }
 
 .ql-toolbar.ql-snow + .ql-container.ql-snow {
-    min-height: 200px;
+    min-height: 400px;
 }
 
 .gpt-form label {

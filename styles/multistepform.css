@@ -24,7 +24,7 @@
 .gauge-chart-sm div svg g .value-text > text {
     fill: black !important;
     font-weight: 600;
-    fill: black !important;
+    fill: white !important;
     font-family: sans-serif;
     text-shadow: none !important;
 }

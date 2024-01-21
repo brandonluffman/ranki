@@ -13,6 +13,7 @@ import Generate from '../components/Generate';
 import Loading from '../components/Loading';
 import ImageUpload from '../components/ImageUpload';
 import MultiStepForm from '../components/MultiStepForm';
+import AddBlog from '../components/AddBlog';
 
 const test = () => {
 
@@ -22,9 +23,10 @@ const test = () => {
     <div className='test-container'>
       {/* <Generate /> */}
       {/* <ImageUpload /> */}
-      <Generate />
+      {/* <Generate /> */}
       {/* <MultiStepForm /> */}
       {/* <Loading /> */}
+      <AddBlog />
     </div>
     <Footer />
 </>

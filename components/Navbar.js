@@ -125,6 +125,7 @@ const Navbar = () => {
             )}
             </div>
         </div>
+        <div className='flexer nav-flexer'>
         <div className='login-menu'>
         {user ? (
               <div className='login-nav-link'>
@@ -155,6 +156,7 @@ const Navbar = () => {
             )}
             </div>
         <button className='hamburger-menu' type='button' onClick={toggleShow}>{isActive ? (<IoMdClose />):(<RxHamburgerMenu />)}</button> 
+        </div>
     </nav>
   )
 }

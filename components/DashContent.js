@@ -96,7 +96,7 @@ const DashContent = ({ slug }) => {
                     </button> */}
 
             {blogs && blogs.length > 0 ? 
-            blogs.slice(0,4).map(blog => (
+            blogs.slice(0,3).map(blog => (
                 <div key={blog.id} className='dash-content-grid-item searchresult'>
                     <div className='flexer search-result-flexer'>
                     <img src='/ranki-logo.png' className='serp-favicon'></img>
@@ -110,7 +110,7 @@ const DashContent = ({ slug }) => {
                       
                     </div>
                     </div>
-                    {/* <h2 className='content-item-header'>{blog.title}</h2> */}
+                    {blog.title && <h2 className='content-item-header'>{blog.title}</h2>}
                     <p className='serp-description'><span className='serp-date'>{formatDate(blog.created_at)} -</span> {blog.meta_description}</p>
                     {blog.is_published ? <h6 className='is-draft'>Published</h6>:<h6 className='is-draft'>Draft</h6>}
                     {/* Render other blog details as needed */}
