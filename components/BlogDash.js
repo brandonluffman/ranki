@@ -46,6 +46,13 @@ const BlogDash = () => {
         return data;
     };
 
+
+    const handleDeleteBlog = (postId) => {
+        if (window.confirm("Are you sure you want to delete this blog? This cannot be undone.")) {
+            deleteBlogPost(postId);
+        }
+    };
+
     const deleteBlogPost = async (postId) => {
         const { data, error } = await supabase
             .from('blogs')
@@ -211,7 +218,7 @@ const BlogDash = () => {
 
 </div>
 ) : toggled ? (
-    <div className='blog-add-container'>
+    <div>
         <BlogEditForm toggle={toggleEditForm} blog={blogs.find(blog => blog.id === editBlogId)} submitForm={handleEdit} />
     </div>
 )
@@ -251,7 +258,7 @@ const BlogDash = () => {
                     <h2 className='content-item-header'>{blog.title}</h2>
                     <p className='serp-description'><span className='serp-date'>{formatDate(blog.created_at)} -</span> {blog.meta_description}</p>
                     {/* Render other blog details as needed */}
-                    <button onClick={() => deleteBlogPost(blog.id)} className='delete-button blog-delete-btn'>
+                    <button onClick={() => handleDeleteBlog(blog.id)} className='delete-button blog-delete-btn'>
                             <IoMdClose />
                         </button>
                         <button onClick={() => toggleEditForm(blog.id)} className='edit-button blog-edit-btn'>

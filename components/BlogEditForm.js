@@ -5,22 +5,23 @@ import TextEditor from './TextEditor';
 const BlogEditForm = ({ blog, toggle, submitForm }) => {
     const [title, setTitle] = useState('');
     const [content, setContent] = useState('');
+    const [editedContent, setEditedContent] = useState('')
 
     useEffect(() => {
         if (blog) {
             setTitle(blog.title);
-            setContent(blog.content);
+            setEditedContent(blog.content);
             // console.log(blog)
         } else {
             // console.log('No Blog')
         }
     }, [blog]);
 
-    // const submitForm = (e) => {
-    //     e.preventDefault();
-    //     alert('Just submitted. Sike, this is a placeholder.');
-    //     // Here, handle the actual update logic
-    // }
+    const handleEditorChange = (newContent) => {
+        setEditedContent(newContent);
+    };
+
+
 
     return (
         <div className='blog-edit-container'>
@@ -28,7 +29,7 @@ const BlogEditForm = ({ blog, toggle, submitForm }) => {
             
             <button className='close-btn blog-edit-close' type='button' onClick={toggle}><IoMdClose /></button>
             <form onSubmit={submitForm} className='blog-edit-form'>
-                <div className='anti-flexer'>
+                <div className='antiflexer'>
                 <label className='generate-label'>Title</label>
                 <input 
                     type='text' 
@@ -48,8 +49,8 @@ const BlogEditForm = ({ blog, toggle, submitForm }) => {
                     value={content}
                     onChange={e => setContent(e.target.value)}
                 /> */}
-                <TextEditor value={content} />
-                <button type='submit' className='btn btn-primary blogpost-edit-btn'>Publish</button>
+                 <TextEditor value={editedContent} onChange={handleEditorChange} />
+                <button type='submit' className='btn btn-primary blogpost-edit-btn'>Save Changes</button>
             </form>
         </div>
     )

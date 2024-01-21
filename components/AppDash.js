@@ -80,6 +80,7 @@ const AppDash = ({ onRefresh }) => {
     }
   
     try {
+      setIsLoading(true)
       const { data: userData, error: userError } = await supabase
         .from('users')
         .select('paid_plan_type')
@@ -104,13 +105,13 @@ const AppDash = ({ onRefresh }) => {
         return null;
       }
   
-      const checkDomainResponse = await fetch(`/api/checkDomain?domain=${encodeURIComponent(domain)}`);
-      const checkDomainResult = await checkDomainResponse.json();
+      // const checkDomainResponse = await fetch(`/api/checkDomain?domain=${encodeURIComponent(domain)}`);
+      // const checkDomainResult = await checkDomainResponse.json();
   
-      if (!checkDomainResponse.ok) {
-        alert(checkDomainResult.error || 'Error checking domain status');
-        return null;
-      }
+      // if (!checkDomainResponse.ok) {
+      //   alert(checkDomainResult.error || 'Error checking domain status');
+      //   return null;
+      // }
   
       const insertResponse = await supabase
         .from('apps')
@@ -133,6 +134,7 @@ const AppDash = ({ onRefresh }) => {
       alert('An error occurred while adding the app.');
       return null;
     }
+    setIsLoading(false)
   };
   
   
@@ -276,6 +278,7 @@ const AppDash = ({ onRefresh }) => {
                     <input type="text" name="domain" placeholder="Domain" className='login-input domain-input' />
                     </div>
                     <button type="submit" className='login-button'>Add App</button>
+                    {isLoading && <Loading />}
                 </form>
                 {showAlert && <div className="success-alert">App created successfully!</div>}
                 <button onClick={toggleAddForm} className='delete-button close-add-form-button'>

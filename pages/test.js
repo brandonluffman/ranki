@@ -14,6 +14,7 @@ import Loading from '../components/Loading';
 import ImageUpload from '../components/ImageUpload';
 import MultiStepForm from '../components/MultiStepForm';
 import AddBlog from '../components/AddBlog';
+import AbsoluteLoading from '../components/AbsoluteLoading';
 
 const test = () => {
 
@@ -26,7 +27,8 @@ const test = () => {
       {/* <Generate /> */}
       {/* <MultiStepForm /> */}
       {/* <Loading /> */}
-      <AddBlog />
+      {/* <AddBlog /> */}
+      <AbsoluteLoading />
     </div>
     <Footer />
 </>
