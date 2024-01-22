@@ -89,7 +89,7 @@
 }
 
 .blog-metrics-container {
-    width: 90%;
+    width: 95%;
     /* display: flex; */
     padding:1rem;
     margin:0 auto;
@@ -98,13 +98,24 @@
 .blog-metrics-grid {
     display: grid;
     grid-template-columns: repeat(2,2fr);
-    margin:2rem 0rem;
+    /* display: flex; */
+    /* margin:2rem 0rem; */
     /* gap:40px; */
+    border-radius: 20px;
+    background-color: var(--primary);
+    border-radius: 20px;
+    border:1px solid white;
+
+}
+
+.blog-metrics-grid h6 {
+    margin-bottom: 1rem;
 }
 
 .blog-metrics-grid-item {
-    border:1px solid rgb(220, 220, 220);
     padding: 2rem 1rem;
+
+
 }
 
 
@@ -396,8 +407,18 @@ font-weight: 300;
 
 .app-selection {
     display: flex;
-    flex-direction: column;
+    /* flex-direction: column; */
     margin: 20px;
+}
+
+.blog-development {
+    display:flex;
+    align-items: center;
+    text-align: center;
+    margin:0 auto;
+    justify-content: center;
+    height: 300px;
+    color:var(--primary);
 }
 
 /* Container for each radio button and its label */

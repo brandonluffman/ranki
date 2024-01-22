@@ -9,6 +9,7 @@ import { supabase } from '../utils/supabaseClient';
 import Loading from './Loading';
 import { UserContext } from '../context/UserContext';
 import { useRouter } from 'next/router';
+import AbsoluteLoading from './AbsoluteLoading';
 
 const AppDash = ({ onRefresh }) => {
   const [apps, setApps] = useState([]);
@@ -24,11 +25,12 @@ const AppDash = ({ onRefresh }) => {
   useEffect(() => {
       // console.log('User found, fetching user apps')
       fetchUserApps();
-  }, [user, router, onRefresh]);
+  }, []);
 
   const fetchUserApps = async () => {
     if (!user) {
       console.error("User not authenticated");
+      router.push('/login')
       return;
     }
   
@@ -80,7 +82,6 @@ const AppDash = ({ onRefresh }) => {
     }
   
     try {
-      setIsLoading(true)
       const { data: userData, error: userError } = await supabase
         .from('users')
         .select('paid_plan_type')
@@ -134,12 +135,13 @@ const AppDash = ({ onRefresh }) => {
       alert('An error occurred while adding the app.');
       return null;
     }
-    setIsLoading(false)
   };
   
   
   const handleSubmit = async (event) => {
     event.preventDefault();
+    setIsLoading(true)
+
     const name = event.target.name.value;
     const description = event.target.description.value;
     const domain = event.target.domain.value;
@@ -151,8 +153,13 @@ const AppDash = ({ onRefresh }) => {
       // Update apps state directly with the new app
       setApps(currentApps => [...currentApps, newApp]);
       // console.log('Supposed to show alert?')
+      setIsLoading(false)
+      setAddingApp(false)
       setShowAlert(true);
-      setTimeout(() => setShowAlert(false), 3000);
+      setTimeout(() => setShowAlert(false), 2000);
+      // setTimeout(() => setAddingApp(false), 1500);
+      // setAddingApp(false)
+      // setIsLoading(false)
       formRef.current.reset();
   
       // Optionally, re-fetch all apps
@@ -278,17 +285,18 @@ const AppDash = ({ onRefresh }) => {
                     <input type="text" name="domain" placeholder="Domain" className='login-input domain-input' />
                     </div>
                     <button type="submit" className='login-button'>Add App</button>
-                    {isLoading && <Loading />}
+                    {isLoading && <AbsoluteLoading />}
                 </form>
-                {showAlert && <div className="success-alert">App created successfully!</div>}
+                {/* {showAlert && <div className="success-alert">App created successfully!</div>} */}
                 <button onClick={toggleAddForm} className='delete-button close-add-form-button'>
                         <IoMdClose />
                       </button>
                 </div>
-           
+
               </div>
               <h1 className='dashboard-header'>Projects</h1>
-
+              {showAlert && <div className="success-alert">App created successfully!</div>}
+                  {/* <div className='success-alert'>App created successfully</div> */}
               <div className='dashboard-grid appdash-grid'>
               {apps.map((app, index) => ( 
               <li key={app.id || index} className='appdash-item'> 

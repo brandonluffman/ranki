@@ -24,8 +24,9 @@ export const UserProvider = ({ children }) => {
         console.error("Error parsing user from localStorage:", error);
         localStorage.removeItem('user');
       }
-    } else {
-      // console.log("No stored user found");
+    } 
+    else {
+      console.log("No stored user found");
     }
   }, []);
 

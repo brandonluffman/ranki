@@ -265,4 +265,8 @@
         display: block;
         margin:0 auto;
     }
+
+    .nav-logo {
+        margin-left: 0rem;
+    }
 }

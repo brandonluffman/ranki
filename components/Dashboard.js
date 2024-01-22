@@ -251,7 +251,7 @@ const handleSubmit = async (event) => {
       {/* {app && <Link href={domain} rel='noreferrer' target="_blank" className='link header-link'><h6 className='appdash-header-domain'>{app.domain}</h6></Link>} */}
 
       </div>
-      {integratedApps.length > 0 ? ( 
+      {integratedApps && integratedApps.length > 0 ? ( 
 
       <div className='appdash-health-tabs'>
 
@@ -385,13 +385,13 @@ const handleSubmit = async (event) => {
           
         )}
 
-      <div className='generate-banner'>
+      {/* <div className='generate-banner'>
           <h2>Generate Article</h2>
           <p>Powered by AI</p>
           <Link href='/test'><button className='btn btn-primary generate-btn'>Get Started &rarr;</button></Link>
-          {/* {user.isPaid ? :<Link href='/pricing'><button className='btn btn-primary generate-btn'></button></Link>} */}
-        </div>
+        </div> */}
        {/* <AddBlogOfficial /> */}
+          {/* {user.isPaid ? :<Link href='/pricing'><button className='btn btn-primary generate-btn'></button></Link>} */}
 
        
       {user && <DashContent slug={slug} />}

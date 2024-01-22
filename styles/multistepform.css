@@ -27,6 +27,7 @@
     fill: white !important;
     font-family: sans-serif;
     text-shadow: none !important;
+    font-size: 2rem !important;
 }
 
 .step-toggle {

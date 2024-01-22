@@ -26,6 +26,9 @@ const modules = {
     [{ 'font': [] }],
     [{ 'align': [] }],
 
+    ['link', 'image', 'video'], // adding 'image' here
+
+
     ['clean'],                                         // remove formatting
   ],
 };

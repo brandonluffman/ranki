@@ -10,6 +10,8 @@ import { IoMdClose } from 'react-icons/io'
 import ToneDropdown from './ToneDropdown';
 import FileDropZone from './FileDropZone';
 import SmallGaugeChart from './SmallGaugeChart';
+import { WiStars } from "react-icons/wi";
+import GenerateGPT from './GenerateGPT';
 
 
 
@@ -38,6 +40,7 @@ const Generate = () => {
     const [title, setTitle] = useState('')
     const [images, setImages] = useState([]);
     const [quillVisibility, setQuillVisibility] = useState(false)
+    const [generateForm, setGenerateForm] = useState(false)
 
     useEffect(() => {
       if (user?.id) {
@@ -368,80 +371,156 @@ const getImageCount = (html) => {
 };
 
 
+const toggleGenerateForm = () => {
+  setGenerateForm(!generateForm);
+};
+
+
 
 
   return (
     <>
     {user?.id ? (
-        <div className="generate-container">
-        <h1 className="generate-header">Generate Article</h1>
-        <div className="gpt-form">
-        <h6 className='gpt-label'>Title</h6>
-        <input type='text' className='title-input generate-input' placeholder='Enter your articles title' onChange={handleTitleChange} value={title} required/>
-        <h6 className='gpt-label'>Meta Description</h6>
-        <input type='text' className='description-input generate-input' placeholder='Enter your articles description' onChange={handleDescriptionChange}  value={metaDescription} required />
-        {/* <h6 className='gpt-label'>Select a Tone</h6>
-        <ToneDropdown options={toneOptions} onOptionSelected={handleAppSelection} /> */}
-     
+      <div className='generate-wrapper'>
+                <h1 className="generate-header">Generate Article</h1>
+                {!loading && (
+                              <button className="btn btn-primary gpt-button" onClick={toggleGenerateForm} >Generate with AI <WiStars className='ai-stars'/></button>
 
-            <div className='blog-metrics-container'>
-                                    <h2 className='blog-metrics-header'>Content</h2>
-                                    <SmallGaugeChart score={30} />
-                                    <div className='blog-metrics-grid'>
-                                    <div className='blog-metrics-grid-item'>
-                                            <h6>Characters</h6>
-                                            <p>{metrics.characters}</p>
-                                        </div>
-                                        <div className='blog-metrics-grid-item'>
-                                            <h6>Headings</h6>
-                                            <p>{metrics.headings}</p>
-                                        </div>
-                                        <div className='blog-metrics-grid-item'>
-                                            <h6>Paragraphs</h6>
-                                            <p>{metrics.paragraphs}</p>
-                                        </div>
-                                        <div className='blog-metrics-grid-item'>
-                                            <h6>Images</h6>
-                                            <p>{metrics.images}</p>
-                                        </div>
-                                    </div>
-                                </div>
-
-         {!loading && (
-            <button className="btn btn-primary gpt-button" onClick={(e) => generateBio(e)} >AI Generate</button>
+            // <button className="btn btn-primary gpt-button" onClick={(e) => generateBio(e)} >Generate with AI <WiStars className='ai-stars'/></button>
         )}
-        {loading && (
+      
+
+        {generateForm && 
+            <form className='generate-form'>
+            <h2 className='appdash-form-header'>Generate Blog with AI</h2>
+        
+                <h6 className='gpt-label'>Describe Your Topic</h6>
+                <textarea
+                    value={bio}
+                    onChange={(e) => setBio(e.target.value)}
+                    rows={4}
+                    className="gpt-textarea"
+                    placeholder={
+                    "What would you like the article to be about?"
+                    }
+                />
+        
+        
+                <h6 className='gpt-label'>Select Keywords (Up to 4)</h6>
+        
+                       {savedInputs.length < 4 && (
+                                <input
+                                    type="text"
+                                    value={currentInput}
+                                    onChange={handleInputChange}
+                                    onKeyPress={handleKeyPress}
+                                    placeholder='Keywords...'
+                                    className='keywords-input generate-input'
+                                />
+                            )}
+        
+                            <div className='keyword-render-container'>
+                                {savedInputs.map((input, index) => (
+                                    <div key={index} className='keyword-render-div'>
+                                        {input}
+                                        <button onClick={() => deleteKeyword(index)} className='delete-btn'><IoMdClose /></button>
+        
+                                    </div>
+                                ))}
+                            </div>
+        
+                            <h6 className='gpt-label'>Select Your Articles Tone</h6>
+                            <ToneDropdown options={toneOptions} onOptionSelected={handleAppSelection} /> 
+                            {!loading && (
+             <button className="btn btn-primary gpt-button" onClick={(e) => generateBio(e)} >Generate <WiStars className='ai-stars'/></button>
+
+        )}
+            {/* {showAlert && <div className="success-alert">App created successfully!</div>} */}
+        
+          </form>
+        }
+
+{loading && (
             <Loading />
         )}
+
+        <div className="generate-container">
+          <div className='generate-form-data'>
+        <div className="gpt-form">
+        {/* <h6 className='gpt-label'>Select a Tone</h6>
+ 
+     
+
+
+
+{/* <h6 className='gpt-label'>Title</h6> */}
+        <input type='text' className='title-input generate-input' placeholder='Enter your articles title' onChange={handleTitleChange} value={title} required/>
+        {/* <h6 className='gpt-label'>Meta Description</h6> */}
+        <input type='text' className='description-input generate-input' placeholder='Enter your articles description' onChange={handleDescriptionChange}  value={metaDescription} required />
         <TextEditor value={editedContent} onChange={handleEditorChange} />
            
-        <h6 className='gpt-label'>Which Project Is This For?</h6>
-
-        <div className="app-selection">
-            {userApps.map(app => (
-                <div key={app.id} className="radio-container">
-                    <input
-                        type="radio"
-                        id={`app-${app.id}`}
-                        name="app"
-                        value={app.id}
-                        onChange={(e) => setSelectedAppId(e.target.value)}
-                    />
-                    <label htmlFor={`app-${app.id}`}>
-                        {app.name}
-                    </label>
-                </div>
-            ))}
+       
         </div>
 
-        <button className="btn btn-primary btn-margin save-draft-btn" onClick={handleSaveDraft}>Save As Draft</button>
-        {showSuccessMessage && (
-                    <div className="success-message">
-                        Blog saved successfully!
+        </div>
+
+        <div className='generate-metrics-container'>
+
+        <div className='blog-metrics-container'>
+                <h2 className='blog-metrics-header'>SEO Score</h2>
+                <SmallGaugeChart score={30} />
+                <div className='blog-metrics-grid'>
+                <div className='blog-metrics-grid-item'>
+                        <h6>Characters</h6>
+                        <p>{metrics.characters}</p>
                     </div>
-          )}
+                    <div className='blog-metrics-grid-item'>
+                        <h6>Headings</h6>
+                        <p>{metrics.headings}</p>
+                    </div>
+                    <div className='blog-metrics-grid-item'>
+                        <h6>Paragraphs</h6>
+                        <p>{metrics.paragraphs}</p>
+                    </div>
+                    <div className='blog-metrics-grid-item'>
+                        <h6>Images</h6>
+                        <p>{metrics.images}</p>
+                    </div>
+                </div>
+          </div>
+
+              {/* <div className='blog-metrics-suggested'>
+                    <h2>Suggestions</h2>
+              </div> */}
         </div>
-      </div>    
+       
+      </div>  
+      <h6 className='gpt-label project-label'>Which Project Is This For?</h6>
+
+      <div className="app-selection">
+          {userApps.map(app => (
+              <div key={app.id} className="radio-container">
+                  <input
+                      type="radio"
+                      id={`app-${app.id}`}
+                      name="app"
+                      value={app.id}
+                      onChange={(e) => setSelectedAppId(e.target.value)}
+                  />
+                  <label htmlFor={`app-${app.id}`}>
+                      {app.name}
+                  </label>
+              </div>
+          ))}
+      </div>
+
+      <button className="btn btn-primary btn-margin save-draft-btn" onClick={handleSaveDraft}>Save As Draft</button>
+      {showSuccessMessage && (
+                  <div className="success-message">
+                      Blog saved successfully!
+                  </div>
+        )}
+      </div>  
     ):(
       <div className='flexer'>
           <h2>Login</h2>
