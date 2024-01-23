@@ -37,7 +37,7 @@ export default function RegisterComponent() {
 
   return (
     <>
-    <Navbar />
+    {/* <Navbar /> */}
     <div className='login-container'>
     <div className='login-box'>
     <h1>Register</h1>
@@ -62,7 +62,7 @@ export default function RegisterComponent() {
         </form>
     </div>
     </div>
-    <Footer />
+    {/* <Footer /> */}
     </>
   );
 }
