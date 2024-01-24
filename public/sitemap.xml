@@ -9,17 +9,34 @@
 
 <url>
   <loc>https://www.ranki.ai/</loc>
-  <lastmod>2023-05-11T01:38:30+00:00</lastmod>
+  <lastmod>2024-01-24T20:46:51+00:00</lastmod>
   <priority>1.00</priority>
 </url>
 <url>
-  <loc>https://www.ranki.ai/about</loc>
-  <lastmod>2023-05-11T01:38:30+00:00</lastmod>
+  <loc>https://www.ranki.ai/pricing</loc>
+  <lastmod>2024-01-24T20:46:51+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://www.ranki.ai/ranking</loc>
-  <lastmod>2023-05-11T01:38:30+00:00</lastmod>
+  <loc>https://www.ranki.ai/blog</loc>
+  <lastmod>2024-01-24T20:46:51+00:00</lastmod>
   <priority>0.80</priority>
 </url>
+<url>
+  <loc>https://www.ranki.ai/about</loc>
+  <lastmod>2024-01-24T20:46:51+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://www.ranki.ai/privacy</loc>
+  <lastmod>2024-01-24T20:46:51+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://www.ranki.ai/terms</loc>
+  <lastmod>2024-01-24T20:46:51+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+
+
 </urlset>
