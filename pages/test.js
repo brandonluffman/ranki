@@ -28,7 +28,7 @@ const test = () => {
       {/* <MultiStepForm /> */}
       {/* <Loading /> */}
       {/* <AddBlog /> */}
-      <AbsoluteLoading />
+      {/* <AbsoluteLoading /> */}
     </div>
     <Footer />
 </>

@@ -468,7 +468,7 @@ const toggleGenerateForm = () => {
 
         <div className='blog-metrics-container'>
                 <h2 className='blog-metrics-header'>SEO Score</h2>
-                <SmallGaugeChart score={30} />
+                <SmallGaugeChart score={10} />
                 <div className='blog-metrics-grid'>
                 <div className='blog-metrics-grid-item'>
                         <h6>Characters</h6>

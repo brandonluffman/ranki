@@ -16,7 +16,7 @@ const BlogPostSlug = () => {
   const { slug } = router.query;
   const [blog, setBlog] = useState([])
   const { user, logout } = useContext(UserContext);
-const [isAuthor, setIsAuthor] = useState(false)
+  const [isAuthor, setIsAuthor] = useState(false)
   useEffect(() => {
     // if (!user) {
     //     console.error("User not authenticated");
@@ -52,9 +52,9 @@ const [isAuthor, setIsAuthor] = useState(false)
 
   return ( 
     <>
-           <Head>  
-<title>RankiAI Blog | {blog && blog.title}</title>
-         <script
+    <Head>  
+    <title>RankiAI Blog | {blog && blog.title}</title>
+         {/* <script
            type="application/ld+json"
            dangerouslySetInnerHTML={{ __html: JSON.stringify({
                "@context": "https://schema.org",
@@ -62,25 +62,20 @@ const [isAuthor, setIsAuthor] = useState(false)
                "url": "https://www.phantomdm.com",
                "logo": "https://www.phantom.com/public/img.png"
              })}}
-         />
+         /> */}
          <meta name="description" content={blog.meta_description}/>
          <meta charSet="utf-8" />
          <meta name="robots" content="index, follow" />
          <meta name="viewport" content="width=device-width, initial-scale=1"/>
-         <link rel="icon" type="image/png" href="/img.png" alt="Favicon" />
-         <link rel="apple-touch-icon" href="/img.png" />
-         <link rel="canonical" href="https://phantomdm.com/"/>
+         <link rel="icon" type="image/png" href="/favicon.png" alt="Favicon" />
+         <link rel="apple-touch-icon" href="/favicon.png" />
+         {blog.seo_url && <link rel="canonical" href={`https://rankiai.com/${blog.seo_url}`} />}
            <meta property="og:type" content="article" />
-           <meta property="og:title" content="TITLE OF YOUR POST OR PAGE" />
-           <meta property="og:description" content="DESCRIPTION OF PAGE CONTENT" />
-           <meta property="og:image" content="LINK TO THE IMAGE FILE" />
-           <meta property="og:url" content="PERMALINK" />
-           <meta property="og:site_name" content="SITE NAME" />
-           <meta name="twitter:title" content="TITLE OF POST OR PAGE" />
-           <meta name="twitter:description" content="DESCRIPTION OF PAGE CONTENT" />
-           <meta name="twitter:image" content="LINK TO IMAGE" />
-           <meta name="twitter:site" content="@USERNAME" />
-           <meta name="twitter:creator" content="@USERNAME" />
+           <meta property="og:title" content={`RankiAI Blog | ${blog ? blog.title : ''}`} />
+           <meta property="og:description" content={`RankiAI Blog | ${blog ? blog.meta_description : ''}`} />
+           <meta property="og:image" content={`${blog ? blog.images : ''}`} />
+           <meta property="og:url" content={`https://rankiai.com/${blog.seo_url}`} />
+           <meta property="og:site_name" content="RankiAI" />
      </Head>
       <Navbar />
       {slug && <BlogPost blog={blog} />}

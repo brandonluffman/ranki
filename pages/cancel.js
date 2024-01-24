@@ -7,7 +7,7 @@ const cancel = () => {
     <>
     <Navbar />
     <div className='cancel-container flexer'>
-        <p>Unfortuntely, your checkoout has been cancelled or did not go through. If you feel as if you got this message in error, please try again.</p>
+        <p>Unfortuntely, your checkout has been cancelled or did not go through. If you feel as if you got this message in error, please try again.</p>
     </div>
     <Footer />
     </>
