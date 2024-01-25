@@ -1,5 +1,7 @@
 import Head from 'next/head'
 import React from 'react'
+import Navbar from '../components/Navbar'
+import Footer from '../components/Footer'
 
 const privacy = () => {
   return (
@@ -29,8 +31,9 @@ const privacy = () => {
              })}}
          /> */}
         </Head>
-    <div>
-        <h2>Privacy Policy</h2>
+        <Navbar />
+    <div className='privacyterms-container'>
+        <h2 className='privacyterms-header'>Privacy Policy</h2>
 <p>Last updated: January 15, 2024</p>
 <p>This Privacy Policy describes Our policies and procedures on the collection, use and disclosure of Your information when You use the Service and tells You about Your privacy rights and how the law protects You.</p>
 <p>We use Your Personal data to provide and improve the Service. By using the Service, You agree to the collection and use of information in accordance with this Privacy Policy. This Privacy Policy has been created with the help of the <a href="https://www.termsfeed.com/privacy-policy-generator/" target="_blank">Privacy Policy Generator</a>.</p>
@@ -209,6 +212,7 @@ const privacy = () => {
 </li>
 </ul>
     </div>
+    <Footer />
     </>
   )
 }

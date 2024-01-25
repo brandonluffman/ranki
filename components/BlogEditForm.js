@@ -6,11 +6,14 @@ const BlogEditForm = ({ blog, toggle, submitForm }) => {
     const [title, setTitle] = useState('');
     const [content, setContent] = useState('');
     const [editedContent, setEditedContent] = useState('')
+    const [metaDescription, setMetaDescription] = useState('');
+
 
     useEffect(() => {
         if (blog) {
             setTitle(blog.title);
             setEditedContent(blog.content);
+            setMetaDescription(blog.meta_description);
             // console.log(blog)
         } else {
             // console.log('No Blog')
@@ -30,7 +33,7 @@ const BlogEditForm = ({ blog, toggle, submitForm }) => {
             <button className='close-btn blog-edit-close' type='button' onClick={toggle}><IoMdClose /></button>
             <form onSubmit={submitForm} className='blog-edit-form'>
                 <div className='antiflexer'>
-                <label className='generate-label'>Title</label>
+                <label className='generate-label blog-edit-title-label'>Title</label>
                 <input 
                     type='text' 
                     className='blog-edit-input' 
@@ -39,6 +42,19 @@ const BlogEditForm = ({ blog, toggle, submitForm }) => {
                     required 
                     value={title}
                     onChange={e => setTitle(e.target.value)}
+                />
+                </div>
+
+                <div className='antiflexer'>
+                <label className='generate-label blog-edit-title-label'>Meta Description</label>
+                <input 
+                    type='text' 
+                    className='blog-edit-input' 
+                    name='metaDescription' 
+                    placeholder='Meta Description' 
+                    required 
+                    value={metaDescription}
+                    onChange={e => setMetaDescription(e.target.value)}
                 />
                 </div>
                 {/* <textarea 

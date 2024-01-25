@@ -10,6 +10,7 @@ import Loading from './Loading';
 import { UserContext } from '../context/UserContext';
 import { useRouter } from 'next/router';
 import AbsoluteLoading from './AbsoluteLoading';
+import { BsThreeDotsVertical } from "react-icons/bs";
 
 const AppDash = ({ onRefresh }) => {
   const [apps, setApps] = useState([]);
@@ -20,7 +21,7 @@ const AppDash = ({ onRefresh }) => {
   const formRef = useRef(null);
   const { user } = useContext(UserContext);
   const router = useRouter(); // Get the router object
-
+  const [threeDot, setThreeDot] = useState(false)
 
   useEffect(() => {
       // console.log('User found, fetching user apps')
@@ -249,6 +250,7 @@ const AppDash = ({ onRefresh }) => {
     }
 };
 
+
   // apps && console.log(apps)
 
 
@@ -304,11 +306,21 @@ const AppDash = ({ onRefresh }) => {
                   <Link href={`/dashboard/${app.id}`}><button type='button' className='dash-button dashboard-button'>Dashboard</button></Link>
                 <br></br>
                 <button onClick={() => handleDeleteApp(app.id)} className='dash-button delete-button'>
+                  <IoMdClose />
+                  </button>
+
+
+                {/* <button onClick={() => handleToggle(app.id)} className='three-dot'><BsThreeDotsVertical /></button> */}
+                {/* {threeDot && 
+                <div className='editing-function-container'>
+                <button onClick={() => handleDeleteApp(app.id)} className='dash-button delete-button'>
                   <IoMdTrash />
                   </button>
                   <button onClick={() => toggleEditForm(app)} className='dash-button edit-button'>
                     <BiMessageEdit />
                   </button>
+                  </div>
+                  } */}
                   {editingApp && editingApp.id === app.id && (
                     <div className='edit-form'>
                       <EditForm appData={editingApp} onSubmit={editApp} />

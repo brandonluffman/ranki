@@ -33,7 +33,7 @@ const Dashboard = ({slugId}) => {
     const [seo, setSEO] = useState(null);
     const [score, setScore] = useState(null); // Example score
     const [score2, setScore2] = useState(null); // Example score
-    const [score3, setScore3] = useState(null); // Example score
+    const [score3, setScore3] = useState(97); // Example score
     const [editingApp, setEditingApp] = useState(true);
     const [appIntegrate, setAppIntegrate] = useState(false);
     const { user, login, logout } = useContext(UserContext);
@@ -43,7 +43,7 @@ const Dashboard = ({slugId}) => {
   const [visible, setVisible] = useState(false);
 
 
-
+  
 
 
     const handleAppSelection = (selectedApp) => {
@@ -175,7 +175,7 @@ const handleSubmit = async (event) => {
       console.error('Error updating app:', error);
     } else {
       localStorage.setItem('integratedApps', JSON.stringify(updatedApps));
-      toggleAppIntegrate()
+      // setAppIntegrate(false)
     }
   } catch (error) {
     console.error('Error updating app:', error);
@@ -331,7 +331,7 @@ const handleSubmit = async (event) => {
 
       {/* <AppDashAnalytics /> */}
  
-        {siteUrls ? (
+        {user?.email != 'brandonluff10@gmail.com' ? (
                <div className='dashboard-grid seo-dash-grid'>
                 {/* <Link  className='seo-dash-link' href={`/dashboard/seo/${slug}`}> */}
 
@@ -355,31 +355,31 @@ const handleSubmit = async (event) => {
           <h2>SEO</h2>
           <GaugeChartComponent id="gauge-chart3" percent={score3} width="300px" className='seo-dash-chart'/>
           </div>
-              <div className='analytics-integrate-fixed'>
+              <div className='analytics-integrate-fixed analytics-integrate-fixed-noglass'>
             <div className='anti-flexer'>
-          <h2 className='seo-integrate-header'>SEO has not been configured for your site, get started with a test.</h2>
-          {app ? <Link href={`/dashboard/seo/${app.id}`}><button type='button' className='integrate-btn btn btn-primary'>Test SEO</button></Link>:(<button type='button' className='integrate-btn btn btn-primary'>Test SEO</button>)}
+          {/* <h2 className='seo-integrate-header'>SEO has not been configured for your site, get started with a test.</h2>
+          {app ? <Link href={`/dashboard/seo/${app.id}`}><button type='button' className='integrate-btn btn btn-primary'>Test SEO</button></Link>:(<button type='button' className='integrate-btn btn btn-primary'>Test SEO</button>)} */}
           </div>
           </div>
           {/* <Link href={`/dashboard/technical/${app.id}`}> */}
-          <div className='dashboard-grid-item'>
+          {/* <div className='dashboard-grid-item'>
               <h2 className='dashboard-grid-header'>Technical SEO</h2>
               <GaugeChartComponent id="gauge-chart1" percent={score} width="250px" />
-          </div>
+          </div> */}
           {/* </Link> */}
           
         {/* <Link href={`/dashboard/onpage/${app.id}`}> */}
-          <div className='dashboard-grid-item'>
+          {/* <div className='dashboard-grid-item'>
           <h2 className='dashboard-grid-header'>On-Page SEO</h2>
           <GaugeChartComponent id="gauge-chart2" percent={score2} width="250px"/>
-          </div>
+          </div> */}
           {/* </Link>
             
           <Link href={`/dashboard/offpage/${app.id}`}> */}
-          <div className='dashboard-grid-item'>
+          {/* <div className='dashboard-grid-item'>
           <h2 className='dashboard-grid-header'>Off-Page SEO</h2>
           <GaugeChartComponent id="gauge-chart3" percent={score3} width="250px"/>
-          </div>
+          </div> */}
           {/* </Link> */}
           </div>
           
@@ -395,6 +395,11 @@ const handleSubmit = async (event) => {
 
        
       {user && <DashContent slug={slug} />}
+
+      <div className='keyword-dashboard'>
+        <h2>Keyword Analysis</h2>
+        
+      </div>
 
   </div>
     ):(

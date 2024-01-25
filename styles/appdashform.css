@@ -24,6 +24,10 @@
     border-radius: 10px;
     border:none;
     transition: 0.2s ease all;
+    padding: 0;
+    position: absolute;
+    top:0;
+    right: 5px;
 }
 
 .delete-button:hover {
@@ -40,7 +44,7 @@
 }
 
 .edit-button:hover {
-    color:white;
+    color:red;
 }
 
 .dashboard-button {

@@ -327,6 +327,8 @@
 
 .ranki-dash-img {
     box-shadow: 1px 1px 8px rgba(255,255,255,0.2);
+    border: 1px solid white;
+    padding: 0.1rem;
 }
 
 

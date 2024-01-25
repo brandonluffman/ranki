@@ -1,0 +1,12 @@
+.privacyterms-container {
+    padding:1rem;
+    padding-top:100px;
+}
+
+.privacyterms-container p, .privacyterms-container h1, .privacyterms-container h2, .privacyterms-container h3, .privacyterms-container h4 {
+    margin:1rem 0rem;
+}
+
+.privacyterms-header {
+    text-align: center;
+}

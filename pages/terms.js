@@ -1,5 +1,7 @@
 import Head from 'next/head'
 import React from 'react'
+import Navbar from '../components/Navbar'
+import Footer from '../components/Footer'
 
 const terms = () => {
   return (
@@ -29,9 +31,9 @@ const terms = () => {
              })}}
          /> */}
         </Head>
-  
-    <div>
-        <h2><strong>Terms and Conditions</strong></h2>
+         <Navbar />
+    <div className='privacyterms-container'>
+        <h2 className='privacyterms-header'><strong>Terms and Conditions</strong></h2>
 
     <p>Welcome to RankiAI!</p>
     
@@ -149,6 +151,7 @@ const terms = () => {
     
     <p>As long as the website and the information and services on the website are provided free of charge, we will not be liable for any loss or damage of any nature.</p>
     </div>
+    <Footer />
     </>
   )
 }
