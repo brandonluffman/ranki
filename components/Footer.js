@@ -13,6 +13,7 @@ const Footer = () => {
             <div className='footer-brand-container'>
               <div className='footer-brand-img'>
                   <img src='/chatbot.png' alt="Brand Logo" className='footer-brand-logo' loading="lazy" />
+                  <img src='/R.png' alt='Brand Logo' className='nav-logo footer-logo-brand'></img>
               </div>
               
               <div className='social-icons'>
@@ -47,7 +48,7 @@ const Footer = () => {
                 </div>
               </div>   
               <div className='copyright-footer'>
-                  <p className='footer-copyright-content'>Copyright © {new Date().getFullYear()} RankiAI - All Rights Reserved.</p>
+                  <p className='footer-copyright-content'>Copyright © {new Date().getFullYear()} <span className='ai-gradient'>RankiAI</span> - All Rights Reserved.</p>
               </div>
       </div>
     </footer>

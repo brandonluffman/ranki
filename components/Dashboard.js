@@ -5,7 +5,7 @@ import axios from 'axios';
 // import Navbar from '../../components/Navbar';
 // import Footer from '../../components/Footer';
 import { useRouter } from 'next/router';
-import { BsArrowLeft, BsCaretUp } from 'react-icons/bs';
+import { BsArrowLeft, BsArrowRight, BsCaretUp } from 'react-icons/bs';
 import { BiLinkExternal } from 'react-icons/bi';
 import {IoMdAdd, IoMdClose} from 'react-icons/io'
 import DashContent from './DashContent';
@@ -20,6 +20,8 @@ import appOptions from '../public/appOptions'
 import IntegrateDropdown from './IntegrateDropdown'
 import BlogDash from './BlogDash';
 import AddBlogOfficial from './AddBlogOfficial';
+import Keywords from './Keywords';
+import KeywordDash from './KeywordDash';
 
 
 const Dashboard = ({slugId}) => {
@@ -41,10 +43,8 @@ const Dashboard = ({slugId}) => {
     const domain = app ? 'https://' + app.domain: null;
     const [siteUrls, setSiteUrls] = useState([]);
   const [visible, setVisible] = useState(false);
-
-
-  
-
+  const [keywords, setKeywords] = useState(['testing', 'test2']);
+  const appLogo = '/chatbot.png'
 
     const handleAppSelection = (selectedApp) => {
       // Update the state or perform any action required when an app is selected
@@ -244,13 +244,16 @@ const handleSubmit = async (event) => {
           <div className='side-grid-item'><img src='' className='side-img'></img></div>
         </div>
       </div>
-      {/* {app && <Link href={app.domain} rel='noreferrer' target='_blank' className='appdash-external-btn'><BiLinkExternal /></Link>} */}
+      {app && <Link href={app.domain} rel='noreferrer' target='_blank' className='appdash-external-btn'><BiLinkExternal /></Link>}
       <div className='anti-flexer dash-flexer'>
-      {/* {app && <img src={appLogo} className='aprotonppdash-grid-img dashboard-grid-img' alt={`${app.name} logo`} />} */}
+      {app && <img src={appLogo} className='appdash-grid-img dashboard-grid-img' alt={`${app.name} logo`} />}
       {app && <h2 className='dashboard-header appdash-header'>{app.name}</h2>}
       {/* {app && <Link href={domain} rel='noreferrer' target="_blank" className='link header-link'><h6 className='appdash-header-domain'>{app.domain}</h6></Link>} */}
 
       </div>
+
+            <AppDashAnalytics />
+
       {integratedApps && integratedApps.length > 0 ? ( 
 
       <div className='appdash-health-tabs'>
@@ -329,61 +332,7 @@ const handleSubmit = async (event) => {
                    </div>
             } */}
 
-      {/* <AppDashAnalytics /> */}
  
-        {user?.email != 'brandonluff10@gmail.com' ? (
-               <div className='dashboard-grid seo-dash-grid'>
-                {/* <Link  className='seo-dash-link' href={`/dashboard/seo/${slug}`}> */}
-
-               <div className='seo-dash-item'>
-                <div className='seo-dash-glass'><div className='seo-dash-flexer flexer'><div className='anti-flexer'>
-                  <p className='seo-glass-p'>Upgrade your account to view SEO analytics</p>
-                  <Link href='/pricing'><button className='btn btn-primary btn-margin'>Upgrade Account</button></Link>
-                  </div></div></div>
-                  <div className='seo-dash-content-container'>
-               <h2>SEO</h2>
-               {app?.technical_analysis ? (<GaugeChartComponent id="gauge-chart3" percent={((app.technical_analysis['Truthy Values Count'])/16)*100} width="200px" className='seo-dash-chart'/>):(<GaugeChartComponent id="gauge-chart3" percent={score3} width="200px" className='seo-dash-chart'/>)}
-                </div>
-               {/* {app?.seo_score ? (<GaugeChartComponent id="gauge-chart3" percent={app.technical_analysis['Truthy Values Count']} width="300px" className='seo-dash-chart'/>):(<GaugeChartComponent id="gauge-chart3" percent={score3} width="300px" className='seo-dash-chart'/>)} */}
-               </div>
-               {/* </Link> */}
-            </div>
-   
-        ):(
-          <div className='dashboard-grid seo-dash-grid'>
-          <div className='seo-dash-item'>
-          <h2>SEO</h2>
-          <GaugeChartComponent id="gauge-chart3" percent={score3} width="300px" className='seo-dash-chart'/>
-          </div>
-              <div className='analytics-integrate-fixed analytics-integrate-fixed-noglass'>
-            <div className='anti-flexer'>
-          {/* <h2 className='seo-integrate-header'>SEO has not been configured for your site, get started with a test.</h2>
-          {app ? <Link href={`/dashboard/seo/${app.id}`}><button type='button' className='integrate-btn btn btn-primary'>Test SEO</button></Link>:(<button type='button' className='integrate-btn btn btn-primary'>Test SEO</button>)} */}
-          </div>
-          </div>
-          {/* <Link href={`/dashboard/technical/${app.id}`}> */}
-          {/* <div className='dashboard-grid-item'>
-              <h2 className='dashboard-grid-header'>Technical SEO</h2>
-              <GaugeChartComponent id="gauge-chart1" percent={score} width="250px" />
-          </div> */}
-          {/* </Link> */}
-          
-        {/* <Link href={`/dashboard/onpage/${app.id}`}> */}
-          {/* <div className='dashboard-grid-item'>
-          <h2 className='dashboard-grid-header'>On-Page SEO</h2>
-          <GaugeChartComponent id="gauge-chart2" percent={score2} width="250px"/>
-          </div> */}
-          {/* </Link>
-            
-          <Link href={`/dashboard/offpage/${app.id}`}> */}
-          {/* <div className='dashboard-grid-item'>
-          <h2 className='dashboard-grid-header'>Off-Page SEO</h2>
-          <GaugeChartComponent id="gauge-chart3" percent={score3} width="250px"/>
-          </div> */}
-          {/* </Link> */}
-          </div>
-          
-        )}
 
       {/* <div className='generate-banner'>
           <h2>Generate Article</h2>
@@ -394,12 +343,17 @@ const handleSubmit = async (event) => {
           {/* {user.isPaid ? :<Link href='/pricing'><button className='btn btn-primary generate-btn'></button></Link>} */}
 
        
-      {user && <DashContent slug={slug} />}
+      {user && <DashContent slug={slug} length={3} />}
 
-      <div className='keyword-dashboard'>
-        <h2>Keyword Analysis</h2>
-        
-      </div>
+      {/* <div className='keyword-dashboard'>
+        {keywords.length > 0 ? (
+              <KeywordDash length={3} />
+        ):(
+          <div>Nada</div>
+        )}
+                  <Link href={`/keyword/${slug}`} className='dark-link'>View All Keywords <BsArrowRight className='arrow-right' /></Link>
+
+      </div> */}
 
   </div>
     ):(
@@ -487,3 +441,69 @@ export default Dashboard
     //   console.log('Found the cached app')
     //     setApp(JSON.parse(cachedApp));
     // } else {
+
+
+
+
+
+
+
+    /* SEO DASHBOARD */
+
+
+//     {user?.email != 'brandonluff10@gmail.com' ? (
+//       <div className='dashboard-grid seo-dash-grid'>
+//        {/* <Link  className='seo-dash-link' href={`/dashboard/seo/${slug}`}> */}
+
+//       <div className='seo-dash-item'>
+//        <div className='seo-dash-glass'><div className='seo-dash-flexer flexer'><div className='anti-flexer'>
+//          <p className='seo-glass-p'>Upgrade your account to view SEO analytics</p>
+//          <Link href='/pricing'><button className='btn btn-primary btn-margin'>Upgrade Account</button></Link>
+//          </div></div></div>
+//          <div className='seo-dash-content-container'>
+//       <h2>SEO</h2>
+//       {app?.technical_analysis ? (<GaugeChartComponent id="gauge-chart3" percent={((app.technical_analysis['Truthy Values Count'])/16)*100} width="200px" className='seo-dash-chart'/>):(<GaugeChartComponent id="gauge-chart3" percent={score3} width="200px" className='seo-dash-chart'/>)}
+//        </div>
+//       {/* {app?.seo_score ? (<GaugeChartComponent id="gauge-chart3" percent={app.technical_analysis['Truthy Values Count']} width="300px" className='seo-dash-chart'/>):(<GaugeChartComponent id="gauge-chart3" percent={score3} width="300px" className='seo-dash-chart'/>)} */}
+//       </div>
+//       {/* </Link> */}
+//    </div>
+
+// ):(
+//  <div className='dashboard-grid seo-dash-grid'>
+//                    <Link  className='seo-dash-link' href={`/dashboard/seo/${slug}`}>
+
+//  <div className='seo-dash-item'>
+//  <h2>SEO</h2>
+//  <GaugeChartComponent id="gauge-chart3" percent={score3} width="300px" className='seo-dash-chart'/>
+//  </div>
+//      <div className='analytics-integrate-fixed analytics-integrate-fixed-noglass'>
+//    <div className='anti-flexer'>
+//  {/* <h2 className='seo-integrate-header'>SEO has not been configured for your site, get started with a test.</h2>
+//  {app ? <Link href={`/dashboard/seo/${app.id}`}><button type='button' className='integrate-btn btn btn-primary'>Test SEO</button></Link>:(<button type='button' className='integrate-btn btn btn-primary'>Test SEO</button>)} */}
+//  </div>
+//  </div>
+//  {/* <Link href={`/dashboard/technical/${app.id}`}> */}
+//  {/* <div className='dashboard-grid-item'>
+//      <h2 className='dashboard-grid-header'>Technical SEO</h2>
+//      <GaugeChartComponent id="gauge-chart1" percent={score} width="250px" />
+//  </div> */}
+//  {/* </Link> */}
+ 
+// {/* <Link href={`/dashboard/onpage/${app.id}`}> */}
+//  {/* <div className='dashboard-grid-item'>
+//  <h2 className='dashboard-grid-header'>On-Page SEO</h2>
+//  <GaugeChartComponent id="gauge-chart2" percent={score2} width="250px"/>
+//  </div> */}
+//  {/* </Link>
+   
+//  <Link href={`/dashboard/offpage/${app.id}`}> */}
+//  {/* <div className='dashboard-grid-item'>
+//  <h2 className='dashboard-grid-header'>Off-Page SEO</h2>
+//  <GaugeChartComponent id="gauge-chart3" percent={score3} width="250px"/>
+//  </div> */}
+//  {/* </Link> */}
+//  </Link>
+//  </div>
+ 
+// )}

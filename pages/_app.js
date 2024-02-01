@@ -31,6 +31,7 @@ import '../styles/generate.css';
 import '../styles/account.css';
 import '../styles/cancel.css';
 import '../styles/privacyterms.css';
+import '../styles/keywords.css';
 
 import NProgress from 'nprogress';
 import "nprogress/nprogress.css";

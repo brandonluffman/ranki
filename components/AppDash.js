@@ -1,4 +1,4 @@
-import React, { useEffect, useContext, useState, useRef } from 'react';
+import React, { useEffect, useContext, useState, useRef, useCallback } from 'react';
 import Link from 'next/link';
 import axios from 'axios';
 import AppForm from './AppDashForm';
@@ -24,43 +24,42 @@ const AppDash = ({ onRefresh }) => {
   const [threeDot, setThreeDot] = useState(false)
 
   useEffect(() => {
-      // console.log('User found, fetching user apps')
+
+    const fetchUserApps = async () => {
+        setIsLoading(true); // set loading to true when the fetch starts
+        try {
+          const { data: appsData, error } = await supabase
+            .from('apps')
+            .select('*')
+            .eq('user_id', user.id);
+      
+          if (error) {
+            throw error;
+          }
+        
+          setApps(appsData);
+        } catch (error) {
+          console.error("Error fetching apps:", error);
+          // you might want to show some error message to the user here
+        } finally {
+          setIsLoading(false); // set loading to false once the fetch is complete
+        }
+      };
+
+
+
+    if (user) {
       fetchUserApps();
-  }, []);
-
-  const fetchUserApps = async () => {
-    if (!user) {
-      console.error("User not authenticated");
-      router.push('/login')
-      return;
+    } else {
+      console.log('no user')
     }
-  
-    // setIsLoading(true);
-    try {
-      console.log('Made it v1')
-
-      const { data: appsData, error } = await supabase
-        .from('apps')
-        .select('*')
-        .eq('user_id', user.id);
-
-      if (error) {
-        throw error;
-      }
-      console.log('Made it')
-  
-      setApps(appsData);
-    } catch (error) {
-      console.error("Error fetching apps:", error);
-    } finally {
-      setIsLoading(false);
-    }
-  };
-  
-  
+  }, [user, setIsLoading]);
 
 
-      // localStorage.setItem(`userApps_${user.id}`, JSON.stringify(appsData));
+
+
+
+  
 
   const toggleAddForm = () => {
     setAddingApp(!addingApp);
@@ -76,7 +75,7 @@ const AppDash = ({ onRefresh }) => {
   
 
 
-  const addApp = async (name, description, domain) => {
+  const addApp = async (name, description, domain, industry, target_audience, competitors, current_targeted_keywords, future_keyword_interests, seo_goals, current_content_type, content_objectives) => {
     if (!user) {
       console.error("User not authenticated");
       return null;
@@ -117,7 +116,7 @@ const AppDash = ({ onRefresh }) => {
   
       const insertResponse = await supabase
         .from('apps')
-        .insert([{ user_id: user.id, name, description, domain }])
+        .insert([{ user_id: user.id, name, description, domain, industry, target_audience, competitors, current_targeted_keywords, future_keyword_interests, seo_goals, current_content_type, content_objectives }])
         .single();
   
       if (insertResponse.error) throw insertResponse.error;
@@ -146,8 +145,17 @@ const AppDash = ({ onRefresh }) => {
     const name = event.target.name.value;
     const description = event.target.description.value;
     const domain = event.target.domain.value;
+    const industry = event.target.industry.value;
+    const target_audience = event.target.target_audience.value;
+    const competitors = event.target.competitors.value;
+    const current_targeted_keywords = event.target.current_targeted_keywords.value;
+    const future_keyword_interests = event.target.future_keyword_interests.value;
+    const seo_goals = event.target.seo_goals.value;
+    const current_content_type = event.target.current_content_type.value;
+    const content_objectives = event.target.content_objectives.value;
+
     // console.log('Finding New App......')
-    const newApp = await addApp(name, description, domain);
+    const newApp = await addApp(name, description, domain, industry, target_audience, competitors, current_targeted_keywords, future_keyword_interests, seo_goals, current_content_type, content_objectives);
     // console.log('Found New App!')
     if (newApp) {
       // console.log('Made it through the loop')
@@ -274,7 +282,7 @@ const AppDash = ({ onRefresh }) => {
                     {/* <div className='login-avatar-div'>
                         <img src='/avatar.png' width='100'></img>
                         </div> */}
-                    <form onSubmit={handleSubmit} ref={formRef}>
+                    {/* <form onSubmit={handleSubmit} ref={formRef}>
                         <div className='login-email-div'>
                     <input type="text" name="name" placeholder="App Name" className='login-input' required />
                     </div>
@@ -288,7 +296,52 @@ const AppDash = ({ onRefresh }) => {
                     </div>
                     <button type="submit" className='login-button'>Add App</button>
                     {isLoading && <AbsoluteLoading />}
+                </form> */}
+
+              
+                    <form onSubmit={handleSubmit} ref={formRef}>
+                        <div className='login-email-div'>
+                          <input type="text" name="name" placeholder="App Name" className='login-input' required />
+                        </div>
+                        <div className='login-email-div'>
+                          <textarea name="description" placeholder="Describe your business (include main products/services)" className='login-input textarea-input'></textarea>
+                        </div>      
+                          <div className='login-email-div'>
+                          <input type="text" name="industry" placeholder="Business Industry" className='login-input' required />
+                        </div>  
+                        <div className='login-email-div'>
+                          <textarea name="target_audience" placeholder="Who is your target audience? (Be as descriptive in regards to demographics)" className='login-input textarea-input'></textarea>
+                        </div>  
+                        <div className='login-email-div'>
+                          <textarea name="competitors" placeholder="Who are your main competitors?" className='login-input textarea-input'></textarea>
+                        </div> 
+                        <div className='login-email-div'>
+                          <textarea name="current_targeted_keywords" placeholder="What keywords are you currently targeting?" className='login-input textarea-input'></textarea>
+                        </div> 
+                        <div className='login-email-div'>
+                          <textarea name="future_keyword_interests" placeholder="Which would you like to target?" className='login-input textarea-input'></textarea>
+                        </div> 
+                        <div className='login-email-div'>
+                          <textarea name="seo_goals" placeholder="What are your SEO goals? (Increase Traffic, Improve Ranking, etc..)" className='login-input textarea-input'></textarea>
+                        </div>
+                          <div className='login-email-div'>
+                          <textarea name="current_content_type" placeholder="What content have you already published?" className='login-input textarea-input'></textarea>
+                        </div>
+                        <div className='login-email-div'>
+                          <textarea name="content_objectives" placeholder="What are your objectives? (Brand awareness, leads, sales)" className='login-input textarea-input'></textarea>
+                        </div>
+                        <div className='login-email-div domain-div'>
+                          <input type="text" name="domain" placeholder="Domain" className='login-input domain-input' />
+                        </div>
+
+
+
+
+                    <button type="submit" className='login-button'>Add App</button>
+                    {isLoading && <AbsoluteLoading />}
                 </form>
+                
+                
                 {/* {showAlert && <div className="success-alert">App created successfully!</div>} */}
                 <button onClick={toggleAddForm} className='delete-button close-add-form-button'>
                         <IoMdClose />

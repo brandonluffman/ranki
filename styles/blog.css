@@ -11,6 +11,7 @@
 }
 .blog-dashcontent-container {
     text-align: center;
+    position: relative;
 }
 .blog-dashboard-addform-container {
     background-color: white;
@@ -91,21 +92,33 @@
 .blog-metrics-container {
     width: 95%;
     /* display: flex; */
-    padding:1rem;
+    padding:1rem 0.5rem;
     margin:0 auto;
+    border: 1px solid  rgba(200,200,200, 0.2);
+    border-radius: 20px;
+    margin-bottom: 1rem;
 }
 
+.blog-metrics-header {
+    text-align: left;
+    font-size: 1.2rem;
+    display:flex;
+    align-items: center;
+}
+
+.info-icon {
+    margin-left:0.5rem;
+}
 .blog-metrics-grid {
-    display: grid;
-    grid-template-columns: repeat(2,2fr);
+    display: flex;
+    /* grid-template-columns: repeat(4,4fr); */
     /* display: flex; */
     /* margin:2rem 0rem; */
     /* gap:40px; */
-    border-radius: 20px;
-    background-color: var(--primary);
-    border-radius: 20px;
-    border:1px solid white;
-
+    /* background-color: var(--primary); */
+    /* border:1px solid white; */
+    border-top:1px solid rgb(40, 40, 40);
+    margin-top:2rem;
 }
 
 .blog-metrics-grid h6 {
@@ -113,12 +126,29 @@
 }
 
 .blog-metrics-grid-item {
-    padding: 2rem 1rem;
-
+    padding: 1rem 0rem;
+    width: 25%;
+    /* border: 1px solid white; */
 
 }
 
+.blog-metrics-grid-item h6 {
+    color:rgb(200,200,200);
+    font-weight: 300;
+}
 
+.blog-metrics-grid-item p:first-of-type {
+    /* color:var(--primary); */
+    font-weight: 800;
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+.blog-metrics-grid-item .blog-metrics-range {
+    font-size: 1rem;
+    color:rgb(200,200,200);
+
+}
 .dashboard-addform-input {
     width: 90%;
     border: none;
@@ -137,13 +167,18 @@
 
 .dash-content-grid-item .is-draft {
     position: absolute;
-    right: 5px;
+    left: 5px;
     top:5px;
-    font-size: 1.2rem;
+    font-size: 1rem;
     background-color: white;
     border-radius: 20px;
     padding:5px 10px;
     color:var(--primary)
+}
+
+.dash-content-grid-item .draft-published {
+    background-color: var(--primary);
+    color:white;
 }
 
 .blog-delete-btn {
@@ -294,13 +329,17 @@
 }
 
 .searchresult h2 {
-    font-size: 30px;
+    font-size: 24px;
     line-height: 30px;
     font-weight: normal;
     /* color: rgb(29, 1, 189); */
     margin: 1rem 0rem;
     color:#1e90ff;
 
+}
+
+.searchresult p {
+    font-size: 18px;
 }
 
 .searchresult a {
@@ -400,9 +439,13 @@
 }
 
 .gpt-label {
-    font-size: 2rem;
+    font-size: 1.25rem;
 margin-bottom: 1rem;
 font-weight: 300;
+color:rgb(200, 200, 200);
+text-align: left;
+margin-left: 2rem;
+
 }
 
 .app-selection {

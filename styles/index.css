@@ -67,6 +67,7 @@
 
 .home-landing-img {
     width:30%;
+    box-shadow: 1px 1px 8px rgba(0,0,0,0.2);
 }
 
 
@@ -157,7 +158,7 @@
 }
 
 .about-landing-banner {
-    background-color: var(--primary);
+    background: linear-gradient(to right, #8843fe, #a680ff);
     padding:2rem;
     color:white;
     min-height: 200px;
@@ -168,7 +169,7 @@
     margin:0rem 1rem;
     letter-spacing: -0.1vw;
     line-height: 110%;
-    border:1px solid white;
+    border:1px solid var(--dark-blue);
     padding-top: 1rem;
 }
 
@@ -322,7 +323,7 @@
     width: 50%;
     margin:0 auto;
     margin-bottom:4rem;
-
+    color: var(--light-grey);
 }
 
 .ranki-dash-img {
@@ -375,9 +376,10 @@
     justify-content: center;
     margin:0rem 2rem;
     margin-bottom: 4rem;
-    box-shadow: 1px 1px 8px rgba(255,255,255,0.2);
-    border:2px solid var(--primary);
-    background: linear-gradient(20deg, var(--secondary), var(--primary));
+    box-shadow: 1px 1px 8px #00000033;
+    border:2px solid var(--dark-blue);
+    /* background: linear-gradient(20deg, var(--secondary), var(--primary)); */
+    background: linear-gradient(to right, #8843fe, #a680ff);
 
 
 }

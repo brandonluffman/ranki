@@ -53,7 +53,7 @@ export default function Home(){
           
           <div className='home-landing-container flexer'>
             <div className='antiflexer'>
-            <h1 className='home-landing-header'><b className='italic'>Automate</b> Content Creation & <b className='italic'>Boost</b> Organic Traffic with <span className='primary'>RankiAI</span></h1>
+            <h1 className='home-landing-header'><b className='italic'>Automate</b> Content Creation & <b className='italic'>Boost</b> Organic Traffic with <span className='ai-gradient2'>RankiAI</span></h1>
             <p className='home-landing-p'>Generate SEO-Optimized Content on cruise control, while focusing on the important parts of your business.</p>
             <div className='home-landing-btn-div'>
                 <Link href='/dashboard'><button className='btn btn-primary home-landing-btn'>Get Started</button></Link>
@@ -80,7 +80,7 @@ export default function Home(){
             <h2>Getting your website ranked on Google is a pain in the a**.</h2>
             <h2 className='about-landing-header'>So we did something about it.</h2> */}
 
-            <h2 className='about-landing-header'>Your own personalized AI Article Writer focused on <span className='primary'>SEO Optimization</span></h2>
+            <h2 className='about-landing-header'>Your own personalized AI Article Writer focused on <span className='ai-gradient2'>SEO Optimization</span></h2>
             <p className='about-landing-p'>Research, write, optimize in a click. Use Ranki AI to produce top-quality, well-optimized articles in 20 minutes!</p>
             <div className='about-landing-banners flexer'>
               <div className='about-landing-banner'>
@@ -157,14 +157,14 @@ export default function Home(){
 
 
         <div className='why-landing-container'>
-          <h2 className='why-landing-header'>In a world where nearly <b className='italic primary'>5.5B</b> people are searching daily, be the business they choose.</h2>
+          <h2 className='why-landing-header'>In a world where nearly <b className='italic ai-gradient bold'>5.5 Billion</b> people are searching <span className='italic'>daily</span>, be the business they <span className='italic'>choose</span>.</h2>
           <h3 className='why-landing-subheader'>Whether your business is:</h3>
           <div className='flexer why-banner-grid'>
           <div className='why-banner'><div className='antiflexer'><MdLocationPin className='why-banner-icon'/><h3 className='why-banner-header'>Local</h3></div></div>
           <div className='why-banner'><div className='antiflexer'><AiOutlineGlobal className='why-banner-icon'/><h3 className='why-banner-header'>Global</h3></div></div>
           <div className='why-banner'><div className='antiflexer'><HiOutlineStatusOnline className='why-banner-icon'/><h3 className='why-banner-header'>Online</h3></div></div>
           </div>
-          <h3 className='why-landing-header why-header-2'><span className='primary'>Ranki</span> has your SEO covered 🤝</h3>
+          <h3 className='why-landing-header why-header-2'><span className='ai-gradient'>RankiAI</span> has your SEO covered 🤝</h3>
           {/* <div className='why-landing-flexer'>
           <div className='why-img-container'>
               <img src='/seo-graphic.png' width='400'/>

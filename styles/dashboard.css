@@ -343,20 +343,20 @@
     background-color: rgb(220,220,220);
     gap:10px;
     border-radius: 10px;
-    padding:0rem 1rem;
+    padding:1rem 1rem;
     margin:0rem 2rem 2rem 2rem;
     box-shadow: inset 1px 1px 8px rgba(0, 0, 0, 0.8);
     position: relative;
 }
 
 .appdash-analytics-tab {
-    box-shadow: 1px 1px 8px rgba(255,255,255,0.2);
+    box-shadow: 1px 1px 8px rgba(0, 0, 0, 0.1);
     border-radius:10px;
-    margin:1rem 0rem;
+    margin:0rem 0rem;
     padding:1rem;
-    background-color: var(--dark-blue);
+    background-color: rgb(240, 240, 240);
     transition: 0.2s ease all;
-    color: white;
+    color: black;
     position: relative;
 }
 .appdash-analytics-tab:nth-of-type(1) {
@@ -380,6 +380,26 @@
     padding:0rem 1rem;
     margin:0rem 2rem 2rem 2rem;
     position: relative;
+}
+
+.analytics-icon-container {
+    background: linear-gradient(to right, #8843fe, #8feaff);
+    padding:0.75rem 1rem;
+    /* position: absolute; */
+    /* right: 5px;
+    top:5px; */
+    border-radius: 20px;
+    width: 25%;
+    margin: 0 auto;
+    margin-bottom: 1rem;
+    width: auto;
+    
+}
+.analytics-icon {
+    color: white;
+    fill: white;
+    stroke:white;
+    font-size: 1.5rem;
 }
 
 .analytics-integrate-fixed {
@@ -456,28 +476,40 @@
 }
 .appdash-analytics-tab > h6 {
     margin-bottom: 0rem;
-    min-height: 50px;
+    /* min-height: 50px; */
 }
 .appdash-analytics-tab > h6:nth-of-type(2) {
     font-size: 3rem;
     margin:1rem 0rem;
+    font-weight: 800;
+    font-family: sans-serif;
+    letter-spacing: -0.1vw;
+    position:relative;
+}
+
+.appdash-analytics-tab > h6:nth-of-type(1) {
+    color:rgb(50, 50, 50);
 }
 .analytics-flexer {
     position: absolute;
-    top:55%;
-    right:10%;
+    bottom:0;
+    top:0;
+    right:5%;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
 .analytics-flexer > p {
-    font-size: 1.5rem;
+    font-size: 1.2rem;
+    font-weight: 600;
+    fill: rgb(53, 255, 53);
+    letter-spacing: -0.15vw;
+    font-family: sans-serif;
 }
 
 .caret-icon {
-    color: green;
-    fill: green;
+    fill: rgb(53, 255, 53);
     font-size: 1.5rem;
 }
 
@@ -800,9 +832,19 @@
     min-height: 200px;
     margin:0rem 2rem;
     border-radius: 20px;
+    padding:1rem;
      
 }
 
+.keyword-dashboard h2 {
+    letter-spacing: -0.15rem;
+}
+
+.blog-dash-score {
+    position: absolute;
+    top:10px;
+    right:10px;
+}
 @media (max-width: 900px) {
     .dashboard-grid {
         grid-template-columns: repeat(2,2fr);

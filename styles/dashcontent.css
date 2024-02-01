@@ -19,6 +19,7 @@
     background-color: var(--dark-blue);
     border-radius: 20px;
     color:white;
+    padding-top:3rem;;
 }
 
 .dash-content-grid-item:hover {
@@ -60,15 +61,16 @@
 
 .add-content-container {
     position: absolute;
-    top:20px;
-    right:50px;
-    background-color: var(--dark-blue);
+    top:10px;
+    right:20px;
+    background-color: var(--primary);
     border:none;
     color: white;
-    font-size: 2rem;
+    font-size: 1.5rem;
     border-radius: 10px;
     box-shadow: 1px 1px 8px rgba(255,255,255,0.2);
-    padding:0.6rem 0.75rem 0.2rem 0.75rem;
+    padding:0.5rem;
+    padding-bottom: 0.25rem;
     margin:0;
     cursor: pointer;
     transition: 0.2s ease all;
@@ -78,7 +80,7 @@
     transform: scale(1.01);
     box-shadow: 1px 1px 14px rgba(255,255,255,0.2);
     background-color: white;
-    color:var(--dark-blue);
+    color:var(--primary);
 }
 
 .dash-content-grid-item {
@@ -106,6 +108,29 @@
 .sanitized-content-div {
     padding-bottom: 50px;
 }
+
+.dashboard-content-suggestions {
+    margin-bottom: 2rem;
+}
+
+.dash-content-link {
+    transition: 0.2s ease all;
+}
+
+.dash-content-link:hover {
+    color:var(--light-blue);
+    transform: scale(1.01);
+}
+
+.no-suggestions {
+    margin-bottom: 2rem;
+}
+
+.grid-item-suggestion {
+    padding: 2rem;
+}
+
+
 @media (max-width: 500px) {
 
     .dashboard-content-container {

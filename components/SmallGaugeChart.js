@@ -35,27 +35,25 @@ const SmallGaugeChart = ({ id, percent, width }) => {
 id={id}
   value={percent}
   type="radial"
-  labels={{
-    tickLabels: {
-      type: "inner",
-      ticks: [
-        { value: 20 },
-        { value: 40 },
-        { value: 60 },
-        { value: 80 },
-        { value: 100 }
-      ]
-    }
-  }}
+  // labels={{
+  //   tickLabels: {
+  //     type: "inner",
+  //     ticks: [
+  //       { value: 0 },
+  //       { value: 100 }
+  //     ]
+  //   }
+  // }}
   arc={{
     colorArray: colorSet, // Using colorSet based on percent
-    subArcs: [{limit: 10}, {limit: 30}, {}, {}, {}],
+    subArcs: [{}, {}, {}],
     padding: 0.02,
     width: 0.3
   }}
   pointer={{
     elastic: true,
-    animationDelay: 0
+    animationDelay: 0,
+    color:'white'
   }}
 />
         </div>

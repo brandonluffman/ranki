@@ -3,6 +3,25 @@
     display: flex;
 }
 
+.generate-form {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.generate-custom-form {
+    width: 50%;
+    border-right: 1px solid rgb(50, 50, 50);
+}
+
+.generate-suggestions-container {
+    width: 50%;
+}
+
+.generate-suggestions {
+    padding:1rem;
+    padding-top:50px;
+}
+
 .generate-form-data {
     width: 60%;
 
@@ -10,13 +29,51 @@
 
 .generate-metrics-container {
     width: 40%;
-    display: block;
+    display:block;
 }
 
+.generate-suggestion-container {
+    padding:0.5rem 1rem;
+}
 
+.generate-credits-container {
+    position:absolute;
+    right:20px;
+    background-color: white;
+    color:var(--dark-blue);
+    padding:0.75rem 2rem;
+    border-radius: 20px;
+}
+
+.ai-suggestion-generate {
+    padding:0.5rem 0.75rem;
+    border-radius: 5px;
+    margin:1rem auto;
+    margin-left: auto;
+
+}
+
+.generate-credits-container p {
+    font-weight: 600;
+    letter-spacing: -0.02rem;
+    display:flex;
+    align-items: center;
+}
+
+.credits {
+    font-weight: 800;
+    font-size: 2rem;
+    margin-left: 1rem;
+}
+
+.credits-red {
+    color:red;
+}
 .generate-header {
     margin-bottom: 2rem;
-    color:var(--primary);
+    /* color:var(--primary); */
+    line-height: 5rem;
+    
 }
 .generate-banner {
     background-color: var(--primary);
@@ -131,7 +188,7 @@
 .keyword-render-container {
     padding:1rem;
     background-color: var(--primary);
-    width: 90%;
+    width: 85%;
     margin:0 auto;
     color:white;
     font-size: 1.5rem;
@@ -215,11 +272,20 @@
 .no-gpt-btn {
     margin-bottom: 2rem;
 }
+
+.save-draft-btn {
+    margin:0rem 1rem;
+    min-width: 200px;
+}
+
+.generate-content-container-header {
+    margin: 2rem 0rem;
+}
 @media (max-width: 900px) {
     .generate-header {
         /* font-size: 2.5rem; */
         
-        line-height: 9vh;
+        /* line-height: 9vh; */
     } 
 }
 
@@ -230,7 +296,7 @@
     }
     .generate-header {
         font-size: 2.5rem;
-        line-height: 7vh;
+        /* line-height: 7vh; */
     }
 
     .generate-container {

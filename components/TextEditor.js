@@ -45,6 +45,16 @@ const TextEditor = ({ value, onChange }) => {
     const handleChange = (content, delta, source, editor) => {
       onChange(editor.getHTML()); // or content if you want to pass raw content
     };
+
+    // const modules = {
+    //   toolbar: [
+    //     // Define your toolbar options here
+    //   ],
+    //   // Enable browser's spell check
+    //   clipboard: {
+    //     matchVisual: false,
+    //   }
+    // };
   
     return (
       <QuillNoSSRWrapper 
@@ -54,6 +64,8 @@ const TextEditor = ({ value, onChange }) => {
         value={value} 
         className='text-editor'
         onChange={handleChange} // Use the modified handler
+        spellCheck={true} // Enable spellCheck
+
       />
     );
   };

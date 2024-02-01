@@ -1,8 +1,16 @@
 import React, {useState} from 'react'
 import { FaCaretUp } from 'react-icons/fa'
+import { FaUser } from "react-icons/fa";
+import { FaUserCheck } from "react-icons/fa";
+import { CiViewBoard } from "react-icons/ci";
+import { FaShieldAlt } from "react-icons/fa";
+import { FaMedal } from "react-icons/fa";
+import { CiLink } from "react-icons/ci";
+import { MdAdsClick } from "react-icons/md";
+import { SiConvertio } from "react-icons/si";
 
 const AppDashAnalytics = () => {
-  const [googleAnalytic, setGoogleAnalytic] = useState(false);
+  const [googleAnalytic, setGoogleAnalytic] = useState(true);
 
 
   return (
@@ -13,34 +21,61 @@ const AppDashAnalytics = () => {
               <img src='/google-analytics-long.png' width='50' className='appdash-analytics-img'/>
             </div> */}
     <div className='appdash-analytics-tab'>
+      <div className='analytics-icon-container'>
+      <FaUser className='analytics-icon' />
+        </div>
     <h6>Users</h6>
-    <h6>605</h6>
-    <div className='flexer analytics-flexer'><FaCaretUp className='caret-icon'/><p>25</p></div>
+    <h6>605 <div className='flexer analytics-flexer'><FaCaretUp className='caret-icon'/><p>256</p></div></h6>
   </div>
   <div className='appdash-analytics-tab'>
+  <div className='analytics-icon-container'>
+        <FaUserCheck className='analytics-icon' />
+        </div>
     <h6>Unique Users</h6>
-    <h6>284</h6>
-    <div className='flexer analytics-flexer'><FaCaretUp className='caret-icon'/><p>25</p></div>
+    <h6>284 <div className='flexer analytics-flexer'><FaCaretUp className='caret-icon'/><p>103</p></div></h6>
   </div>
   <div className='appdash-analytics-tab'>
+  <div className='analytics-icon-container'>
+  <CiViewBoard className='analytics-icon' />
+        </div>
     <h6>Website Views</h6>
-    <h6>10,045</h6>
-    <div className='flexer analytics-flexer'><FaCaretUp className='caret-icon'/><p>25</p></div>
+    <h6>10,045 <div className='flexer analytics-flexer'><FaCaretUp className='caret-icon'/><p>1,279</p></div></h6>
+   
   </div>
   <div className='appdash-analytics-tab'>
-    <h6>Sessions</h6>
-    <h6>8,892</h6>
-    <div className='flexer analytics-flexer'><FaCaretUp className='caret-icon'/><p>25</p></div>
+  <div className='analytics-icon-container'>
+  <FaShieldAlt className='analytics-icon' />
+        </div>
+    <h6>Domain Authority</h6>
+    <h6>82 <div className='flexer analytics-flexer'><FaCaretUp className='caret-icon'/><p>3</p></div></h6>
   </div>
   <div className='appdash-analytics-tab'>
+  <div className='analytics-icon-container'>
+  <FaMedal className='analytics-icon' />
+        </div>
     <h6>Google Rankings</h6>
-    <h6>23</h6>
-    <div className='flexer analytics-flexer'><FaCaretUp className='caret-icon'/><p>25</p></div>
+    <h6>23 <div className='flexer analytics-flexer'><FaCaretUp className='caret-icon'/><p>5</p></div></h6>
   </div>
   <div className='appdash-analytics-tab'>
+  <div className='analytics-icon-container'>
+  <CiLink className='analytics-icon' />
+        </div>
     <h6>Backlinks</h6>
-    <h6>1,283</h6>
-    <div className='flexer analytics-flexer'><FaCaretUp className='caret-icon'/><p>25</p></div>
+    <h6>1,283 <div className='flexer analytics-flexer'><FaCaretUp className='caret-icon'/><p>183</p></div></h6>
+  </div>
+  <div className='appdash-analytics-tab'>
+  <div className='analytics-icon-container'>
+  <MdAdsClick className='analytics-icon' />
+        </div>
+    <h6>Click-Through Rate</h6>
+    <h6>23% <div className='flexer analytics-flexer'><FaCaretUp className='caret-icon'/><p>2%</p></div></h6>
+  </div>
+  <div className='appdash-analytics-tab'>
+  <div className='analytics-icon-container'>
+  <SiConvertio className='analytics-icon' />
+        </div>
+    <h6>Conversion Rate</h6>
+    <h6>3.5% <div className='flexer analytics-flexer'><FaCaretUp className='caret-icon'/><p>.02%</p></div></h6>
   </div>
   </div>
       ): (
