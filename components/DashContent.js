@@ -248,6 +248,8 @@ const DashContent = ({ slug, length }) => {
           <button type='submit' className='dashboard-addform-btn btn btn-primary'>Add Blog</button>
       </form>
       </div> */}
+
+      
       <div className='dashboard-content-container'>
       {/* <Link href={`/generate/${slug}`}><button type='submit' className='add-content-container'><IoMdAdd /></button></Link> */}
 
