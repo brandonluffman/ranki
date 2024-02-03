@@ -273,12 +273,7 @@ const DashContent = ({ slug, length }) => {
                     <img src='/ranki-logo.png' className='serp-favicon'></img>
                     <div className='antiflexer'>
                         {appName && <h6 className='serp-name'>{appName}</h6>}
-                        {appDomain && blog.title && <a className='dash-content-link' rel='noreferrer' target="_blank" href={`https://${appDomain}/blog/${createSlug(blog.title)}`}>{truncateText(`https://${appDomain}/blog/${createSlug(blog.title)}`, 35)}</a>}
-
-                      {/* {blog.title && <a href={`https://ranki.ai/blog/${createSlug(blog.title)}`}>
-                        {truncateText(`https://ranki.ai/blog/${createSlug(blog.title)}`, 35)}
-                            </a>
-                        } */}
+                        {appDomain && blog.title && <a className='dash-content-link' rel='noreferrer' target="_blank" href={`${appDomain}/blog/${createSlug(blog.title)}`}>{truncateText(`${appDomain}/blog/${createSlug(blog.title)}`, 35)}</a>}
                       
                     </div>
                     </div>
@@ -315,13 +310,7 @@ const DashContent = ({ slug, length }) => {
                                         <img src='/ranki-logo.png' className='serp-favicon'></img>
                                         <div className='antiflexer'>
                                             {appName && <h6 className='serp-name'>{appName}</h6>}
-                                            {appDomain && idea.title && <a className='dash-content-link' rel='noreferrer' target="_blank" >{truncateText(`https://${appDomain}/blog/${createSlug(idea.title)}`, 35)}</a>}
-
-                                        {/* {blog.title && <a href={`https://ranki.ai/blog/${createSlug(blog.title)}`}>
-                                            {truncateText(`https://ranki.ai/blog/${createSlug(blog.title)}`, 35)}
-                                                </a>
-                                            } */}
-                                        
+                                            {appDomain && idea.title && <a className='dash-content-link' rel='noreferrer' target="_blank" >{truncateText(`${appDomain}/blog/${createSlug(idea.title)}`, 35)}</a>}
                                         </div>
                                         </div>
                                 <h2 className='content-item-header'>{idea.title}</h2>
@@ -338,9 +327,6 @@ const DashContent = ({ slug, length }) => {
           </div>
           <div className='keywords-dashcontent-container'>
           <h2 className='blog-dashcontent-header'>Ranking Keywords</h2>
-                {/* Optional descriptive paragraph can be uncommented if needed */}
-                {/* <p>Here, we will determine your website's most optimal keywords. Keywords are what people search into google. Ranking for these particular keywords will grant more traffic to your website.</p> */}
-
                 {/* <button onClick={toggleKeywordAdd} className='btn-add add-btn addnew-keyword-btn'>
                     <IoMdAdd />
                 </button>
@@ -367,9 +353,6 @@ const DashContent = ({ slug, length }) => {
                         </tr>
                     </thead>
                     <tbody>
-                        {/* {isLoading ? (
-                            <tr><td colSpan="4"><Loading /></td></tr>
-                        ) : ( */}
                             {keywords.filter(keyword => keyword).slice(0, length || keywords.length).map((keyword, index) => (
                                 <tr className='keywords-menu' key={index}>
                                     <td className='keywords-li'>{keyword}</td>

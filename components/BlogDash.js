@@ -116,6 +116,7 @@ const BlogDash = () => {
         let { data: blogIdeas, error } = await supabase
             .from('blog_ideas')
             .select('*')
+            .limit(3)
             .eq('app_id', appId);
     
         if (error) {
@@ -450,7 +451,7 @@ const BlogDash = () => {
                     <div className='antiflexer'>
                         {/* <h6 className='serp-name'>RankiAI</h6> */}
                         {appName && <h6 className='serp-name'>{appName}</h6>}
-                        {appDomain && blog.title && <a className='dash-content-link' rel='noreferrer' target="_blank" href={`https://${appDomain}/blog/${createSlug(blog.title)}`}>{truncateText(`https://${appDomain}/blog/${createSlug(blog.title)}`, 35)}</a>}
+                        {appDomain && blog.title && <a className='dash-content-link' rel='noreferrer' target="_blank" href={`${appDomain}/blog/${createSlug(blog.title)}`}>{truncateText(`${appDomain}/blog/${createSlug(blog.title)}`, 35)}</a>}
                       
                     </div>
                     </div>
@@ -486,7 +487,7 @@ const BlogDash = () => {
                                         <img src='/ranki-logo.png' className='serp-favicon'></img>
                                         <div className='antiflexer'>
                                             {appName && <h6 className='serp-name'>{appName}</h6>}
-                                            {appDomain && idea.title && <a className='dash-content-link' rel='noreferrer' target="_blank" >{truncateText(`https://${appDomain}/blog/${createSlug(idea.title)}`, 45)}</a>}
+                                            {appDomain && idea.title && <a className='dash-content-link' rel='noreferrer' target="_blank" href={`${appDomain}/blog/${createSlug(idea.title)}`}>{truncateText(`${appDomain}/blog/${createSlug(idea.title)}`, 35)}</a>}
                                         
                                         </div>
                                         </div>

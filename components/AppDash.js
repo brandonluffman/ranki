@@ -143,8 +143,8 @@ const AppDash = ({ onRefresh }) => {
     setIsLoading(true)
 
     const name = event.target.name.value;
+    const domain = formatDomain(event.target.domain.value);
     const description = event.target.description.value;
-    const domain = event.target.domain.value;
     const industry = event.target.industry.value;
     const target_audience = event.target.target_audience.value;
     const competitors = event.target.competitors.value;
@@ -154,27 +154,24 @@ const AppDash = ({ onRefresh }) => {
     const current_content_type = event.target.current_content_type.value;
     const content_objectives = event.target.content_objectives.value;
 
-    // console.log('Finding New App......')
     const newApp = await addApp(name, description, domain, industry, target_audience, competitors, current_targeted_keywords, future_keyword_interests, seo_goals, current_content_type, content_objectives);
-    // console.log('Found New App!')
     if (newApp) {
-      // console.log('Made it through the loop')
-      // Update apps state directly with the new app
       setApps(currentApps => [...currentApps, newApp]);
-      // console.log('Supposed to show alert?')
       setIsLoading(false)
       setAddingApp(false)
       setShowAlert(true);
       setTimeout(() => setShowAlert(false), 2000);
-      // setTimeout(() => setAddingApp(false), 1500);
-      // setAddingApp(false)
-      // setIsLoading(false)
       formRef.current.reset();
-  
-      // Optionally, re-fetch all apps
-      // fetchUserApps();
     }
   };
+
+  function formatDomain(domain) {
+    if (!domain.startsWith('http://') && !domain.startsWith('https://')) {
+      // Prepend "https://" by default or use "http://" based on your requirements
+      domain = `https://${domain}`;
+    }
+    return domain;
+  }
 
 
   const handleDeleteApp = (appId) => {
