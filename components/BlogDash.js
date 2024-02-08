@@ -418,26 +418,15 @@ const BlogDash = () => {
 
   return (
     <>
-{/* {isToggled ? (
-    <div className='blog-add-container'>
-        <div className='blog-add-close' onClick={toggleAddForm}><IoMdClose /></div>
-    <Generate />
-
-</div>
-) :  */}
 {toggled ? (
     <div>
         <BlogEditForm toggle={toggleEditForm} blog={blogs.find(blog => blog.id === editBlogId)} submitForm={handleEdit} />
     </div>
-)
-:(
+        )
+        :(
     <div className='blog-dashboard-container'>
                   {app &&   <Link href={`/dashboard/${app.id}`} className='sub-dash-back'><BsArrowLeft className='arrow' /></Link>}
-
-        {/* {isToggled && <AddBlog submitForm={handleSubmit} toggle={toggleAddForm} />}
-        {toggled && <BlogEditForm blog={blogs.find(blog => blog.id === editBlogId)} toggle={toggleEditForm} submitForm={handleEdit} />} */}
         <div className='dashboard-content-container'>
-        {/* <button type='submit' className='add-content-container' onClick={toggleAddForm}><IoMdAdd /></button> */}
         <Link href={`/generate/${slug}`}><button className='add-content-container'><IoMdAdd /></button></Link>
 
             <h2 className='dash-content-header'>Blogs</h2>
@@ -448,18 +437,14 @@ const BlogDash = () => {
                 <div key={blog.id} className='dash-content-grid-item searchresult'>
                     <div className='flexer search-result-flexer'>
                     <img src='/ranki-logo.png' className='serp-favicon'></img>
-                    <div className='antiflexer'>
-                        {/* <h6 className='serp-name'>RankiAI</h6> */}
-                        {appName && <h6 className='serp-name'>{appName}</h6>}
-                        {appDomain && blog.title && <a className='dash-content-link' rel='noreferrer' target="_blank" href={`${appDomain}/blog/${createSlug(blog.title)}`}>{truncateText(`${appDomain}/blog/${createSlug(blog.title)}`, 35)}</a>}
-                      
-                    </div>
+                        <div className='antiflexer'>
+                            {appName && <h6 className='serp-name'>{appName}</h6>}
+                            {appDomain && blog.title && <a className='dash-content-link' rel='noreferrer' target="_blank" href={`${appDomain}/blog/${createSlug(blog.title)}`}>{truncateText(`${appDomain}/blog/${createSlug(blog.title)}`, 35)}</a>}
+                        </div>
                     </div>
                     <h2 className='content-item-header'>{blog.title}</h2>
                     <p className='serp-description'><span className='serp-date'>{formatDate(blog.created_at)} -</span> {blog.meta_description}</p>
                     {blog.is_published == true ? <h6 className='is-draft draft-published'>Published</h6>:<h6 className='is-draft'>Draft</h6>}
-
-                    {/* Render other blog details as needed */}
                     <button onClick={() => handleDeleteBlog(blog.id)} className='delete-button blog-delete-btn'>
                             <IoMdClose />
                         </button>
@@ -471,89 +456,7 @@ const BlogDash = () => {
         
             </div>
         </div>
-                <div className='dashboard-content-container'>
-        <div className='dashboard-content-suggestions'>
-        <div className='generate-credits-container'>
 
-        {ideaTokens > 0 ? <p className='ai-gradient'>AI Credits: <span className='credits'>{ideaTokens}</span></p> : <p className='ai-gradient'>AI Credits: <span className='credits credits-red'>{ideaTokens}</span></p>}
-</div>
-            {/* {ideaTokens ? <p>You have {ideaTokens} credits</p>:<p>You dont have tokens</p> } */}
-            <h2 className='blog-dashcontent-header'><span className='ai-gradient'>AI</span> Suggestions</h2>
-                {aiSuggestions.length > 0 ? (
-                    <div className='dash-content-grid-small'>
-                        {aiSuggestions.slice(0,5).map(idea => (
-                            <div key={idea.id} className='dash-content-grid-item searchresult grid-item-suggestion'>
-                                    <div className='flexer search-result-flexer'>
-                                        <img src='/ranki-logo.png' className='serp-favicon'></img>
-                                        <div className='antiflexer'>
-                                            {appName && <h6 className='serp-name'>{appName}</h6>}
-                                            {appDomain && idea.title && <a className='dash-content-link' rel='noreferrer' target="_blank" href={`${appDomain}/blog/${createSlug(idea.title)}`}>{truncateText(`${appDomain}/blog/${createSlug(idea.title)}`, 35)}</a>}
-                                        
-                                        </div>
-                                        </div>
-                                <h2 className='content-item-header'>{idea.title}</h2>
-                                <p><span className='serp-date'>Jan 5, 2024 --</span> {truncateText(idea.description, 70)}</p>
-                                {/* Render other details as needed */}
-                            </div>
-                        ))}
-                    </div>
-                ) : (
-                    <div className='no-suggestions antiflexer'><p>No AI suggestions found.</p></div>
-                )}
-                <button onClick={handleGenerateClick} disabled={toLoading} className='btn btn-primary-2 btn-margin'>
-                {isLoading ? 'Generating...' : 'Generate'}
-            </button>
-          </div>
-          </div>
-          <div className='dashboard-content-container'>
-
-          <div className='keywords-dashcontent-container'>
-          <h2 className='blog-dashcontent-header'>Ranking Keywords</h2>
-                <button onClick={toggleKeywordAdd} className='btn-add add-btn addnew-keyword-btn'>
-                    <IoMdAdd />
-                </button>
-                {visible && (
-                    <form onSubmit={handleAddKeyword} className='add-keyword-form'>
-                        <input
-                            type="text"
-                            value={newKeyword}
-                            onChange={handleKeywordChange}
-                            placeholder="Enter a new keyword"
-                            className='keywords-container-input'
-                        />
-                        <button type="submit"><IoMdAdd /></button>
-                    </form>
-                )}
-
-                <table className='keyword-dash-table'>
-                    <thead className='keywords-thead'>
-                        <tr className='keywords-header-row'>
-                            <th>Keyword</th>
-                            <th>Monthly Search Volume</th>
-                            <th>Competition</th>
-                            <th>Ranking Position</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-
-                            {keywords.filter(keyword => keyword).slice(0, length || keywords.length).map((keyword, index) => (
-                                <tr className='keywords-menu' key={index}>
-                                    <td className='keywords-li'>{keyword}</td>
-                                    <td>10K-100K</td>
-                                    <td>High</td>
-                                    <td>7</td>
-                                    <td>
-                                        <button onClick={() => handleDeleteKeyword(keyword, slug)} className='delete-btn keyword-delete'>
-                                            <IoMdClose />
-                                        </button>
-                                    </td>
-                                </tr>
-                            ))}
-                        {/* )} */}
-                    </tbody>
-                </table>
-                </div>
-                </div>
   </div>
 
   )
@@ -609,3 +512,90 @@ export default BlogDash
     //         console.error('Error:', error);
     //     }
     // };
+
+
+
+
+              {/* <div className='dashboard-content-container'>
+
+          <div className='keywords-dashcontent-container'>
+          <h2 className='blog-dashcontent-header'>Ranking Keywords</h2>
+                <button onClick={toggleKeywordAdd} className='btn-add add-btn addnew-keyword-btn'>
+                    <IoMdAdd />
+                </button>
+                {visible && (
+                    <form onSubmit={handleAddKeyword} className='add-keyword-form'>
+                        <input
+                            type="text"
+                            value={newKeyword}
+                            onChange={handleKeywordChange}
+                            placeholder="Enter a new keyword"
+                            className='keywords-container-input'
+                        />
+                        <button type="submit"><IoMdAdd /></button>
+                    </form>
+                )}
+
+                <table className='keyword-dash-table'>
+                    <thead className='keywords-thead'>
+                        <tr className='keywords-header-row'>
+                            <th>Keyword</th>
+                            <th>Monthly Search Volume</th>
+                            <th>Competition</th>
+                            <th>Ranking Position</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                            {keywords.filter(keyword => keyword).slice(0, length || keywords.length).map((keyword, index) => (
+                                <tr className='keywords-menu' key={index}>
+                                    <td className='keywords-li'>{keyword}</td>
+                                    <td>10K-100K</td>
+                                    <td>High</td>
+                                    <td>7</td>
+                                    <td>
+                                        <button onClick={() => handleDeleteKeyword(keyword, slug)} className='delete-btn keyword-delete'>
+                                            <IoMdClose />
+                                        </button>
+                                    </td>
+                                </tr>
+                            ))}
+                    </tbody>
+                </table>
+                </div>
+                </div>
+                 */}
+
+
+
+                                 {/* <div className='dashboard-content-container'>
+        <div className='dashboard-content-suggestions'>
+        <div className='generate-credits-container'>
+                    {ideaTokens > 0 ? <p className='ai-gradient'>AI Credits: <span className='credits'>{ideaTokens}</span></p> : <p className='ai-gradient'>AI Credits: <span className='credits credits-red'>{ideaTokens}</span></p>}
+            </div>
+            <h2 className='blog-dashcontent-header'><span className='ai-gradient'>AI</span> Suggestions</h2>
+                {aiSuggestions.length > 0 ? (
+                    <div className='dash-content-grid-small'>
+                        {aiSuggestions.slice(0,5).map(idea => (
+                            <div key={idea.id} className='dash-content-grid-item searchresult grid-item-suggestion'>
+                                    <div className='flexer search-result-flexer'>
+                                        <img src='/ranki-logo.png' className='serp-favicon'></img>
+                                        <div className='antiflexer'>
+                                            {appName && <h6 className='serp-name'>{appName}</h6>}
+                                            {appDomain && idea.title && <a className='dash-content-link' rel='noreferrer' target="_blank" href={`${appDomain}/blog/${createSlug(idea.title)}`}>{truncateText(`${appDomain}/blog/${createSlug(idea.title)}`, 35)}</a>}
+                                        
+                                        </div>
+                                        </div>
+                                <h2 className='content-item-header'>{idea.title}</h2>
+                                <p><span className='serp-date'>Jan 5, 2024 --</span> {truncateText(idea.description, 70)}</p>
+                            </div>
+                        ))}
+                    </div>
+                ) : (
+                    <div className='no-suggestions antiflexer'><p>No AI suggestions found.</p></div>
+                )}
+                <button onClick={handleGenerateClick} disabled={toLoading} className='btn btn-primary-2 btn-margin'>
+                {isLoading ? 'Generating...' : 'Generate'}
+            </button>
+          </div>
+          </div> */}

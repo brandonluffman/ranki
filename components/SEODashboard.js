@@ -68,22 +68,22 @@ const SEODashboard = () => {
             <button 
                 className={`someBaseClass ${selectedDashboard === 'Technical' ? 'border-dash' : ''}`} 
                 onClick={() => handleDashboardChange('Technical')}>
-                Technical Dashboard
+                Technical SEO
             </button>                    
             <button 
              className={`someBaseClass ${selectedDashboard === 'OnPage' ? 'border-dash' : ''}`} 
             onClick={() => handleDashboardChange('OnPage')}>
-                On-Page Dashboard
+                On-Page SEO
                 </button>
-                <button 
+                {/* <button 
                  className={`someBaseClass ${selectedDashboard === 'OffPage' ? 'border-dash' : ''}`} 
-                onClick={() => handleDashboardChange('OffPage')}>Off-Page Dashboard</button>
+                onClick={() => handleDashboardChange('OffPage')}>Off-Page Dashboard</button> */}
             </div>
 
             {/* Render the selected dashboard */}
             {selectedDashboard === 'Technical' && <TechnicalDashboard slug={slug} domain={domain} />}
             {selectedDashboard === 'OnPage' && <OnPageDashboard slug={slug} domain={domain} />}
-            {selectedDashboard === 'OffPage' && <OffPageDashboard slug={slug} />}
+            {/* {selectedDashboard === 'OffPage' && <OffPageDashboard slug={slug} />} */}
         </>
                 ) : (
                     <div className='no-user-container'>You don&apos;t have access to this App.</div>

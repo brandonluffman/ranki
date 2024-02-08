@@ -152,6 +152,9 @@
     font-weight: 500;
     font-size: 2rem !important; */
     fill: rgb(240, 240, 240) !important;
+    font-family: sans-serif;
+    text-shadow: none !important;
+    
 }
 
 .dashboard-grid-item > div > svg {

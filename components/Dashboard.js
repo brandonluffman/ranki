@@ -9,8 +9,6 @@ import { BsArrowLeft, BsArrowRight, BsCaretUp } from 'react-icons/bs';
 import { BiLinkExternal } from 'react-icons/bi';
 import {IoMdAdd, IoMdClose} from 'react-icons/io'
 import DashContent from './DashContent';
-import RadialGuage from './RadialGuage';
-import {FaCaretUp} from 'react-icons/fa'
 import { supabase } from '../utils/supabaseClient'; // Import your initialized Supabase client
 import AppDashAnalytics from './AppDashAnalytics';
 import GMBDash from './GMBDash';
@@ -47,14 +45,11 @@ const Dashboard = ({slugId}) => {
   const appLogo = '/chatbot.png'
 
     const handleAppSelection = (selectedApp) => {
-      // Update the state or perform any action required when an app is selected
       setSelectedValue(selectedApp.name);
-      // ... other actions based on selected app ...
   };
 
     const toggleSide = () => {
       setEditingApp(prevState => !prevState);
-      // console.log(editingApp)
     };
     const closeSide = () => {
       setEditingApp(prevState => !prevState);
@@ -81,13 +76,7 @@ const Dashboard = ({slugId}) => {
   };
     
    
-
-
-
-
-
-
-    useEffect(() => {
+  useEffect(() => {
       const actualSlug = slug || slugId;
       if (actualSlug) {
         console.log('Actual Slug Found')
@@ -184,30 +173,6 @@ const handleSubmit = async (event) => {
 
 
 
-  
-
-
-//   useEffect(() => {
-//     const fetchSiteUrls = async () => {
-//         try {
-//             const response = await supabase
-//                 .from('site_urls')
-//                 .select('*')
-//                 .eq('app_id', slug);
-
-//             if (response.data) {
-//                 setSiteUrls(response.data);
-//             }
-//         } catch (error) {
-//             console.error('Error fetching site URLs:', error);
-//         }
-//     };
-
-//     fetchSiteUrls();
-// }, [slug]);
-
-
-
 
   const deleteApp = async (indexToDelete) => {
     const actualSlug = slug ? slug : null;
@@ -215,8 +180,6 @@ const handleSubmit = async (event) => {
     const updatedApps = integratedApps.filter((_, index) => index !== indexToDelete);
     setIntegratedApps(updatedApps);
 
-    // Update the database if neededa
-    // Assuming you have a column 'integrated_apps' in your 'apps' table
     const { data, error } = await supabase
         .from('apps')
         .update({ integrated_apps: updatedApps }) // Update the column with the new list
@@ -229,147 +192,56 @@ const handleSubmit = async (event) => {
     }
 };
 
-// {app && console.log(app)}
 
   return (
     <>
     {user?.id ? (
-    <div className='dashboard-container'>
-    <Breadcrumbs appName={appName} slugId={slug} />
-      {/* <Link href='/appdash' className='appdash-back-btn'><BsArrowLeft /> Back to AppDashboard</Link> */}
-      <button onClick={toggleSide} type='button' className='appdash-side-btn' >Toggle Apps</button>
-      <div className={editingApp ? 'toggle-side-container' : 'toggle-side-ns'}>
-        <button onClick={closeSide} className='side-close'><IoMdClose /></button>
-        <div className='toggle-side-grid'>
-          <div className='side-grid-item'><img src='' className='side-img'></img></div>
+      <div className='dashboard-container'>
+        <Breadcrumbs appName={appName} slugId={slug} />
+        <button onClick={toggleSide} type='button' className='appdash-side-btn'>Toggle Apps</button>
+        <div className={editingApp ? 'toggle-side-container' : 'toggle-side-ns'}>
+          <button onClick={closeSide} className='side-close'><IoMdClose /></button>
+          <div className='toggle-side-grid'>
+            {/* Ensure you have a valid src or provide a placeholder if the image is dynamic */}
+            <div className='side-grid-item'><img src='/path/to/your/image.jpg' alt='Description' className='side-img' /></div>
+          </div>
+        </div>
+        {app && (
+          <a href={app.domain} rel='noreferrer' target='_blank' className='appdash-external-btn'>
+            <BiLinkExternal />
+          </a>
+        )}
+        <div className='anti-flexer dash-flexer'>
+          {app && <img src={appLogo} className='appdash-grid-img dashboard-grid-img' alt={`${app.name} logo`} />}
+          {app && <h2 className='dashboard-header appdash-header'>{app.name}</h2>}
+          {user && <DashContent slug={slug} length={3} />}
+            <div className='dashboard-grid seo-dash-grid'>
+            <Link href={`/seo/${slug}`} className='seo-dash-link'>
+              <div className='seo-dash-item'>
+              <h2>SEO</h2>
+
+                <GaugeChartComponent id="gauge-chart3" width='300' percent={score3} className='seo-dash-chart'/>
+              </div>
+              </Link>
+            </div>
+     
         </div>
       </div>
-      {app && <Link href={app.domain} rel='noreferrer' target='_blank' className='appdash-external-btn'><BiLinkExternal /></Link>}
-      <div className='anti-flexer dash-flexer'>
-      {app && <img src={appLogo} className='appdash-grid-img dashboard-grid-img' alt={`${app.name} logo`} />}
-      {app && <h2 className='dashboard-header appdash-header'>{app.name}</h2>}
-      {/* {app && <Link href={domain} rel='noreferrer' target="_blank" className='link header-link'><h6 className='appdash-header-domain'>{app.domain}</h6></Link>} */}
-
-      </div>
-
-            <AppDashAnalytics />
-
-      {integratedApps && integratedApps.length > 0 ? ( 
-
-      <div className='appdash-health-tabs'>
-
-                {integratedApps.map((app, index) => (
-                    <div key={index} className='integrated-div'>
-                        <Link href={app.url} rel='noreferrer' target="_blank">
-                            <div className='appdash-health-tab fancy'>
-                                <img src={app.imgSrc} width='50' alt={`App ${index}`} />
-                            </div>
-                        </Link>
-                        <button onClick={() => deleteApp(index)} className="delete-integrated-btn">
-                            <IoMdClose />
-                        </button>
-
-                    </div>
-                    
-                ))}
-                  <div className='appdash-health-tab fancy health-tab-add' onClick={toggleAppIntegrate}><IoMdAdd /></div>
-
-              
-           
-           </div>
-              ):(
-                <div className='appdash-health-tabs'>
-                <div className='integrated-div'>
-                    <Link href='https://google.com' rel='noreferrer' target="_blank" className='integrated-link'>
-                        <div className='appdash-health-tab fancy'>
-                            <img src='/website-icon.png' width='50' alt='Integrated App' />
-                            <button onClick={() => deleteApp(index)} className="delete-integrated-btn">
-                                <IoMdClose />
-                            </button>
-                        </div>   
-                    </Link>
-                  </div>
-                  <div className='appdash-health-tab non-fancy'>
-                  </div>
-                  <div className='appdash-health-tab non-fancy'>
-                  </div>
-                  <div className='appdash-health-tab fancy health-tab-add' onClick={toggleAppIntegrate}><IoMdAdd /></div>
-               </div>
-       
-              )}
-
-
-                  {appIntegrate && (
-                  <div className='app-integrate-container'>
-                      <button onClick={toggleAppIntegrate} className='side-close'><IoMdClose /></button>
-                      <h3 className='app-integrate-header'>Integrate Your App</h3>
-                      <form className='app-integrate-form' ref={formRef} onSubmit={handleSubmit}>
-                        <IntegrateDropdown options={appOptions} onOptionSelected={handleAppSelection} />
-                        <div className='app-integrate-div'>
-                          <input type="text" name="url" placeholder="URL" className='app-integrate-input' />
-                        </div>
-                        <button type="submit" className='btn btn-tertiary integrate-btn'>Integrate App</button>
-                      </form>
-                  </div>
-                   )}
-            {/* {integratedApps.length == 0 && 
-            <div className='appdash-health-tabs'>
-                    <div className='integrated-div'>
-                        <Link href='https://google.com' rel='noreferrer' target="_blank" className='integrated-link'>
-                            <div className='appdash-health-tab fancy'>
-                                <img src='/website-icon.png' width='50' alt='Integrated App' />
-                                <button onClick={() => deleteApp(index)} className="delete-integrated-btn">
-                                    <IoMdClose />
-                                </button>
-                            </div>   
-                        </Link>
-                      </div>
-                      <div className='appdash-health-tab non-fancy'>
-                      </div>
-                      <div className='appdash-health-tab non-fancy'>
-                      </div>
-                      <div className='appdash-health-tab fancy health-tab-add' onClick={toggleAppIntegrate}><IoMdAdd /></div>
-                   </div>
-            } */}
-
- 
-
-      {/* <div className='generate-banner'>
-          <h2>Generate Article</h2>
-          <p>Powered by AI</p>
-          <Link href='/test'><button className='btn btn-primary generate-btn'>Get Started &rarr;</button></Link>
-        </div> */}
-       {/* <AddBlogOfficial /> */}
-          {/* {user.isPaid ? :<Link href='/pricing'><button className='btn btn-primary generate-btn'></button></Link>} */}
-
-       
-      {user && <DashContent slug={slug} length={3} />}
-
-      {/* <div className='keyword-dashboard'>
-        {keywords.length > 0 ? (
-              <KeywordDash length={3} />
-        ):(
-          <div>Nada</div>
-        )}
-                  <Link href={`/keyword/${slug}`} className='dark-link'>View All Keywords <BsArrowRight className='arrow-right' /></Link>
-
-      </div> */}
-
-  </div>
-    ):(
+    ) : (
       <div className='no-user-container'>
-      <div className='anti-flexer'>
-      <h3 className='no-user-header'>Project Dashboard</h3>
-      <Link href='/login'><button type='button' className='login-btn btn btn-primary'>Login</button></Link>
-      </div>
+        <div className='anti-flexer'>
+          <h3 className='no-user-header'>Project Dashboard</h3>
+          <Link href='/login'>
+            <button type='button' className='login-btn btn btn-primary'>Login</button>
+          </Link>
+        </div>
       </div>
     )}
-    </>
-
+  </>
   )
-}
+    }
 
-export default Dashboard
+export default Dashboard;
 
 
 
@@ -507,3 +379,68 @@ export default Dashboard
 //  </div>
  
 // )}
+
+
+
+
+
+/* Integrated Apps */
+
+      {/* {integratedApps && integratedApps.length > 0 ? ( 
+
+      <div className='appdash-health-tabs'>
+
+                {integratedApps.map((app, index) => (
+                    <div key={index} className='integrated-div'>
+                        <Link href={app.url} rel='noreferrer' target="_blank">
+                            <div className='appdash-health-tab fancy'>
+                                <img src={app.imgSrc} width='50' alt={`App ${index}`} />
+                            </div>
+                        </Link>
+                        <button onClick={() => deleteApp(index)} className="delete-integrated-btn">
+                            <IoMdClose />
+                        </button>
+
+                    </div>
+                    
+                ))}
+                  <div className='appdash-health-tab fancy health-tab-add' onClick={toggleAppIntegrate}><IoMdAdd /></div>
+
+              
+           
+           </div>
+              ):(
+                <div className='appdash-health-tabs'>
+                <div className='integrated-div'>
+                    <Link href='https://google.com' rel='noreferrer' target="_blank" className='integrated-link'>
+                        <div className='appdash-health-tab fancy'>
+                            <img src='/website-icon.png' width='50' alt='Integrated App' />
+                            <button onClick={() => deleteApp(index)} className="delete-integrated-btn">
+                                <IoMdClose />
+                            </button>
+                        </div>   
+                    </Link>
+                  </div>
+                  <div className='appdash-health-tab non-fancy'>
+                  </div>
+                  <div className='appdash-health-tab non-fancy'>
+                  </div>
+                  <div className='appdash-health-tab fancy health-tab-add' onClick={toggleAppIntegrate}><IoMdAdd /></div>
+               </div>
+       
+              )}
+
+
+                  {appIntegrate && (
+                  <div className='app-integrate-container'>
+                      <button onClick={toggleAppIntegrate} className='side-close'><IoMdClose /></button>
+                      <h3 className='app-integrate-header'>Integrate Your App</h3>
+                      <form className='app-integrate-form' ref={formRef} onSubmit={handleSubmit}>
+                        <IntegrateDropdown options={appOptions} onOptionSelected={handleAppSelection} />
+                        <div className='app-integrate-div'>
+                          <input type="text" name="url" placeholder="URL" className='app-integrate-input' />
+                        </div>
+                        <button type="submit" className='btn btn-tertiary integrate-btn'>Integrate App</button>
+                      </form>
+                  </div>
+                   )} */}

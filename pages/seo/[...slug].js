@@ -1,8 +1,8 @@
 import React from 'react'
-import Navbar from '../../../components/Navbar';
-import Footer from '../../../components/Footer';
-import Dashboard from '../../../components/Dashboard';
-import SEODashboard from '../../../components/SEODashboard';
+import Navbar from '../../components/Navbar';
+import Footer from '../../components/Footer';
+import Dashboard from '../../components/Dashboard';
+import SEODashboard from '../../components/SEODashboard';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
 

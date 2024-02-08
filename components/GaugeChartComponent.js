@@ -14,7 +14,7 @@ const GaugeChartComponent = ({ id, percent, width }) => {
     const colorSet = getColorSet(percent);
 
     return (
-        <div style={{ width: width }} className='gauge-chart'>
+        <div style={{ width: 300 }} className='gauge-chart'>
             <GaugeComponent
                 id={id} 
                 value={percent}

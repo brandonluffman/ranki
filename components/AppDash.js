@@ -75,7 +75,9 @@ const AppDash = ({ onRefresh }) => {
   
 
 
-  const addApp = async (name, description, domain, industry, target_audience, competitors, current_targeted_keywords, future_keyword_interests, seo_goals, current_content_type, content_objectives) => {
+  // const addApp = async (name, description, domain, industry, target_audience, competitors, current_targeted_keywords, future_keyword_interests, seo_goals, current_content_type, content_objectives) => {
+    const addApp = async (name, description, domain) => {
+
     if (!user) {
       console.error("User not authenticated");
       return null;
@@ -106,17 +108,11 @@ const AppDash = ({ onRefresh }) => {
         return null;
       }
   
-      // const checkDomainResponse = await fetch(`/api/checkDomain?domain=${encodeURIComponent(domain)}`);
-      // const checkDomainResult = await checkDomainResponse.json();
-  
-      // if (!checkDomainResponse.ok) {
-      //   alert(checkDomainResult.error || 'Error checking domain status');
-      //   return null;
-      // }
-  
       const insertResponse = await supabase
         .from('apps')
-        .insert([{ user_id: user.id, name, description, domain, industry, target_audience, competitors, current_targeted_keywords, future_keyword_interests, seo_goals, current_content_type, content_objectives }])
+        // .insert([{ user_id: user.id, name, description, domain, industry, target_audience, competitors, current_targeted_keywords, future_keyword_interests, seo_goals, current_content_type, content_objectives }])
+        .insert([{ user_id: user.id, name, description, domain }])
+
         .single();
   
       if (insertResponse.error) throw insertResponse.error;
@@ -145,16 +141,18 @@ const AppDash = ({ onRefresh }) => {
     const name = event.target.name.value;
     const domain = formatDomain(event.target.domain.value);
     const description = event.target.description.value;
-    const industry = event.target.industry.value;
-    const target_audience = event.target.target_audience.value;
-    const competitors = event.target.competitors.value;
-    const current_targeted_keywords = event.target.current_targeted_keywords.value;
-    const future_keyword_interests = event.target.future_keyword_interests.value;
-    const seo_goals = event.target.seo_goals.value;
-    const current_content_type = event.target.current_content_type.value;
-    const content_objectives = event.target.content_objectives.value;
+    // const industry = event.target.industry.value;
+    // const target_audience = event.target.target_audience.value;
+    // const competitors = event.target.competitors.value;
+    // const current_targeted_keywords = event.target.current_targeted_keywords.value;
+    // const future_keyword_interests = event.target.future_keyword_interests.value;
+    // const seo_goals = event.target.seo_goals.value;
+    // const current_content_type = event.target.current_content_type.value;
+    // const content_objectives = event.target.content_objectives.value;
 
-    const newApp = await addApp(name, description, domain, industry, target_audience, competitors, current_targeted_keywords, future_keyword_interests, seo_goals, current_content_type, content_objectives);
+    // const newApp = await addApp(name, description, domain, industry, target_audience, competitors, current_targeted_keywords, future_keyword_interests, seo_goals, current_content_type, content_objectives);
+    const newApp = await addApp(name, description, domain);
+
     if (newApp) {
       setApps(currentApps => [...currentApps, newApp]);
       setIsLoading(false)
@@ -276,88 +274,37 @@ const AppDash = ({ onRefresh }) => {
               {/* <AppForm onSubmit={handleSubmit} /> */}
               <div className='appdash-add-form-box'>
                     <h1 className='appdash-add-header'>Connect Application</h1>
-                    {/* <div className='login-avatar-div'>
-                        <img src='/avatar.png' width='100'></img>
-                        </div> */}
-                    {/* <form onSubmit={handleSubmit} ref={formRef}>
-                        <div className='login-email-div'>
-                    <input type="text" name="name" placeholder="App Name" className='login-input' required />
-                    </div>
-                    <div className='login-email-div'>
-
-                    <textarea name="description" placeholder="Description" className='login-input textarea-input'></textarea>
-                    </div>        
-                    <div className='login-email-div domain-div'>
-
-                    <input type="text" name="domain" placeholder="Domain" className='login-input domain-input' />
-                    </div>
-                    <button type="submit" className='login-button'>Add App</button>
-                    {isLoading && <AbsoluteLoading />}
-                </form> */}
-
-              
                     <form onSubmit={handleSubmit} ref={formRef}>
                         <div className='login-email-div'>
-                          <input type="text" name="name" placeholder="App Name" className='login-input' required />
+                            <input type="text" name="name" placeholder="App Name" className='login-input' required />
                         </div>
                         <div className='login-email-div'>
-                          <textarea name="description" placeholder="Describe your business (include main products/services)" className='login-input textarea-input'></textarea>
-                        </div>      
-                          <div className='login-email-div'>
-                          <input type="text" name="industry" placeholder="Business Industry" className='login-input' required />
-                        </div>  
-                        <div className='login-email-div'>
-                          <textarea name="target_audience" placeholder="Who is your target audience? (Be as descriptive in regards to demographics)" className='login-input textarea-input'></textarea>
-                        </div>  
-                        <div className='login-email-div'>
-                          <textarea name="competitors" placeholder="Who are your main competitors?" className='login-input textarea-input'></textarea>
-                        </div> 
-                        <div className='login-email-div'>
-                          <textarea name="current_targeted_keywords" placeholder="What keywords are you currently targeting?" className='login-input textarea-input'></textarea>
-                        </div> 
-                        <div className='login-email-div'>
-                          <textarea name="future_keyword_interests" placeholder="Which would you like to target?" className='login-input textarea-input'></textarea>
-                        </div> 
-                        <div className='login-email-div'>
-                          <textarea name="seo_goals" placeholder="What are your SEO goals? (Increase Traffic, Improve Ranking, etc..)" className='login-input textarea-input'></textarea>
-                        </div>
-                          <div className='login-email-div'>
-                          <textarea name="current_content_type" placeholder="What content have you already published?" className='login-input textarea-input'></textarea>
-                        </div>
-                        <div className='login-email-div'>
-                          <textarea name="content_objectives" placeholder="What are your objectives? (Brand awareness, leads, sales)" className='login-input textarea-input'></textarea>
-                        </div>
+                            <textarea name="description" placeholder="Description" className='login-input textarea-input'></textarea>
+                        </div>        
                         <div className='login-email-div domain-div'>
-                          <input type="text" name="domain" placeholder="Domain" className='login-input domain-input' />
+                            <input type="text" name="domain" placeholder="Domain" className='login-input domain-input' />
                         </div>
+                        <button type="submit" className='login-button'>Add App</button>
+                        {isLoading && <AbsoluteLoading />}
+                    </form>
 
-
-
-
-                    <button type="submit" className='login-button'>Add App</button>
-                    {isLoading && <AbsoluteLoading />}
-                </form>
-                
-                
-                {/* {showAlert && <div className="success-alert">App created successfully!</div>} */}
-                <button onClick={toggleAddForm} className='delete-button close-add-form-button'>
-                        <IoMdClose />
-                      </button>
+                    <button onClick={toggleAddForm} className='delete-button close-add-form-button'>
+                            <IoMdClose />
+                    </button>
                 </div>
 
               </div>
               <h1 className='dashboard-header'>Projects</h1>
               {showAlert && <div className="success-alert">App created successfully!</div>}
-                  {/* <div className='success-alert'>App created successfully</div> */}
               <div className='dashboard-grid appdash-grid'>
               {apps.map((app, index) => ( 
               <li key={app.id || index} className='appdash-item'> 
                   <h2 className='dashboard-grid-header appdash-appname'>{app.name}</h2>
                   <Link href={`/dashboard/${app.id}`}><button type='button' className='dash-button dashboard-button'>Dashboard</button></Link>
                 <br></br>
-                <button onClick={() => handleDeleteApp(app.id)} className='dash-button delete-button'>
+                {/* <button onClick={() => handleDeleteApp(app.id)} className='dash-button delete-button'>
                   <IoMdClose />
-                  </button>
+                  </button> */}
 
 
                 {/* <button onClick={() => handleToggle(app.id)} className='three-dot'><BsThreeDotsVertical /></button> */}
@@ -436,3 +383,47 @@ export default AppDash;
                           {/* <div className='appdash-img-container'>
                 {app.logo && <img src={app.logo} className='appdash-grid-img' alt={`${app.name} logo`} />}
                 </div> */}
+
+
+  
+        //         <form onSubmit={handleSubmit} ref={formRef}>
+        //         <div className='login-email-div'>
+        //           <input type="text" name="name" placeholder="App Name" className='login-input' required />
+        //         </div>
+        //         <div className='login-email-div'>
+        //           <textarea name="description" placeholder="Describe your business (include main products/services)" className='login-input textarea-input'></textarea>
+        //         </div>      
+        //           <div className='login-email-div'>
+        //           <input type="text" name="industry" placeholder="Business Industry" className='login-input' required />
+        //         </div>  
+        //         <div className='login-email-div'>
+        //           <textarea name="target_audience" placeholder="Who is your target audience? (Be as descriptive in regards to demographics)" className='login-input textarea-input'></textarea>
+        //         </div>  
+        //         <div className='login-email-div'>
+        //           <textarea name="competitors" placeholder="Who are your main competitors?" className='login-input textarea-input'></textarea>
+        //         </div> 
+        //         <div className='login-email-div'>
+        //           <textarea name="current_targeted_keywords" placeholder="What keywords are you currently targeting?" className='login-input textarea-input'></textarea>
+        //         </div> 
+        //         <div className='login-email-div'>
+        //           <textarea name="future_keyword_interests" placeholder="Which would you like to target?" className='login-input textarea-input'></textarea>
+        //         </div> 
+        //         <div className='login-email-div'>
+        //           <textarea name="seo_goals" placeholder="What are your SEO goals? (Increase Traffic, Improve Ranking, etc..)" className='login-input textarea-input'></textarea>
+        //         </div>
+        //           <div className='login-email-div'>
+        //           <textarea name="current_content_type" placeholder="What content have you already published?" className='login-input textarea-input'></textarea>
+        //         </div>
+        //         <div className='login-email-div'>
+        //           <textarea name="content_objectives" placeholder="What are your objectives? (Brand awareness, leads, sales)" className='login-input textarea-input'></textarea>
+        //         </div>
+        //         <div className='login-email-div domain-div'>
+        //           <input type="text" name="domain" placeholder="Domain" className='login-input domain-input' />
+        //         </div>
+
+
+
+
+        //     <button type="submit" className='login-button'>Add App</button>
+        //     {isLoading && <AbsoluteLoading />}
+        // </form>
