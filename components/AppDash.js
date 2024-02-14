@@ -336,6 +336,7 @@ const AppDash = ({ onRefresh }) => {
         <div className='dashboard-container appdash-container no-user-container'>
           <div className='anti-flexer nouserflexer'>
           <h3 className='no-user-header'>Project Dashboard</h3>
+          <Link href='/generatetest'><button type='button' className='margin-btm btn btn-tertiary btn-margin'>Try it for free</button></Link>
           <Link href='/login'><button type='button' className='login-btn btn btn-primary'>Login</button></Link>
           </div>
           </div>

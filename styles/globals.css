@@ -146,6 +146,10 @@ p {
     font-weight: 700;
   }
 
+  .margin-btm {
+    margin-bottom: 2rem !important;
+  }
+
 .btn {
     border:none;
     padding:1rem 2rem;
@@ -169,6 +173,10 @@ p {
     align-items: center;
     justify-content: center;
     text-align: center;
+}
+
+.flexer-relative {
+    position: relative;
 }
 
 .page-flexer {
