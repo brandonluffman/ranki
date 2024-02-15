@@ -206,7 +206,7 @@ const GenerateTest = () => {
       <div className='generate-wrapper'>
 
         <div className='generate-credits-container'>
-           {userCredits > 0 ? <p className='ai-gradient'>AI Credits: <span className='credits'>{userCredits}</span></p> : <p className='ai-gradient'>AI Credits: <span className='credits credits-red'>{userCredits}</span></p>}
+           {userCredits > 0 ? <p className='ai-gradient'>Credits: <span className='credits'>{userCredits}</span></p> : <p className='ai-gradient'>Credits: <span className='credits credits-red'>{userCredits}</span></p>}
            </div>
                 <h1 className="generate-header ai-gradient2">Generate Blog</h1>
                 {!loading && (
@@ -294,7 +294,7 @@ const GenerateTest = () => {
         {loading && (
             <Loading />
         )}
-          <h2 className='generate-content-container-header'>Blog</h2>
+          {/* <h2 className='generate-content-container-header'>Blog</h2> */}
 
         <div className="generate-container">
           <div className='generate-form-data'>

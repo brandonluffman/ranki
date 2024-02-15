@@ -87,6 +87,23 @@ padding:0rem 0.2rem;
 
 }
 
+.footer-phantom {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin:0.5rem 0rem 0rem 0rem;
+    font-size: 1rem !important;
+}
+
+.footer-phantom-brand {
+    font-family: var(--phantom-font);
+    letter-spacing: -0.05vw;
+    margin:0;
+    margin-left:0.25rem;
+    font-weight:700;
+
+}
+
 .footer-top {
     display: flex;
     margin-bottom:4rem;
@@ -128,8 +145,12 @@ Link {
 .copyright-footer {
     width:100%;
     text-align: center;
-    margin-bottom:1rem;
+    margin-bottom:0.5rem;
     font-size: 0.75rem;
+}
+
+.copyright-1 {
+    margin-bottom: 0.5rem;
 }
 
 .copyright-footer p {

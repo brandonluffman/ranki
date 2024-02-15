@@ -17,6 +17,7 @@ import Chatbot from '../components/Chatbot'
 import CTA from '../components/CTA'
 import LogoSlider from '../components/LogoSlider'
 import DropdownFAQ from '../components/DropdownFAQ'
+import { FcLink } from "react-icons/fc";
 
 export default function Home(){
   return (
@@ -53,11 +54,11 @@ export default function Home(){
           
           <div className='home-landing-container flexer'>
             <div className='antiflexer'>
-            <h1 className='home-landing-header'><b className='italic'>Automate</b> Content Creation & <b className='italic'>Boost</b> Organic Traffic with <span className='ai-gradient2'>RankiAI</span></h1>
+            <h1 className='home-landing-header'><b className='italic'>Elevate</b> Your Google Rankings & <b className='italic'>Attract</b> More Customers with <span className='ai-gradient2'>RankiAI</span></h1>
             <p className='home-landing-p'>Generate SEO-Optimized Content on cruise control, while focusing on the important parts of your business.</p>
             <div className='home-landing-btn-div'>
                 <Link href='/dashboard'><button className='btn btn-primary home-landing-btn'>Get Started</button></Link>
-                <Link href='/about'><button className='btn btn-translucent home-landing-btn'>Learn More <BsPlayBtnFill className='home-landing-btn-icon' /></button></Link>
+                <Link href='#about'><button className='btn btn-translucent home-landing-btn'>Learn More <BsPlayBtnFill className='home-landing-btn-icon' /></button></Link>
             </div>
 
             {/* <video autoPlay loop muted className='home-landing-video'>
@@ -80,8 +81,8 @@ export default function Home(){
             <h2>Getting your website ranked on Google is a pain in the a**.</h2>
             <h2 className='about-landing-header'>So we did something about it.</h2> */}
 
-            <h2 className='about-landing-header'>Your own personalized AI Article Writer focused on <span className='ai-gradient2'>SEO Optimization</span></h2>
-            <p className='about-landing-p'>Research, write, optimize in a click. Use Ranki AI to produce top-quality, well-optimized articles in 20 minutes!</p>
+            <h2 className='about-landing-header'>Your own personalized <span className='italic'>AI Blog Writer</span> focused on getting your business website <span className='gold-gradient'>ranked.</span></h2>
+            <p className='about-landing-p'>Research, write, optimize in a click. Use <span className='ai-gradient2'>RankiAI</span> to produce top-quality, well-optimized articles in minutes!</p>
             <div className='about-landing-banners flexer'>
               <div className='about-landing-banner'>
               <div className='antiflexer'>
@@ -112,9 +113,9 @@ export default function Home(){
             </div>
           </div>
         
-        <div className='hiw-landing-container'>
+        <div className='hiw-landing-container' id='about'>
           <div className='header-grey'>How it works</div>
-          <h2 className='hiw-landing-header'>Leave the <b>Content Generation</b> to us, so you can focus on what&apos;s important.</h2>
+          <h2 className='hiw-landing-header'>Leave the <span className='italic gold-gradient'>Google Rankings</span> to us, so you can focus on what&apos;s important.</h2>
           {/* <img src='/rocket.png' /> */}
           <h6 className='hiw-landing-subheader primary italic'>Your Business.</h6>
           <div className='landing-steps'>
@@ -123,7 +124,7 @@ export default function Home(){
       <div className='landing-step-line'></div>
       <h3>Integrate your website</h3>
       <p>Connect your domain to our secure trusted platform.</p>
-      <img src='/integrate.png' className='landing-step-img landing-img-sm'></img>
+      <img src='/integrate-web.png' className='landing-step-img landing-img-md'></img>
       </div>
       <div className='landing-step step-2'>
               <div className='landing-step-line-up'></div>
@@ -147,21 +148,33 @@ export default function Home(){
 
       <div className='landing-step-number'>4</div>
       <div className='landing-step-line'></div>
-      <h3>Watch your <b className='italic'>Organic Traffic</b> skyrocket</h3>
+      <h3>Watch your <b className='italic gold-gradient'>Ranking</b> skyrocket</h3>
       <p>Embrace the future of content creation where innovation meets convenience, and let AI handle the heavy lifting. Experience the peace of mind that comes from knowing your content needs are managed efficiently, allowing you to direct your attention to where it truly matters - growing your business and achieving your goals.</p>
-      <img src='/organic-traffic.webp' className='landing-step-img landing-img-sm'></img>
+      <img src='/serp-rankings.png' className='landing-step-img landing-img-md'></img>
       </div>
     </div>
      
         </div>  
 
+        <div className='fun-landing-container'>
+  <div className='fun-landing-banner'>
+  <p className='header-grey flexer fun-landing-supheader'><BsLightbulbFill className='light fun-landing-light'/> Did you know?</p>
+<h3 className='fun-landing-header'><b className='primary'>95%</b> of search traffic goes to the <span className='primary'>1st page</span> of search results</h3> 
+
+<h3 className='fun-landing-header'><b className='primary'>75%</b> of all clicks go to the <span className='primary'>first 3 results</span></h3> 
+<p className='header-grey fun-landing-greyed'>Seriously, how often do you ever select the bottom search results?</p>
+</div>
+</div>
 
         <div className='why-landing-container'>
           <h2 className='why-landing-header'>In a world where nearly <b className='italic ai-gradient bold'>5.5 Billion</b> people are searching <span className='italic'>daily</span>, be the business they <span className='italic'>choose</span>.</h2>
           <h3 className='why-landing-subheader'>Whether your business is:</h3>
           <div className='flexer why-banner-grid'>
           <div className='why-banner'><div className='antiflexer'><MdLocationPin className='why-banner-icon'/><h3 className='why-banner-header'>Local</h3></div></div>
+          <div className='flexer'><FcLink className='link-icon'/></div>
           <div className='why-banner'><div className='antiflexer'><AiOutlineGlobal className='why-banner-icon'/><h3 className='why-banner-header'>Global</h3></div></div>
+          <div className='flexer'><FcLink className='link-icon'/></div>
+
           <div className='why-banner'><div className='antiflexer'><HiOutlineStatusOnline className='why-banner-icon'/><h3 className='why-banner-header'>Online</h3></div></div>
           </div>
           <h3 className='why-landing-header why-header-2'><span className='ai-gradient'>RankiAI</span> has your SEO covered 🤝</h3>
@@ -173,7 +186,7 @@ export default function Home(){
              
             </div> */}
 
-            <div className=' why-landing-flexer'>
+            <div className=' why-landing-flexer gradient-background'>
               <div className='why-img-container'>
               <img src='/chatbot.png' width='100' className='why-landing-img'></img>
               </div>
@@ -183,15 +196,7 @@ export default function Home(){
         </div> 
 
     
-<div className='fun-landing-container'>
-  <div className='fun-landing-banner'>
-  <p className='header-grey flexer fun-landing-supheader'><BsLightbulbFill className='light fun-landing-light'/> Did you know?</p>
-<h3 className='fun-landing-header'><b className='primary'>95%</b> of search traffic goes to the <span className='primary'>1st page</span> of search results</h3> 
 
-<h3 className='fun-landing-header'><b className='primary'>75%</b> of all clicks go to the <span className='primary'>first 3 results</span></h3> 
-<p className='header-grey fun-landing-greyed'>Seriously, how often do you ever select the bottom search results?</p>
-</div>
-</div>
         {/* <div className='hiw-landing-container'>
           <h2 className='hiw-landing-header'>An <b>AI Content Writing Tool</b> built to rank your pages</h2>
           <p>Unlock the full potential of your digital presence with our AI Content Writing Tool, meticulously designed to elevate your pages to the top of search engine rankings. By harnessing the power of advanced AI algorithms, our tool not only crafts compelling content but also ensures it is SEO-optimized, increasing visibility and driving organic traffic. With a focus on relevance and engagement, our solution tailors content to resonate with your target audience, enhancing user experience and fostering higher conversion rates. Step into the realm of high-ranking pages and watch as your online influence grows, all while saving time and resources. This is more than just content creation; it&apos;s a strategic asset for your online success.</p>

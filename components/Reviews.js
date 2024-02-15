@@ -18,10 +18,11 @@ const Reviews = () => {
             <div className='reviews-profile-text'>
         <p className='reviews-name'>Jim Brown</p>
         <p className='reviews-status'>Founder, CEO</p>
+        <Link href='https://venum.vercel.app' rel='noreferrer' target="_blank"><p className='link hover'>VenumAI</p></Link>
         </div>
         </div>
         <div className='reviews-logo'>
-            <img src='/microsoft.png' className='reviews-logo-img'></img>
+            <img src='/venum.jpeg' className='reviews-logo-img'></img>
         </div>
         </div>
         {/* <h2 className='reviews-grid-header'>Don&apos;t Just Take Our Word For It</h2>

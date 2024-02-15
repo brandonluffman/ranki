@@ -98,46 +98,45 @@ const DashContent = ({ slug, length }) => {
         };
     
           
-  return (
-      <div className='blog-dashcontent-container'>
-      <div className='dashboard-content-container'>
-          <h1 className='blog-dashcontent-header'>Blogs</h1>
-          <div className='dash-content-grid-small'>
-
-            {blogs && blogs.length > 0 ? 
-            blogs.slice(0,3).map(blog => (
-                <div key={blog.id} className='dash-content-grid-item searchresult'>
-                    <div className='flexer search-result-flexer'>
-                    <img src='/ranki-logo.png' className='serp-favicon'></img>
-                    <div className='antiflexer'>
-                        {appName && <h6 className='serp-name'>{appName}</h6>}
-                        {appDomain && blog.title && <a className='dash-content-link' rel='noreferrer' target="_blank" href={`${appDomain}/blog/${createSlug(blog.title)}`}>{truncateText(`${appDomain}/blog/${createSlug(blog.title)}`, 35)}</a>}
-                      
-                    </div>
-                    </div>
-                    {blog.title && <h2 className='content-item-header'>{blog.title}</h2>}
-                    <p className='serp-description'><span className='serp-date'>{formatDate(blog.created_at)} -</span> {blog.meta_description}</p>
-                    {blog.is_published == true ? <h6 className='is-draft draft-published'>Published</h6>:<h6 className='is-draft'>Draft</h6>}
-                    <div style={{ width: 50, height: 50 }} className='blog-dash-score'>
-                            <CircularScoreGauge score={75} />
-                        </div>
-
-                </div>
-                
-            ))
-            
+        return (
+            <div className='blog-dashcontent-container'>
+              <div className='dashboard-content-container'>
+                <h1 className='blog-dashcontent-header'>Blogs</h1>
         
-         : (
-            <div className='no-blogs'><p>No blogs found, start growing your sites Google Rankings now by creating content <Link href={`/generate/${slug}`} className='link'>here</Link></p></div>
-        )}
-
-<Link href={`/generate/${slug}`}><button className='add-content-container'><IoMdAdd /></button></Link>
-
-
-        </div>
-      </div>
-</div>
-  )
+                {blogs && blogs.length > 0 ? (
+                  <div className='dash-content-grid-small'>
+                    {blogs.slice(0,3).map(blog => (
+                      <div key={blog.id} className='dash-content-grid-item searchresult'>
+                        <div className='flexer search-result-flexer'>
+                          <img src='/ranki-logo.png' className='serp-favicon'></img>
+                          <div className='antiflexer'>
+                            {appName && <h6 className='serp-name'>{appName}</h6>}
+                            {appDomain && blog.title && (
+                              <a className='dash-content-link' rel='noreferrer' target="_blank" href={`${appDomain}/blog/${createSlug(blog.title)}`}>
+                                {truncateText(`${appDomain}/blog/${createSlug(blog.title)}`, 35)}
+                              </a>
+                            )}
+                          </div>
+                        </div>
+                        {blog.title && <h2 className='content-item-header'>{blog.title}</h2>}
+                        <p className='serp-description'><span className='serp-date'>{formatDate(blog.created_at)} -</span> {blog.meta_description}</p>
+                        {blog.is_published == true ? <h6 className='is-draft draft-published'>Published</h6> : <h6 className='is-draft'>Draft</h6>}
+                        <div style={{ width: 50, height: 50 }} className='blog-dash-score'>
+                          <CircularScoreGauge score={75} />
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                ) : (
+                  <div className='no-blogs'>
+                    <p>No blogs found, start growing your sites Google Rankings now by creating content <Link href={`/generate/${slug}`} className='link' passHref>here</Link></p>
+                  </div>
+                )}
+        
+                <Link href={`/generate/${slug}`} passHref><button className='add-content-container'><IoMdAdd /></button></Link>
+              </div>
+            </div>
+          );
 }
 
 export default DashContent

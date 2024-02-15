@@ -80,10 +80,12 @@
     color:rgb(150, 150, 150);
     margin:0;
     font-size: 1.1rem;
+    margin-bottom: 1rem;
 }
 
 .reviews-logo-img {
     width:30%;
+    border-radius: 20px;
 }
 
 .reviews-grid-header {

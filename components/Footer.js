@@ -27,7 +27,7 @@ const Footer = () => {
                           <div className='footer-links'>
                             <div className='footer-links-header'><p className='footer-link-header'>General</p></div>
                             <Link href='/'><div className='footer-link'>Home</div></Link>
-                            <Link href='/about'><div className='footer-link'>About</div></Link>
+                            {/* <Link href='/about'><div className='footer-link'>About</div></Link> */}
                             <Link href='/dashboard'><div className='footer-link'>Projects</div></Link>
                             <Link href='/pricing'><div className='footer-link'>Pricing</div></Link>
                             <Link href='/blog'><div className='footer-link'>Blog</div></Link>
@@ -46,10 +46,14 @@ const Footer = () => {
                             {/* <p className='footer-link'><IoIosPhonePortrait className='footer-contact-icon' /> (111) 222-3333</p> */}
                           </div>
                 </div>
-              </div>   
+              </div> 
+              <div className='copyright-footer copyright-1'>
+                  <p className='footer-phantom'>Powered by <Link className='footer-phantom-brand' rel='no-referrer' target='_blank' href='https://phantomdm.com'>Phantom</Link></p>
+              </div>  
               <div className='copyright-footer'>
                   <p className='footer-copyright-content'>Copyright © {new Date().getFullYear()} <span className='ai-gradient'>RankiAI</span> - All Rights Reserved.</p>
               </div>
+           
       </div>
     </footer>
     </div>

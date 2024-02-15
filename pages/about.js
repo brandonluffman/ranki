@@ -42,57 +42,56 @@ export default function About() {
         </Head>
       <Navbar />
       <div className='about-container'>
-        <div className='landing-div'>
-            <div className='about-flexer'>
-            {/* <img className='about-flexer-img' src='ranki.png'></img> */}
-          {/* <h1 className='about-header'>RANKI AI</h1> */}
-          <img src='/R.png' alt='Brand Logo' width='600' className='about-logo'></img>
-          </div>
-          <h2 className='landing-subheader about-subheader'><span className='primary'>Automated</span> AI Content Generation</h2>
-        </div>
+      <div className='landing-div'>
+      
+        <img src='/R.png' alt='Brand Logo' width='200' className='about-logo'></img>
+
+        {/* <h2 className='landing-subheader about-subheader'>
+          <span className='primary'>Our goal?</span> Using artificial intelligence to allow businesses to rank on Google so they can focus on what&apos;s important.
+        </h2> */}
       </div>
-      {visible && 
+    </div>
+    {visible && (
       <div className='home-about-container'>
         <div className='home-about-content'>
-        <div className='home-about-content-text'>
-        <h3 className='home-about-subheader'>Our <span className='primary'>Mission</span></h3>
-        <p className='home-about-p'>
-
-            At the heart of our endeavor lies a simple yet profound understanding: navigating the intricacies of website ranking can be overwhelmingly complex. This is especially true if you find yourself in any of these scenarios:
-            <ol>
-            <li>Struggling with the nuances of SEO and digital marketing.</li>
-            <li>Lacking the desire or time to delve into the complexities of online optimization.</li>
-            <li>Wishing to concentrate solely on nurturing and expanding your business.</li>
-            </ol>
-            Recognizing these challenges, we were inspired to create a singular, all-encompassing solution designed to foster the growth of your website. Our application is more than just a tool; it&apos;s a comprehensive ecosystem tailored to simplify your digital journey. Whether you&apos;re a newcomer to the digital realm or a seasoned entrepreneur with little interest in the technicalities of web optimization, our platform is engineered to cater to your needs.
-
-            We present to you a platform that streamlines the process of enhancing your website&apos;s visibility and performance. Through our intuitive and user-friendly interface, you&apos;ll have access to all the essential tools and insights needed to elevate your site&apos;s ranking, without the hassle of juggling multiple applications or mastering the intricacies of SEO.
-
-            Join us in embracing a smarter, more efficient way to grow your online presence. Let our application be the catalyst that propels your website to new heights, allowing you to focus on what you do best: running your business.
-         </p>
-        </div>
-        {/* <div className='home-about-content-img'>
-        <img src='/dashboard.png' className='home-about-img' alt='Product Search'></img>
-        </div> */}
+          <div className='home-about-content-text'>
+            <h3 className='home-about-subheader primary'>
+              The Mission
+            </h3>
+            <p className='home-about-p'>
+              At the heart of our endeavor lies a simple yet profound understanding... businesses focus too much of their time figuring out how to get ranked on Google.
+             </p>
+             <ol className='home-about-ordered'>
+                <li>Struggling with the nuances of SEO and digital marketing.</li>
+                <li>Lacking the desire or time to delve into the complexities of online optimization.</li>
+                <li>Wishing to concentrate solely on nurturing and expanding your business.</li>
+              </ol>
+             <p>
+             This is where we come in.... Recognizing these challenges, we were inspired to create a singular, all-encompassing solution designed to get your business ranked on Google.
+            </p>
+          </div>
+          <div className='home-about-content-img'>
+            <img src='/airpods.jpeg' className='home-about-img' alt='About Image 1'></img>
+          </div>
         </div>
         <div className='home-about-content content-flip'>
-        {/* <div className='home-about-content-img'>
-        <img src='/shop.webp' className='home-about-img' alt='Shopping Cart'></img>
-        </div> */}
-        <div className='home-about-content-text'>
-        <h3 className='home-about-subheader'>How It <span className='primary'>Works</span></h3>
-                    <p className='home-about-p'>Introducing our revolutionary application, meticulously designed to be the ultimate command center for all your website management needs. Imagine a world where you can effortlessly ensure your website&apos;s aesthetic brilliance while simultaneously optimizing it for top search engine rankings. Our application is a comprehensive solution that seamlessly integrates various aspects of website management into one intuitive dashboard.
-
-            Experience the convenience of having a personalized control panel for each of your websites. This innovative feature allows you to monitor critical metrics from Google Analytics and Search Console, track SEO performance, and keep a close eye on your keyword rankings. Gone are the days of juggling multiple tabs and tools; our application streamlines your workflow by providing all the essential resources and links in one consolidated location.
-
-            Our platform is not just a tool; it&apos;s a strategic partner that empowers you to elevate your online presence. By integrating advanced analytics and SEO insights, it helps you make data-driven decisions to enhance your site&apos;s performance and visibility. Whether you&apos;re a small business owner, a digital marketing professional, or a webmaster, our application is tailored to meet your unique needs and help you achieve your digital goals with ease and efficiency.
-
-            Embrace the future of website management with our cutting-edge application, where sophistication meets simplicity, and excellence is just a click away.</p>
-        </div>
+          <div className='home-about-content-img'>
+          <img src='/airpods.jpeg' className='home-about-img' alt='About Image 1'></img>
+          </div>
+          <div className='home-about-content-text'>
+            <h3 className='home-about-subheader primary'>
+              How It Works
+            </h3>
+            <p className='home-about-p'>
+            Join us in embracing a smarter, more efficient way to grow your online presence. Let our application be the catalyst that propels your website to new heights, allowing you to focus on what you do best: running your business.
+            </p>
+            <p className='home-about-p'>
+            Introducing our revolutionary application, meticulously designed to be the ultimate command center for all your website management needs. Imagine a world where you can effortlessly ensure your website&apos;s aesthetic brilliance while simultaneously optimizing it for top search engine rankings. Our application is a comprehensive solution that seamlessly integrates various aspects of website management into one intuitive dashboard.</p>
+          </div>
         </div>
       </div>
-      }
-      <Footer />
+    )}
+    <Footer />
     </>
   )
 }

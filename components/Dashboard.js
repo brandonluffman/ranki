@@ -215,7 +215,7 @@ const handleSubmit = async (event) => {
           {app && <img src={appLogo} className='appdash-grid-img dashboard-grid-img' alt={`${app.name} logo`} />}
           {app && <h2 className='dashboard-header appdash-header'>{app.name}</h2>}
           {user && <DashContent slug={slug} length={3} />}
-            <div className='dashboard-grid seo-dash-grid'>
+            {/* <div className='dashboard-grid seo-dash-grid'>
             <Link href={`/seo/${slug}`} className='seo-dash-link'>
               <div className='seo-dash-item'>
               <h2>SEO</h2>
@@ -223,7 +223,7 @@ const handleSubmit = async (event) => {
                 <GaugeChartComponent id="gauge-chart3" width='300' percent={score3} className='seo-dash-chart'/>
               </div>
               </Link>
-            </div>
+            </div> */}
      
         </div>
       </div>

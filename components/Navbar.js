@@ -92,7 +92,7 @@ const Navbar = () => {
             <Link className='nav-link' href='/pricing'><IoMdPricetags className='nav-icon'/> Pricing</Link>
             <Link className='nav-link' href='/blog'><IoNewspaper className='nav-icon'/> Blog</Link>
             <Link className='nav-link' href='/account'><CgProfile className='nav-icon'/> Account</Link>
-            <Link className='nav-link' href='/about'><GrCircleInformation className='nav-icon'/> About</Link>
+            {/* <Link className='nav-link' href='/about'><GrCircleInformation className='nav-icon'/> About</Link> */}
         
             {/* <Link className='nav-link' href='/ranking'><GrCircleInformation className='nav-icon'/> Rankings</Link> */}
             </div>

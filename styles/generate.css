@@ -42,8 +42,8 @@
     right:20px;
     background-color: white;
     color:var(--dark-blue);
-    padding:0.75rem 2rem;
-    border-radius: 20px;
+    padding:0.5rem 2rem;
+    border-radius: 10px;
 }
 
 .ai-suggestion-generate {
@@ -56,9 +56,10 @@
 
 .generate-credits-container p {
     font-weight: 600;
-    letter-spacing: -0.02rem;
+    letter-spacing: -0.05rem;
     display:flex;
     align-items: center;
+    /* text-transform: uppercase; */
 }
 
 .credits {
@@ -73,8 +74,9 @@
 .generate-header {
     margin-bottom: 2rem;
     /* color:var(--primary); */
+    color:white;
     line-height: 5rem;
-    
+    letter-spacing: -0.2vw;
 }
 .generate-banner {
     background-color: var(--primary);
